@@ -1,0 +1,1221 @@
+Introduction to R
+========================================================
+author: Thomas Carroll
+date: Februrary 8th
+width: 1440
+height: 1100
+autosize: true
+font-import: <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+font-family: 'Slabo 27px', serif;
+css:style.css
+
+What is R?
+========================================================
+<span class="emphasized">
+**R** is scripting language and environment for **statistical computing**.
+
+sqrt(25)-1
+
+Developed by [Robert Gentleman](http://www.gene.com/scientists/our-scientists/robert-gentleman) and [Ross Ihaka](https://www.stat.auckland.ac.nz/~ihaka/). 
+
+
+Inheriting much from its predecessor **S** (Bell labs).
+
+- Open source & cross platform
+- Suited to high level data analysis
+- Extensive graphics capabilities
+- Diverse range of add-on packages
+- Active community of developers
+- Thorough documentation
+</span>
+
+What is R to you?
+========================================================
+
+**R** comes with excellent "out-of-box" statistical and plotting capabilities.
+
+
+**R** provides access to 1000s of packages ([CRAN](http://cran.r-project.org/)/[MRAN](http://mran.revolutionanalytics.com/)/[R-forge](https://r-forge.r-project.org/)) which extend the basic functionality of R while maintaining high quality documentation.
+
+
+In particular, [Robert Gentleman](http://www.gene.com/scientists/our-scientists/robert-gentleman) developed the **[Bioconductor](http://bioconductor.org/)** project where 100s of packages are directly related to Biology and analysis of associated high-throughput experiments.
+***
+
+![alt text](RCitations.jpeg)
+
+How to get R?
+========================================================
+left: 50%
+
+Freely available from [R-project website](http://cran.ma.imperial.ac.uk/).
+
+Rstudio provides extended GUI and is also freely available from [Rstudio site](http://www.rstudio.com/)
+
+
+***We will be using Rstudio and R already installed on your machines.***
+
+***
+![alt text](cran.jpeg)
+![alt text](rstudio.jpeg)
+
+A quick tour of Rstudio
+========================================================
+left: 30%
+Four main panels
+- Scripting panel
+- R interface
+- Environment and History
+- Files, directories and help
+
+***
+
+![alt text](rstudioBlank.jpeg)
+
+
+R Basics
+========================================================
+type:section
+
+- Simple Calculations
+- Intro to variables
+- Vectors
+- Lists
+- Matrices
+- Data frames
+
+
+
+Simple Calculations 
+========================================================
+type: subsection
+At its most basic, **R** can be used as a simple calculator.
+```{r,prompt=T}
+3+1
+
+2*2
+
+sqrt(25)-1
+```
+
+Using functions 
+========================================================
+
+The **sqrt(25)** demostrates the use of functions in R.
+
+A function performs a complex operation on it's arguments and returns the result.
+
+In R, arguments are provided to R within the parenthesis that follows function name.
+
+So **sqrt(*ARGUMENT*)** will provide the square root of value of ***ARGUMENT***.
+
+Other examples of functions include **mean()**, **sum()**, **max()**.
+```{r}
+mean(2,4,6)
+sum(2,4,6)
+max(2,4,6)
+```
+
+Using functions.
+========================================================
+
+R has many useful functions "built in" and ready to use as soon as R is loaded.
+
+An incomplete, illustrative list can be seen [here](http://www.columbia.edu/~cjd11/charles_dimaggio/DIRE/resources/R/rFunctionsList.pdf) 
+
+In addition to R standard functions, additional functionality can be loaded into R using libraries. These include specialised tools for areas such as sequence alignment, read counting etc.
+
+If you need to see how a function works try **?** infront of function name.
+```{r}
+?sqrt
+```
+
+More on functions and libraries soon!
+
+Using functions.
+========================================================
+
+As with other programming languages and even graphical calculators, **R** makes use of **variables**.
+
+A variable stores a value as a letter or word.
+
+In R, we make use of the assignment operator **<-** 
+```{r}
+x <- 10
+```
+Now **x** holds the value of 10
+```{r}
+x
+```
+
+Variables. 
+========================================================
+
+```{r}
+x
+```
+Variables can be altered in place
+```{r}
+x <- 20
+x
+```
+Variables can be used just as the values they contain.
+```{r}
+x + sqrt(25)
+```
+Variables can be used to create new variables
+```{r}
+y <- x + sqrt(25)
+y
+```
+
+Vectors.
+========================================================
+In **R** the most basic variable or data type is a "Vector". A vector is an ordered collection of values. The x and y variable we have previously assigned is an example of a vector of length 1.
+
+```{r}
+x
+length(x)
+```
+
+To create a multiple value vector we use the function **c()** to *combine* the supplied arguments into one vector.
+
+```{r}
+x <- c(1,2,3,4,5,6,7,8,9,10)
+x
+length(x)
+```
+
+Vectors of continuous stretches of values can be created by this shortcut.
+
+```{r}
+y <- 6:10
+y
+```
+
+Vectors (Indexing)
+========================================================
+Square brackets **[]** identify the position within a vector (the **index**).
+These indicies can be used to extract relevant values from vectors.
+
+A vector is an ordered collection of values. The x and y variable we have previously assigned is an example of a vector of length 1.
+
+```{r}
+x
+x[1]
+x[8]
+```
+
+Indicies can be used to extract values from a multiple positions within a vector.
+
+```{r}
+x[c(1,6)]
+```
+Negative indicies can be used to extract all positions except that specified
+
+```{r}
+x[-5]
+```
+
+
+Vectors (indexing)
+========================================================
+
+We can use indicies to modify a specific position in vector
+
+```{r}
+x
+x[5] <- -5
+x
+```
+
+Indicies can be specified using other vectors.
+
+```{r}
+y
+x[y]
+x[y] <- 0
+x
+```
+
+Remember!
+========================================================
+Square brackets **[]**  for indexing
+```{r}
+x[1]
+```
+
+Parentheses **()**  for function argments.
+```{r}
+sqrt(4)
+```
+
+Working with vectors
+========================================================
+
+Vectors in R can be used in arithmetic operations as seen with variables earlier.
+When a standard arithmetic operation is applied to vector, the operation is applied to each position in a vector.
+
+```{r}
+x <- c(1,2,3,4,5,6,7,8,9,10)
+x
+y <- x*2
+y
+```
+
+Multiple vectors can be used within arithmetic operations. 
+```{r}
+x+y
+```
+
+When applying an arithmetic operation between two vectors of unequal length, the shorter will be recycled.
+
+```{r}
+x+c(1,2)
+```
+
+```{r}
+x+c(1,2,3)
+```
+
+Vectors can be made of character values
+========================================================
+
+So far we have only looked at numeric vectors.
+
+In R we can also create character vectors again using **c()** function. These vectors can be indexed just the same.
+
+```{r}
+y <- c("ICTEM","CommonWealth","Wolfson")
+y[2]
+```
+
+Character vectors can be used to assign names to other vectors.
+
+```{r}
+x <- c(1:3)
+names(x) <- y
+x
+```
+
+These named vectors maybe indexed a positions "name".
+```{r}
+x[c("ICTEM","Wolfson")]
+```
+Index names missing from vectors will return special value "NA"
+```{r}
+x[c("Strand")]
+```
+
+
+Vectors can be made of logical values
+========================================================
+
+Logical vectors are a special type of value made up of TRUE/T or FALSE/F
+
+```{r}
+z <- c(T,F,T,F,T,F,T,F,T,F) 
+# z <-  c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE) 
+z
+```
+Logical vectors can be used like an index to specify postions in a vector
+
+```{r}
+x <- 1:10
+x[z]
+```
+
+Numeric vectors may be evaluated to produce logical vectors. This can be very useful when using a logical as an index
+Common examples are:
+
+- **==**  evaluates as equal.
+- **>** and **<** evaluates as greater or less than respectively.
+
+```{r}
+x > 5
+x[x > 5]
+```
+
+More complex logicals
+========================================================
+
+Logical vectors can be used in combination to index vectors. To combine logical vectors we can use some common R operators.
+
+- **&** Requires both logical evaluators to be TRUE
+- **|** Requires either logical evaluator to be TRUE.
+- **!** Reverses logical operator, so TRUE is FALSE and FALSE is TRUE.
+
+```{r}
+x <- 1:10
+x > 4
+!x > 4
+x > 4 & x < 7
+x > 4 | x < 7
+x > 4 & !x < 7
+```
+
+Such combinations can allow for complex selection of vector's values.
+```{r}
+x <- 1:10
+x[x > 4 & x < 7]
+```
+
+
+Time for an exercise!
+========================================================
+
+- Create a vector called "Counts" containing values 4000,2000,3008,4089,1055
+- Name this vector with gene names Pax5, Oct4, Sox2, Med2, Jrd2
+- Create a vector called "gene.lengths" with same names but values 2000,200,3000,201.
+- Calculate counts per gene length for every gene.
+- Identify gene with counts greater than the average.
+
+Answers to exercise.
+========================================================
+
+Answers to this exercise (or at least one possible answer!) can be found here!
+
+Matricies
+========================================================
+
+In excel we are used to tables.
+
+All progamming languages have a concept of a table. In **R**, the most basic table type is a **Matrix**.
+
+A **Matrix** can be created suing the ***matrix()*** function specifying the arguments of nrow and ncol specifying the number of rows and columns respectively.
+```{r}
+narrowMatrix <- matrix(1:10, nrow=5, ncol=2)
+narrowMatrix
+
+wideMatrix <- matrix(1:10, nrow=2, ncol=5)
+wideMatrix
+```
+
+To find dimensions of a matrix, the dim() function will provide dimensions as row number and column number while nrow() and ncol() will return just row number and column number respectively.
+```{r}
+dim(narrowMatrix)
+nrow(narrowMatrix)
+ncol(narrowMatrix)
+```
+
+Matricies (Joining vectors and matricies)
+========================================================
+
+A Matrix can be created from multiple vectors or other matricies using **cbind()** or **rbind()** functions to bind as column or row respectively
+```{r}
+x <- 1:10
+y <- 11:20
+z <- 21:22
+newMatrix <- cbind(x,y)
+newerMatrix <- rbind(newMatrix,z)
+newerMatrix
+```
+
+When creating a matrix using **cbind()** or **matrix()** from incompatable vectors then shorted vector is recycled. For **rbind()** function longer vector is clipped.
+
+```{r}
+recycledMatrix1 <- cbind(x,z)
+recycledMatrix2 <- matrix(1:10,ncol=5,nrow=3)
+recycledMatrix3 <- rbind(recycledMatrix1,y)
+```
+
+Matricies (Column names)
+========================================================
+
+As with vectors, matrices can be named. For matrices the naming is done by columns and rows using **colnames()** and **rownames()** functions.
+
+```{r}
+namedMatrix <- matrix(1:10,ncol=5,nrow=2)
+colnames(namedMatrix) <- paste("Column",1:5,sep="_")
+rownames(namedMatrix) <- paste("Row",1:2,sep="_")
+namedMatrix
+```
+
+Information of matrix names can also be retreived using the same functions.
+```{r}
+colnames(namedMatrix)
+rownames(namedMatrix)
+namedMatrix
+```
+
+
+Matricies (indexing)
+========================================================
+
+Selecting and replacing portions of a matrix can be done by **indexing** using square brackets **[]** much like for vectors.
+
+When indexing matricies,two values may be provided within the square brackets separated by a comma.The first value corresponds to rows and the second to columns.
+
+-- ***myMatrix[rowOfInterest,columnOfInterest]***
+```{r}
+narrowMatrix
+```
+
+Value of first column, second row
+```{r}
+narrowMatrix[2,1]
+```
+
+Value of second column (row index is empty!)
+```{r}
+narrowMatrix[,2]
+```
+
+
+Value of third row (column index is empty!)
+```{r}
+narrowMatrix[3,]
+```
+
+As with vectors, names can be used for indexing when present
+
+```{r}
+colnames(narrowMatrix) <- paste("Column",1:2,sep="_")
+narrowMatrix[,"Column_1"]
+```
+
+Matricies (advanced indexing)
+========================================================
+
+As with vectors, matricies can be subset by logical vectors
+```{r}
+narrowMatrix
+narrowMatrix[,1]
+narrowMatrix[,1] < 5
+narrowMatrix[narrowMatrix[,1] < 5,]
+```
+
+Matricies (arithmetic operations)
+========================================================
+
+As with vectors, matricies can have arithmetic operations applied to cells,rows, columns or the whole matrix
+```{r}
+narrowMatrix
+narrowMatrix[1,1]+2
+narrowMatrix[1,]+2
+mean(narrowMatrix)
+
+```
+
+Matricies (Replacement)
+========================================================
+
+As with vectors, matricies can have their elements replaced
+```{r}
+narrowMatrix
+narrowMatrix[1,1] <- 10
+narrowMatrix[,2] <- 1
+narrowMatrix
+```
+
+Matrices must be all one type (numeric or character).
+Here replacing one value with character will turn numeric matrix to character matrix.
+
+```{r}
+narrowMatrix[1,1] <- "Not_A_Number"
+narrowMatrix
+```
+
+Factors
+========================================================
+
+A special case of a vector is a **factor**
+
+Factors are used to store data which may be grouped in categories (categorical data).
+Specifying data as categorical allows R to properly handle the data and make use of functions specific to categorical data.
+
+To create a factor from a vector we use the **factor()** function.Note that the factor now has an additional component called **"levels"** which identifies all categories within the vector.
+
+```{r}
+vectorExample <- c("male","female","female","female")
+factorExample <- factor(vectorExample)
+vectorExample
+factorExample
+```
+
+An example of the use of levels can be seen from applying the summary() function to the vector and factor examples
+
+
+```{r}
+summary(vectorExample)
+summary(factorExample)
+```
+
+
+Factors (levels)
+========================================================
+In our factor example the levels have been displayed in an alphabetical order. To adjust the display order of levels in a factor, we can supply the desired display order to **levels** argument in the **factor()** function call.
+
+```{r}
+factorExample <- factor(vectorExample,levels=c("male","female"))
+factorExample
+summary(factorExample)
+```
+
+Factors (nominal and ordinal factors)
+========================================================
+In some cases there is no natural order to the categories such that one category is greater than the other (Nominal data).
+In this case we can see that R is gender neutral.
+
+```{r}
+factorExample <- factor(vectorExample,levels=c("male","female"))
+factorExample[1] < factorExample[2]
+```
+
+In other cases there will be a natural ordering to the categories (ordinal data). A factor can be specified to be ordered using the ordered argument in combination with specified levels argument.
+
+```{r}
+factorExample <- factor(c("small","big","big","small"),ordered=TRUE,levels=c("small","big"))
+factorExample[1] < factorExample[2]
+```
+
+Factors (Replacement)
+========================================================
+
+Unlike vectors, replacing elements within a factor isn't so easy. While replacing one element with an established level is possible, replacing with a novel element will result in a warning.
+
+```{r}
+factorExample <- factor(c("small","big","big","small"))
+factorExample[1] <- c("big")
+factorExample
+
+factorExample[1] <- c("huge")
+factorExample
+
+```
+To add a new level we can use the levels argument.
+
+```{r}
+levels(factorExample) <- c("big","small","huge")
+factorExample[1] <- c("huge")
+factorExample
+```
+
+Data.frames
+=========================================================
+
+We saw that with matrices you can only have one type of data. We tried to create a matrix with a character elelment and the entire matrix became a character.
+
+In practice, we would want to have a table which is a mixture of types (e.g a table with samplenames (character), sampletype (factor) and survival time (numeric))
+
+In R, we make use of the data.frame object which allows us to store different data types in one container. To create a data frame we can simply use the data.frame() function.
+
+```{r}
+patientName <- c("patient1","patient2","patient3","patient4")
+patientType <- factor(rep(c("male","female"),2))
+survivalTime <- c(1,30,2,20)
+class(patientName)
+class(patientType)
+class(survivalTime)
+dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime)
+dfExample
+```
+
+
+
+Data.frames (indexing and replacement)
+=========================================================
+
+Data frames may be indexed just as matrices.
+
+```{r}
+dfExample
+dfExample[dfExample[,"Survival_Time"] > 10,]
+```
+
+But unlike matrices, certain columns can not be replaced. Numeric columns may have their values replaced but columns with character values may not.This occurs because character vectors are treated as vectors by default.
+
+
+```{r}
+dfExample[dfExample[,"Survival_Time"] < 10,"Survival_Time"] <- 0
+dfExample
+```
+
+```{r}
+dfExample[dfExample[,"Survival_Time"] < 10,"Name"] <- "patientX"
+dfExample
+```
+
+Data.frames (Advanced indexing)
+=========================================================
+Unlike matrices, it is possible to index a column by using the "$" symbol.
+
+```{r}
+dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime)
+
+dfExample$Survival_Time
+dfExample[dfExample$Survival_Time < 10,]
+```
+Using the "$" allows for R to autocomplete your selection and so can speed up coding.
+
+```{r}
+dfExample$Surv
+```
+But this will not work..
+```{r, eval=F}
+dfExample[,"Surv"]
+```
+
+Data.frames (factors)
+=========================================================
+It is possible to update factors in data.frames just as with standard factos
+
+```{r}
+dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime)
+
+levels(dfExample[,"Name"]) <- c(levels(dfExample[,"Name"]) , "patientX")
+dfExample[dfExample[,"Survival_Time"] < 10,"Name"] <- "patientX"
+dfExample
+
+```
+
+Data.frames (Creating data.frames without factors)
+=========================================================
+It is possible to update factors in data.frames just as with standard factos
+
+```{r}
+dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime,stringsAsFactors = F)
+
+levels(dfExample[,"Name"]) <- c(levels(dfExample[,"Name"]) , "patientX")
+dfExample[dfExample[,"Survival_Time"] < 10,"Name"] <- "patientX"
+dfExample
+
+```
+
+Data.frames (Ordering)
+=========================================================
+A useful function in R is order()
+
+For numeric vectors, order() by default returns the indices of vector in that vector's increasing order. This behaviour can be altered by using the "decreasing" argument passed to order.
+
+```{r}
+testOrder <- c(2,1,3)
+testOrder
+testOrder[order(testOrder)]
+testOrder[order(testOrder,decreasing=T)]
+```
+
+When a vector contains NA valuees, these NA values will by default be placed last in ordering indices. This can be controlled by na.last argument.
+
+```{r}
+testOrder <- c(2,1,NA,3)
+testOrder[order(testOrder,decreasing=T,na.last=T)]
+testOrder[order(testOrder,decreasing=T,na.last=F)]
+```
+
+Data.frames (Ordering data.frames)
+=========================================================
+Since the order argument returns an index of intended order for vector, we can use the order() function to order Data.frames by certain columns
+```{r}
+dfExample
+dfExample[order(dfExample$Surv,decreasing=T),]
+```
+We can also use order to arrange multiple columns in a data.frame by providing multiple vectors to order() function. Ordering will be performed in order of arguments.
+
+```{r}
+dfExample
+dfExample[order(dfExample$Type,dfExample$Survival,decreasing=T),]
+```
+
+Data.frames (Creating new column)
+=========================================================
+
+dataframe$new <- dataframe$new
+Lists
+=========================================================
+
+Lists are the final data-ype we will look. 
+
+In R, lists provide a general container which may hold any data-type as part of its elements.
+To create a list we can simply use the list() function with arguments specifying the data we wish to include in the list.
+
+```{r}
+firstElement <- c(1,2,3,4)
+secondElement <- matrix(1:10,nrow=2,ncol=5)
+thirdElement <- data.frame(colOne=c(1,2,4,5),colTwo=c("One","Two","Three","Four"))
+myList <- list(firstElement,secondElement,thirdElement)
+myList
+```
+
+Lists (Named List)
+=========================================================
+
+Just as with vectors, list elements can be assigned names.
+
+```{r}
+myNamedList <- list(First=firstElement,Second=secondElement,Third=thirdElement)
+myNamedList
+```
+Lists (Indexing)
+=========================================================
+
+List, as with other data types in R can be indexed. In contrast to other types, using "[]" on a list will subset the list to another list of selected indices. To retrieve an element from a list in R , two square brackets "[[]]" must be used. 
+
+```{r}
+myList <- list(firstElement,secondElement,thirdElement)
+myList[1]
+myList[[1]]
+```
+
+As with data.frames, the $ sign may be used to extract elements from a list
+
+```{r}
+myNamedList$First
+```
+
+Lists (Joining lists)
+=========================================================
+
+Again, similar to vectors, Lists can be joined in R using the c() function 
+
+```{r}
+myNamedList <- list(First=firstElement,Second=secondElement,Third=thirdElement)
+myNamedList <- c(myNamedList,list(fourth=c(4,4)))
+myNamedList[c(1,4)]
+
+```
+
+Note that we are joining to lists. If we joined a vector to a list, all elements of the vector would become list elements.
+
+```{r}
+myNamedList <- c(myNamedList,c(4,4))
+myNamedList
+
+```
+
+Lists (Flattening lists)
+=========================================================
+
+Sometimes you will wish to "flatten" out a list. When a list contains compatable objects, i.e. list of all one type, the unlist() function can be used. Note the maintenance of names with their additional sufficies.
+
+```{r}
+myNamedList <- list(First=c(1,2,3),Second=c(2,6,7),Third=c(1,4,7))
+myNamedList
+flatList <- unlist(myNamedList)
+flatList
+```
+
+
+
+Lists (Flattening lists to matrices)
+=========================================================
+A common step is to turn a list of standard results into matrix. This canbe done in a few steps in R.
+
+```{r}
+myNamedList <- list(First=c(1,2,3),Second=c(2,6,7),Third=c(1,4,7))
+flatList <- unlist(myNamedList)
+listAsMat <- matrix(flatList,
+                    nrow=length(myNamedList),
+                    ncol=3,
+                    byrow=T,
+                    dimnames=list(names(myNamedList)))
+listAsMat
+```
+
+
+Getting data into R
+=========================================================
+type:section
+
+Data from External sources
+=========================================================
+http://www.computerworld.com/article/2497164/business-intelligence-beginner-s-guide-to-r-get-your-data-into-r.html?page=4
+
+
+Most of the time, you will not be generating data in R but will be importing data from external files.
+
+A standard format for this data is a table
+
+```{r,echo=F}
+minRep <- rbind(cbind(matrix(rnorm(12,4),ncol=3,byrow = T),matrix(c(rnorm(9,4),rnorm(3,8)),ncol=3,byrow = T)),
+cbind(matrix(rnorm(12,10),ncol=3,byrow = T),matrix(c(rnorm(6,3),rnorm(6,10)),ncol=3,byrow = T)))
+colnames(minRep) <- paste0(c("Sample_"),
+                      1:5,".",sort(rep(c("hi","low"),3)))
+minRepdf <- data.frame(Gene_Name=paste("Gene",letters[1:8],sep="_"),minRep)
+#minRepdf$Gene_Name <- paste("Gene",letters[1:8],sep="_")
+write.table(minRepdf,file="readThisTable.csv",sep=",",row.names=F)
+kable(minRepdf)
+
+```
+
+Data from text file
+=========================================================
+
+Tables can be read with read.table function
+point out rownames argument
+
+Notes!
+=========================================================
+
+Good example for reproducibility!
+
+https://support.rstudio.com/hc/en-us/articles/200552086-Using-R-Markdown
+
+
+Add part of making notebooks from r scripts 
+http://rmarkdown.rstudio.com/r_notebook_format.html
+
+
+http://quadroideas.com/great-google-font-combinations-ready-use/
+
+
+2. Importing data files using the scan function
+
+The scan function is an extremely flexible tool for importing data.  Unlike the read.table function, however, which returns a data frame, the scan function returns a list or a vector. This makes the scan function less useful for inputting "rectangular" data such as the car data set that will been seen in later examples. In the previous example we input first numeric data and then string data directly from the console; in the following example, we input a text file. For the what option, we use list and then list the variables, and after each variable, we tell R what type of variable (e.g., numeric, string) it is. In the first example, the first variable is age, and we tell R that age is a numeric variable by setting it equal to 0. The second variable is called name, and it is denoted as a string variable by the empty quote marks.  In the second example, we list NULL first, indicating that we do not want the first variable to be read. After using the scan function, we use the sapply function, which makes a list out of a vector of names in x.
+
+# inputting a text file and outputting a list
+(x <- scan("http://www.ats.ucla.edu/stat/data/scan.txt", what = list(age = 0,
+    name = "")))
+## $age
+## [1] 12 24 35 20
+## 
+## $name
+## [1] "bobby"   "kate"    "david"   "michael"
+
+Data from clipboard
+=========================================================
+
+from Rstudio
+=========================================================
+
+Data from XLS
+=========================================================
+
+Data from dput
+=========================================================
+
+Simple statistics in R
+=========================================================
+type:section
+
+Statistics in R
+=========================================================
+
+R has a powerful set of in built statistical methods.
+Including:
+- Standard statistical tests
+- Statistical modelling
+- Further methods available in add on packages
+
+Tables and Frequencies
+=========================================================
+
+One of the simplest statistical tools we have already seen in the function summary() and table(). These functions provide descriptive statistics for data.frames and character vectors or factors.
+
+```{r}
+patientName <- c("patient1","patient2","patient3","patient4")
+patientType <- factor(rep(c("male","female"),2))
+survivalTime <- c(1,30,2,20)
+dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime)
+```
+table() provides a breakdown of occurrence of all unique values in vector.
+```{r}
+table(patientType)
+```
+summary() provides a breakdown of occurrence of all character or factor columns and min,max,mean and quantiles for numeric columns.
+```{r}
+summary(dfExample)
+```
+
+Tables and Frequencies (continued)
+=========================================================
+
+The table() function can be used to generate frequency tables across data.frames.
+```{r}
+table(dfExample)
+```
+***
+
+ftable() function provides a method to generate or print the results from table()
+in a neater format.
+
+```{r}
+ftable(dfExample)
+```
+Correlation
+=========================================================
+
+Another common task in statistical analysis is to investigate the relationship between pairs of numeric vectors.
+
+This can be done by identifying the correlation between numeric vectors using the cor() function in R.
+
+In this example we use cor() to identify the pearson or spearman correlation between two variables. 
+
+Perfectly posively correlated vectors will return 1, perfectly negatively correlated vectors will return -1, vectors showing no or little correlation will be close to 0.
+
+```{r}
+x <- rnorm(100,10,2)
+z <- rnorm(100,10,2)
+y <- x
+cor(x,y) # 
+cor(x,-y)
+cor(x,z)
+cor(x,z,method="spearman")
+```
+***
+
+```{r,echo=F}
+plot(x,y) # 
+plot(x,-y)
+plot(x,z)
+
+```
+
+
+Correlation (Continued)
+=========================================================
+left: 70%
+Often we wish to apply correlation analysis to all columns or rows in a matrix in a pair-wise ,ammer.
+
+To do this in R, we can simply pass the cor() function a single argument of the numeric matrix of interest. The cor() function will then perform all pair-wise correlations between columns.
+
+
+```{r}
+minRep[1:2,]
+```
+
+```{r}
+cor(minRep)
+```
+Correlation (Continued)
+=========================================================
+
+```{r}
+image(cor(minRep),axes=F)
+axis(1,at=seq(0,1,length.out=6),colnames(minRep))
+axis(2,at=seq(0,1,length.out=6),colnames(minRep))
+```
+Distributions
+=========================================================
+
+R comes with functions for extracting information from most common distibutions types.
+An example of standard R functions for dealing with distibution can be seen here using the normal distributions.
+
+- pnorm - cumulative distribution for x
+- qnorm - inverse of pnorm (from probability gives x)
+- dnorm - distribution density
+- rnorm - random number from normal distribution
+
+![alt text](Dist.jpg)
+
+Similar functions are available for other distibution types including:
+- pbinom (binomial)
+- pnbinom (negative binomial),
+- phyper (hyper-geometric)
+- pt (T distribution)
+
+Distributions (Examples)
+=========================================================
+
+We can use rnorm to generate random values following a nromal distribution. Here we produce 10 normally distributed values numeric values with mean 8 and standard deviation of 3
+```{r}
+rnorm(10,mean=8,sd=3)
+```
+We can also use these functions to interrogate values assuming a normal distribution for the data.
+
+The probablity of a value being exactly 8 for a distribution of mean 8 and standard deviation 3. 
+
+```{r}
+dnorm(8,mean=8,sd=3)
+```
+
+The probablity of a value being less than 8 for a distribution of mean 8 and standard deviation 3. 
+
+```{r}
+pnorm(8,mean=8,sd=3)
+```
+
+The value for which i have a 50 percent being greater than given a normal distribution of mean 8 and standard deviation 3. 
+
+```{r}
+qnorm(0.5,mean=8,sd=3)
+```
+
+Statistical tests
+=========================================================
+
+On top of descriptive statistics, R has several statistical tests covering a range of problems and data types.
+
+Some of the most used tests of two samples include: 
+
+- var.test() - Comparing 2 variances (Fisher's F test)
+
+- t.test() - Comparing 2 sample means with normal errors (Student's t-test)
+
+- wilcox.test() - Comparing 2 means with non-normal errors (Wilcoxon's rank test)
+
+- fisher.test() - Testing for independence of 2 variables in a contingency table (Fisher's exact test)
+
+
+T-test example
+=========================================================
+
+To perform a t-test we will generate some datasets, test that the variances of the datasets are equal and then perform the actual t-tests.
+
+First lets produce the data using rnorm()
+
+```{r}
+groupA <- rnorm(10,mean=26,sd=1)
+groupB <- rnorm(10,mean=40,sd=1)
+groupC <- rnorm(10,mean=40,sd=4)
+
+tTestExample <- data.frame(A=groupA,B=groupB,C=groupC)
+
+tTestExample
+```
+
+T-test example
+=========================================================
+
+First lets retrieve the variance of columns using var().
+
+```{r}
+var(tTestExample$A)
+var(tTestExample$B)
+var(tTestExample$C)
+```
+ 
+Now we can test for any differences in variance between A and B and A and C.
+
+```{r}
+var.test(tTestExample$A,tTestExample$B)
+var.test(tTestExample$A,tTestExample$C)
+```
+
+T-test example
+=========================================================
+
+Now we have ascertained that GroupA and GroupB have similar variances. We can therefore perform a standard t-test to assess the significance of differences betweem the groups.
+
+```{r}
+Result <- t.test(tTestExample$A,tTestExample$B,alternative ="two.sided",
+                 var.equal = T)
+Result
+```
+
+To compare groups of unequal variance then the var.equal argument may be set to FALSE (which is the default).
+```{r}
+Result <- t.test(tTestExample$A,tTestExample$C,alternative ="two.sided",
+                 var.equal = F)
+Result
+
+```
+
+T-test example
+=========================================================
+
+The same result to that shown could be achieved by specify a formula for the comparison.
+Here we wish to compare column A versus B so we could simply specify the formula and the data to be used.
+
+
+```{r}
+longFrame <- data.frame(Group = c(rep("A",nrow(tTestExample)),rep("B",nrow(tTestExample)))
+                          ,Value=c(tTestExample$A,tTestExample$B))
+
+Result <- t.test(Value~Group,longFrame,alternative ="two.sided",
+                 var.equal = T)
+Result
+```
+
+
+Regression and linear models
+=========================================================
+
+We have seem how we can find the correlation between two sets of variables using cor() function.
+
+R also provides a comprehensive set of tools for regression analysis including the well used linear modelling function lm()
+
+To fit a linear regression we use a similar set of arguments as passed to the t-test fuction in the previous slide.
+
+
+```{r,echo=T,prompt=T}
+x=rnorm(100,70,10)
+y <- jitter(x,amount=40)+20
+lmExample <- data.frame(X=x,Y=y)
+```
+```{r,echo=T,prompt=T}
+lmResult <- lm(Y~X+z,data=lmExample)
+plot(Y~X,data=lmExample,main="Line of best fit with lm()",
+     xlim=c(0,150),ylim=c(0,150))
+abline(lmResult,col="red",lty=3,lwd=3)
+```
+
+The lm() function
+=========================================================
+
+The lm() function fits a linear regression to your data and provides useful information on the generated fit.
+
+In the example below we fit a linear model using  lm() on the lmExample dataset with column Y as the dependent variable and column X as the explanatory variable.
+
+```{r,echo=T,prompt=T}
+lmResult <- lm(Y~X,data=lmExample)
+lmResult
+```
+
+Printing the result from lm() shows the call to lm() and the coefficients including the intercept.
+
+From this we know the formula for the line.
+
+**Y = -9.09 + 1.14*X**
+
+```{r,echo=T,prompt=T}
+plot(Y~X,data=lmExample,main="Line of best fit with lm()",
+     xlim=c(0,100),ylim=c(0,100))
+abline(lmResult,col="red",lty=3,lwd=3)
+```
+
+Interpreting output of lm()
+=========================================================
+As we have seen, printing the model result provides the intercept and slope of line.
+
+To get some more information on the model we can use the summary() function
+
+```{r,prompt=T}
+summary(lmResult)
+```
+
+
+Interpreting output of lm() (Residuals...)
+=========================================================
+
+```{r,prompt=T,echo=F}
+summary(lmResult)
+```
+
+***
+The **residuals** are the difference between the predicted line.
+To retrieve the residuals we can access the slot or use the resid() function.
+
+```{r,prompt=T,echo=T}
+summary(resid(lmResult))
+summary(lmResult$residual)
+```
+Ideally you would want your residuals to be normally distributed around 0 indicating a good correspondence between predicted and actual values.
+
+Interpreting output of lm() (R-squared...)
+=========================================================
+
+```{r,prompt=T,echo=F}
+summary(lmResult)
+```
+
+The **R-squared** value represents the proportion of variability in the response variable that is explained by the explanatory variable.
+
+A high **R-squared** value indicates a good correspondence between the predictor and dependent variables.
+
+Interpreting output of lm() (Per variable p-values and the F-statistic)
+=========================================================
+
+```{r,prompt=T,echo=F}
+summary(lmResult)
+```
+
+The results from linear models also provides a measure of significance for a variable not being relevant in **Pr(>|t|)** column. A low p-value suggests the variable is useful in prediction of the dependent variable.
+
+
+The **F-statistic** is the result on an F-test on the model where the model is compared to a model with fewer parameters.
+
+If the p-value from F-statistic is small, the model can be considered a good fit of the data.
+
+
+Could have noice bit on 1 - pf(sm$fstatistic[1]?
+
