@@ -1,16 +1,81 @@
 Introduction to R, Day 2
 ========================================================
-author: Thomas Carroll
-date: 
+author: Thomas Carroll, Sanjay Khadayate, Gopuraja Dharmalingam
+date: Februrary 2st
+width: 1440
+height: 1100
+autosize: true
+font-import: <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+font-family: 'Slabo 27px', serif;
 css:style.css
-autosize:true
-autosize:true
-Recap -- 
+
+Overview
 ========================================================
+
+- [Recap](#/recap)
+- [Conditions and Loops](#/control)
+- [Defining functions](#/functions)
+- [Writing scripts](#/scripts)
+- [Libraries](#/libraries)
+
+
+
+
+Recap on what we have covered. 
+========================================================
+
+Day 1 covered introduction to R data types, inputing data, plotting and statistics.
+
+- [Background to R](#/background)
+- [Data types in R](#/datatypes)
+- [Reading and writing data in R](#/reading)
+- [Plotting in R](#/plotting)
+- [Statistics in R](#/stats)
+
+Recap on what we have covered. 
+========================================================
+
+R stores data in five main data types.
+
+- **Vector** - Ordered collection of single data type (numeric/character/logical).
+- **Matrix** - Table (ordered 2D collection) of single data type (numeric/character/logical).
+- **Factors** -Ordered collection of ordinal or nominal catagories.
+- **Data frame** - Table (ordered 2D array) of multiple data types of same length.
+- **List** - Ordered collection of multiple data types of differing length
+
+Recap.
+========================================================
+
+Data can be read into R as a table with the **read.table()** function and written to file with the **write.table()** function.
+
+
+```r
+Table <- read.table("readThisTable.csv",sep=",",header=T,row.names=1)
+Table[1:3,]
+```
+
+```
+       Sample_1.hi Sample_2.hi Sample_3.hi Sample_4.low Sample_5.low
+Gene_a    1.434232    3.847827    4.753905     2.023302     4.815150
+Gene_b    6.920896    4.375848    4.174589     3.335305     3.322358
+Gene_c    4.418390    3.436666    4.504165     2.777092     3.217721
+       Sample_1.low
+Gene_a     4.983134
+Gene_b     3.401714
+Gene_c     3.672469
+```
+
+```r
+write.table(Table,file="writeThisTable.csv", sep=",", row.names =F,col.names=T)
+```
+
+Conditions and Loop
+=====================
 
 Control Structure and Loops
 ========================================================
-We have looked at using logical vectors as a versatile way to index other data types
+
+We have looked at using logical vectors as a way to index other data types
 
 ```r
 x <- 1:10
@@ -21,35 +86,27 @@ x[x < 4]
 [1] 1 2 3
 ```
 
-Logicals have an important part in controlling how scripted procedures execute.
+Logicals are also used in controlling how scripted procedures execute.
 
 
 Two important control structures
 ========
 
-- Conditional branching (if,else ifelse)
-- Loops (for, while, switch)
+- Conditional branching (if,else)
+- Loops (for, while)
 
 **While** I'm analysing data, **if** I need to execute complex statistical procedures on the data I will use R **else** I will use a calculator.
 
 Conditional Branching.
 ========
 
-Conditional Branching is evaluation of a logical to determine whether a procedure is executed.
+Conditional Branching is evaluation of a logical to determine whether a chunk of code is executed.
 
-In the R we use the **if** statement with the logical to be evaluated in **()** and dependent statement to executed in **{}**.
+In the R we use the **if** statement with the logical to be evaluated in **()** and dependent code to be executed in **{}**.
 
-
-```r
-x <- T
-x
-```
-
-```
-[1] TRUE
-```
 
 ```r
+x <- TRUE
 if(x){
   message("x is true")
 }
@@ -60,36 +117,20 @@ x is true
 ```
 
 ```r
-x <- F
-x
-```
-
-```
-[1] FALSE
-```
-
-```r
+x <- FALSE
 if(x){
   message("x is true")
 }
 ```
-Evaluating in if() statments
+Evaluating in if() statements
 ====
 
-More often, we construct the logical value within **()** itself.
+More often, we construct the logical value within **()** itself.This can be term the **condition**. 
 
 
 ```r
 x <- 10
 y <- 4
-x > y
-```
-
-```
-[1] TRUE
-```
-
-```r
 if(x > y){
   message("The value of x is ",x," is greater than ", y)
 }
@@ -100,15 +141,16 @@ The value of x is 10 is greater than 4
 ```
 Here the message is printed because x is greater than y. 
 
+
 ```r
 y <- 20
 if(x > y){
   message("The value of x is ",x," is greater than ", y)
 }
 ```
-Here, x is not longer greater than y so no message is printed.
+Here, x is not longer greater than y, so no message is printed.
 
-We really still want a message telling us what was the result of the comparison even if it didn't pass criteria
+We really still want a message telling us what was the result of the condition.
 
 else following an if().
 ========================
@@ -135,6 +177,10 @@ if(x < 5){
 ```
 10 is greater than or equal to 5
 ```
+***
+
+With the addition of the else statement, when x is not greater than 5 the code following the else statement is executed.
+
 
 ```r
 x <- 3
@@ -151,7 +197,7 @@ if(x < 5){
 
 
 
-ifelse()
+else if
 ===========
 
 We may wish to execute different procedures under multiple conditions. This can be control in R using the else if() following an initial if() statement.
@@ -167,7 +213,11 @@ if(x > 5){
   }
 ```
 
-elseif()
+```
+5 is 5
+```
+
+ifelse()
 ======
 
 A useful function to evaluate condition statements over vectors is the ifelse() function.
@@ -217,13 +267,24 @@ While loops
 While loops are most useful if you know the condition will be satisified but are not sure when. (i.e. Looking for a when a number first occurs in a list).
 
 ```r
-i <- 0
 x <- 1
 while(x != 3){
-  message(x[i])
+  message("x is ",x," ")
   x <- x+1
 }
+```
+
+```
+x is 1 
+x is 2 
+```
+
+```r
 message("Finally x is 3")
+```
+
+```
+Finally x is 3
 ```
 
 For loops
@@ -231,56 +292,67 @@ For loops
 
 
 For loops allow the user to cycle through a range of values applying an operation for every value.
-.
-Here we cycle through x and print out its value
+
+Here we cycle through a numeric vector and print out its value
 
 ```r
-x <- 1:10
+x <- 1:5
 for(i in x){
-  message(i)
+  message("Loop",i," ", appendLF = F)
 }
 ```
+
+```
+Loop1 Loop2 Loop3 Loop4 Loop5
+```
+***
+Similarly we can cycle through other vector types (or lists)
+
+```r
+x <- toupper(letters[1:5])
+for(i in x){
+  message("Loop",i," ", appendLF = F)
+}
+```
+
+```
+LoopA LoopB LoopC LoopD LoopE
+```
+
+
 
 
 Looping through indices
 =====
 
-In sme occasions we may wish to keep track of the position in x we are evaluating. A common pactice is loop though all possible index positions of x using the expression **1:length(x)**.
+We may wish to keep track of the position in x we are evaluating to retrieve the same index in other variables. A common practice is loop though all possible index positions of x using the expression **1:length(x)**.
 
 
 ```r
-x <- sample(1:24,5)
-y <- letters
-1:length(x)
+geneName <- c("Ikzf1","Myc","Igll1")
+expression <- c(10.4,4.3,6.5)
+1:length(geneName)
 ```
 
 ```
-[1] 1 2 3 4 5
+[1] 1 2 3
 ```
 
 ```r
-for(i in 1:length(x)){
-  message("Number ",i," in x is ",x[i])
-  message("Letter ",i," in the alphabet is ",y[i]) 
+for(i in 1:length(geneName)){
+  message(geneName[i]," has an RPKM of ",expression[i])
 }
 ```
 
 ```
-Number 1 in x is 9
-Letter 1 in the alphabet is a
-Number 2 in x is 6
-Letter 2 in the alphabet is b
-Number 3 in x is 22
-Letter 3 in the alphabet is c
-Number 4 in x is 4
-Letter 4 in the alphabet is d
-Number 5 in x is 7
-Letter 5 in the alphabet is e
+Ikzf1 has an RPKM of 10.4
+Myc has an RPKM of 4.3
+Igll1 has an RPKM of 6.5
 ```
 
 Loops and conditionals
 =======================
-
+Left:60%
 Loops can be combined with conditional statements to allow for complex control of their execution over R objects. 
 
 
@@ -296,6 +368,23 @@ for(i in 1:13){
     message("Number ",i," is less than  10") 
   }
 }
+```
+***
+
+```
+Number 1 is less than  10
+Number 2 is less than  10
+Number 3 is less than  10
+Number 4 is less than  10
+Number 5 is less than  10
+Number 6 is less than  10
+Number 7 is less than  10
+Number 8 is less than  10
+Number 9 is less than  10
+Number 10 is  10
+Number 11 is greater than 10
+Number 12 is greater than 10
+Number 13 is greater than 10
 ```
 
 Breaking loops
@@ -318,6 +407,7 @@ for(i in 1:13){
   }
 }
 ```
+***
 
 ```
 Number 1 is less than 10
@@ -330,6 +420,228 @@ Number 7 is less than 10
 Number 8 is less than 10
 Number 9 is less than 10
 Number 10 is  10
+```
+
+Functions to loop over data types
+================================
+
+There are functions which allow you to loop over a data type and apply a function to the subsection of that data.
+
+- **apply** - Apply function to rows or columns of a matrix/data frame and return results as a vector,matrix or list.
+
+- **lapply** - Apply function to every element of a vector or list and return results as a vector.
+
+- **sapply** - Apply function to every element of a vector or list and return results as a vector,matrix or list.
+
+apply()
+=========
+
+The **apply()** function applys a function to the rows or columns of a matrix. The arguments **FUN** specifies the function to apply and **MARGIN** whether to apply the functions by rows/columns or both.
+
+```
+apply(DATA,MARGIN,FUN,...)
+```
+
+- **DATA** - A matrix (or something to be coerced into a matrix)
+- **MARGIN** - 1 for rows, 2 for columns, (1,2) for cells
+
+apply()
+====
+
+```r
+matExample <- matrix(c(1:4),nrow=2,ncol=2,byrow=T)
+matExample
+```
+
+```
+     [,1] [,2]
+[1,]    1    2
+[2,]    3    4
+```
+Get the mean of rows
+
+```r
+apply(matExample,1,mean)
+```
+
+```
+[1] 1.5 3.5
+```
+Get the mean of columns
+
+```r
+apply(matExample,2,mean)
+```
+
+```
+[1] 2 3
+```
+
+Additional arguments
+=====================
+Additional arguments to be used by the function in the apply loop can be specified after the function argument. 
+
+Arguments may be ordered as if passed to function directly. For **paste()** function however this isn't possible.
+
+
+
+```r
+apply(matExample,1,paste,collapse=";")
+```
+
+```
+[1] "1;2" "3;4"
+```
+
+lapply()
+====
+
+Similar to apply, **lapply** applies a function to every element of a vector or list. 
+
+**lapply** returns a list object containing the results of evaluating the function.
+
+
+```r
+lapply(c(1,2),mean)
+```
+
+```
+[[1]]
+[1] 1
+
+[[2]]
+[1] 2
+```
+***
+As with apply() additional arguments can be supplied after the function name argument.
+
+
+```r
+lapply(list(1,NA,2),mean,na.rm=T)
+```
+
+```
+[[1]]
+[1] 1
+
+[[2]]
+[1] NaN
+
+[[3]]
+[1] 2
+```
+
+sapply
+=====
+
+**sapply** (*smart apply*) acts as lapply but attempts to return the results as the most appropriate data type.
+
+Here sapply returns a vector where lapply would return lists.
+
+```r
+exampleVector <- c(1,2,3,4,5)
+exampleList <- list(1,2,3,4,5)
+sapply(exampleVector,mean,na.rm=T)
+```
+
+```
+[1] 1 2 3 4 5
+```
+
+```r
+sapply(exampleList,mean,na.rm=T)
+```
+
+```
+[1] 1 2 3 4 5
+```
+
+sapply
+=====
+
+In this example lapply returns a list of vectors from the quantile function.
+
+
+```r
+exampleList <- list(row1=1:5, row2=6:10, row3=11:15)
+exampleList
+```
+
+```
+$row1
+[1] 1 2 3 4 5
+
+$row2
+[1]  6  7  8  9 10
+
+$row3
+[1] 11 12 13 14 15
+```
+
+***
+
+```r
+lapply(exampleList,quantile)
+```
+
+```
+$row1
+  0%  25%  50%  75% 100% 
+   1    2    3    4    5 
+
+$row2
+  0%  25%  50%  75% 100% 
+   6    7    8    9   10 
+
+$row3
+  0%  25%  50%  75% 100% 
+  11   12   13   14   15 
+```
+
+sapply
+=====
+
+Here is an example of sapply parsing a result from the quantile function in a *smart* way.
+
+When a function always returns a vector of the same length, sapply will create a matrix with elements by column.
+
+
+```r
+sapply(exampleList,quantile)
+```
+
+```
+     row1 row2 row3
+0%      1    6   11
+25%     2    7   12
+50%     3    8   13
+75%     4    9   14
+100%    5   10   15
+```
+
+sapply
+=====
+
+When sapply cannot parse the result to a vector or matrix, a list will be returned.
+
+```r
+exampleList <- list(df=data.frame(sample=paste0("patient",1:2), data=c(1,12)), vec=c(1,3,4,5))
+sapply(exampleList,summary)
+```
+
+```
+$df
+      sample       data      
+ patient1:1   Min.   : 1.00  
+ patient2:1   1st Qu.: 3.75  
+              Median : 6.50  
+              Mean   : 6.50  
+              3rd Qu.: 9.25  
+              Max.   :12.00  
+
+$vec
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00    2.50    3.50    3.25    4.25    5.00 
 ```
 
 Functions
@@ -347,7 +659,7 @@ mean(x)
 ```
 
 ```
-[1] 69.87458
+[1] 69.93308
 ```
 
 ```r
@@ -362,7 +674,7 @@ plot(Y~X,data=lmExample,main="Line of best fit with lm()",
 abline(lmResult,col="red",lty=3,lwd=3)
 ```
 
-![plot of chunk unnamed-chunk-16](introToR_Day2-figure/unnamed-chunk-16-1.png) 
+![plot of chunk unnamed-chunk-33](introToR_Day2-figure/unnamed-chunk-33-1.png) 
 
 
 Defining your own functions
@@ -372,11 +684,21 @@ Although we have access to many built functions in R, there will be many complex
 
 For these tasks we can construct your own functions with **function()**
 
-To define a function we need to define 
+```
+Function_Name <- function(Arguments){
+      Result <- Arguments
+  return(Result)
+}
+```
+
+Defining your own functions
+======
+
+To define a function with **function()** we need to decide 
 - the argument names within **()**
 - the expression to be evaluated within **{}** 
 - the variable the function will be assigned to with **<-**.
-- the data that should be output from the function using **return()** 
+- the output from the function using **return()** 
 
 **Function_name** <- function(**Argument1**,**Argument2**){ **Expression**}
 
@@ -393,17 +715,15 @@ myFirstFunction(4,5)
 [1] 20
 ```
 
-User functions extend the
-capabilities of R by adapting or creating new tasks that are tailored
-to your specific requirements.
 
 Default arguments
 ====
 
-In some functions a default value for an argument may be used.
+In functions, a default value for an argument may be used.
 This allows the function to provide a value for an argument when the user does not specify one.
 
-Default arguments can be specified by assigning a value
+Default arguments can be specified by assigning a value to the argument with **=** operator
+
 
 ```r
 mySecondFunction <- function(myArgument1,myArgument2=10){
@@ -442,14 +762,6 @@ mySecondFunction <- function(myArgument1,myArgument2){
   }
   return(myResult)
 }
-mySecondFunction(4,5)
-```
-
-```
-[1] 20
-```
-
-```r
 mySecondFunction(4)
 ```
 
@@ -465,7 +777,7 @@ Value for myArgument2 not provided so will square myArgument1
 Returning objects from functions
 ====
 
-We have seen a function returns the value within the return() function.If no return is specified, the result of last line evaluated in the function.
+We have seen a function returns the value within the return() function.If no return is specified, the result of last line evaluated in the function is returned.
 
 
 ```r
@@ -502,13 +814,12 @@ The return() function can only return one R object at a time. To return multiple
 
 
 ```r
-mySixFunction <- function(arg1,arg2){
+mySixthFunction <- function(arg1,arg2){
   result1 <- arg1*arg2
   result2 <- date()
   return(list(Calculation=result1,DateRun=result2))
 }
-result <- mySixFunction(10,10)
-
+result <- mySixthFunction(10,10)
 result
 ```
 
@@ -517,18 +828,95 @@ $Calculation
 [1] 100
 
 $DateRun
-[1] "Sun Jan 25 21:48:44 2015"
+[1] "Tue Jan 27 23:28:43 2015"
+```
+
+Saving scripts
+============
+
+Once we have got our functions together and know how we want to analyse our data, we can save our analysis as a **script**. By convention R scripts typically end in **.r** or **.R**
+
+To save a file in RStudio.
+
+
+**-> File -> Save as**
+
+
+To open a previous R script
+
+**->File -> Open File..**
+
+To save all the objects (workspace) with extension **.RData**
+
+**->Session -> Save workspace as**
+
+Sourcing scripts.
+======
+
+R scripts allow us to save and reuse custom functions we have written.  To run the code from an R script we can use the **source()** function with the name of the R script as the argument. 
+
+The file **dayOfWeek.r** contains a simple R script to tell you what day it is after your marathon R coding session.
+
+```
+#Contents of dayOfWeak.r
+dayOfWeak <- function(){
+  return(gsub(" .*","",date()))  
+}
 ```
 
 ```r
-c(class(result$Calculation),class(result$DateRun))
+source("dayOfWeak.R")
+dayOfWeak()
 ```
 
 ```
-[1] "numeric"   "character"
+[1] "Tue"
 ```
 
+Rscript
 ====
+
+R scripts can be run non-interactively from the command line with the **Rscript** command, usually with the option **--vanilla** to avoid saving or restoring workspaces. All messages/warnings/errors will be output to the console.
+
+```
+Rscript --vanilla myscript.r
+```
+
+An alternative to Rscript is **R CMD BATCH**. Here all messages/warnings/errors are directed to a file and the processing time appended.
+
+```
+R CMD BATCH myscript.r
+```
+
+Sending arguments to Rscript
+====
+
+To provide arguments to an R script at the command line we must add **commandArgs()** function to parse command line arguments.
+
+
+```r
+args <- commandArgs(TRUE)
+myFirstArgument <- args[1]
+myFirstArgument
+as.numeric(myFirstArgument
+```
+
+```
+'10'
+```
+
+```r
+as.numeric(myFirstArgument)
+```
+```
+10
+```
+Since vectors can only be one type, all command line arguments are strings and must be converted to numeric if needed with **as.numeric()**
+
+Two tips
+====
+Vectorisation
+Matrices to hold number only tables.
 
 If we want to return a mix of different data types back from a function, we will use a list.
 
@@ -542,6 +930,7 @@ Defining functions can
 - Increase reproducibility. 
 
 
+Nice for them to correct my slide by looping thorugh named vector.
 
 Easy to read
 x <- 1:40
@@ -549,10 +938,14 @@ y <- 5:35
 
 Harder to read
 
-
+Do i show that dimnames actually can set dimension names?
 
 Some tips for speed comparisons..
 
+Question?
+Why can't you use na.rm=T in mean as an ordered unnamed arguments?
 
 Getting help
 
+
+Should i talk about append in write.table?

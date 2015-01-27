@@ -1,7 +1,7 @@
 Introduction to R
 ========================================================
-author: Thomas Carroll, Sanjay Khadayate
-date: Februrary 8th
+author: Thomas Carroll, Sanjay Khadayate, Gopuraja Dharmalingam
+date: Februrary 1st
 width: 1440
 height: 1100
 autosize: true
@@ -12,16 +12,21 @@ css:style.css
 Overview
 ========================================================
 
-- [Background to R] (#/background)
-- [Data-types in R] (#/datatypes)
-- [Reading and writing data in R.](#/reading)
-- [Plotting in R.](#/plotting)
+- [Background to R](#/background)
+- [Data types in R](#/datatypes)
+- [Reading and writing data in R](#/reading)
+- [Plotting in R](#/plotting)
 - [Statistics in R](#/stats)
 
 
+Background to R
+===============
+type:section
+id: background
+
 What is R?
 ========================================================
-id: background
+
 **R** is scripting language and environment for **statistical computing**.
 
 
@@ -30,8 +35,8 @@ Developed by [Robert Gentleman](http://www.gene.com/scientists/our-scientists/ro
 
 Inheriting much from its predecessor **S** (Bell labs).
 
-- Open source & cross platform
 - Suited to high level data analysis
+- Open source & cross platform
 - Extensive graphics capabilities
 - Diverse range of add-on packages
 - Active community of developers
@@ -40,7 +45,7 @@ Inheriting much from its predecessor **S** (Bell labs).
 What is R to you?
 ========================================================
 
-**R** comes with excellent "out-of-box" statistical and plotting capabilities.
+**R** comes with excellent "out-of-the-box" statistical and plotting capabilities.
 
 
 **R** provides access to 1000s of packages ([CRAN](http://cran.r-project.org/)/[MRAN](http://mran.revolutionanalytics.com/)/[R-forge](https://r-forge.r-project.org/)) which extend the basic functionality of R while maintaining high quality documentation.
@@ -82,7 +87,7 @@ Four main panels
 ![alt text](imgs/rstudioBlank.jpeg)
 
 
-Data in R
+Data types in R
 ========================================================
 id: datatypes
 type: section
@@ -91,7 +96,7 @@ type: section
 - Variables
 - Vectors
 - Lists
-- Matrices
+- matrices
 - Data frames
 
 
@@ -128,15 +133,13 @@ At its most basic, **R** can be used as a simple calculator.
 Using functions.
 ========================================================
 
-The **sqrt(25)** demostrates the use of functions in R.
+The **sqrt(25)** demostrates the use of functions in R. A function performs a complex operation on it's arguments and returns the result.
 
-A function performs a complex operation on it's arguments and returns the result.
+In R, arguments are provided to a function within the parenthesis -- **( )** -- that follows the function name. So **sqrt(*ARGUMENT*)** will provide the square root of the value of ***ARGUMENT***.
 
-In R, arguments are provided to a function within the parenthesis -- **()** -- that follows the function name.
+Other examples of functions include **mean()**, **sum()**, **max()**. 
 
-So **sqrt(*ARGUMENT*)** will provide the square root of value of ***ARGUMENT***.
-
-Other examples of functions include **mean()**, **sum()**, **max()**. Note multiple arguments are separated by a comma.
+Note multiple arguments are separated by a comma.
 
 
 ```r
@@ -172,7 +175,7 @@ An incomplete, illustrative list can be seen [here](http://www.columbia.edu/~cjd
 
 In addition to R standard functions, additional functionality can be loaded into R using libraries. These include specialised tools for areas such as sequence alignment, read counting etc.
 
-If you need to see how a function works try **?** infront of function name.
+If you need to see how a function works try **?** in front of the function name.
 
 ```r
 ?sqrt
@@ -296,7 +299,7 @@ y
 
 Vectors.(1/13)
 ========================================================
-In **R** the most basic variable or data type is a "Vector". A vector is an ordered collection of values. The x and y variable we have previously assigned is an example of a vector of length 1.
+In **R** the most basic variable or data type is a **vector**. A vector is an ordered collection of values. The x and y variables we have previously assigned are examples of a vector of length 1.
 
 
 ```r
@@ -337,7 +340,7 @@ length(x)
 
 Vectors (2/13).
 ========================================================
-Vectors of continuous stretches of values can be created by this shortcut.
+Vectors of continuous stretches of values can be created by the shortcut - **:**
 
 
 ```r
@@ -349,8 +352,8 @@ y
 [1]  6  7  8  9 10
 ```
 
-Another useful function to create stretchs of numeric vectors are seq() and rep()
-The seq() function creates a sequence of numeric values from a specified start and end value, incrementing by a user defined amount. The rep() function repeats a variable a user-defined number of time
+Other useful function to create stretchs of numeric vectors are **seq()** and **rep()**.
+The **seq()** function creates a sequence of numeric values from a specified start and end value, incrementing by a user defined amount. The **rep()** function repeats a variable a user-defined number of times.
 
 
 
@@ -373,9 +376,8 @@ rep(c(1,5,10),3)
 Vectors(3/13) - Indexing 
 ========================================================
 Square brackets **[]** identify the position within a vector (the **index**).
-These indicies can be used to extract relevant values from vectors.
+These indices can be used to extract relevant values from vectors.
 
-A vector is an ordered collection of values. The x and y variable we have previously assigned is an example of a vector of length 1.
 
 
 ```r
@@ -404,7 +406,7 @@ x[8]
 Vectors(4/13) - Indexing 
 ========================================================
 
-Indicies can be used to extract values from a multiple positions within a vector.
+indices can be used to extract values from a multiple positions within a vector.
 
 
 ```r
@@ -414,7 +416,7 @@ x[c(1,6)]
 ```
 [1] 1 6
 ```
-Negative indicies can be used to extract all positions except that specified
+Negative indices can be used to extract all positions except that specified
 
 
 ```r
@@ -429,7 +431,7 @@ x[-5]
 Vectors(5/13) (indexing) 
 ========================================================
 
-We can use indicies to modify a specific position in vector
+We can use indices to modify a specific position in vector
 
 
 ```r
@@ -449,7 +451,7 @@ x
  [1]  1  2  3  4 -5  6  7  8  9 10
 ```
 
-Indicies can be specified using other vectors.
+Indices can be specified using other vectors.
 
 
 ```r
@@ -583,7 +585,7 @@ Vectors (9/13) - Character vectors.
 ========================================================
 
 
-These named vectors maybe indexed a positions "name".
+These named vectors maybe indexed by a position's "name".
 
 ```r
 x[c("ICTEM","Wolfson")]
@@ -614,13 +616,13 @@ Similarly, when a calculation can not be perfomed, R will input a **NaN** value.
 - **NA** - Not Available.
 - **NaN** - Not A Number.
 
-**NA** values allow for R to handle missing data correctly but requires different handling than standard numeric, character or logical values. We will discuss handling **NA** values later.
+**NA** values allow for R to handle missing data correctly but requires different handling than standard numeric or character values. We will discuss handling **NA** values later.
 
 
 Vectors (10/13). Logical vectors
 ========================================================
 
-Logical vectors are a special type of value made up of TRUE/T or FALSE/F
+Logical vectors are a special type of vector made up of TRUE/T or FALSE/F boolean values.
 
 
 ```r
@@ -632,7 +634,7 @@ z
 ```
  [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE
 ```
-Logical vectors can be used like an index to specify postions in a vector
+Logical vectors can be used like an index to specify postions in a vector. TRUE values will return that corresponding position in the vector being indexed.
 
 
 ```r
@@ -647,7 +649,7 @@ x[z]
 Vectors (11/13). Logical vectors
 ========================================================
 
-Numeric vectors may be evaluated to produce logical vectors. This can be very useful when using a logical as an index
+Other vectors may be evaluated to produce logical vectors. This can be very useful when using a logical to index.
 
 Common examples are:
 
@@ -675,10 +677,10 @@ x[x > 5]
 Vectors (12/13). Logical vectors continued.
 ========================================================
 
-Logical vectors can be used in combination to index vectors. To combine logical vectors we can use some common R operators.
+Logical vectors can be used in combination in order to index vectors. To combine logical vectors we can use some common R operators.
 
-- **&** Requires both logical evaluators to be TRUE
-- **|** Requires either logical evaluator to be TRUE.
+- **&** Requires both logical operators to be TRUE
+- **|** Requires either logical operators to be TRUE.
 - **!** Reverses logical operator, so TRUE is FALSE and FALSE is TRUE.
 
 
@@ -744,14 +746,14 @@ Answers to exercise.
 
 Answers to this exercise (or at least one possible answer!) can be found here!
 
-Matrices (1/)
+matrices (1/)
 ========================================================
 
-In excel we are used to tables.
+In programs such as Excel, we are used to tables.
 
-All progamming languages have a concept of a table. In **R**, the most basic table type is a **Matrix**.
+All progamming languages have a concept of a table. In **R**, the most basic table type is a **matrix**.
 
-A **Matrix** can be created suing the ***matrix()*** function specifying the arguments of nrow and ncol specifying the number of rows and columns respectively.
+A **Matrix** can be created using the ***matrix()*** function with the arguments of nrow and ncol specifying the number of rows and columns respectively.
 
 ```r
 narrowMatrix <- matrix(1:10, nrow=5, ncol=2)
@@ -777,7 +779,7 @@ wideMatrix
 [1,]    1    3    5    7    9
 [2,]    2    4    6    8   10
 ```
-Matrices (2/)
+matrices (2/)
 ========================================================
 
 To find dimensions of a matrix, the dim() function will provide dimensions as row number and column number while nrow() and ncol() will return just row number and column number respectively.
@@ -806,10 +808,10 @@ ncol(narrowMatrix)
 [1] 2
 ```
 
-Matrices (3/) (Joining vectors and Matrices)
+matrices (3/) (Joining vectors and matrices)
 ========================================================
 
-A Matrix can be created from multiple vectors or other Matrices.
+A matrix can be created from multiple vectors or other matrices.
 
 **cbind()** can be used to attach data to a matrix as columns.
 
@@ -857,10 +859,10 @@ newerMatrix
 z 21 22
 ```
 
-Matrices (4/) - Joining vectors and Matrices
+matrices (4/) - Joining vectors and matrices
 ========================================================
 
-When creating a matrix using **cbind()** or **matrix()** from incompatable vectors then shorted vector is recycled. 
+When creating a matrix using **cbind()** or **matrix()** from incompatable vectors then the shorter vector is recycled. 
 
 
 
@@ -877,7 +879,7 @@ recycledMatrix2
 [3,]    3    1
 ```
 ***
-For **rbind()** function longer vector is clipped.
+For **rbind()** function, the longer vector is clipped.
 
 ```r
 recycledMatrix3 <- rbind(recycledMatrix2,c(1:5))
@@ -892,7 +894,7 @@ recycledMatrix3
 [4,]    1    2
 ```
 
-Matrices (5/) - Column names
+matrices (5/) - Column names
 ========================================================
 
 As with vectors, matrices can be named. For matrices the naming is done by columns and rows using **colnames()** and **rownames()** functions.
@@ -911,7 +913,7 @@ Row_1        1        3        5        7        9
 Row_2        2        4        6        8       10
 ```
 
-Information of matrix names can also be retreived using the same functions.
+Information on matrix names can also be retreived using the same functions.
 
 ```r
 colnames(namedMatrix)
@@ -930,14 +932,14 @@ rownames(namedMatrix)
 ```
 
 
-Matrices (6/) - Indexing
+matrices (6/) - Indexing
 ========================================================
 
 Selecting and replacing portions of a matrix can be done by **indexing** using square brackets **[]** much like for vectors.
 
-When indexing Matrices,two values may be provided within the square brackets separated by a comma to retrieve information on a matrix position.
+When indexing matrices, two values may be provided within the square brackets separated by a comma to retrieve information on a matrix position.
 
-The first value corresponds to rows and the second to columns.
+The first value(s) corresponds to row(s) and the second to column(s).
 
 - ***myMatrix[rowOfInterest,columnOfInterest]***
 
@@ -963,7 +965,7 @@ narrowMatrix[2,1]
 [1] 2
 ```
 
-Matrices (7/) - Indexing
+matrices (7/) - Indexing
 ========================================================
 
 Similarly, whole rows or columns can be extracted. Single rows and columns will return a vector. When multiple columns or row indices are specified, a matrix is returned. 
@@ -1001,7 +1003,7 @@ narrowMatrix[c(2,3),]
 [2,]    3    8
 ```
 
-Matrices (8/) (indexing)
+matrices (8/) (indexing)
 ========================================================
 
 As with vectors, names can be used for indexing when present
@@ -1044,10 +1046,10 @@ narrowMatrix["Row_1","Column_1"]
 [1] 1
 ```
 
-Matrices (9/) (advanced indexing)
+matrices (9/) (advanced indexing)
 ========================================================
 
-As with vectors, Matrices can be subset by logical vectors
+As with vectors, matrices can be subset by logical vectors
 
 ```r
 narrowMatrix
@@ -1093,10 +1095,10 @@ Row_3        3        8
 Row_4        4        9
 ```
 
-Matrices (10/) - Arithmetic operations.
+matrices (10/) - Arithmetic operations.
 ========================================================
 
-As with vectors, Matrices can have arithmetic operations applied to cells,rows, columns or the whole matrix
+As with vectors, matrices can have arithmetic operations applied to cells,rows, columns or the whole matrix
 
 ```r
 narrowMatrix
@@ -1136,10 +1138,10 @@ mean(narrowMatrix)
 [1] 5.5
 ```
 
-Matrices (10/) - Replacement
+matrices (10/) - Replacement
 ========================================================
 
-As with vectors, Matrices can have their elements replaced
+As with vectors, matrices can have their elements replaced
 
 ```r
 narrowMatrix
@@ -1168,10 +1170,10 @@ Row_3        3        1
 Row_4        4        1
 Row_5        5        1
 ```
-Matrices (11/) (Replacement)
+matrices (11/) (Replacement)
 ========================================================
 
-Matrices must be all one type (numeric or character).
+matrices must be all one type (numeric or character).
 
 Here replacing one value with character will turn numeric matrix to character matrix.
 
@@ -1208,6 +1210,13 @@ narrowMatrix[,2] *2
 Error in narrowMatrix[, 2] * 2: non-numeric argument to binary operator
 ```
 
+Time for a second exercise!
+========================================================
+
+Answers to exercise
+========================================================
+
+
 Factors (1/6)
 ========================================================
 
@@ -1216,7 +1225,7 @@ A special case of a vector is a **factor**.
 Factors are used to store data which may be grouped in categories (categorical data).
 Specifying data as categorical allows R to properly handle the data and make use of functions specific to categorical data.
 
-To create a factor from a vector we use the **factor()** function.Note that the factor now has an additional component called **"levels"** which identifies all categories within the vector.
+To create a factor from a vector we use the **factor()** function. Note that the factor now has an additional component called **"levels"** which identifies all categories within the vector.
 
 
 ```r
@@ -1266,7 +1275,7 @@ female   male
 
 Factors (3/6) - levels
 ========================================================
-In our factor example the levels have been displayed in an alphabetical order. To adjust the display order of levels in a factor, we can supply the desired display order to **levels** argument in the **factor()** function call.
+In our factor example, the levels have been displayed in an alphabetical order. To adjust the display order of levels in a factor, we can supply the desired display order to **levels** argument in the **factor()** function call.
 
 
 ```r
@@ -1291,7 +1300,7 @@ summary(factorExample)
 
 Factors (4/6) - Nominal factors
 ========================================================
-In some cases there is no natural order to the categories such that one category is greater than the other (Nominal data).
+In some cases there is no natural order to the categories such that one category is greater than the other (nominal data).
 In this case we can see that R is gender neutral.
 
 
@@ -1306,7 +1315,7 @@ factorExample[1] < factorExample[2]
 Factors (5/6) - Ordinal factors
 ========================================================
 
-In other cases there will be a natural ordering to the categories (ordinal data). A factor can be specified to be ordered using the ordered argument in combination with specified levels argument.
+In other cases there will be a natural ordering to the categories (ordinal data). A factor can be specified to be ordered using the **ordered** argument in combination with specified levels argument.
 
 
 ```r
@@ -1362,11 +1371,11 @@ Levels: big small huge
 Data.frames (1/)
 =========================================================
 
-We saw that with matrices you can only have one type of data. We tried to create a matrix with a character elelment and the entire matrix became a character.
+We saw that with matrices you can only have one type of data. We tried to create a matrix with a character element and the entire matrix became a character.
 
-In practice, we would want to have a table which is a mixture of types (e.g a table with samplenames (character), sampletype (factor) and survival time (numeric))
+In practice, we would want to have a table which is a mixture of types (e.g a table with sample names (character), sample type (factor) and survival time (numeric))
 
-In R, we make use of the data.frame object which allows us to store tables with columns of different data types in one container. To create a data frame we can simply use the data.frame() function.
+In R, we make use of the data.frame object which allows us to store tables with columns of different data types. To create a data frame we can simply use the **data.frame()** function.
 
 
 ```r
@@ -1414,49 +1423,13 @@ dfExample[dfExample[,"Survival_Time"] > 10,]
 2 patient2 female            30
 4 patient4 female            20
 ```
-
-Data.frames (3/) - Indexing and replacement
-=========================================================
-
-Unlike matrices however, certain columns can not be replaced. Numeric columns may have their values replaced but columns with character values may not.This occurs because character vectors are treated as factors by default.
-
-
-
-```r
-dfExample[dfExample[,"Survival_Time"] < 10,"Survival_Time"] <- 0
-dfExample
-```
-
-```
-      Name   Type Survival_Time
-1 patient1   male             0
-2 patient2 female            30
-3 patient3   male             0
-4 patient4 female            20
-```
-
-
-```r
-dfExample[dfExample[,"Survival_Time"] < 10,"Name"] <- "patientX"
-dfExample
-```
-
-```
-      Name   Type Survival_Time
-1     <NA>   male             0
-2 patient2 female            30
-3     <NA>   male             0
-4 patient4 female            20
-```
-
 Data.frames (4/) (Advanced indexing)
 =========================================================
-Unlike matrices, it is possible to index a column by using the "$" symbol.
+Unlike matrices, it is possible to index a column by using the **$** symbol.
 
 
 ```r
 dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime)
-
 dfExample$Survival_Time
 ```
 
@@ -1473,7 +1446,7 @@ dfExample[dfExample$Survival_Time < 10,]
 1 patient1 male             1
 3 patient3 male             2
 ```
-Using the "$" allows for R to autocomplete your selection and so can speed up coding.
+Using the **$** allows for R to autocomplete your selection and so can speed up coding.
 
 
 ```r
@@ -1492,7 +1465,7 @@ dfExample[,"Surv"]
 Data.frames (Creating new column)
 =========================================================
 
-The **$** operator allows for the creation of new columns for a data frame on the fly.
+The **$** operator also allows for the creation of new columns for a data frame on the fly.
 
 
 ```r
@@ -1519,6 +1492,41 @@ dfExample
 3 patient3   male             2   newData
 4 patient4 female            20   newData
 ```
+
+Data.frames (3/) - Indexing and replacement
+=========================================================
+
+Certain columns can not be replaced in data frames. Numeric columns may have their values replaced but columns with character values may not by default. This occurs because character vectors are treated as factors by default.
+
+
+
+```r
+dfExample[dfExample[,"Survival_Time"] < 10,"Survival_Time"] <- 0
+dfExample
+```
+
+```
+      Name   Type Survival_Time newColumn
+1 patient1   male             0   newData
+2 patient2 female            30   newData
+3 patient3   male             0   newData
+4 patient4 female            20   newData
+```
+
+
+```r
+dfExample[dfExample[,"Survival_Time"] < 10,"Name"] <- "patientX"
+dfExample
+```
+
+```
+      Name   Type Survival_Time newColumn
+1     <NA>   male             0   newData
+2 patient2 female            30   newData
+3     <NA>   male             0   newData
+4 patient4 female            20   newData
+```
+
 
 Data.frames (5/) (factors)
 =========================================================
@@ -1567,9 +1575,9 @@ dfExample
 
 Data.frames (Ordering)
 =========================================================
-A useful function in R is order()
+A useful function in R is **order()**
 
-For numeric vectors, order() by default returns the indices of vector in that vector's increasing order. This behaviour can be altered by using the "decreasing" argument passed to order.
+For numeric vectors, **order()** by default returns the indices of a vector in that vector's increasing order. This behaviour can be altered by using the "decreasing" argument passed to order.
 
 
 ```r
@@ -1599,7 +1607,7 @@ testOrder[order(testOrder,decreasing=T)]
 Data.frames (Ordering with NA values)
 =========================================================
 
-When a vector contains NA valuees, these NA values will by default be placed last in ordering indices. This can be controlled by na.last argument.
+When a vector contains NA values, these NA values will, by default, be placed last in ordering indices. This can be controlled by **na.last** argument.
 
 
 ```r
@@ -1621,7 +1629,7 @@ testOrder[order(testOrder,decreasing=T,na.last=F)]
 
 Data.frames (Ordering data.frames)
 =========================================================
-Since the order argument returns an index of intended order for vector, we can use the order() function to order Data.frames by certain columns
+Since the order argument returns an index of intended order for a vector, we can use the order() function to order data frames by certain columns
 
 ```r
 dfExample
@@ -1647,7 +1655,7 @@ dfExample[order(dfExample$Surv, decreasing=T),]
 1 patientX   male             1
 ```
 ***
-We can also use order to arrange multiple columns in a data.frame by providing multiple vectors to order() function. Ordering will be performed in order of arguments.
+We can also use order to arrange multiple columns in a data frame by providing multiple vectors to order() function. Ordering will be performed in order of arguments.
 
 
 ```r
@@ -1668,7 +1676,7 @@ dfExample[order(dfExample$Type,
 Data.frames (Merging data frames)
 =========================================================
 
-A common operation is to join two data frames by common values in a column.
+A common operation is to join two data frames by a column of common values.
 
 
 
@@ -1686,6 +1694,7 @@ dfExample
 3 patient3   male             2
 4 patient4 female            20
 ```
+***
 
 ```r
 dfExample2 <- data.frame(Name=patientName[1:3],
@@ -1700,8 +1709,11 @@ dfExample2
 2 patient2    5.1
 3 patient3    5.5
 ```
-***
-To do this we can use the merge() function witht he data frames as the first two arguments. We can then specify the columns to merge by with the **by** argument. To keep only data pertaining to values common to both data.frames the **all** argument is set to TRUE.
+
+Data.frames (Merging data frames)
+=========================================================
+
+To do this we can use the **merge()** function with the data frames as the first two arguments. We can then specify the columns to merge by with the **by** argument. To keep only data pertaining to values common to both data frames the **all** argument is set to TRUE.
 
 
 ```r
@@ -1716,13 +1728,20 @@ mergedDF
 3 patient3   male             2    5.5
 ```
 
+Exercise
+=========
+
+Answers to Excercise
+====================
+
+
 Lists
 =========================================================
 
-Lists are the final data-type we will look. 
+Lists are the final data-type we will look at. 
 
-In R, lists provide a general container which may hold any data-types of unequal lengths as part of its elements.
-To create a list we can simply use the list() function with arguments specifying the data we wish to include in the list.
+In R, lists provide a general container which may hold any data types of unequal lengths as part of its elements.
+To create a list we can simply use the **list()** function with arguments specifying the data we wish to include in the list.
 
 
 ```r
@@ -1780,7 +1799,7 @@ $Third
 Lists (Indexing)
 =========================================================
 
-List, as with other data types in R can be indexed. In contrast to other types, using "[]" on a list will subset the list to another list of selected indices. To retrieve an element from a list in R , two square brackets "[[]]" must be used. 
+List, as with other data types in R can be indexed. In contrast to other types, using **[]** on a list will subset the list to another list of selected indices. To retrieve an element from a list in R , two square brackets **[[]]** must be used. 
 
 
 ```r
@@ -1815,7 +1834,7 @@ myNamedList$First
 Lists (Joining lists)
 =========================================================
 
-Again, similar to vectors, Lists can be joined in R using the c() function 
+Again, similar to vectors, lists can be joined together in R using the c() function 
 
 
 ```r
@@ -1835,7 +1854,7 @@ $fourth
 Lists (Joining lists)
 =========================================================
 
-Note that we are joining to lists. If we joined a vector to a list, all elements of the vector would become list elements.
+Note that on last slide we are joining two lists. If we joined a vector to a list, all elements of the vector would become list elements.
 
 
 ```r
@@ -1869,7 +1888,7 @@ myList
 Lists (Flattening lists)
 =========================================================
 
-Sometimes you will wish to "flatten" out a list. When a list contains compatable objects, i.e. list of all one type, the unlist() function can be used. Note the maintenance of names with their additional sufficies.
+Sometimes you will wish to "flatten" out a list. When a list contains compatable objects, i.e. list of all one type, the **unlist()** function can be used. Note the maintenance of names with their additional sufficies.
 
 
 ```r
@@ -1890,12 +1909,12 @@ $Third
 
 ```r
 flatList <- unlist(myNamedList)
-flatList
+flatList[1:7]
 ```
 
 ```
- First1  First2  First3 Second1 Second2 Second3  Third1  Third2  Third3 
-      1       2       3       2       6       7       1       4       7 
+ First1  First2  First3 Second1 Second2 Second3  Third1 
+      1       2       3       2       6       7       1 
 ```
 
 
@@ -1924,7 +1943,7 @@ Third     1    4    7
 ```
 
 
-Getting data into R
+Reading and writing data in R
 =========================================================
 type:section
 id: reading
@@ -1940,14 +1959,14 @@ A standard format for this data is a table
 
 |Gene_Name | Sample_1.hi| Sample_2.hi| Sample_3.hi| Sample_4.low| Sample_5.low| Sample_1.low|
 |:---------|-----------:|-----------:|-----------:|------------:|------------:|------------:|
-|Gene_a    |    3.619870|    3.565693|    2.918220|     3.192061|     4.934651|     3.908286|
-|Gene_b    |    3.615613|    4.580671|    3.175597|     3.508025|     2.135248|     5.270615|
-|Gene_c    |    4.304657|    3.269823|    2.785510|     5.184055|     3.342988|     3.528294|
-|Gene_d    |    3.314754|    4.369782|    5.010148|     9.210037|     7.257552|     9.277683|
-|Gene_e    |    9.907406|    9.964224|    9.674389|     2.586390|     2.609637|     3.327964|
-|Gene_f    |   11.041257|   11.780896|   10.403029|     3.036337|     4.760157|     3.573750|
-|Gene_g    |    7.385688|   10.210069|    9.308123|     9.919614|     9.377866|     7.881101|
-|Gene_h    |   10.983953|   11.090267|   10.442830|     7.845099|     9.294959|    10.500772|
+|Gene_a    |    4.111851|    3.837019|    4.360628|     3.752517|     4.368069|     3.421009|
+|Gene_b    |    6.047822|    5.683518|    4.315889|     3.381136|     3.630273|     5.560802|
+|Gene_c    |    2.597068|    3.316301|    3.681509|     4.886520|     4.318289|     5.097783|
+|Gene_d    |    6.009197|    5.927419|    2.244702|     6.574108|     8.288831|     6.857291|
+|Gene_e    |   10.152509|   10.218200|   10.004835|     2.251603|     1.805168|     2.396295|
+|Gene_f    |   11.107869|    9.592153|   10.263975|     3.567560|     2.496475|     3.587755|
+|Gene_g    |    8.705787|    8.949422|    9.226990|    10.051516|     7.841664|     9.649869|
+|Gene_h    |    9.239039|    9.839734|   10.027812|    11.084444|     9.316200|     8.742943|
 
 Data from text file
 =========================================================
@@ -1962,10 +1981,10 @@ Table[1:4,1:3]
 
 ```
   Gene_Name Sample_1.hi Sample_2.hi
-1    Gene_a    3.619870    3.565693
-2    Gene_b    3.615613    4.580671
-3    Gene_c    4.304657    3.269823
-4    Gene_d    3.314754    4.369782
+1    Gene_a    4.111851    3.837018
+2    Gene_b    6.047822    5.683518
+3    Gene_c    2.597068    3.316300
+4    Gene_d    6.009197    5.927419
 ```
 
 Here we have provided two arguments. 
@@ -1975,9 +1994,9 @@ Here we have provided two arguments.
 Data from text file
 =========================================================
 
-Read.table() allows for significant control over reading files through its has many arguments. Have a look at options by using **?read.table**
+read.table() allows for significant control over reading files through its many arguments. Have a look at options by using **?read.table**
 
-The row.names() argument can be used to specify a column to use as rownames for the resulting data frame. Here we use the first column as row names.
+The **row.names** argument can be used to specify a column to use as row names for the resulting data frame. Here we use the first column as row names.
 
 
 ```r
@@ -1987,10 +2006,10 @@ Table[1:4,1:3]
 
 ```
        Sample_1.hi Sample_2.hi Sample_3.hi
-Gene_a    3.619870    3.565693    2.918220
-Gene_b    3.615613    4.580671    3.175597
-Gene_c    4.304657    3.269823    2.785510
-Gene_d    3.314754    4.369782    5.010148
+Gene_a    4.111851    3.837018    4.360628
+Gene_b    6.047822    5.683518    4.315889
+Gene_c    2.597068    3.316300    3.681509
+Gene_d    6.009197    5.927419    2.244701
 ```
 
 Data from text files
@@ -1998,7 +2017,7 @@ Data from text files
 
 As mentioned, data which is read into R through read.table() will be of data frame class.
 
-To avoid character columns being converted into factors, we can specify the stringsAsFactors argument here.
+To avoid character columns being converted into factors, we can specify the **stringsAsFactors** argument here.
 
 
 ```r
@@ -2009,10 +2028,34 @@ Other very useful functions for read table include:
 - **skip** - To set number of lines to skip when reading.
 - **comment.char** - To set the start identifier for lines not to be read.
 
+Data from other sources
+=========================================================
+
+The read.table function can also read data from http.
+
+
+```r
+URL <- "http://mrccsc.github.io/readThisTable.csv"
+Table <- read.table(URL,sep=",",header=T)
+Table[1:2,1:3]
+```
+
+```
+  Gene_Name Sample_1.hi Sample_2.hi
+1    Gene_a    3.619870    3.565693
+2    Gene_b    3.615613    4.580671
+```
+And the clipboard.(This is Windows version)
+
+
+```r
+Table <- read.table(file="clipboard",sep=",",header=T)
+```
+
 Data from file columns
 =========================================================
 
-read.table() function will by defualt read every row and column of a file.
+read.table() function will by default read every row and column of a file.
 
 The **scan()** function allows for the selection of particular columns to be read into R and so can save memory when files are large. 
 
@@ -2020,7 +2063,7 @@ The **scan()** function allows for the selection of particular columns to be rea
 
 ```r
 x <- scan("readThisTable.csv",sep=",",
-what = list("",NULL,NULL,NULL,NULL,NULL,NULL),skip=1)
+what = c(list(""),rep(list(NULL), 6)),skip=1)
 x[1:3]
 ```
 
@@ -2054,6 +2097,11 @@ Since our data has column names but no row names, I will provide the arguments c
 write.table(Table,file="writeThisTable.csv", sep=",", row.names =F,col.names=T)
 ```
 
+Exercise
+========
+
+Answers
+=======
 
 
 Plotting in R
@@ -2112,7 +2160,7 @@ plot(treatment)
 Point Plot
 ========================================================
 
-<img src="introToR_Day1-figure/unnamed-chunk-98-1.png" title="plot of chunk unnamed-chunk-98" alt="plot of chunk unnamed-chunk-98" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-101-1.png" title="plot of chunk unnamed-chunk-101" alt="plot of chunk unnamed-chunk-101" width="1920px" />
 
 =======================================================
 Now, let's add a title, a line to connect the points, and some color:
@@ -2131,7 +2179,7 @@ title(main="Treatment", col.main="red", font.main=4)
 
 Line Plot
 ========================================================
-<img src="introToR_Day1-figure/unnamed-chunk-101-1.png" title="plot of chunk unnamed-chunk-101" alt="plot of chunk unnamed-chunk-101" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-104-1.png" title="plot of chunk unnamed-chunk-104" alt="plot of chunk unnamed-chunk-104" width="1920px" />
 
 ========================================================
 Now let's add a red line for a control vector and specify the y-axis range directly so it will be large enough to fit the data:
@@ -2162,7 +2210,7 @@ Create a title with a red, bold/italic font
 title(main="Expression Data", col.main="red", font.main=4)
 ```
 
-<img src="introToR_Day1-figure/unnamed-chunk-106-1.png" title="plot of chunk unnamed-chunk-106" alt="plot of chunk unnamed-chunk-106" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-109-1.png" title="plot of chunk unnamed-chunk-109" alt="plot of chunk unnamed-chunk-109" width="1920px" />
 
 ==========================================================
 
@@ -2211,7 +2259,7 @@ box()
 
 ========================================================
 
-<img src="introToR_Day1-figure/unnamed-chunk-112-1.png" title="plot of chunk unnamed-chunk-112" alt="plot of chunk unnamed-chunk-112" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-115-1.png" title="plot of chunk unnamed-chunk-115" alt="plot of chunk unnamed-chunk-115" width="1920px" />
 
 ========================================================
 Calculate range from 0 to max value of data
@@ -2281,7 +2329,7 @@ Create a legend at (1, g_range[2]) that is slightly smaller (cex) and uses the s
 legend(1, g_range[2], c("treatment","control"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2);  
 ```
 
-<img src="introToR_Day1-figure/unnamed-chunk-122-1.png" title="plot of chunk unnamed-chunk-122" alt="plot of chunk unnamed-chunk-122" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-125-1.png" title="plot of chunk unnamed-chunk-125" alt="plot of chunk unnamed-chunk-125" width="1920px" />
  	
 	
 ========================================================	
@@ -2295,7 +2343,7 @@ Plot treatment
 barplot(treatment)
 ```
 
-<img src="introToR_Day1-figure/unnamed-chunk-124-1.png" title="plot of chunk unnamed-chunk-124" alt="plot of chunk unnamed-chunk-124" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-127-1.png" title="plot of chunk unnamed-chunk-127" alt="plot of chunk unnamed-chunk-127" width="1920px" />
 
 ========================================================
  
@@ -2321,7 +2369,7 @@ barplot(data$treatment, main="Treatment", xlab="Days",ylab="values", names.arg=c
 names.arg  is a vector of names to be plotted below each bar or group of bars. 
 density	a vector giving the density of shading lines, in lines per inch, for the bars or bar components.
 
-<img src="introToR_Day1-figure/unnamed-chunk-127-1.png" title="plot of chunk unnamed-chunk-127" alt="plot of chunk unnamed-chunk-127" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-130-1.png" title="plot of chunk unnamed-chunk-130" alt="plot of chunk unnamed-chunk-130" width="1920px" />
 
 ========================================================	
 Now let's plot the treatment data using some color and show a legend: 
@@ -2344,7 +2392,7 @@ fill=  c("lightblue", "mistyrose", "lightcyan","lavender", "cornsilk","maroon"))
 
 ========================================================
 
-<img src="introToR_Day1-figure/unnamed-chunk-130-1.png" title="plot of chunk unnamed-chunk-130" alt="plot of chunk unnamed-chunk-130" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-133-1.png" title="plot of chunk unnamed-chunk-133" alt="plot of chunk unnamed-chunk-133" width="1920px" />
 
 ========================================================	
 Histograms
@@ -2356,7 +2404,7 @@ Create a histogram for treatment
 hist(treatment)	
 ```
 
-<img src="introToR_Day1-figure/unnamed-chunk-132-1.png" title="plot of chunk unnamed-chunk-132" alt="plot of chunk unnamed-chunk-132" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-135-1.png" title="plot of chunk unnamed-chunk-135" alt="plot of chunk unnamed-chunk-135" width="1920px" />
 
 ========================================================
 
@@ -2373,7 +2421,7 @@ Create a histogram for data in light blue with the y axis ranging from 0-10
 hist(all, col="lightblue", ylim=c(0,10))
 ```
 ***
-<img src="introToR_Day1-figure/unnamed-chunk-135-1.png" title="plot of chunk unnamed-chunk-135" alt="plot of chunk unnamed-chunk-135" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-138-1.png" title="plot of chunk unnamed-chunk-138" alt="plot of chunk unnamed-chunk-138" width="1920px" />
 
 ======================================================== 	
 
@@ -2408,7 +2456,7 @@ For example [0,1] means greater than or equal to 0 and less than or equal to 1.
 
 ========================================================
 
-<img src="introToR_Day1-figure/unnamed-chunk-138-1.png" title="plot of chunk unnamed-chunk-138" alt="plot of chunk unnamed-chunk-138" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-141-1.png" title="plot of chunk unnamed-chunk-141" alt="plot of chunk unnamed-chunk-141" width="1920px" />
 
 ========================================================
 
@@ -2435,7 +2483,7 @@ if TRUE, the histogram graphic is a representation of frequencies
 
 if FALSE, probability densities, component density, are plotted
 
-<img src="introToR_Day1-figure/unnamed-chunk-141-1.png" title="plot of chunk unnamed-chunk-141" alt="plot of chunk unnamed-chunk-141" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-144-1.png" title="plot of chunk unnamed-chunk-144" alt="plot of chunk unnamed-chunk-144" width="1920px" />
 
 
 ========================================================
@@ -2447,7 +2495,7 @@ Let's start with a simple pie chart graphing the treatment vector:
 pie(treatment)
 ```
 
-<img src="introToR_Day1-figure/unnamed-chunk-143-1.png" title="plot of chunk unnamed-chunk-143" alt="plot of chunk unnamed-chunk-143" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-146-1.png" title="plot of chunk unnamed-chunk-146" alt="plot of chunk unnamed-chunk-146" width="1920px" />
 
 ========================================================
 
@@ -2460,7 +2508,7 @@ pie(treatment, main="Treatment", col= c("lightblue", "mistyrose", "lightcyan","l
     labels=c("Mon","Tue","Wed","Thu","Fri","Sat"))	
 ```
 
-<img src="introToR_Day1-figure/unnamed-chunk-145-1.png" title="plot of chunk unnamed-chunk-145" alt="plot of chunk unnamed-chunk-145" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-148-1.png" title="plot of chunk unnamed-chunk-148" alt="plot of chunk unnamed-chunk-148" width="1920px" />
 
 ========================================================
 
@@ -2500,7 +2548,7 @@ legend(1.5, 0.5, c("Mon","Tue","Wed","Thu","Fri","Sat"), cex=0.8,fill=colors)
 
 ========================================================
 
-<img src="introToR_Day1-figure/unnamed-chunk-151-1.png" title="plot of chunk unnamed-chunk-151" alt="plot of chunk unnamed-chunk-151" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-154-1.png" title="plot of chunk unnamed-chunk-154" alt="plot of chunk unnamed-chunk-154" width="1920px" />
 
 ========================================================
 Dot charts
@@ -2512,7 +2560,7 @@ Function t returns the transpose of a matrix.
 ```r
 dotchart(t(data))	
 ```
-<img src="introToR_Day1-figure/unnamed-chunk-153-1.png" title="plot of chunk unnamed-chunk-153" alt="plot of chunk unnamed-chunk-153" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-156-1.png" title="plot of chunk unnamed-chunk-156" alt="plot of chunk unnamed-chunk-156" width="1920px" />
 
 ========================================================
 
@@ -2523,7 +2571,7 @@ Create a colored dotchart for autos with smaller labels
 ```r
 dotchart(t(data), color=c("red","blue","darkgreen"),main="Dotchart", cex=0.8)	
 ```
-<img src="introToR_Day1-figure/unnamed-chunk-155-1.png" title="plot of chunk unnamed-chunk-155" alt="plot of chunk unnamed-chunk-155" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-158-1.png" title="plot of chunk unnamed-chunk-158" alt="plot of chunk unnamed-chunk-158" width="1920px" />
 
 Combining Plots
 ======================================================== 
@@ -2576,19 +2624,19 @@ boxplot(data1$Treated1)
 ========================================================
 
  
-<img src="introToR_Day1-figure/unnamed-chunk-159-1.png" title="plot of chunk unnamed-chunk-159" alt="plot of chunk unnamed-chunk-159" width="1920px" />
-
-========================================================
-
-<img src="introToR_Day1-figure/unnamed-chunk-160-1.png" title="plot of chunk unnamed-chunk-160" alt="plot of chunk unnamed-chunk-160" width="1920px" />
-
-========================================================
-
-<img src="introToR_Day1-figure/unnamed-chunk-161-1.png" title="plot of chunk unnamed-chunk-161" alt="plot of chunk unnamed-chunk-161" width="1920px" />
-
-========================================================
-
 <img src="introToR_Day1-figure/unnamed-chunk-162-1.png" title="plot of chunk unnamed-chunk-162" alt="plot of chunk unnamed-chunk-162" width="1920px" />
+
+========================================================
+
+<img src="introToR_Day1-figure/unnamed-chunk-163-1.png" title="plot of chunk unnamed-chunk-163" alt="plot of chunk unnamed-chunk-163" width="1920px" />
+
+========================================================
+
+<img src="introToR_Day1-figure/unnamed-chunk-164-1.png" title="plot of chunk unnamed-chunk-164" alt="plot of chunk unnamed-chunk-164" width="1920px" />
+
+========================================================
+
+<img src="introToR_Day1-figure/unnamed-chunk-165-1.png" title="plot of chunk unnamed-chunk-165" alt="plot of chunk unnamed-chunk-165" width="1920px" />
 
 Saving your plots
 ========================================================
@@ -2713,7 +2761,7 @@ xyplot(Untreated2~Treated2, data=data)
 
 ========================================================
 
-<img src="introToR_Day1-figure/unnamed-chunk-171-1.png" title="plot of chunk unnamed-chunk-171" alt="plot of chunk unnamed-chunk-171" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-174-1.png" title="plot of chunk unnamed-chunk-174" alt="plot of chunk unnamed-chunk-174" width="1920px" />
 
 
 
@@ -2731,7 +2779,7 @@ and then printed as,
 print(tplot)
 ```
 
-<img src="introToR_Day1-figure/unnamed-chunk-174-1.png" title="plot of chunk unnamed-chunk-174" alt="plot of chunk unnamed-chunk-174" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-177-1.png" title="plot of chunk unnamed-chunk-177" alt="plot of chunk unnamed-chunk-177" width="1920px" />
 ***
 The object containing the plot can further be modified. for e.g.
 
@@ -2741,7 +2789,7 @@ tplot2<-update(tplot, main="Drug treatment  in Cells" )
 print(tplot2)
 ```
 
-<img src="introToR_Day1-figure/unnamed-chunk-175-1.png" title="plot of chunk unnamed-chunk-175" alt="plot of chunk unnamed-chunk-175" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-178-1.png" title="plot of chunk unnamed-chunk-178" alt="plot of chunk unnamed-chunk-178" width="1920px" />
 
 ========================================================
 
@@ -2918,7 +2966,7 @@ We can also plot both points and lines.
 qplot(age, circumference, data = Orange, geom = c("point", "line"), colour = Tree)
 ```
 
-Simple statistics in R
+Statistics in R
 =========================================================
 type:section
 id: stats
@@ -2928,7 +2976,7 @@ id: stats
 Statistics in R
 =========================================================
 
-R has a powerful set of in built statistical methods.
+R has a powerful set of statistical methods.
 Including:
 - Standard statistical tests
 - Statistical modelling
@@ -2937,7 +2985,7 @@ Including:
 Tables and Frequencies
 =========================================================
 
-One of the simplest statistical tools we have already seen in the function summary() and table(). These functions provide descriptive statistics for data.frames and character vectors or factors.
+One of the simplest statistical tools are **summary()** and **table()**. These functions provide descriptive statistics for data frames and character vectors or factors.
 
 
 ```r
@@ -2946,7 +2994,7 @@ patientType <- factor(rep(c("male","female"),2))
 survivalTime <- c(1,30,2,20)
 dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime)
 ```
-table() provides a breakdown of occurrence of all unique values in vector.
+table() provides a breakdown of frequency of occurrence of all unique values in vector.
 
 ```r
 table(patientType)
@@ -2961,7 +3009,7 @@ female   male
 Tables and Frequencies
 =========================================================
 
-**summary()** provides a breakdown of occurrence of all character or factor columns and min,max,mean and quantiles for numeric columns.
+**summary()** provides a breakdown of occurrence for all character or factor columns and min,max,mean and quantiles for numeric columns.
 
 
 ```r
@@ -2981,7 +3029,7 @@ summary(dfExample)
 Tables and Frequencies (continued)
 =========================================================
 
-The table() function can be used to generate frequency tables across data.frames.
+The **table()** function can be used to generate frequency tables across data.frames.
 
 ```r
 table(dfExample)
@@ -3028,7 +3076,7 @@ Name       female male
 Tables and Frequencies (continued)
 =========================================================
 
-ftable() function provides a method to generate or print the results from table()
+**ftable()** function provides a method to generate or print the results from table()
 in a neater format.
 
 
@@ -3051,13 +3099,16 @@ patient4 female               0 0  1  0
 Correlation
 =========================================================
 
-Another common task in statistical analysis is to investigate the relationship between pairs of numeric vectors.
+A common task in statistical analysis is to investigate the relationship between pairs of numeric vectors.
 
-This can be done by identifying the correlation between numeric vectors using the cor() function in R.
+This can be done by identifying the correlation between numeric vectors using the **cor()** function in R.
 
-In this example we use cor() to identify the pearson or spearman correlation between two variables. 
+In this example we use cor() to identify the pearson between two variables.  The **method** argument may be set to make use of different correlation methods.
 
-Perfectly posively correlated vectors will return 1, perfectly negatively correlated vectors will return -1, vectors showing no or little correlation will be close to 0.
+- Perfectly posively correlated vectors will return 1
+- Perfectly negatively correlated vectors will return -1
+- Vectors showing no or little correlation will be close to 0.
+
 Correlation
 =========================================================
 
@@ -3086,16 +3137,22 @@ cor(x,z)
 ```
 
 ```
-[1] -0.02939373
+[1] 0.007961898
 ```
 ***
-![plot of chunk unnamed-chunk-199](introToR_Day1-figure/unnamed-chunk-199-1.png) 
+![plot of chunk unnamed-chunk-202](introToR_Day1-figure/unnamed-chunk-202-1.png) 
 
 
 Correlation (Continued)
 =========================================================
 left: 70%
-Often we wish to apply correlation analysis to all columns or rows in a matrix in a pair-wise mammer. To do this in R, we can simply pass the **cor()** function a single argument of the numeric matrix of interest. The **cor()** function will then perform all pair-wise correlations between columns.
+Often we wish to apply correlation analysis to all columns or rows in a matrix in a pair-wise manner. To do this in R, we can simply pass the **cor()** function a single argument of the numeric matrix of interest. The **cor()** function will then perform all pair-wise correlations between columns.
+
+
+| Sample_1.hi| Sample_2.hi| Sample_3.hi| Sample_4.low| Sample_5.low| Sample_1.low|
+|-----------:|-----------:|-----------:|------------:|------------:|------------:|
+|    4.111851|    3.837019|    4.360628|     3.752517|     4.368069|     3.421009|
+|    6.047822|    5.683518|    4.315889|     3.381136|     3.630273|     5.560802|
 
 
 ```r
@@ -3104,8 +3161,8 @@ cor(minRep)[1:2,2:5]
 
 ```
             Sample_2.hi Sample_3.hi Sample_4.low Sample_5.low
-Sample_1.hi     0.95251   0.9405676  -0.07638418    0.2553476
-Sample_2.hi     1.00000   0.9847168   0.09476644    0.3956323
+Sample_1.hi   0.9739739   0.8808776    0.1504303  -0.05810176
+Sample_2.hi   1.0000000   0.9055735    0.2865711   0.06212091
 ```
 
 Correlation (Continued)
@@ -3118,7 +3175,7 @@ axis(1,at=seq(0,1,length.out=6), colnames(minRep))
 axis(2,at=seq(0,1,length.out=6), colnames(minRep))
 ```
 ***
-<img src="introToR_Day1-figure/unnamed-chunk-203-1.png" title="plot of chunk unnamed-chunk-203" alt="plot of chunk unnamed-chunk-203" width="1920px" />
+<img src="introToR_Day1-figure/unnamed-chunk-207-1.png" title="plot of chunk unnamed-chunk-207" alt="plot of chunk unnamed-chunk-207" width="1920px" />
 
 Distributions
 =========================================================
@@ -3147,15 +3204,15 @@ Similar functions are available for other distibution types including:
 Distributions (Examples)
 =========================================================
 
-We can use rnorm to generate random values following a nromal distribution. Here we produce 10 normally distributed values numeric values with mean 8 and standard deviation of 3
+We can use rnorm to generate random values following a normal distribution. Here we produce 10 normally distributed numeric values with mean 8 and standard deviation of 3
 
 ```r
 rnorm(10,mean=8,sd=3)
 ```
 
 ```
- [1] 13.566939  6.841681  1.462447  7.510449 10.058070  8.939773  6.425140
- [8]  6.076919  9.765401  6.638530
+ [1] 8.043518 7.294967 3.701059 5.977129 6.719323 4.821539 6.263563
+ [8] 9.973544 3.646673 5.017044
 ```
 We can also use these functions to interrogate values assuming a normal distribution for the data.
 
@@ -3195,6 +3252,12 @@ qnorm(0.5,mean=8,sd=3)
 [1] 8
 ```
 
+Exercises
+===========
+
+Answers to exercises.
+=====================
+
 Statistical tests
 =========================================================
 
@@ -3214,42 +3277,33 @@ Some of the most used tests of two samples include:
 T-test example
 =========================================================
 
-To perform a t-test we will generate some datasets, test that the variances of the datasets are equal and then perform the actual t-tests.
-
-First lets produce the data using rnorm()
+To perform a t-test we will read in some datasets, test that the variances of the datasets are equal and then perform the actual t-tests.
 
 
-```r
-groupA <- rnorm(10,mean=26,sd=1)
-groupB <- rnorm(10,mean=40,sd=1)
-groupC <- rnorm(10,mean=40,sd=4)
-```
-***
 
 ```r
-tTestExample <- data.frame(A=groupA, B=groupB, C=groupC)
-
+tTestExample <- read.table("tTestData.csv",sep=",",header=T)
 tTestExample
 ```
 
 ```
           A        B        C
-1  24.75483 41.12365 46.93174
-2  25.98775 40.15326 40.21677
-3  26.78524 42.41936 41.94928
-4  24.81573 40.78934 37.11954
-5  25.13702 38.58646 47.11825
-6  27.57820 39.98469 38.30106
-7  26.08530 39.78725 41.16086
-8  25.94675 40.08311 40.85919
-9  26.32954 39.77195 37.11244
-10 25.10886 39.87803 33.47771
+1  26.03199 40.65549 33.78191
+2  27.00897 40.59726 39.48001
+3  27.57468 39.86103 34.63261
+4  27.15929 39.96254 42.62425
+5  25.82156 42.54450 35.48016
+6  26.18872 39.31856 40.49148
+7  26.30709 40.80434 38.91200
+8  26.21609 39.96368 40.74275
+9  25.84095 40.08374 34.28705
+10 26.86587 40.18931 37.80057
 ```
 
 T-test example
 =========================================================
 
-First lets retrieve the variance of columns using var().
+First we can specify the columsn of interest using **$** and calculate their variance using **var()**.
 
 
 ```r
@@ -3257,7 +3311,7 @@ var(tTestExample$A)
 ```
 
 ```
-[1] 0.8335172
+[1] 0.367875
 ```
 
 ```r
@@ -3265,7 +3319,7 @@ var(tTestExample$B)
 ```
 
 ```
-[1] 1.023961
+[1] 0.7614086
 ```
 
 ```r
@@ -3273,10 +3327,13 @@ var(tTestExample$C)
 ```
 
 ```
-[1] 18.32323
+[1] 9.681179
 ```
- 
-Now we can test for any differences in variance between A and B and A and C.
+
+T-test example
+=========================================================
+
+Now we can test for any differences in variances between A and B and A and C with an F-test using the **var.test()** function.
 
 
 ```r
@@ -3288,13 +3345,13 @@ var.test(tTestExample$A,tTestExample$B)
 	F test to compare two variances
 
 data:  tTestExample$A and tTestExample$B
-F = 0.814, num df = 9, denom df = 9, p-value = 0.7642
+F = 0.4832, num df = 9, denom df = 9, p-value = 0.2936
 alternative hypothesis: true ratio of variances is not equal to 1
 95 percent confidence interval:
- 0.2021892 3.2772096
+ 0.1200078 1.9451614
 sample estimates:
 ratio of variances 
-         0.8140125 
+         0.4831506 
 ```
 
 ```r
@@ -3306,13 +3363,13 @@ var.test(tTestExample$A,tTestExample$C)
 	F test to compare two variances
 
 data:  tTestExample$A and tTestExample$C
-F = 0.0455, num df = 9, denom df = 9, p-value = 8.724e-05
+F = 0.038, num df = 9, denom df = 9, p-value = 4.092e-05
 alternative hypothesis: true ratio of variances is not equal to 1
 95 percent confidence interval:
- 0.01129898 0.18314101
+ 0.009438411 0.152983699
 sample estimates:
 ratio of variances 
-        0.04548964 
+        0.03799899 
 ```
 
 T-test example
@@ -3322,8 +3379,7 @@ Now we have ascertained that GroupA and GroupB have similar variances. We can th
 
 
 ```r
-Result <- t.test(tTestExample$A,tTestExample$B,alternative ="two.sided",
-                 var.equal = T)
+Result <- t.test(tTestExample$A,tTestExample$B,alternative ="two.sided", var.equal = T)
 Result
 ```
 
@@ -3332,23 +3388,22 @@ Result
 	Two Sample t-test
 
 data:  tTestExample$A and tTestExample$B
-t = -33.423, df = 18, p-value < 2.2e-16
+t = -41.3528, df = 18, p-value < 2.2e-16
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -15.31025 -13.49932
+ -14.60253 -13.19051
 sample estimates:
 mean of x mean of y 
- 25.85292  40.25771 
+ 26.50152  40.39804 
 ```
 
 T-test example (Unequal variance)
 =========================================================
 
-To compare groups of unequal variance then the var.equal argument may be set to FALSE (which is the default).
+To compare groups of unequal variance then the **var.equal** argument may be set to FALSE (which is the default).
 
 ```r
-Result <- t.test(tTestExample$A,tTestExample$C,alternative ="two.sided",
-                 var.equal = F)
+Result <- t.test(tTestExample$A,tTestExample$C,alternative ="two.sided", var.equal = F)
 Result
 ```
 
@@ -3357,19 +3412,19 @@ Result
 	Welch Two Sample t-test
 
 data:  tTestExample$A and tTestExample$C
-t = -10.5281, df = 9.817, p-value = 1.153e-06
+t = -11.2941, df = 9.683, p-value = 6.855e-07
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -17.66349 -11.48004
+ -13.56531  -9.07821
 sample estimates:
 mean of x mean of y 
- 25.85292  40.42468 
+ 26.50152  37.82328 
 ```
 
 T-test example 
 =========================================================
 
-The same result to that shown could be achieved by specify a formula for the comparison.
+The same result to that shown could be achieved by specifying a formula for the comparison.
 Here we wish to compare column A versus B so we could simply specify the formula and the data to be used.
 
 
@@ -3378,25 +3433,38 @@ longFrame <- data.frame(Group = c(rep("A",nrow(tTestExample)),rep("B",nrow(tTest
 
 result <- t.test(Value~Group,longFrame,alternative ="two.sided",
                  var.equal = T)
-result$statistic
+result
 ```
 
 ```
-        t 
--33.42297 
+
+	Two Sample t-test
+
+data:  Value by Group
+t = -41.3528, df = 18, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -14.60253 -13.19051
+sample estimates:
+mean in group A mean in group B 
+       26.50152        40.39804 
 ```
+
+Exercises
+==========
+
 
 
 Regression and linear models
 =========================================================
 
-We have seem how we can find the correlation between two sets of variables using cor() function.
+We have seen how we can find the correlation between two sets of variables using cor() function.
 
 R also provides a comprehensive set of tools for regression analysis including the well used linear modelling function lm()
 
 To fit a linear regression we use a similar set of arguments as passed to the t-test fuction in the previous slide.
 
-
+I can actually define the model here right..y <- 10x + 50
 
 ```r
 > x=rnorm(100,70,10)
@@ -3411,7 +3479,7 @@ To fit a linear regression we use a similar set of arguments as passed to the t-
 > abline(lmResult,col="red",lty=3,lwd=3)
 ```
 
-![plot of chunk unnamed-chunk-216](introToR_Day1-figure/unnamed-chunk-216-1.png) 
+![plot of chunk unnamed-chunk-219](introToR_Day1-figure/unnamed-chunk-219-1.png) 
 
 The lm() function
 =========================================================
@@ -3433,14 +3501,19 @@ lm(formula = Y ~ X, data = lmExample)
 
 Coefficients:
 (Intercept)            X  
-    30.1801       0.8546  
+      8.339        1.130  
 ```
 
 Printing the result from lm() shows the call to lm() and the coefficients including the intercept.
 
-From this we know the formula for the line.
+The lm() function
+=========================================================
+
+From the previous slides we now know the formula for the line.
 
 **Y = -9.09 + 1.14*X**
+
+We can add the line of best fit using **abline()**
 
 
 ```r
@@ -3449,7 +3522,7 @@ From this we know the formula for the line.
 > abline(lmResult,col="red",lty=3,lwd=3)
 ```
 
-![plot of chunk unnamed-chunk-218](introToR_Day1-figure/unnamed-chunk-218-1.png) 
+![plot of chunk unnamed-chunk-221](introToR_Day1-figure/unnamed-chunk-221-1.png) 
 
 Interpreting output of lm()
 =========================================================
@@ -3469,22 +3542,22 @@ lm(formula = Y ~ X, data = lmExample)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--40.732 -20.303  -0.417  18.632  40.075 
+-36.912 -16.201  -1.743  14.211  43.122 
 
 Coefficients:
-            Estimate Std. Error t value Pr(>|t|)   
-(Intercept)  30.1801    17.8323   1.692  0.09374 . 
-X             0.8546     0.2578   3.315  0.00129 **
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   8.3390    13.0811   0.637    0.525    
+X             1.1296     0.1847   6.117 1.95e-08 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 24.28 on 98 degrees of freedom
-Multiple R-squared:  0.1008,	Adjusted R-squared:  0.09163 
-F-statistic: 10.99 on 1 and 98 DF,  p-value: 0.001288
+Residual standard error: 22.06 on 98 degrees of freedom
+Multiple R-squared:  0.2763,	Adjusted R-squared:  0.269 
+F-statistic: 37.42 on 1 and 98 DF,  p-value: 1.955e-08
 ```
 
 
-Interpreting output of lm() (Residuals...)
+Interpreting output of lm() - Residuals
 =========================================================
 
 
@@ -3495,22 +3568,22 @@ lm(formula = Y ~ X, data = lmExample)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--40.732 -20.303  -0.417  18.632  40.075 
+-36.912 -16.201  -1.743  14.211  43.122 
 
 Coefficients:
-            Estimate Std. Error t value Pr(>|t|)   
-(Intercept)  30.1801    17.8323   1.692  0.09374 . 
-X             0.8546     0.2578   3.315  0.00129 **
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   8.3390    13.0811   0.637    0.525    
+X             1.1296     0.1847   6.117 1.95e-08 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 24.28 on 98 degrees of freedom
-Multiple R-squared:  0.1008,	Adjusted R-squared:  0.09163 
-F-statistic: 10.99 on 1 and 98 DF,  p-value: 0.001288
+Residual standard error: 22.06 on 98 degrees of freedom
+Multiple R-squared:  0.2763,	Adjusted R-squared:  0.269 
+F-statistic: 37.42 on 1 and 98 DF,  p-value: 1.955e-08
 ```
 
 ***
-The **residuals** are the difference between the predicted line.
+The **residuals** are the difference between the predicted and actual values.
 To retrieve the residuals we can access the slot or use the resid() function.
 
 
@@ -3519,8 +3592,8 @@ To retrieve the residuals we can access the slot or use the resid() function.
 ```
 
 ```
-    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
--40.7300 -20.3000  -0.4165   0.0000  18.6300  40.0700 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-36.910 -16.200  -1.743   0.000  14.210  43.120 
 ```
 
 ```r
@@ -3528,8 +3601,8 @@ To retrieve the residuals we can access the slot or use the resid() function.
 ```
 
 ```
-    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
--40.7300 -20.3000  -0.4165   0.0000  18.6300  40.0700 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-36.910 -16.200  -1.743   0.000  14.210  43.120 
 ```
 Ideally you would want your residuals to be normally distributed around 0 indicating a good correspondence between predicted and actual values.
 
@@ -3544,18 +3617,18 @@ lm(formula = Y ~ X, data = lmExample)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--40.732 -20.303  -0.417  18.632  40.075 
+-36.912 -16.201  -1.743  14.211  43.122 
 
 Coefficients:
-            Estimate Std. Error t value Pr(>|t|)   
-(Intercept)  30.1801    17.8323   1.692  0.09374 . 
-X             0.8546     0.2578   3.315  0.00129 **
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   8.3390    13.0811   0.637    0.525    
+X             1.1296     0.1847   6.117 1.95e-08 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 24.28 on 98 degrees of freedom
-Multiple R-squared:  0.1008,	Adjusted R-squared:  0.09163 
-F-statistic: 10.99 on 1 and 98 DF,  p-value: 0.001288
+Residual standard error: 22.06 on 98 degrees of freedom
+Multiple R-squared:  0.2763,	Adjusted R-squared:  0.269 
+F-statistic: 37.42 on 1 and 98 DF,  p-value: 1.955e-08
 ```
 
 The **R-squared** value represents the proportion of variability in the response variable that is explained by the explanatory variable.
@@ -3577,28 +3650,36 @@ lm(formula = Y ~ X, data = lmExample)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--40.732 -20.303  -0.417  18.632  40.075 
+-36.912 -16.201  -1.743  14.211  43.122 
 
 Coefficients:
-            Estimate Std. Error t value Pr(>|t|)   
-(Intercept)  30.1801    17.8323   1.692  0.09374 . 
-X             0.8546     0.2578   3.315  0.00129 **
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   8.3390    13.0811   0.637    0.525    
+X             1.1296     0.1847   6.117 1.95e-08 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 24.28 on 98 degrees of freedom
-Multiple R-squared:  0.1008,	Adjusted R-squared:  0.09163 
-F-statistic: 10.99 on 1 and 98 DF,  p-value: 0.001288
+Residual standard error: 22.06 on 98 degrees of freedom
+Multiple R-squared:  0.2763,	Adjusted R-squared:  0.269 
+F-statistic: 37.42 on 1 and 98 DF,  p-value: 1.955e-08
 ```
 
 The results from linear models also provides a measure of significance for a variable not being relevant in **Pr(>|t|)** column. A low p-value suggests the variable is useful in prediction of the dependent variable.
 
+Exercise
+==============
+
+
+Answers to Exercise
+====================
 
 Notes!
 =========================================================
 http://rstudio-pubs-static.s3.amazonaws.com/23247_8af1a386e4184c95bb36ba7a6ea0f699.html
 
 Good example for reproducibility!
+
+Talk about t() function
 
 https://support.rstudio.com/hc/en-us/articles/200552086-Using-R-Markdown
 

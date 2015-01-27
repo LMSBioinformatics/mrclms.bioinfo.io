@@ -16,7 +16,7 @@ Bioconductor (BioC) is an open source, open development software project to prov
 - Gained popularity through microarray analysis packages
 - Colloborative effort by developers across the world
 - Distributed as R packages
-- Two release every year
+- Two releases every year
 
 ## Objectives
 - Provide access to powerful statistical and graphical methods for analysing genomics data.
@@ -25,11 +25,11 @@ Bioconductor (BioC) is an open source, open development software project to prov
 - Promote high-quality documentation and reproducible research.
 - Provide training in computational and statistical methods.
 
-## Bioconductor
+## www.bioconductor.org
 ![BioC webpage](./BioC.png)
 
 
-## Bioconductor Release 3.0
+## Bioconductor Release 3.0 
 - Software (934)
     + Provides implementation of analysis methods
 - AnnotationData (870)
@@ -63,11 +63,11 @@ library("limma")
 sessionInfo()
 ```
 
-## Basic classes of BioC packages {.smaller}
+## Basic classes of BioC packages {#highlight1 .smaller}
 - General infrastructure
     - Biobase, IRanges, GenomicRanges, Biostrings, BSgenome, GenomicFeatures
 - Annotation
-    - annotate, biomaRt, 
+    - annotate, biomaRt, AnnotationDb
 - Visualisation
     - geneplotter, ggbio, Gviz
 - Transcription Factor motif search
@@ -86,7 +86,7 @@ sessionInfo()
     - ppiData, ppiStats, ScISI, Rintact
 
 
-## BioC packages for NGS Data Analysis{#highlight1 .smaller}
+## BioC packages for NGS Data Analysis {#highlight1 .smaller}
 - <b>Data structures</b>: IRanges, GenomicRanges, Biostrings, BSgenome
 - <b>Input/Ouput</b>: ShortRead, Rsamtools, GenomicAlignments and rtracklayer (GTF,GFF,BED)
 - <b>Annotation</b>: GenomicFeatures, BSgenome, biomaRt, TxDb.\*, org.\*
@@ -101,21 +101,22 @@ sessionInfo()
 ## GenomicRanges
 
 - Genomic Ranges provides data structure for efficiently storing genomic coordinates
-    - Collection of genes coordinates
-    - Transcription factor binding sites (ChIP-Seq peaks)
-    - Collection of aligned sequencing reads
+    + Collection of genes coordinates
+    + Transcription factor binding sites (ChIP-Seq peaks)
+    + Collection of aligned sequencing reads
 - Builds on top of Interval Ranges (IRanges) package and lays foundation for NGS analysis. 
 - IRanges are collection of integer interval and GenomicRanges extends IRanges by including chromosome and strand.
 - Provides collection of functions for accessing and manipulating Genomic coordinates
 - Use cases: Identifying TF binding overlap, counting sequencing reads overlap with a gene
 - Main classes: GRanges and GRangesList
 
-## Run Length Encoding (RLE)
+## Run Length Encoding (Rle)
 - Run length encoding is a data compression technique
 - Efficiently encoding the redundant information
 
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
+library(GenomicRanges)
 chr <- Rle(c("chr1", "chr2", "chr1", "chr3"), c(1, 3, 2, 4))
 chr
 ```
@@ -183,12 +184,12 @@ GRL <- GRangesList("Peak1" = gr1, "Peak2" = gr2)
 
 ## Operations on GenomicRanges
 
-Opetaions       Functions/methods
+Operations       Functions/methods
 ----------      -----------------------------------------
 Accessors       start, end, ranges, strand, width, names, mcols, length
 Extraction      GR[i], GRL[[i]], head, tail
 Set operations  reduce, disjoin
-Overlaps        findOverlaps, countOverlaps, nearest, precede, follow
+Overlaps        findOverlaps, subsetByOverlaps, countOverlaps, nearest, precede, follow
 Arithmetic      shift, resize, distance, distanceToNearest
 
 
@@ -254,14 +255,18 @@ coverage(gr1)
 - BED
 - Wiggle/bedgraph
 
-## BAM/SAM {.smaller}
+## BAM/SAM 
 BAM/SAM consist two sections: Header and Alignment
 
-Header: Meta data (reference genome, aligner), starts with “@”
+Header section: 
 
-Alignment:
+Meta data (reference genome, aligner), starts with “@”
 
-Name            Values
+
+## BAM/SAM {.smaller}
+Alignment section:
+
+Fields            Values
 ----------      -----------------------------------------
 QNAME           ID of the read (“query”)
 FLAG            alignment flags
@@ -343,7 +348,7 @@ SampleAlign1 <- readGAlignmentsFromBam(BamFile,param=param1)
 
 
 
-## BioC Annotation Packages{.smaller}
+## BioC Annotation Packages {.smaller}
 Annotation packages can be broadly classified in to gene-centric and genome-centric.
 
 <b>Gene-centric annotation packages (AnnotationDbi):</b>
@@ -352,7 +357,7 @@ Annotation packages can be broadly classified in to gene-centric and genome-cent
 - General System biology data: KEGG.db (association between pathways and genes), GO.db (Gene ontology term and genes) and ReactomeDb
 - Platform level packages: Annotation for a specific platform (ex: hgu133a.db for Affymetrix HGU133A microarray). 
 
-## BioC Annotation Packages{.smaller}
+## BioC Annotation Packages {.smaller}
 
 <b>Genomic-centric GenomicFeatures packages:</b>
 
@@ -493,7 +498,7 @@ USCmm9KnownGene <- makeTranscriptDbFromUCSC(genome = "mm9", tablename = "knownGe
 ```
 
 
-##Annotations from the web – biomaRt {.smaller}
+## Annotations from the web – biomaRt {.smaller}
 biomaRt package oﬀers access to biomart based online annotation resources (marts). Each mart has several datasets. <b>getBM</b> function can be used to retrieve annotation from the biomarts. Use the following functions to find values for the arguments in <b>getBM</b> 
 
 Function                Description
