@@ -10,7 +10,7 @@ These exercises cover the matrices sections of [Introduction to R]("introToR_Day
 
 **Exercise 1**
 
-- Create a matrix containing information on gene names Gene_1, Gene_2, Gene_3, expression values 1000, 3000, 10000, 12000 and gene lengths 100, 3000, 200, 1000
+- Create a matrix containing information on gene names Gene_1, Gene_2, Gene_3,Gene_4 expression values 1000, 3000, 10000, 12000 and gene lengths 100, 3000, 200, 1000
 - Update the matrix to contain the expression over the gene length for all genes (Length normalised expression) as final column.
 
 - Create a smaller matrix containing genes longer than 200
