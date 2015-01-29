@@ -1,0 +1,2400 @@
+Introduction to R, Session 1
+========================================================
+author: Computational Biology Week
+width: 1440
+height: 1100
+autosize: true
+font-import: <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+font-family: 'Slabo 27px', serif;
+css:style.css
+
+Overview
+========================================================
+
+- [Background to R](#/background)
+- [Data types in R](#/datatypes)
+- [Reading and writing data in R](#/reading)
+- [Plotting in R](#/plotting)
+- [Statistics in R](#/stats)
+
+
+Background to R
+===============
+type:section
+id: background
+
+What is R?
+========================================================
+
+**R** is scripting language and environment for **statistical computing**.
+
+
+Developed by [Robert Gentleman](http://www.gene.com/scientists/our-scientists/robert-gentleman) and [Ross Ihaka](https://www.stat.auckland.ac.nz/~ihaka/). 
+
+
+Inheriting much from its predecessor **S** (Bell labs).
+
+- Suited to high level data analysis
+- Open source & cross platform
+- Extensive graphics capabilities
+- Diverse range of add-on packages
+- Active community of developers
+- Thorough documentation
+
+What is R to you?
+========================================================
+
+**R** comes with excellent "out-of-the-box" statistical and plotting capabilities.
+
+
+**R** provides access to 1000s of packages ([CRAN](http://cran.r-project.org/)/[MRAN](http://mran.revolutionanalytics.com/)/[R-forge](https://r-forge.r-project.org/)) which extend the basic functionality of R while maintaining high quality documentation.
+
+
+In particular, [Robert Gentleman](http://www.gene.com/scientists/our-scientists/robert-gentleman) developed the **[Bioconductor](http://bioconductor.org/)** project where 100's of packages are directly related to Biology and analysis of associated high-throughput experiments.
+***
+
+![alt text](imgs/RCitations.jpeg)
+
+How to get R?
+========================================================
+left: 50%
+
+Freely available from [R-project website](http://cran.ma.imperial.ac.uk/).
+
+RStudio provides an integrated development environment (IDE) which is freely available from [RStudio site](http://www.rstudio.com/)
+
+
+***We will be using RStudio and R already installed on your machines.***
+
+***
+![alt text](imgs/cran.jpeg)
+![alt text](imgs/rstudio.jpeg)
+
+A quick tour of RStudio
+========================================================
+left: 30%
+Four main panels
+- Scripting panel
+- R interface
+- Environment and History
+- Files, directories and help
+
+
+**Let's load RStudio and take a look**
+***
+
+![alt text](imgs/rstudioBlank.jpeg)
+
+
+Data types in R
+========================================================
+id: datatypes
+type: section
+
+- Simple calculations
+- Variables
+- Vectors
+- Lists
+- Matrices
+- Data frames
+
+
+
+Simple Calculations 
+========================================================
+type: subsection
+At its most basic, **R** can be used as a simple calculator.
+```{r,prompt=T}
+3+1
+
+2*2
+
+sqrt(25)-1
+```
+
+Using functions.
+========================================================
+
+The **sqrt(25)** demostrates the use of functions in R. A function performs a complex operation on it's arguments and returns the result.
+
+In R, arguments are provided to a function within the parenthesis -- **( )** -- that follows the function name. So **sqrt(*ARGUMENT*)** will provide the square root of the value of ***ARGUMENT***.
+
+Other examples of functions include **mean()**, **sum()**, **max()**. 
+
+Note multiple arguments are separated by a comma.
+
+```{r}
+mean(2,4,6)
+sum(2,4,6)
+max(2,4,6)
+```
+
+Using functions.
+========================================================
+
+R has many useful functions "built in" and ready to use as soon as R is loaded.
+
+An incomplete, illustrative list can be seen [here](http://www.columbia.edu/~cjd11/charles_dimaggio/DIRE/resources/R/rFunctionsList.pdf) 
+
+In addition to R standard functions, additional functionality can be loaded into R using libraries. These include specialised tools for areas such as sequence alignment, read counting etc.
+
+If you need to see how a function works try **?** in front of the function name.
+```{r}
+?sqrt
+```
+
+
+Lets run **?sqrt** in RStudio and look at the help.
+
+Using functions (Arguments have names and order)
+========================================================
+
+With functions such as mean() and sqrt(), the arguments to be provided are obvious and the order of these arguments doesnt matter.
+
+```{r}
+mean(5,4,6)
+mean(6,4,5)
+```
+
+Many functions however have an order to their arguments.
+Try and look at the arguments for the dir() function.
+
+```
+?dir
+```
+Using functions (Setting names for arguments)
+========================================================
+
+Often we know the names of arguments but not necessarily their order.
+In cases where we want to be sure we specify the right argument, we provide names for the arguments used.
+
+```{r,eval=F}
+dir()
+dir(full.names=T)
+```
+
+This also means we don't have to copy out all the defaults for arguments preceeding it.
+
+```{r,eval=F}
+dir(full.names=T)
+# Is equivalent to...
+dir(".",NULL,FALSE,T)
+```
+
+
+Variables (1/2)
+========================================================
+
+As with other programming languages and even graphical calculators, **R** makes use of **variables**.
+
+A **variable** stores a value as a letter or word.
+
+In **R**, we make use of the assignment operator **<-** 
+```{r}
+x <- 10
+```
+Now **x** holds the value of 10
+```{r}
+x
+```
+
+Variables.(2/2)
+========================================================
+
+```{r}
+x
+```
+Variables can be altered in place
+```{r}
+x <- 20
+x
+```
+Variables can be used just as the values they contain.
+```{r}
+x + sqrt(25)
+```
+Variables can be used to create new variables
+```{r}
+y <- x + sqrt(25)
+y
+```
+
+Vectors.(1/13)
+========================================================
+In **R** the most basic variable or data type is a **vector**. A vector is an ordered collection of values. The x and y variables we have previously assigned are examples of a vector of length 1.
+
+```{r}
+x
+length(x)
+```
+
+To create a multiple value vector we use the function **c()** to *combine* the supplied arguments into one vector.
+
+```{r}
+x <- c(1,2,3,4,5,6,7,8,9,10)
+x
+length(x)
+```
+
+Vectors (2/13).
+========================================================
+Vectors of continuous stretches of values can be created by the shortcut - **:**
+
+```{r}
+y <- 6:10
+y
+```
+
+Other useful function to create stretchs of numeric vectors are **seq()** and **rep()**.
+The **seq()** function creates a sequence of numeric values from a specified start and end value, incrementing by a user defined amount. The **rep()** function repeats a variable a user-defined number of times.
+
+
+```{r}
+seq(from=1,to=5,by=2)
+rep(c(1,5,10),3)
+```
+
+Vectors(3/13) - Indexing 
+========================================================
+Square brackets **[]** identify the position within a vector (the **index**).
+These indices can be used to extract relevant values from vectors.
+
+
+```{r}
+x
+x[1]
+x[8]
+```
+Vectors(4/13) - Indexing 
+========================================================
+
+indices can be used to extract values from a multiple positions within a vector.
+
+```{r}
+x[c(1,6)]
+```
+Negative indices can be used to extract all positions except that specified
+
+```{r}
+x[-5]
+```
+
+
+Vectors(5/13) (indexing) 
+========================================================
+
+We can use indices to modify a specific position in vector
+
+```{r}
+x
+x[5] <- -5
+x
+```
+
+Indices can be specified using other vectors.
+
+```{r}
+y
+x[y] <- 0
+x
+```
+
+Remember!
+========================================================
+
+Square brackets **[]**  for indexing
+```{r}
+x[1]
+```
+
+Parentheses **()**  for function argments.
+```{r}
+sqrt(4)
+```
+
+Vectors(6/13) - operations 
+========================================================
+
+Vectors in R can be used in arithmetic operations as seen with variables earlier.
+When a standard arithmetic operation is applied to vector, the operation is applied to each position in a vector.
+
+```{r}
+x <- c(1,2,3,4,5,6,7,8,9,10)
+x
+y <- x*2
+y
+```
+
+Multiple vectors can be used within arithmetic operations. 
+```{r}
+x+y
+```
+Vectors (7/13) - operations 
+========================================================
+
+When applying an arithmetic operation between two vectors of unequal length, the shorter will be recycled.
+
+```{r}
+x+c(1,2)
+```
+
+```{r}
+x+c(1,2,3)
+```
+
+Vectors (8/13) - Character vectors.
+========================================================
+
+So far we have only looked at numeric vectors.
+
+In R we can also create character vectors again using **c()** function. These vectors can be indexed just the same.
+
+```{r}
+y <- c("ICTEM","CommonWealth","Wolfson")
+y[2]
+```
+
+Character vectors can be used to assign names to other vectors.
+
+```{r}
+x <- c(1:3)
+names(x) <- y
+x
+```
+Vectors (9/13) - Character vectors.
+========================================================
+
+
+These named vectors maybe indexed by a position's "name".
+```{r}
+x[c("ICTEM","Wolfson")]
+```
+Index names missing from vectors will return special value "NA"
+```{r}
+x[c("Strand")]
+```
+
+A note on NA values
+====================
+
+In R, like many languages, when a value in a variable is missing, the value is assigned a **NA** value.
+
+Similarly, when a calculation can not be perfomed, R will input a **NaN** value.
+
+- **NA** - Not Available.
+- **NaN** - Not A Number.
+
+**NA** values allow for R to handle missing data correctly but requires different handling than standard numeric or character values. We will discuss handling **NA** values later.
+
+The unique() function
+====================
+
+The unique() function can be used to retrieve all unique character values from a character vector.
+
+```{r}
+geneList <- c("Gene1","Gene2","Gene3","Gene4","Gene5","Gene1","Gene3")
+unique(geneList)
+```
+
+The %in% operator
+====================
+
+A common task in R is to subset one character vector by another character vector.
+
+The **%in%** operator can be used to subset the values within one character vector by those characters which are present in a second vectpr. 
+
+```{r}
+geneList <- c("Gene1","Gene2","Gene3","Gene4","Gene5","Gene1","Gene3")
+secondGeneList <- c("Gene5","Gene3")
+geneList[geneList %in% secondGeneList]
+```
+
+
+Vectors (10/13). Logical vectors
+========================================================
+
+Logical vectors are a special type of vector made up of TRUE/T or FALSE/F boolean values.
+
+```{r}
+z <- c(T,F,T,F,T,F,T,F,T,F) 
+# z <-  c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,TRUE,FALSE) 
+z
+```
+Logical vectors can be used like an index to specify postions in a vector. TRUE values will return that corresponding position in the vector being indexed.
+
+```{r}
+x <- 1:10
+x[z]
+```
+
+Vectors (11/13). Logical vectors
+========================================================
+
+Other vectors may be evaluated to produce logical vectors. This can be very useful when using a logical to index.
+
+Common examples are:
+
+- **==**  evaluates as equal.
+- **>** and **<** evaluates as greater or less than respectively.
+- **>=** and **<=** evaluates as greater than or equal or less than or equal respectively.
+
+```{r}
+x > 5
+x[x > 5]
+```
+
+Vectors (12/13). Logical vectors continued.
+========================================================
+
+Logical vectors can be used in combination in order to index vectors. To combine logical vectors we can use some common R operators.
+
+- **&** Requires both logical operators to be TRUE
+- **|** Requires either logical operators to be TRUE.
+- **!** Reverses logical operator, so TRUE is FALSE and FALSE is TRUE.
+
+```{r}
+x <- 1:10
+!x > 4
+x > 4 & x < 7
+x > 4 | x < 7
+```
+
+Vectors (13/13). Logical vectors continued.
+========================================================
+
+Such combinations can allow for complex selection of vector's values.
+```{r}
+x <- 1:10
+x[x > 4 & x < 7]
+x[x > 4 & !x < 7]
+```
+
+
+Time for an exercise!
+========================================================
+
+Exercise on vectors can be found [here](exercises/vector_exercise.html)
+
+Answers to exercise.
+========================================================
+
+Answers can be found here  [here](answers/vector_answers.html)
+
+matrices (1/)
+========================================================
+
+In programs such as Excel, we are used to tables.
+
+All progamming languages have a concept of a table. In **R**, the most basic table type is a **matrix**.
+
+A **Matrix** can be created using the ***matrix()*** function with the arguments of nrow and ncol specifying the number of rows and columns respectively.
+```{r}
+narrowMatrix <- matrix(1:10, nrow=5, ncol=2)
+narrowMatrix
+
+wideMatrix <- matrix(1:10, nrow=2, ncol=5)
+wideMatrix
+```
+matrices (2/)
+========================================================
+
+To find dimensions of a matrix, the dim() function will provide dimensions as row number and column number while nrow() and ncol() will return just row number and column number respectively.
+```{r}
+dim(narrowMatrix)
+nrow(narrowMatrix)
+ncol(narrowMatrix)
+```
+
+matrices (3/) (Joining vectors and matrices)
+========================================================
+
+A matrix can be created from multiple vectors or other matrices.
+
+**cbind()** can be used to attach data to a matrix as columns.
+```{r}
+x <- 1:10
+y <- 11:20
+z <- 21:22
+newMatrix <- cbind(x,y)
+newMatrix
+```
+***
+**rbind()** functions to bind to a matrix as rows.
+```{r}
+newerMatrix <- rbind(newMatrix,z)
+newerMatrix
+```
+
+matrices (4/) - Joining vectors and matrices
+========================================================
+
+When creating a matrix using **cbind()** or **matrix()** from incompatable vectors then the shorter vector is recycled. 
+
+
+
+```{r}
+recycledMatrix2 <- matrix(1:5,ncol=2,nrow=3)
+recycledMatrix2
+```
+***
+For **rbind()** function, the longer vector is clipped.
+```{r}
+recycledMatrix3 <- rbind(recycledMatrix2,c(1:5))
+recycledMatrix3
+```
+
+matrices (5/) - Column names
+========================================================
+
+As with vectors, matrices can be named. For matrices the naming is done by columns and rows using **colnames()** and **rownames()** functions.
+
+```{r}
+namedMatrix <- matrix(1:10,ncol=5,nrow=2)
+colnames(namedMatrix) <- paste("Column",1:5,sep="_")
+rownames(namedMatrix) <- paste("Row",1:2,sep="_")
+namedMatrix
+```
+
+Information on matrix names can also be retreived using the same functions.
+```{r}
+colnames(namedMatrix)
+rownames(namedMatrix)
+```
+
+
+matrices (6/) - Indexing
+========================================================
+
+Selecting and replacing portions of a matrix can be done by **indexing** using square brackets **[]** much like for vectors.
+
+When indexing matrices, two values may be provided within the square brackets separated by a comma to retrieve information on a matrix position.
+
+The first value(s) corresponds to row(s) and the second to column(s).
+
+- ***myMatrix[rowOfInterest,columnOfInterest]***
+```{r}
+narrowMatrix
+```
+Value of first column, second row
+```{r}
+narrowMatrix[2,1]
+```
+
+matrices (7/) - Indexing
+========================================================
+
+Similarly, whole rows or columns can be extracted. Single rows and columns will return a vector. When multiple columns or row indices are specified, a matrix is returned. 
+
+
+Values of second column (row index is empty!)
+```{r}
+narrowMatrix[,2]
+```
+
+Values of third row (column index is empty!)
+```{r}
+narrowMatrix[3,]
+```
+
+Values of second and third row (column index is empty!)
+```{r}
+narrowMatrix[c(2,3),]
+```
+
+matrices (8/) (indexing)
+========================================================
+
+As with vectors, names can be used for indexing when present
+
+```{r}
+colnames(narrowMatrix) <- paste("Column",1:2,sep="_")
+rownames(narrowMatrix) <- paste("Row",1:5,sep="_")
+narrowMatrix[,"Column_1"]
+narrowMatrix["Row_1",]
+narrowMatrix[,"Column_1"]
+narrowMatrix["Row_1","Column_1"]
+```
+
+matrices (9/) (advanced indexing)
+========================================================
+
+As with vectors, matrices can be subset by logical vectors
+```{r}
+narrowMatrix
+narrowMatrix[,1]
+narrowMatrix[,1] < 5
+```
+***
+```{r}
+narrowMatrix[narrowMatrix[,1] < 5,]
+```
+
+matrices (10/) - Arithmetic operations.
+========================================================
+
+As with vectors, matrices can have arithmetic operations applied to cells,rows, columns or the whole matrix
+```{r}
+narrowMatrix
+narrowMatrix[1,1]+2
+narrowMatrix[1,]+2
+mean(narrowMatrix)
+
+```
+
+matrices (10/) - Replacement
+========================================================
+
+As with vectors, matrices can have their elements replaced
+```{r}
+narrowMatrix
+narrowMatrix[1,1] <- 10
+narrowMatrix[,2] <- 1
+narrowMatrix
+```
+matrices (11/) (Replacement)
+========================================================
+
+matrices must be all one type (numeric or character).
+
+Here replacing one value with character will turn numeric matrix to character matrix.
+
+```{r,error=T}
+narrowMatrix[,2] *2
+```
+```{r}
+narrowMatrix[1,1] <- "Not_A_Number"
+narrowMatrix
+```
+
+```{r,error=T}
+narrowMatrix[,2] *2
+```
+
+Time for an exercise!
+========================================================
+
+Exercise on vectors can be found [here](exercises/matrices_exercise.html)
+
+Answers to exercise.
+========================================================
+
+Answers can be found here  [here](answers/matrices_answers.html)
+
+
+Factors (1/6)
+========================================================
+
+A special case of a vector is a **factor**.
+
+Factors are used to store data which may be grouped in categories (categorical data).
+Specifying data as categorical allows R to properly handle the data and make use of functions specific to categorical data.
+
+To create a factor from a vector we use the **factor()** function. Note that the factor now has an additional component called **"levels"** which identifies all categories within the vector.
+
+```{r}
+vectorExample <- c("male","female","female","female")
+factorExample <- factor(vectorExample)
+factorExample
+levels(factorExample)
+```
+
+Factors (2/6)
+========================================================
+
+An example of the use of levels can be seen from applying the summary() function to the vector and factor examples
+
+
+```{r}
+summary(vectorExample)
+summary(factorExample)
+```
+
+
+Factors (3/6) - levels
+========================================================
+In our factor example, the levels have been displayed in an alphabetical order. To adjust the display order of levels in a factor, we can supply the desired display order to **levels** argument in the **factor()** function call.
+
+```{r}
+factorExample <- factor(vectorExample,levels=c("male","female"))
+factorExample
+summary(factorExample)
+```
+
+
+Factors (4/6) - Nominal factors
+========================================================
+In some cases there is no natural order to the categories such that one category is greater than the other (nominal data).
+In this case we can see that R is gender neutral.
+
+```{r}
+factorExample <- factor(vectorExample,levels=c("male","female"))
+factorExample[1] < factorExample[2]
+```
+Factors (5/6) - Ordinal factors
+========================================================
+
+In other cases there will be a natural ordering to the categories (ordinal data). A factor can be specified to be ordered using the **ordered** argument in combination with specified levels argument.
+
+```{r}
+factorExample <- factor(c("small","big","big","small"),ordered=TRUE,levels=c("small","big"))
+factorExample[1] < factorExample[2]
+```
+
+Factors (6/6) Replacement
+========================================================
+
+Unlike vectors, replacing elements within a factor isn't so easy. While replacing one element with an established level is possible, replacing with a novel element will result in a warning.
+
+```{r}
+factorExample <- factor(c("small","big","big","small"))
+factorExample[1] <- c("big")
+factorExample
+
+factorExample[1] <- c("huge")
+factorExample
+
+```
+
+To add a new level we can use the levels argument.
+
+```{r}
+levels(factorExample) <- c("big","small","huge")
+factorExample[1] <- c("huge")
+factorExample
+```
+
+Data.frames (1/)
+=========================================================
+
+We saw that with matrices you can only have one type of data. We tried to create a matrix with a character element and the entire matrix became a character.
+
+In practice, we would want to have a table which is a mixture of types (e.g a table with sample names (character), sample type (factor) and survival time (numeric))
+
+In R, we make use of the data.frame object which allows us to store tables with columns of different data types. To create a data frame we can simply use the **data.frame()** function.
+
+```{r}
+patientName <- c("patient1","patient2","patient3","patient4")
+patientType <- factor(rep(c("male","female"),2))
+survivalTime <- c(1,30,2,20)
+dfExample <- data.frame(Name=patientName, Type=patientType,Survival_Time=survivalTime)
+dfExample
+```
+
+
+
+Data.frames (2/) - Indexing and replacement
+=========================================================
+
+Data frames may be indexed just as matrices.
+
+```{r}
+dfExample
+dfExample[dfExample[,"Survival_Time"] > 10,]
+```
+Data.frames (4/) (Advanced indexing)
+=========================================================
+Unlike matrices, it is possible to index a column by using the **$** symbol.
+
+```{r}
+dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime)
+dfExample$Survival_Time
+dfExample[dfExample$Survival_Time < 10,]
+```
+Using the **$** allows for R to autocomplete your selection and so can speed up coding.
+
+```{r}
+dfExample$Surv
+```
+But this will not work..
+```{r, eval=F}
+dfExample[,"Surv"]
+```
+
+Data.frames (Creating new column)
+=========================================================
+
+The **$** operator also allows for the creation of new columns for a data frame on the fly.
+
+```{r}
+dfExample
+dfExample$newColumn <- rep("newData",nrow(dfExample))
+dfExample
+```
+
+Data.frames (3/) - Indexing and replacement
+=========================================================
+
+Certain columns can not be replaced in data frames. Numeric columns may have their values replaced but columns with character values may not by default. This occurs because character vectors are treated as factors by default.
+
+
+```{r}
+dfExample[dfExample[,"Survival_Time"] < 10,"Survival_Time"] <- 0
+dfExample
+```
+
+```{r}
+dfExample[dfExample[,"Survival_Time"] < 10,"Name"] <- "patientX"
+dfExample
+```
+
+
+Data.frames (5/) (factors)
+=========================================================
+It is possible to update factors in data.frames just as with standard factorss
+
+```{r}
+dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime)
+
+levels(dfExample[,"Name"]) <- c(levels(dfExample[,"Name"]) , "patientX")
+dfExample[dfExample[,"Survival_Time"] < 10,"Name"] <- "patientX"
+dfExample
+
+```
+
+Data.frames (6/) (Creating data.frames without factors)
+=========================================================
+If you wish to avoid using factors in data.frames then the **stringsAsFactors** argument to **data.frame()** function should be set to **FALSE**
+
+```{r}
+dfExample <- data.frame(Name=patientName,
+                        Type=patientType,
+                        Survival_Time=survivalTime,
+                        stringsAsFactors = F)
+
+levels(dfExample[,"Name"]) <- c(levels(dfExample[,"Name"]) , "patientX")
+dfExample[dfExample[,"Survival_Time"] < 10,"Name"] <- "patientX"
+dfExample
+
+```
+
+Data.frames (Ordering)
+=========================================================
+A useful function in R is **order()**
+
+For numeric vectors, **order()** by default returns the indices of a vector in that vector's increasing order. This behaviour can be altered by using the "decreasing" argument passed to order.
+
+```{r}
+testOrder <- c(2,1,3)
+testOrder
+testOrder[order(testOrder)]
+testOrder[order(testOrder,decreasing=T)]
+```
+Data.frames (Ordering with NA values)
+=========================================================
+
+When a vector contains NA values, these NA values will, by default, be placed last in ordering indices. This can be controlled by **na.last** argument.
+
+```{r}
+testOrder <- c(2,1,NA,3)
+testOrder[order(testOrder,decreasing=T,na.last=T)]
+testOrder[order(testOrder,decreasing=T,na.last=F)]
+```
+
+Data.frames (Ordering data.frames)
+=========================================================
+Since the order argument returns an index of intended order for a vector, we can use the order() function to order data frames by certain columns
+```{r}
+dfExample
+dfExample[order(dfExample$Surv, decreasing=T),]
+```
+***
+We can also use order to arrange multiple columns in a data frame by providing multiple vectors to order() function. Ordering will be performed in order of arguments.
+
+```{r}
+dfExample[order(dfExample$Type,
+                dfExample$Survival,
+                decreasing=T),]
+```
+
+
+Data.frames (Merging data frames)
+=========================================================
+
+A common operation is to join two data frames by a column of common values.
+
+
+```{r}
+dfExample <- data.frame(Name=patientName,
+                        Type=patientType,
+                        Survival_Time=survivalTime)
+dfExample 
+```
+***
+```{r}
+dfExample2 <- data.frame(Name=patientName[1:3],
+                        height=c(6.1,5.1,5.5))
+
+dfExample2
+```
+
+Data.frames (Merging data frames)
+=========================================================
+
+To do this we can use the **merge()** function with the data frames as the first two arguments. We can then specify the columns to merge by with the **by** argument. To keep only data pertaining to values common to both data frames the **all** argument is set to TRUE.
+
+```{r}
+mergedDF <- merge(dfExample,dfExample2,by=1,all=F)
+mergedDF
+```
+
+Time for an exercise!
+========================================================
+
+Exercise on data frames and factors can be found [here](exercises/factorsAndDataframes_exercise.html)
+
+Answers to exercise.
+========================================================
+
+Answers can be found here  [here](answers/factorsAndDataframes_answers.html)
+
+
+Lists
+=========================================================
+
+Lists are the final data-type we will look at. 
+
+In R, lists provide a general container which may hold any data types of unequal lengths as part of its elements.
+To create a list we can simply use the **list()** function with arguments specifying the data we wish to include in the list.
+
+```{r}
+firstElement <- c(1,2,3,4)
+secondElement <- matrix(1:10,nrow=2,ncol=5)
+thirdElement <- data.frame(colOne=c(1,2,4,5),colTwo=c("One","Two","Three","Four"))
+myList <- list(firstElement,secondElement,thirdElement)
+myList
+```
+
+Lists (Named List)
+=========================================================
+
+Just as with vectors, list elements can be assigned names.
+
+```{r}
+myNamedList <- list(First=firstElement,Second=secondElement,Third=thirdElement)
+myNamedList
+```
+Lists (Indexing)
+=========================================================
+
+List, as with other data types in R can be indexed. In contrast to other types, using **[]** on a list will subset the list to another list of selected indices. To retrieve an element from a list in R , two square brackets **[[]]** must be used. 
+
+```{r}
+myList <- list(firstElement,secondElement,thirdElement)
+myList[1]
+myList[[1]]
+```
+
+As with data.frames, the $ sign may be used to extract elements from a list
+
+```{r}
+myNamedList$First
+```
+
+Lists (Joining lists)
+=========================================================
+
+Again, similar to vectors, lists can be joined together in R using the c() function 
+
+```{r}
+myNamedList <- list(First=firstElement,Second=secondElement,Third=thirdElement)
+myNamedList <- c(myNamedList,list(fourth=c(4,4)))
+myNamedList[c(1,4)]
+
+```
+
+Lists (Joining lists)
+=========================================================
+
+Note that on last slide we are joining two lists. If we joined a vector to a list, all elements of the vector would become list elements.
+
+```{r}
+myList <- c(myList,c(4,4))
+myList
+
+```
+
+Lists (Flattening lists)
+=========================================================
+
+Sometimes you will wish to "flatten" out a list. When a list contains compatable objects, i.e. list of all one type, the **unlist()** function can be used. Note the maintenance of names with their additional sufficies.
+
+```{r}
+myNamedList <- list(First=c(1,2,3),Second=c(2,6,7),Third=c(1,4,7))
+myNamedList
+flatList <- unlist(myNamedList)
+flatList[1:7]
+```
+
+
+
+Lists (Flattening lists to matrices)
+=========================================================
+A common step is to turn a list of standard results into matrix. This can be done in a few steps in R.
+
+```{r}
+myNamedList <- list(First=c(1,2,3),Second=c(2,6,7),Third=c(1,4,7))
+flatList <- unlist(myNamedList)
+listAsMat <- matrix(flatList,
+                    nrow=length(myNamedList),
+                    ncol=3,
+                    byrow=T,
+                    dimnames=list(names(myNamedList)))
+listAsMat
+```
+
+
+Reading and writing data in R
+=========================================================
+type:section
+id: reading
+
+
+Data from External sources
+=========================================================
+
+Most of the time, you will not be generating data in R but will be importing data from external files.
+
+A standard format for this data is a table
+
+```{r,echo=F}
+minRep <- rbind(cbind(matrix(rnorm(12,4),ncol=3,byrow = T),matrix(c(rnorm(9,4),rnorm(3,8)),ncol=3,byrow = T)),
+cbind(matrix(rnorm(12,10),ncol=3,byrow = T),matrix(c(rnorm(6,3),rnorm(6,10)),ncol=3,byrow = T)))
+colnames(minRep) <- paste0(c("Sample_"),
+                      1:5,".",sort(rep(c("hi","low"),3)))
+minRepdf <- data.frame(Gene_Name=paste("Gene",letters[1:8],sep="_"),minRep)
+#minRepdf$Gene_Name <- paste("Gene",letters[1:8],sep="_")
+write.table(minRepdf,file="readThisTable.csv",sep=",",row.names=F)
+kable(minRepdf)
+
+```
+
+Data from text file
+=========================================================
+
+Tables from text files can be read with **read.table()** function
+
+```{r,echo=T}
+Table <- read.table("data/readThisTable.csv",sep=",",header=T)
+Table[1:4,1:3]
+```
+
+Here we have provided two arguments. 
+- **sep** argument specifies how columns are separated in our text file. ("," for .csv, "\t" for .tsv)
+- **header** argument specifies whether columns have headers.
+
+Data from text file
+=========================================================
+
+read.table() allows for significant control over reading files through its many arguments. Have a look at options by using **?read.table**
+
+The **row.names** argument can be used to specify a column to use as row names for the resulting data frame. Here we use the first column as row names.
+
+```{r,echo=T}
+Table <- read.table("data/readThisTable.csv",sep=",",header=T,row.names=1)
+Table[1:4,1:3]
+```
+
+Data from text files
+=========================================================
+
+As mentioned, data which is read into R through read.table() will be of data frame class.
+
+To avoid character columns being converted into factors, we can specify the **stringsAsFactors** argument here.
+
+```{r,echo=T}
+Table <- read.table("data/readThisTable.csv",sep=",",header=T,stringsAsFactors=F)
+```
+
+Other very useful functions for read table include:
+- **skip** - To set number of lines to skip when reading.
+- **comment.char** - To set the start identifier for lines not to be read.
+
+Data from other sources
+=========================================================
+
+The read.table function can also read data from http.
+
+```{r,echo=T}
+URL <- "http://mrccsc.github.io/readThisTable.csv"
+Table <- read.table(URL,sep=",",header=T)
+Table[1:2,1:3]
+```
+And the clipboard.(This is Windows version)
+
+```{r,eval=F}
+Table <- read.table(file="clipboard",sep=",",header=T)
+```
+
+Data from file columns
+=========================================================
+
+read.table() function will by default read every row and column of a file.
+
+The **scan()** function allows for the selection of particular columns to be read into R and so can save memory when files are large. 
+
+
+```{r,echo=T}
+x <- scan("data/readThisTable.csv",sep=",",
+what = c(list(""),rep(list(NULL), 6)),skip=1)
+x[1:3]
+```
+
+Writing data to file
+=========================================================
+
+Once we have our data analysed in R, we will want to export it to a file. 
+
+The most common method is to use the write.table() function
+
+```{r,echo=T}
+write.table(Table,file="data/writeThisTable.csv",sep=",")
+```
+
+Since our data has column names but no row names, I will provide the arguments col.names and row.names to write.table()
+
+```{r,echo=T}
+write.table(Table,file="data/writeThisTable.csv", sep=",", row.names =F,col.names=T)
+```
+
+Time for an exercise!
+========================================================
+
+Exercise on reading and writing data can be found [here](exercises/DataInputOutput_exercise.html)
+
+Answers to exercise.
+========================================================
+
+Answers can be found here  [here](answers/DataInputOutput_answers.html)
+
+
+Plotting in R
+========================================================
+type:section
+
+
+
+========================================================
+
+1.  Introduction
+
+2.  Base graphics
+  + Line Charts
+  + Bar Charts
+  + Histograms
+  + Pie Charts
+  + Dot charts
+  + Combining Plots
+     
+3.  Saving your plot
+
+4.	Lattice R package
+
+5.	ggplot2 R package
+
+
+Introduction
+========================================================
+R has excellent graphics and plotting capabilities. They are mostly found in following three sources.
+ + base graphics
+ + the lattice package
+ +  the ggplot2 package
+ 
+Lattice and ggplot2 packages are built on grid graphics package while the base graphics routines adopt a pen and paper model for plotting.
+
+
+Base Graphics
+========================================================
++ Line Charts
+
+First we'll produce a very simple graph using the values in the treatment vector:
+
+```{r}
+treatment <- c(0.02,1.8, 17.5, 55,75.7, 80)
+```
+
+Plot the treatment vector with default parameters
+
+```{r,eval=FALSE}
+plot(treatment)
+```
+
+Point Plot
+========================================================
+
+```{r, echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
+plot(treatment)
+```
+
+=======================================================
+Now, let's add a title, a line to connect the points, and some color:
+
+Plot treatment using blue points overlayed by a line
+
+```{r,eval=FALSE}
+plot(treatment, type="o", col="blue")
+```
+Create a title with a red, bold/italic font
+```{r,eval=FALSE}
+title(main="Treatment", col.main="red", font.main=4)
+```
+
+Line Plot
+========================================================
+```{r,echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
+plot(treatment, type="o", col="blue")
+title(main="Treatment", col.main="red", font.main=4)
+```
+
+========================================================
+Now let's add a red line for a control vector and specify the y-axis range directly so it will be large enough to fit the data:
+
+Define control vector
+```{r,eval=TRUE}
+control <- c(0, 20, 40, 60, 80,100)
+```
+
+Plot treatment using a y axis that ranges from 0 to 100
+```{r,eval=FALSE}
+plot(treatment, type="o", col="blue", ylim=c(0,100))
+```
+Plot control with red dashed line and square points
+```{r,eval=FALSE}
+lines(control, type="o", pch=22, lty=2, col="red")
+```
+
+
+==========================================================
+
+Create a title with a red, bold/italic font
+```{r,eval=FALSE}
+title(main="Expression Data", col.main="red", font.main=4)
+```
+
+```{r,echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
+plot(treatment, type="o", col="blue", ylim=c(0,100))
+lines(control, type="o", pch=22, lty=2, col="red")
+title(main="Expression Data", col.main="red", font.main=4)
+```
+
+==========================================================
+
+Next let's change the axes labels to match our data and add a legend. 
+We'll also compute the y-axis values using the max function 
+so any changes to our data will be automatically 
+reflected in our graph. 
+
+Calculate range from 0 to max value of data
+```{r}
+g_range <- range(0, treatment, control)
+```
+
+range returns a vector containing the minimum and maximum of all the given arguments.
+
+Plot treatment using y axis that ranges from 0 to max value in treatment or control vector.  Turn off axes and annotations (axis labels) so we can specify them ourselves.
+
+========================================================
+
+```{r,eval=FALSE}
+plot(treatment, type="o", col="blue", ylim=g_range,axes=FALSE, ann=FALSE)
+```
+
+Make x axis using labels
+
+```{r,eval=FALSE}
+axis(1, at=1:6, lab=c("Mon","Tue","Wed","Thu","Fri","Sat"))
+```
+
+Make y axis with horizontal labels that display ticks at every 20 marks. 
+
+```{r,eval=FALSE}
+axis(2, las=1, at=20*0:g_range[2])
+```
+
+Create box around plot
+
+```{r,eval=FALSE}
+box()
+```
+
+========================================================
+
+```{r,echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
+plot(treatment, type="o", col="blue", ylim=g_range,axes=FALSE, ann=FALSE)
+axis(1, at=1:6, lab=c("Mon","Tue","Wed","Thu","Fri","Sat"))
+axis(2, las=1, at=20*0:g_range[2])
+box()
+```
+
+========================================================
+Calculate range from 0 to max value of data
+```{r}
+g_range <- range(0, treatment, control)
+```
+
+range returns a vector containing the minimum and maximum of all the given arguments.
+
+Plot treatment using y axis that ranges from 0 to max value in treatment or control vector.  Turn off axes and annotations (axis labels) so we can specify them ourselves.
+
+```{r,eval=FALSE}
+plot(treatment, type="o", col="blue", ylim=g_range,axes=FALSE, ann=FALSE)
+```
+
+========================================================
+
+Make x axis using labels
+```{r,eval=FALSE}
+axis(1, at=1:6, lab=c("Mon","Tue","Wed","Thu","Fri","Sat"))
+```
+
+Make y axis with horizontal labels that display ticks at every 20 marks. 
+
+```{r,eval=FALSE}
+axis(2, las=1, at=20*0:g_range[2])
+```
+
+Create box around plot
+```{r,eval=FALSE}
+box()
+```
+
+========================================================
+
+Plot control vector with red dashed line and square points
+
+```{r,eval=FALSE}
+lines(control, type="o", pch=22, lty=2, col="red")
+```
+
+Create a title with a red, bold/italic font
+```{r,eval=FALSE}
+title(main="Data", col.main="red", font.main=4)
+```
+
+Label the x and y axes with dark green text
+```{r,eval=FALSE}
+title(xlab="Days", col.lab=rgb(0,0.5,0))
+title(ylab="Values", col.lab=rgb(0,0.5,0))
+```
+
+========================================================
+
+Create a legend at (1, g_range[2]) that is slightly smaller (cex) and uses the same line colors and points used by the actual plots 
+
+```{r,eval=FALSE}
+legend(1, g_range[2], c("treatment","control"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2);  
+```
+
+```{r,echo=FALSE,fig.width=8,fig.height=3.5,dpi=300,out.width="1920px",height="1080px"}
+plot(treatment, type="o", col="blue", ylim=g_range,axes=FALSE, ann=FALSE)
+axis(1, at=1:6, lab=c("Mon","Tue","Wed","Thu","Fri","Sat"))
+axis(2, las=1, at=20*0:g_range[2])
+box()
+
+lines(control, type="o", pch=22, lty=2, col="red")
+title(main="Data", col.main="red", font.main=4)
+title(xlab="Days", col.lab=rgb(0,0.5,0))
+title(ylab="Values", col.lab=rgb(0,0.5,0))
+legend(1, g_range[2], c("treatment","control"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2);  
+```
+ 	
+	
+========================================================	
+	
+Bar Charts
+Let's start with a simple bar chart graphing the treatment vector: 
+Plot treatment
+
+```{r,eval=FALSE}
+barplot(treatment)
+```
+
+```{r,echo=FALSE,fig.width=8,fig.height=4,dpi=300,out.width="1920px",height="1080px"}
+barplot(treatment)
+```
+
+========================================================
+ 
+Let's now read the data from the example.txt data file, add labels, blue borders around the bars, and density lines: 
+
+Read values from tab-delimited example.txt
+```{r}
+data <- read.table("data/example.txt", header=T, sep="\t")
+```
+
+Plot treatment with specified labels for axes.  Use blue borders and diagonal lines in bars.
+
+```{r,eval=FALSE}
+barplot(data$treatment, main="Treatment", xlab="Days",ylab="values", names.arg=c("Mon","Tue","Wed","Thu","Fri","Sat"),  border="blue", density=c(10,20,30,40,50,60))
+```
+
+
+
+========================================================
+
+names.arg  is a vector of names to be plotted below each bar or group of bars. 
+density	a vector giving the density of shading lines, in lines per inch, for the bars or bar components.
+
+```{r,echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
+barplot(data$treatment, main="Treatment", xlab="Days",ylab="values", names.arg=c("Mon","Tue","Wed","Thu","Fri","Sat"),  border="blue", density=c(10,20,30,40,50,60))
+```
+
+========================================================	
+Now let's plot the treatment data using some color and show a legend: 
+
+   
+Graph data with adjacent bars using colors
+
+```{r,eval=FALSE}
+barplot(as.matrix(data), main="Data", ylab= "Total", beside=TRUE, col= c("lightblue", "mistyrose", "lightcyan","lavender", "cornsilk","maroon"))
+```
+
+Place the legend at the top-left corner with no frame
+
+```{r,eval=FALSE}
+legend("topleft", c("Mon","Tue","Wed","Thu","Fri","Sat"), cex=0.8,bty="n", 
+fill=  c("lightblue", "mistyrose", "lightcyan","lavender", "cornsilk","maroon"));
+```
+
+========================================================
+
+```{r,echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
+barplot(as.matrix(data), main="Data", ylab= "Total", beside=TRUE, col= c("lightblue", "mistyrose", "lightcyan","lavender", "cornsilk","maroon"))
+legend("topleft", c("Mon","Tue","Wed","Thu","Fri","Sat"), cex=0.8,bty="n", 
+fill=  c("lightblue", "mistyrose", "lightcyan","lavender", "cornsilk","maroon"));
+
+```
+
+========================================================	
+Histograms
+Let's start with a simple histogram plotting the distribution of the treatment vector: 
+
+Create a histogram for treatment
+```{r,eval=FALSE}
+hist(treatment)	
+```
+
+```{r,echo=FALSE,fig.width=8,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+hist(treatment)  
+```
+
+========================================================
+
+Concatenate the three vectors
+
+```{r}
+all <- c(data$control, data$treatment)
+```
+
+Create a histogram for data in light blue with the y axis ranging from 0-10
+```{r,eval=FALSE}
+hist(all, col="lightblue", ylim=c(0,10))
+```
+***
+```{r,echo=FALSE,fig.width=5,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
+hist(all, col="lightblue", ylim=c(0,10))
+```
+
+======================================================== 	
+
+Now change the breaks so none of the values are grouped together and flip the y-axis labels horizontally. 
+
+Compute the largest value used in the data
+
+```{r}
+max_num <- max(all)
+```
+
+Create a histogram for data with fire colors, set breaks so each number   is in its own group, make x axis range from 0-max_num, disable right-closing  of cell intervals, set heading, and make  y-axis labels horizontal.
+
+========================================================
+
+```{r,eval=FALSE}
+hist(all, col=heat.colors(max_num), breaks=max_num, xlim=c(0,max_num), right=F, 
+main="Histogram", las=1)	
+```
+
+breaks: a single number giving the number of cells for the histogram,
+An open interval does not include its endpoints, and is indicated with parentheses.
+
+For example (0,1) means greater than 0 and less than 1. 
+
+A closed interval includes its endpoints, and is denoted with square brackets. 
+For example [0,1] means greater than or equal to 0 and less than or equal to 1.
+
+
+
+========================================================
+
+```{r,echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
+hist(all, col=heat.colors(max_num), breaks=max_num, xlim=c(0,max_num), right=F, 
+main="Histogram", las=1)  
+```
+
+========================================================
+
+Now let's create uneven breaks and graph the probability density. 
+
+ Create uneven breaks
+```{r}
+brk <- c(0,30,40,50,60,80,100)
+```
+
+Create a histogram for all data with fire colours, set uneven breaks, make x axis range from 0-max_num, disable right-closing of cell intervals,  set heading, make y-axis labels horizontal, make axis labels smaller, make areas of each column proportional to the count
+
+========================================================
+
+```{r,eval=FALSE}
+
+hist(all, col=heat.colors(length(brk)), breaks=brk,xlim=c(0,max_num), right=F, main="Probability Density",las=1, cex.axis=0.8, freq=F)
+```
+
+ 		
+freq	logical; 
+if TRUE, the histogram graphic is a representation of frequencies
+
+if FALSE, probability densities, component density, are plotted
+
+```{r,echo=FALSE,fig.width=4,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+
+hist(all, col=heat.colors(length(brk)), breaks=brk,xlim=c(0,max_num), right=F, main="Probability Density",las=1, cex.axis=0.8, freq=F)
+```
+
+
+========================================================
+Pie Charts
+Let's start with a simple pie chart graphing the treatment vector: 
+ Create a pie chart for treatment
+```{r,eval=FALSE}
+pie(treatment)
+```
+
+```{r,echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
+pie(treatment)
+```
+
+========================================================
+
+Now let's add a heading, change the colours, and define our own labels: 
+
+Create a pie chart with defined heading and  custom colours and labels
+```{r,eval=FALSE}
+pie(treatment, main="Treatment", col= c("lightblue", "mistyrose", "lightcyan","lavender", "cornsilk","maroon"),
+    labels=c("Mon","Tue","Wed","Thu","Fri","Sat"))	
+```
+
+```{r,echo=FALSE,fig.width=5,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+pie(treatment, main="Treatment", col= c("lightblue", "mistyrose", "lightcyan","lavender", "cornsilk","maroon"),labels=c("Mon","Tue","Wed","Thu","Fri","Sat"),cex=1)  
+```
+
+========================================================
+
+Now let's change the colours, label using percentages, and create a legend: 
+Define some colours ideal for black & white print
+```{r}
+colors <- c("white","grey70","grey90","grey50","black")
+```
+
+Calculate the percentage for each day, rounded to one decimal place
+```{r}
+treatment_labels <- round(treatment/sum(treatment) * 100, 1)
+```
+
+Concatenate a '%' char after each value
+```{r}
+treatment_labels <- paste(treatment_labels, "%", sep="")
+```
+
+========================================================
+
+Create a pie chart with defined heading and custom colors and labels
+
+```{r,eval=FALSE}
+pie(treatment, main="treatment", col=colors, labels= treatment_labels,cex=0.8)
+```
+
+Create a legend at the right   
+```{r,eval=FALSE}
+legend(1.5, 0.5, c("Mon","Tue","Wed","Thu","Fri","Sat"), cex=0.8,fill=colors)	
+```
+
+========================================================
+
+```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
+pie(treatment, main="treatment", col=colors, labels= treatment_labels,cex=0.8)
+legend(1.5, 0.5, c("Mon","Tue","Wed","Thu","Fri","Sat"), cex=0.8,fill=colors)  
+```
+
+========================================================
+Dot charts
+Let's start with a simple dot chart graphing the data: 
+
+Create a dot chart for data
+Function t returns the transpose of a matrix.
+```{r,eval=FALSE}
+dotchart(t(data))	
+```
+```{r,echo=FALSE,fig.width=8,fig.height=4,dpi=300,out.width="1920px",height="1080px"}
+dotchart(t(data))  
+```
+
+========================================================
+
+Let's make the dotchart a little more colorful: 
+
+Create a colored dotchart for autos with smaller labels
+```{r,eval=FALSE}
+dotchart(t(data), color=c("red","blue","darkgreen"),main="Dotchart", cex=0.8)	
+```
+```{r,echo=FALSE,fig.width=6,fig.height=3.5,dpi=300,out.width="1920px",height="1080px"}
+dotchart(t(data), color=c("red","blue","darkgreen"),main="Dotchart", cex=0.8)  
+```
+
+Combining Plots
+======================================================== 
+
+
+R makes it easy to combine multiple plots into one overall graph, using either the par( ) or layout( ) function. 
+With the par( ) function, you can include the option mfrow=c(nrows, ncols) to create a matrix of nrows x ncols plots that are filled in by row.
+mfcol=c(nrows, ncols) fills in the matrix by columns.
+
+Define a layout with 2 rows and 2 columns
+
+```{r}
+par(mfrow=c(2,2))
+```
+
+
+========================================================
+
+Here, we will use different dataset with two columns each for treated and untreated samples.
+
+```{r}
+data1 <- read.table("data/gene_data.txt", header=T, sep="\t")
+head(data1)
+```
+
+========================================================
+
+Plot histograms for different columns in the data frame separately. This is not very efficient. you would see how to do it more efficiently using for loop later on.
+
+```{r,eval=FALSE}
+hist(data1$Untreated1)
+hist(data1$Treated2)
+hist(data1$Untreated2)
+boxplot(data1$Treated1)
+```
+
+========================================================
+
+ 
+```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
+hist(data1$Untreated1)
+```
+
+========================================================
+
+```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"} 
+hist(data1$Treated2)
+```
+
+========================================================
+
+```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
+hist(data1$Untreated2)
+```
+
+========================================================
+
+```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
+boxplot(data1$Treated1)
+```
+
+Saving your plots
+========================================================
+
+
+There are many different ways of saving your plots in R. 
+
+The only argument you would need is name of file in which you want to save the plot.
+
+Plotting commands then can be entered as usual.
+The output would be redirected to the file. 
+
+When you're done with your plotting commands, enter the dev.off() command. 
+
+
+
+```{r,eval=FALSE}
+bmp(filename, width = 480, height = 480, units = "px", point-size = 12)
+jpeg(filename, width = 480, height = 480, units = "px", point-size = 12, quality = 75)
+```
+
+========================================================
+
+Saving in bitmap format
+```{r,eval=FALSE}
+bmp(file = "control.bmp")
+plot(control)
+dev.off()
+```
+
+Saving in jpeg format
+```{r,eval=FALSE}
+jpeg(file = "control.jpg", quality = 20)
+plot(control)
+dev.off()
+```
+
+========================================================
+
+Saving in postscript format
+
+```{r,eval=FALSE}
+postscript(file = "control.ps")
+plot(control)
+dev.off()
+```
+
+```{r,eval=FALSE}
+saving in pdf format
+pdf(file = "control.pdf", paper = "A4")
+plot(control)
+dev.off()
+```
+
+Lattice R package
+========================================================
+
+
+
+Lattice is an excellent package for visualizing multivariate data. 
+It has great set of routines for quickly displaying complex data sets with ease. 
+
+Advantages of using lattice package are as following.
+
+Plots with lattice package usually look better.
+
+They can be extended in powerful ways.
+
+The resulting output can be annotated, edited and saved.
+
+========================================================
+
+Basic form for lattice function call is function.name (formula).
+
+The general arrangement of a formula in a lattice function is:
+           vertical.axis.variable ~ horizontal.axis.variable
+           
+Note that the tilde operator (i.e., ~) must be used in a lattice function call, even if the graph only   uses a single variable.
+
+For e.g., histogram(~data$x),  xyplot(data$y ~ data$x)
+
+========================================================
+
+Some of the functions available in lattice package are as following:
+Graphs for univariate data
+
+histogram(), densityplot(),bwplot()
+
+Graphs for showing quantiles of one or more distributions
+
+qqmath(),qq()
+
+Two-dimensional data
+
+xyplot() for creating scatterplots
+
+========================================================
+
+Let’s start by loading the lattice package. 
+
+```{r}
+library(lattice)
+```
+
+Read the data from file named gene_data.txt
+```{r}
+data <- read.table("data/gene_data.txt", header=T, sep="\t")
+```
+
+A simple scatter plot can be produced as,
+```{r,eval=FALSE}
+xyplot(Untreated2~Treated2, data=data)
+```
+
+========================================================
+
+```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
+xyplot(Untreated2~Treated2, data=data)
+```
+
+
+
+========================================================
+
+or the output can be redirected to an object as, 
+```{r}
+tplot<-xyplot(Untreated2~Treated2, data=data)
+```
+
+and then printed as, 
+```{r,eval=FALSE}
+print(tplot)
+```
+
+```{r,echo=FALSE,fig.width=4,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+print(tplot)
+```
+***
+The object containing the plot can further be modified. for e.g.
+```{r,eval=T,fig.width=4,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+tplot2<-update(tplot, main="Drug treatment  in Cells" )
+               
+print(tplot2)
+```
+
+========================================================
+
+Box and whisker plot can be produced with bwplot function. Here, we are again using a singer data frame which is bundled with lattice package. You would have to load lattice package first before using this database.
+
+```{r}
+head(singer)
+```
+
+
+```{r,eval=FALSE}
+
+bwplot(voice.part ~ height, data=singer, xlab="Height (inches)")
+```
+
+========================================================
+
+A density plot can be drawn with densityplot function.
+```{r,eval=FALSE}
+densityplot( ~ height | voice.part, data = singer, layout = c(2, 4), xlab = "Height (inches)", bw = 5)
+```
+
+
+qqmath function is used to draw quantile-Quantile plots of a sample against a theoretical distribution.
+```{r,eval=FALSE}
+qqmath(~ rnorm(100), distribution = function(p) qt(p, df = 10))
+ 
+```
+
+ggplot2 R package
+========================================================
+
+Let's look at how to create a scatterplot in ggplot2. We'll use the iris data frame that's automatically loaded into R.
+What does the data frame contain? We can use the head function to look at the first few rows
+```{r}
+head(iris, n = 3)  
+```
+
+========================================================
+
+ by default, head displays the first 6 rows. 
+```{r,eval=FALSE}
+head(iris, n = 10)    
+```
+
+ we can also explicitly set the number of rows to display
+
+(The data frame actually contains three types of species: setosa, versicolor, and virginica.)
+
+========================================================
+Let's plot Sepal.Length against Petal.Length using ggplot2's qplot() function.
+```{r,eval=FALSE}
+qplot(Sepal.Length, Petal.Length, data = iris)
+```
+
+Plot Sepal.Length vs. Petal.Length, using data from the `iris` data frame.
+First argument `Sepal.Length` goes on the x-axis.
+Second argument `Petal.Length` goes on the y-axis.
+ `data = iris` means to look for this data in the `iris` data frame.    
+
+ 
+
+To see where each species is located in this graph, we can color each point by adding a color = Species argument.
+```{r,eval=FALSE}
+qplot(Sepal.Length, Petal.Length, data = iris, color = Species) 
+```
+
+========================================================
+ 
+Similarly, we can let the size of each point denote petal width, by adding a size = Petal.Width argument.
+```{r,eval=FALSE}
+qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width)
+```
+
+We see that Iris setosa flowers have the narrowest petals.
+ 
+Finally, let's fix the axis labels and add a title to the plot.
+```{r,eval=FALSE}
+qplot(Sepal.Length, Petal.Length, data = iris, color = Species, xlab = "Sepal Length", ylab = "Petal Length", main = "Sepal vs. Petal Length in Fisher's Iris data")
+```
+
+
+
+
+Other common geoms
+========================================================
+
+
+
+In the scatterplot examples above, we implicitly used a point geom, the default when you supply two arguments to qplot().
+These two invocations are equivalent.
+
+```{r,eval=FALSE}
+qplot(Sepal.Length, Petal.Length, data = iris, geom = "point")
+qplot(Sepal.Length, Petal.Length, data = iris)
+```
+
+But we can also easily use other types of geoms to create more kinds of plots.
+Barcharts: geom = "bar"
+
+
+========================================================
+
+Let’s construct a data frame called movies.
+```{r}
+movies = data.frame(
+    director = c("spielberg", "spielberg", "spielberg", "jackson", "jackson"),
+    movie = c("jaws", "avatar", "schindler's list", "lotr", "king kong"),
+    minutes = c(124, 163, 195, 600, 187)
+)
+```
+
+Plot the number of movies each director has.
+```{r,eval=FALSE}
+qplot(director, data = movies, geom = "bar", ylab = "# movies")
+```
+
+========================================================
+By default, the height of each bar is simply a count. But we can also supply a different weight.
+Here the height of each bar is the total running time of the director's movies.
+
+```{r,eval=FALSE}
+qplot(director, weight = minutes, data = movies, geom = "bar", ylab = "total length (min.)")
+```
+
+Line charts: geom = "line"
+========================================================
+
+```{r,eval=FALSE}
+qplot(Sepal.Length, Petal.Length, data = iris, geom = "line", color = Species) 
+```
+
+`Orange` is another built-in data frame that describes the growth of orange trees.
+
+```{r,eval=FALSE}
+qplot(age, circumference, data = Orange, geom = "line", colour = Tree,
+    main = "How does orange tree circumference vary with age?")
+```
+
+We can also plot both points and lines.
+```{r,eval=FALSE}
+qplot(age, circumference, data = Orange, geom = c("point", "line"), colour = Tree)
+```
+
+Statistics in R
+=========================================================
+type:section
+id: stats
+
+
+
+Statistics in R
+=========================================================
+
+R has a powerful set of statistical methods.
+Including:
+- Standard statistical tests
+- Statistical modelling
+- Further methods available in add on packages
+
+Tables and Frequencies
+=========================================================
+
+One of the simplest statistical tools are **summary()** and **table()**. These functions provide descriptive statistics for data frames and character vectors or factors.
+
+```{r}
+patientName <- c("patient1","patient2","patient3","patient4")
+patientType <- factor(rep(c("male","female"),2))
+survivalTime <- c(1,30,2,20)
+dfExample <- data.frame(Name=patientName,Type=patientType,Survival_Time=survivalTime)
+```
+The table() provides a breakdown of frequency of occurrence of all unique values in vector or factor.
+```{r}
+table(patientType)
+```
+
+Tables and Frequencies
+=========================================================
+
+**summary()** provides a breakdown of occurrence for all character or factor columns and min,max,mean and quantiles for numeric columns.
+
+```{r}
+summary(dfExample)
+```
+
+Tables and Frequencies (continued)
+=========================================================
+
+The **table()** function can be used to generate frequency tables across data.frames.
+```{r}
+table(dfExample)
+```
+
+Tables and Frequencies (continued)
+=========================================================
+
+**ftable()** function provides a method to generate or print the results from table()
+in a neater format.
+
+```{r}
+ftable(dfExample)
+```
+Correlation
+=========================================================
+
+A common task in statistical analysis is to investigate the relationship between pairs of numeric vectors.
+
+This can be done by identifying the correlation between numeric vectors using the **cor()** function in R.
+
+In this example we use cor() to identify the pearson between two variables.  The **method** argument may be set to make use of different correlation methods.
+
+- Perfectly posively correlated vectors will return 1
+- Perfectly negatively correlated vectors will return -1
+- Vectors showing no or little correlation will be close to 0.
+
+Correlation
+=========================================================
+
+```{r}
+x <- rnorm(100,10,2)
+z <- rnorm(100,10,2)
+y <- x
+cor(x,y) # 
+cor(x,-y)
+cor(x,z)
+```
+***
+```{r,echo=F}
+par(mfrow=c(3,1))
+plot(x,y) # 
+plot(x,-y)
+plot(x,z)
+
+par(mfrow=c(1,1))
+```
+
+
+Correlation (Continued)
+=========================================================
+left: 70%
+Often we wish to apply correlation analysis to all columns or rows in a matrix in a pair-wise manner. To do this in R, we can simply pass the **cor()** function a single argument of the numeric matrix of interest. The **cor()** function will then perform all pair-wise correlations between columns.
+
+```{r,echo=F}
+kable(minRep[1:2,])
+```
+
+```{r,eval=F}
+cor(minRep)[1:2,2:5]
+```
+```{r,echo=F}
+cor(minRep)[1:2,2:5,drop=F]
+```
+
+Correlation (Continued)
+=========================================================
+
+```{r,eval=F,echo=T,fig.width=4,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+image(cor(minRep),axes=F)
+axis(1,at=seq(0,1,length.out=6), colnames(minRep))
+axis(2,at=seq(0,1,length.out=6), colnames(minRep))
+```
+***
+```{r,eval=T,echo=F,fig.width=4,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+image(cor(minRep),axes=F)
+axis(1,at=seq(0,1,length.out=6),gsub(".*_","",colnames(minRep)),las=2)
+axis(2,at=seq(0,1,length.out=6),rev(gsub(".*_","",colnames(minRep))),las=2)
+```
+
+Distributions
+=========================================================
+
+R comes with functions for extracting information from most common distibutions types.
+An example of standard R functions for dealing with distibution can be seen here using the normal distributions.
+
+- pnorm - cumulative distribution for x
+- qnorm - inverse of pnorm (from probability gives x)
+- dnorm - distribution density
+- rnorm - random number from normal distribution
+
+***
+
+![alt text](Dist.jpg)
+
+Distributions
+=========================================================
+
+Similar functions are available for other distibution types including:
+- pbinom (binomial)
+- pnbinom (negative binomial),
+- phyper (hyper-geometric)
+- pt (T distribution)
+
+Distributions (Examples)
+=========================================================
+
+We can use rnorm to generate random values following a normal distribution. Here we produce 10 normally distributed numeric values with mean 8 and standard deviation of 3
+```{r}
+rnorm(10,mean=8,sd=3)
+```
+We can also use these functions to interrogate values assuming a normal distribution for the data.
+
+The probablity of a value being exactly 8 for a distribution of mean 8 and standard deviation 3. 
+
+```{r}
+dnorm(8,mean=8,sd=3)
+```
+
+Distributions (Examples)
+=========================================================
+
+The probablity of a value being less than 8 for a distribution of mean 8 and standard deviation 3. 
+
+```{r}
+pnorm(8,mean=8,sd=3)
+```
+
+The value for which i have a 50 percent being greater than given a normal distribution of mean 8 and standard deviation 3. 
+
+```{r}
+qnorm(0.5,mean=8,sd=3)
+```
+
+Statistical tests
+=========================================================
+
+On top of descriptive statistics, R has several statistical tests covering a range of problems and data types.
+
+Some of the most used tests of two samples include: 
+
+- var.test() - Comparing 2 variances (Fisher's F test)
+
+- t.test() - Comparing 2 sample means with normal errors (Student's t-test)
+
+- wilcox.test() - Comparing 2 means with non-normal errors (Wilcoxon's rank test)
+
+- fisher.test() - Testing for independence of 2 variables in a contingency table (Fisher's exact test)
+
+
+T-test example
+=========================================================
+
+To perform a t-test we will read in some datasets, test that the variances of the datasets are equal and then perform the actual t-tests.
+
+
+```{r}
+tTestExample <- read.table("data/tTestData.csv",sep=",",header=T)
+tTestExample
+```
+
+T-test example
+=========================================================
+
+First we can specify the columsn of interest using **$** and calculate their variance using **var()**.
+
+```{r}
+var(tTestExample$A)
+var(tTestExample$B)
+var(tTestExample$C)
+```
+
+T-test example
+=========================================================
+
+Now we can test for any differences in variances between A and B and A and C with an F-test using the **var.test()** function.
+
+```{r}
+var.test(tTestExample$A,tTestExample$B)
+var.test(tTestExample$A,tTestExample$C)
+```
+
+R objects (s3 and s4)
+=========================================================
+Left:30%
+The data type holding the result **var.test()** is a little more complex than the data types we have looked. 
+
+In R, special objects (S3 or S4 objects) can be created which have methods associated to them. The result from var.test is an object of class **htest**.
+
+Since we have come across this before, in order to discover its structure we can use the **str()** function with the object of interest as the argument.
+***
+```{r}
+result <- var.test(tTestExample$A, tTestExample$B)
+str(result)
+```
+
+R objects (s3 and s4)
+=========================================================
+Now we know the structure and class of the htest object we can access the **slots** realting to information we want just as with a named list.
+
+The p-value
+```{r}
+result$p.value
+```
+
+The statistic
+```{r}
+result$statistic
+```
+
+The data used in function call
+```{r}
+result$data.name
+```
+
+T-test example
+=========================================================
+
+Now we have ascertained that GroupA and GroupB have similar variances. We can therefore perform a standard t-test to assess the significance of differences betweem the groups.
+
+```{r}
+Result <- t.test(tTestExample$A,tTestExample$B,alternative ="two.sided", var.equal = T)
+Result
+```
+
+T-test example (Unequal variance)
+=========================================================
+
+To compare groups of unequal variance then the **var.equal** argument may be set to FALSE (which is the default).
+```{r}
+Result <- t.test(tTestExample$A,tTestExample$C,alternative ="two.sided", var.equal = F)
+Result
+
+```
+
+T-test example 
+=========================================================
+
+The same result to that shown could be achieved by specifying a formula for the comparison.
+Here we wish to compare column A versus B so we could simply specify the formula and the data to be used.
+
+```{r}
+longFrame <- data.frame(Group = c(rep("A",nrow(tTestExample)),rep("B",nrow(tTestExample))), Value=c(tTestExample$A,tTestExample$B))
+
+result <- t.test(Value~Group,longFrame,alternative ="two.sided",
+                 var.equal = T)
+result
+```
+
+
+Regression and linear models
+=========================================================
+
+We have seen how we can find the correlation between two sets of variables using cor() function.
+
+R also provides a comprehensive set of tools for regression analysis including the well used linear modelling function lm()
+
+To fit a linear regression we use a similar set of arguments as passed to the t-test fuction in the previous slide.
+
+```{r,echo=T,prompt=T}
+lmExample <- read.table("data/lmExample.txt",h=T,sep="\t")
+```
+```{r,echo=T,prompt=T}
+lmResult <- lm(Y~X,data=lmExample)
+plot(Y~X,data=lmExample,main="Line of best fit with lm()",
+     xlim=c(0,150),ylim=c(0,200))
+abline(lmResult,col="red",lty=3,lwd=3)
+```
+
+The lm() function
+=========================================================
+
+The lm() function fits a linear regression to your data and provides useful information on the generated fit.
+
+In the example below we fit a linear model using  lm() on the lmExample dataset with column Y as the dependent variable and column X as the explanatory variable.
+
+```{r,echo=T,prompt=T}
+lmResult <- lm(Y~X,data=lmExample)
+lmResult
+```
+
+Printing the result from lm() shows the call to lm() and the coefficients including the intercept.
+
+The lm() function
+=========================================================
+
+From the previous slides we now know the formula for the line.
+
+**Y = 7.001 + 1.972*X**
+
+We can add the line of best fit using **abline()**
+
+```{r,echo=T,prompt=T}
+plot(Y~X,data=lmExample,main="Line of best fit with lm()",
+     xlim=c(0,100),ylim=c(0,200))
+abline(lmResult,col="red",lty=3,lwd=3)
+```
+
+Interpreting output of lm()
+=========================================================
+As we have seen, printing the model result provides the intercept and slope of line.
+
+To get some more information on the model we can use the summary() function
+
+```{r,prompt=T}
+summary(lmResult)
+```
+
+
+Interpreting output of lm() - Residuals
+=========================================================
+
+```{r,prompt=T,echo=F}
+summary(lmResult)
+```
+
+***
+The **residuals** are the difference between the predicted and actual values.
+To retrieve the residuals we can access the slot or use the resid() function.
+
+```{r,prompt=T,echo=T}
+summary(resid(lmResult))
+summary(lmResult$residual)
+```
+Ideally you would want your residuals to be normally distributed around 0 indicating a good correspondence between predicted and actual values.
+
+Interpreting output of lm() (R-squared...)
+=========================================================
+
+```{r,prompt=T,echo=F}
+summary(lmResult)
+```
+
+The **R-squared** value represents the proportion of variability in the response variable that is explained by the explanatory variable.
+
+A high **R-squared** here indicates that the line fits closely to the data.
+
+Interpreting output of lm() (Per variable p-values and the F-statistic)
+=========================================================
+
+```{r,prompt=T}
+summary(lmResult)
+```
+
+The results from linear models also provides a measure of significance for a variable not being relevant in **Pr(>|t|)** column. A low p-value suggests the variable is useful in prediction of the dependent variable.
+
+Time for an exercise!
+========================================================
+
+Exercise on statistics can be found [here](exercises/Statistics_Exercise.html)
+
+Answers to exercise.
+========================================================
+
+Answers can be found here  [here](answers/Statistics_Answers.html)
+
+End of Session 1
+====
