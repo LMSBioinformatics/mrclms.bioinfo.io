@@ -1,12 +1,14 @@
 Introduction to R, Session 2
 ========================================================
-author: Computational Biology Week
+author: MRC Clinical Sciences Centre
+date:http://mrccsc.github.io/r_course/introToR_Session2.html
 width: 1440
 height: 1100
 autosize: true
 font-import: <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 font-family: 'Slabo 27px', serif;
 css:style.css
+
 
 Overview
 ========================================================
@@ -16,8 +18,6 @@ Overview
 - [Defining functions](#/functions)
 - [Writing scripts](#/scripts)
 - [Libraries](#/libraries)
-
-
 
 
 Recap on what we have covered. 
@@ -674,7 +674,7 @@ mean(x)
 ```
 
 ```
-[1] 70.59678
+[1] 71.00576
 ```
 
 ```r
@@ -843,7 +843,7 @@ $Calculation
 [1] 100
 
 $DateRun
-[1] "Fri Jan 30 00:44:34 2015"
+[1] "Fri Jan 30 01:50:23 2015"
 ```
 
 Scope
