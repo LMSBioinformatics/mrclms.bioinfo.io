@@ -940,12 +940,12 @@ mergedDF
 Time for an exercise!
 ========================================================
 
-Exercise on data frames and factors can be found [here](exercises/factorsAndDataframes_exercise.html)
+Exercise on data frames and factors can be found [here](exercises/factorsAndDataframes_Exercise.html)
 
 Answers to exercise.
 ========================================================
 
-Answers can be found here  [here](answers/factorsAndDataframes_answers.html)
+Answers can be found here  [here](answers/factorsAndDataframes_Answers.html)
 
 
 Lists
@@ -1159,7 +1159,7 @@ write.table(Table,file="data/writeThisTable.csv", sep=",", row.names =F,col.name
 Time for an exercise!
 ========================================================
 
-Exercise on reading and writing data can be found [here](exercises/DataInputOutput_exercise.html)
+Exercise on reading and writing data can be found [here](exercises/DataInputOutput_Exercise.html)
 
 Answers to exercise.
 ========================================================
@@ -2389,7 +2389,7 @@ The results from linear models also provides a measure of significance for a var
 Time for an exercise!
 ========================================================
 
-Exercise on statistics can be found [here](exercises/Statistics_Exercise.html)
+Exercise on statistics can be found [here](exercises/Statistics_Exercises.html)
 
 Answers to exercise.
 ========================================================

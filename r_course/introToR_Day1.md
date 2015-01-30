@@ -1763,12 +1763,12 @@ mergedDF
 Time for an exercise!
 ========================================================
 
-Exercise on data frames and factors can be found [here](exercises/factorsAndDataframes_exercise.html)
+Exercise on data frames and factors can be found [here](exercises/factorsAndDataframes_Exercise.html)
 
 Answers to exercise.
 ========================================================
 
-Answers can be found here  [here](answers/factorsAndDataframes_answers.html)
+Answers can be found here  [here](answers/factorsAndDataframes_Answers.html)
 
 
 Lists
@@ -1995,14 +1995,14 @@ A standard format for this data is a table
 
 |Gene_Name | Sample_1.hi| Sample_2.hi| Sample_3.hi| Sample_4.low| Sample_5.low| Sample_1.low|
 |:---------|-----------:|-----------:|-----------:|------------:|------------:|------------:|
-|Gene_a    |    5.457789|    1.619319|    4.441929|     5.711578|     4.649543|     3.158155|
-|Gene_b    |    1.783052|    4.133761|    5.965229|     2.472260|     3.720616|     3.143116|
-|Gene_c    |    2.132356|    2.861307|    3.054357|     3.281197|     4.584803|     4.636415|
-|Gene_d    |    5.109837|    4.295423|    4.867111|     9.490199|     6.789359|     7.717244|
-|Gene_e    |   10.369733|    9.739275|    8.329301|     3.487725|     3.687073|     4.693249|
-|Gene_f    |    9.581390|   10.043750|    9.309314|     3.878767|     3.145258|     3.359279|
-|Gene_g    |    8.980380|   10.938152|   10.348802|     9.055959|     9.746698|    10.143789|
-|Gene_h    |   10.415037|    9.206309|    8.836513|     8.974971|    11.102309|    11.287705|
+|Gene_a    |    4.281063|    4.021768|    4.218502|     3.594199|     3.760954|     3.743212|
+|Gene_b    |    4.421499|    2.417296|    3.842216|     2.288641|     4.702061|     2.810322|
+|Gene_c    |    3.537418|    3.417591|    4.700026|     2.499635|     1.306095|     2.737205|
+|Gene_d    |    5.113768|    5.553889|    4.840274|     7.748059|     6.977590|     7.322623|
+|Gene_e    |    7.799257|   10.238426|    7.787832|     3.041686|     3.494191|     3.105176|
+|Gene_f    |    9.114454|    9.850363|   10.533394|     1.827185|     3.711073|     1.675599|
+|Gene_g    |   10.693917|    9.900410|    9.514511|     9.157943|    10.554793|     9.455736|
+|Gene_h    |    7.860219|   10.583913|   11.159141|    11.361783|    10.220512|    10.695310|
 
 Data from text file
 =========================================================
@@ -2136,7 +2136,7 @@ write.table(Table,file="data/writeThisTable.csv", sep=",", row.names =F,col.name
 Time for an exercise!
 ========================================================
 
-Exercise on reading and writing data can be found [here](exercises/DataInputOutput_exercise.html)
+Exercise on reading and writing data can be found [here](exercises/DataInputOutput_Exercise.html)
 
 Answers to exercise.
 ========================================================
@@ -3177,7 +3177,7 @@ cor(x,z)
 ```
 
 ```
-[1] 0.07810955
+[1] 0.02873463
 ```
 ***
 ![plot of chunk unnamed-chunk-204](introToR_Day1-figure/unnamed-chunk-204-1.png) 
@@ -3191,8 +3191,8 @@ Often we wish to apply correlation analysis to all columns or rows in a matrix i
 
 | Sample_1.hi| Sample_2.hi| Sample_3.hi| Sample_4.low| Sample_5.low| Sample_1.low|
 |-----------:|-----------:|-----------:|------------:|------------:|------------:|
-|    5.457789|    1.619319|    4.441929|     5.711578|     4.649543|     3.158155|
-|    1.783052|    4.133761|    5.965229|     2.472260|     3.720616|     3.143116|
+|    4.281063|    4.021768|    4.218502|     3.594199|     3.760954|     3.743212|
+|    4.421499|    2.417296|    3.842216|     2.288641|     4.702061|     2.810322|
 
 
 ```r
@@ -3201,8 +3201,8 @@ cor(minRep)[1:2,2:5]
 
 ```
             Sample_2.hi Sample_3.hi Sample_4.low Sample_5.low
-Sample_1.hi   0.8553563   0.8364593    0.3695461    0.3834859
-Sample_2.hi   1.0000000   0.9574727    0.2349556    0.3603539
+Sample_1.hi    0.902912   0.8823816    0.4083103    0.5904060
+Sample_2.hi    1.000000   0.9340463    0.4591723    0.5118629
 ```
 
 Correlation (Continued)
@@ -3251,8 +3251,8 @@ rnorm(10,mean=8,sd=3)
 ```
 
 ```
- [1]  5.484417 11.440452 11.090665  8.992815  7.155247 10.069193  3.936759
- [8] 10.372043  9.506874  3.893899
+ [1] 11.311561 11.763635 13.775363  6.182365  6.556535 10.331488  6.918469
+ [8]  4.315609  7.034768  8.159046
 ```
 We can also use these functions to interrogate values assuming a normal distribution for the data.
 
@@ -3765,7 +3765,7 @@ The results from linear models also provides a measure of significance for a var
 Time for an exercise!
 ========================================================
 
-Exercise on statistics can be found [here](exercises/Statistics_Exercise.html)
+Exercise on statistics can be found [here](exercises/Statistics_Exercises.html)
 
 Answers to exercise.
 ========================================================
