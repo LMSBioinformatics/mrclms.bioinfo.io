@@ -1998,6 +1998,14 @@ We can also plot both points and lines.
 qplot(age, circumference, data = Orange, geom = c("point", "line"), colour = Tree)
 ```
 
+Time for an exercise!
+========================================================
+Exercise on Plotting can be found [here](exercises/Plotting_exercise.html)
+Answers to exercise.
+========================================================
+Answers can be found here [here](answers/Plotting_answers.html)
+
+
 Statistics in R
 =========================================================
 type:section

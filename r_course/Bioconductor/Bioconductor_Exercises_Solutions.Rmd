@@ -195,7 +195,6 @@ seq = getSequence(id=symbols,
 ```
 
 
-
 Additional Exercise
 ----------------------------------------------------------------------
 
