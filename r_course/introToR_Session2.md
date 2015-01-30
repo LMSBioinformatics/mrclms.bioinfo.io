@@ -23,7 +23,7 @@ Overview
 Recap on what we have covered. 
 ========================================================
 
-Day 1 covered introduction to R data types, inputing data, plotting and statistics.
+Session 1 covered introduction to R data types, inputing data, plotting and statistics.
 
 - [Background to R](#/background)
 - [Data types in R](#/datatypes)
@@ -31,7 +31,7 @@ Day 1 covered introduction to R data types, inputing data, plotting and statisti
 - [Plotting in R](#/plotting)
 - [Statistics in R](#/stats)
 
-Recap on what we have covered. 
+Recap (1/3) 
 ========================================================
 
 R stores data in five main data types.
@@ -42,7 +42,7 @@ R stores data in five main data types.
 - **Data frame** - Table (ordered 2D array) of multiple data types of same length.
 - **List** - Ordered collection of multiple data types of differing length
 
-Recap.
+Recap.(2/3)
 ========================================================
 
 Data can be read into R as a table with the **read.table()** function and written to file with the **write.table()** function.
@@ -68,11 +68,45 @@ Gene_c     3.780917
 write.table(Table,file="data/writeThisTable.csv", sep=",", row.names =F,col.names=T)
 ```
 
+Recap.(3/3)
+========================================================
+
+R has a rich set of statistical functions.
+
+
+```r
+1- pnorm(8,mean=8,sd=3)
+```
+
+```
+[1] 0.5
+```
+
+```r
+tTestExample <- read.table("data/tTestData.csv",sep=",",header=T)
+Result <- t.test(tTestExample$A,tTestExample$B,alternative ="two.sided", var.equal = T)
+Result
+```
+
+```
+
+	Two Sample t-test
+
+data:  tTestExample$A and tTestExample$B
+t = -41.3528, df = 18, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -14.60253 -13.19051
+sample estimates:
+mean of x mean of y 
+ 26.50152  40.39804 
+```
+
 Conditions and Loops
 =====================
 type:section
 
-Control Structure and Loops
+Conditions and Loops (1/21)
 ========================================================
 
 We have looked at using logical vectors as a way to index other data types
@@ -89,20 +123,22 @@ x[x < 4]
 Logicals are also used in controlling how scripted procedures execute.
 
 
-Two important control structures
+Conditions and Loops (2/21) - Two important control structures
 ========
+
+
 
 - Conditional branching (if,else)
 - Loops (for, while)
 
 **While** I'm analysing data, **if** I need to execute complex statistical procedures on the data I will use R **else** I will use a calculator.
 
-Conditional Branching.
+Conditions and Loops (3/21) - Conditional Branching.
 ========
 
-Conditional Branching is evaluation of a logical to determine whether a chunk of code is executed.
+Conditional Branching is the evaluation of a logical to determine whether a chunk of code is executed.
 
-In the R we use the **if** statement with the logical to be evaluated in **()** and dependent code to be executed in **{}**.
+In R, we use the **if** statement with the logical to be evaluated in **()** and dependent code to be executed in **{}**.
 
 
 ```r
@@ -122,10 +158,10 @@ if(x){
   message("x is true")
 }
 ```
-Evaluating in if() statements
+Conditions and Loops (4/21) - Evaluating in if() statements
 ====
 
-More often, we construct the logical value within **()** itself.This can be term the **condition**. 
+More often, we construct the logical value within **()** itself.This can be termed the **condition**. 
 
 
 ```r
@@ -152,7 +188,7 @@ Here, x is not longer greater than y, so no message is printed.
 
 We really still want a message telling us what was the result of the condition.
 
-else following an if().
+Conditions and Loops (5/21) -else following an if().
 ========================
 
 If we want to perform an operation when the condition is false we can follow the if() statement with an else statement.
@@ -197,10 +233,10 @@ if(x < 5){
 
 
 
-else if
+Conditions and Loops (6/21) - else if
 ===========
 
-We may wish to execute different procedures under multiple conditions. This can be control in R using the else if() following an initial if() statement.
+We may wish to execute different procedures under multiple conditions. This can be controlled in R using the else if() following an initial if() statement.
 
 ```r
 x <- 5
@@ -217,10 +253,10 @@ if(x > 5){
 5 is 5
 ```
 
-ifelse()
+Conditions and Loops (7/21) -ifelse()
 ======
 
-A useful function to evaluate condition statements over vectors is the ifelse() function.
+A useful function to evaluate conditional statements over vectors is the **ifelse()** function.
 
 
 ```r
@@ -240,7 +276,7 @@ ifelse(x <= 3,"lessOrEqual","more")
  [6] "more"        "more"        "more"        "more"        "more"       
 ```
 
-This allows for multiple nested else if statements to be applied to vectors.
+This allows for multiple nested "else if" statements to be applied to vectors.
 
 
 ```r
@@ -252,19 +288,19 @@ ifelse(x == 3,"same",
 ```
  [1] "less" "less" "same" "more" "more" "more" "more" "more" "more" "more"
 ```
-Loops
+Conditions and Loops (8/21) -Loops
 ======
 
 The two main generic methods of looping in R are **while** and **for**
 
-- **while** - *while* loops repeat the execution of code while a condition evaluates as false.
+- **while** - *while* loops repeat the execution of code while a condition evaluates as true.
 
 - **for** - *for* loops repeat the execution of code for a range of specified values.
 
-While loops
+Conditions and Loops (9/21) -While loops
 =====
 
-While loops are most useful if you know the condition will be satisified but are not sure when. (i.e. Looking for a when a number first occurs in a list).
+While loops are most useful if you know the condition will be satisified but are not sure when. (i.e. Looking for a point when a number first occurs in a list).
 
 ```r
 x <- 1
@@ -287,13 +323,12 @@ message("Finally x is 3")
 Finally x is 3
 ```
 
-For loops
+Conditions and Loops (10/21) -For loops
 =====
-
 
 For loops allow the user to cycle through a range of values applying an operation for every value.
 
-Here we cycle through a numeric vector and print out its value
+Here we cycle through a numeric vector and print out its value.
 
 ```r
 x <- 1:5
@@ -322,10 +357,10 @@ LoopA LoopB LoopC LoopD LoopE
 
 
 
-Looping through indices
+Conditions and Loops (11/21) - Looping through indices
 =====
 
-We may wish to keep track of the position in x we are evaluating to retrieve the same index in other variables. A common practice is loop though all possible index positions of x using the expression **1:length(x)**.
+We may wish to keep track of the position in x we are evaluating to retrieve the same index in other variables. A common practice is to loop though all possible index positions of x using the expression **1:length(x)**.
 
 
 ```r
@@ -350,7 +385,7 @@ Myc has an RPKM of 4.3
 Igll1 has an RPKM of 6.5
 ```
 
-Loops and conditionals
+Conditions and Loops (12/21) -Loops and conditionals
 =======================
 Left:60%
 Loops can be combined with conditional statements to allow for complex control of their execution over R objects. 
@@ -387,10 +422,10 @@ Number 12 is greater than 10
 Number 13 is greater than 10
 ```
 
-Breaking loops
+Conditions and Loops (13/21) - Breaking loops
 =====
 
-We can use conditionals to exit a loop if a condition is satisfied, just a while loop.
+We can use conditionals to exit a loop if a condition is satisfied, just a like while loop.
 
 
 ```r
@@ -422,18 +457,18 @@ Number 9 is less than 10
 Number 10 is  10
 ```
 
-Functions to loop over data types
+Conditions and Loops (14/21) -Functions to loop over data types
 ================================
 
 There are functions which allow you to loop over a data type and apply a function to the subsection of that data.
 
 - **apply** - Apply function to rows or columns of a matrix/data frame and return results as a vector,matrix or list.
 
-- **lapply** - Apply function to every element of a vector or list and return results as a vector.
+- **lapply** - Apply function to every element of a vector or list and return results as a list.
 
 - **sapply** - Apply function to every element of a vector or list and return results as a vector,matrix or list.
 
-apply()
+Conditions and Loops (15/21) - apply()
 =========
 
 The **apply()** function applys a function to the rows or columns of a matrix. The arguments **FUN** specifies the function to apply and **MARGIN** whether to apply the functions by rows/columns or both.
@@ -443,9 +478,9 @@ apply(DATA,MARGIN,FUN,...)
 ```
 
 - **DATA** - A matrix (or something to be coerced into a matrix)
-- **MARGIN** - 1 for rows, 2 for columns, (1,2) for cells
+- **MARGIN** - 1 for rows, 2 for columns, c(1,2) for cells
 
-apply()
+Conditions and Loops (16/21) - apply() example
 ====
 
 ```r
@@ -477,7 +512,7 @@ apply(matExample,2,mean)
 [1] 2 3
 ```
 
-Additional arguments
+Conditions and Loops (16/21) - Additional arguments to apply
 =====================
 Additional arguments to be used by the function in the apply loop can be specified after the function argument. 
 
@@ -493,7 +528,7 @@ apply(matExample,1,paste,collapse=";")
 [1] "1;2" "3;4"
 ```
 
-lapply()
+Conditions and Loops (17/21) - lapply()
 ====
 
 Similar to apply, **lapply** applies a function to every element of a vector or list. 
@@ -531,7 +566,7 @@ lapply(list(1,NA,2),mean,na.rm=T)
 [1] 2
 ```
 
-sapply
+Conditions and Loops (18/21) -sapply()
 =====
 
 **sapply** (*smart apply*) acts as lapply but attempts to return the results as the most appropriate data type.
@@ -556,7 +591,7 @@ sapply(exampleList,mean,na.rm=T)
 [1] 1 2 3 4 5
 ```
 
-sapply
+Conditions and Loops (19/21) - sapply() example
 =====
 
 In this example lapply returns a list of vectors from the quantile function.
@@ -598,7 +633,7 @@ $row3
   11   12   13   14   15 
 ```
 
-sapply
+Conditions and Loops (20/21) - sapply() example 2
 =====
 
 Here is an example of sapply parsing a result from the quantile function in a *smart* way.
@@ -619,10 +654,11 @@ sapply(exampleList,quantile)
 100%    5   10   15
 ```
 
-sapply
+Conditions and Loops (21/21) - sapply() example 4
 =====
 
 When sapply cannot parse the result to a vector or matrix, a list will be returned.
+
 
 ```r
 exampleList <- list(df=data.frame(sample=paste0("patient",1:2), data=c(1,12)), vec=c(1,3,4,5))
@@ -659,10 +695,10 @@ Functions
 type:section
 
 
-Functions
+Functions (1/) - Built in functions
 ===
 
-As we have seen, a function is command which require one or more arguments and returns a single R object. 
+As we have seen, a function is command which requires one or more arguments and returns a single R object. 
 
 This allows for the user to perform complex calculations and prodecures with one simple operation.
 
@@ -674,7 +710,7 @@ mean(x)
 ```
 
 ```
-[1] 71.00576
+[1] 69.82093
 ```
 
 ```r
@@ -689,15 +725,15 @@ plot(Y~X,data=lmExample,main="Line of best fit with lm()",
 abline(lmResult,col="red",lty=3,lwd=3)
 ```
 
-![plot of chunk unnamed-chunk-33](introToR_Session2-figure/unnamed-chunk-33-1.png) 
+![plot of chunk unnamed-chunk-35](introToR_Session2-figure/unnamed-chunk-35-1.png) 
 
 
-Defining your own functions
+Functions (2/) - Functions can be defined in R
 ======
 
 Although we have access to many built functions in R, there will be many complex tasks we wish to perform regularly which are particular to our own work and for which no suitable function exists. 
 
-For these tasks we can construct your own functions with **function()**
+For these tasks we can construct our own functions with **function()**
 
 ```
 Function_Name <- function(Arguments){
@@ -706,13 +742,13 @@ Function_Name <- function(Arguments){
 }
 ```
 
-Defining your own functions
+Functions (3/) - Defining your own functions
 ======
 
 To define a function with **function()** we need to decide 
 - the argument names within **()**
 - the expression to be evaluated within **{}** 
-- the variable the function will be assigned to with **<-**.
+- the variable to which the function will be assigned  with **<-**.
 - the output from the function using **return()** 
 
 **Function_name** <- function(**Argument1**,**Argument2**){ **Expression**}
@@ -731,7 +767,7 @@ myFirstFunction(4,5)
 ```
 
 
-Default arguments
+Functions (4/) - Default arguments
 ====
 
 In functions, a default value for an argument may be used.
@@ -761,7 +797,7 @@ mySecondFunction(4)
 ```
 
 
-Missing Arguments
+Functions (5/) -Missing Arguments
 ====
 
 In some cases a function may wish to deal with missing arguments in a different way to setting a generic default for the argument. The missing() function can be used to evaluate whether an argument has been defined 
@@ -789,10 +825,10 @@ Value for myArgument2 not provided so will square myArgument1
 ```
 
 
-Returning objects from functions
+Functions (6/) -Returning objects from functions
 ====
 
-We have seen a function returns the value within the return() function.If no return is specified, the result of last line evaluated in the function is returned.
+We have seen that a function returns the value within the return() function. If no return is specified, the result of last line evaluated in the function is returned.
 
 
 ```r
@@ -822,10 +858,10 @@ myfifthFunction(4,5)
 
 Note that the print() statment after the return() is not evaluated in myforthFuntion.
 
-Returning lists from functions
+Functions (7/) - Returning lists from functions
 ====
 
-The return() function can only return one R object at a time. To return multiple data objects from one function call, a list can be used to contain other data objects.
+The **return()** function can only return one R object at a time. To return multiple data objects from one function call, a list can be used to contain other data objects.
 
 
 ```r
@@ -843,13 +879,13 @@ $Calculation
 [1] 100
 
 $DateRun
-[1] "Fri Jan 30 01:50:23 2015"
+[1] "Fri Jan 30 13:14:45 2015"
 ```
 
-Scope
+Functions (8/) -Scope
 ======
 
-When arguments are created within a function, they only exist with that function and disappear once function is complete.
+When arguments or variables are created within a function, they only exist within that function and disappear once the function is complete.
 
 
 ```r
@@ -878,7 +914,7 @@ Error in eval(expr, envir, enclos): object 'arg1' not found
 Time for an exercise!
 ========================================================
 
-Exercise on loops and conditional branching can be found [here](Functions_Exercises.html)
+Exercise on functions can be found [here](Functions_Exercises.html)
 
 Answers to exercise.
 ========================================================

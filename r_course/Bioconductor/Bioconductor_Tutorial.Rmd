@@ -9,6 +9,15 @@ output:
   slidy_presentation: default
 transition: faster
 ---
+## Overview
+
+- Introduction to Bioconductor
+- GenomicRanges
+- Reading Sequence alignemnts
+- Annotations
+- Exercises
+
+
 ## Bioconductor
 Bioconductor (BioC) is an open source, open development software project to provide tools for the analysis and comprehension of high-throughput genomic data 
 
@@ -63,30 +72,8 @@ library("limma")
 sessionInfo()
 ```
 
-## Basic classes of BioC packages {#highlight1 .smaller}
-- General infrastructure
-    - Biobase, IRanges, GenomicRanges, Biostrings, BSgenome, GenomicFeatures
-- Annotation
-    - annotate, biomaRt, AnnotationDb
-- Visualisation
-    - geneplotter, ggbio, Gviz
-- Transcription Factor motif search
-    - PWMEnrich, MotifDb, 
-- Miroarray analysis
-    - affy, affycomp, limma,
-- NGS Data analysis
-    - ShortRead, Rsamtools, GenomicRanges, GenomicAlignments, rtrackalyer
-- Graphs and Networks
-    - graph, RBGL, Rgraphviz
-- Flow Cytometry
-    - prada, flowCore, flowViz, flowUtils
-- Proteomics
-    - RforProteomics, mzR, TargetSearch, MSnbase
-- Protein Interactions
-    - ppiData, ppiStats, ScISI, Rintact
 
-
-## BioC packages for NGS Data Analysis {#highlight1 .smaller}
+## BioC packages for Sequencing Data Analysis {#highlight1 .smaller}
 - <b>Data structures</b>: IRanges, GenomicRanges, Biostrings, BSgenome
 - <b>Input/Ouput</b>: ShortRead, Rsamtools, GenomicAlignments and rtracklayer (GTF,GFF,BED)
 - <b>Annotation</b>: GenomicFeatures, BSgenome, biomaRt, TxDb.\*, org.\*
@@ -104,7 +91,7 @@ sessionInfo()
     + Collection of genes coordinates
     + Transcription factor binding sites (ChIP-Seq peaks)
     + Collection of aligned sequencing reads
-- Builds on top of Interval Ranges (IRanges) package and lays foundation for NGS analysis. 
+- Builds on top of Interval Ranges (IRanges) package and lays foundation for sequencing analysis. 
 - IRanges are collection of integer interval and GenomicRanges extends IRanges by including chromosome and strand.
 - Provides collection of functions for accessing and manipulating Genomic coordinates
 - Use cases: Identifying TF binding overlap, counting sequencing reads overlap with a gene
@@ -213,7 +200,7 @@ Subsetting GRanges
 gr1[seqnames(gr1)=="chr1"]
 ```
 
-Merge overlapping intervals
+Merge overlapping genomic ranges within the same GRanges object
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
 reduce(gr1)
 ```
@@ -221,7 +208,7 @@ reduce(gr1)
 
 ## Finding overlapping regions
 
-- One of the common tasks in NGS data analysis
+- One of the common tasks in Sequencing data analysis
 - Ex: Identifying transcription factor binding sites overlap with promoters
 - <b>findOverlaps</b> function finds intervals overlap between two GRanges object.
 - Usage: <b>function(query,subject)</b>
@@ -260,7 +247,7 @@ countOverlaps(gr1,gr2,ignore.strand=T) # note the strand!
 ```
 
 ## Computing Coverage
-<b>coverage</b> calculates how many ranges overlap individual positions in the genome. <b>coverage</b> function returns the coverage as Rle instance.
+<b>coverage</b> calculates how many ranges overlap with individual positions in the genome. <b>coverage</b> function returns the coverage as Rle instance.
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
 coverage(gr1)
 ```
@@ -271,6 +258,15 @@ coverage(gr1)
 - SAM/BAM - Sequence Alignment/Map format
 - BED
 - Wiggle/bedgraph
+
+
+<b>FASTQ</b>
+```{r, echo=TRUE, eval=FALSE, message=FALSE}
+@ERR590398.1 HWI-ST1146:148:C2FVTACXX:8:1101:1172:2059
+NAAAATGCATATTCCTAGCATACTTCCCAAACATACTGAATTATAATCTC
++ERR590398.1 HWI-ST1146:148:C2FVTACXX:8:1101:1172:2059
+A1BDFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJIJJ
+```
 
 ## BAM/SAM 
 BAM/SAM consist two sections: Header and Alignment
@@ -343,7 +339,7 @@ scanBamFlag(isPaired = NA, isProperPair = NA, isUnmappedQuery = NA,
 
 ## Reading Sequence alignments (BAM/SAM)
 
-- GenomicRanges package defines the GAlignments class – a specialised class for storing set of genomic alignments (ex: NGS data) 
+- GenomicRanges package defines the GAlignments class – a specialised class for storing set of genomic alignments (ex: sequencing data) 
 - GenomicAlignments package defines efficient ways of reading and storing short genomic alignments as GAlignments objects
 - Only BAM support now – future version may include other formats
 - The readGAlignments function takes an additional argument, <b>param</b> allowing the user to customise which genomic regions and which fields to read from BAM

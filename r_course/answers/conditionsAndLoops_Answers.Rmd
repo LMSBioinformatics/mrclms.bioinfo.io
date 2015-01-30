@@ -5,7 +5,7 @@ date: "01/01/2015"
 output: html_document
 ---
 
-These exercises cover the sections of Statistics in R [Introduction to R]("introToR_Day1.html").
+These exercises cover the sections of Conditions and Loops in R [Introduction to R]("introToR_Day1.html").
 
 -- Calculate the factorial (factorial of 3 = 3+2+1) of 10 using a loop.
 

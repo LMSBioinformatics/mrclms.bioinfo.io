@@ -16,7 +16,7 @@ These exercises cover the factors and data frames sections of [Introduction to R
 
 **Exercise 2** - **Data frames**
 
-- Create data frame called Annotation with a column of gene names ("Gene_1", "Gene_2", "Gene_3","Gene_4","Gene_5"),  ensembl gene names ("Ens001", "Ens003", "Ens006", "Ens007", "Ens010"),  pathway information ("Glycolysis", "TGFb", "Glycolysis", "TGFb", "Glycolysis") and  gene lengths (100, 3000, 200, 1000,1200).
+- Create a data frame called Annotation with a column of gene names ("Gene_1", "Gene_2", "Gene_3","Gene_4","Gene_5"),  ensembl gene names ("Ens001", "Ens003", "Ens006", "Ens007", "Ens010"),  pathway information ("Glycolysis", "TGFb", "Glycolysis", "TGFb", "Glycolysis") and  gene lengths (100, 3000, 200, 1000,1200).
 
 - Create data frame called Sample1 with ensembl gene names ("Ens001", "Ens003", "Ens006", "Ens010") and expression  (1000, 3000, 10000,5000)
 

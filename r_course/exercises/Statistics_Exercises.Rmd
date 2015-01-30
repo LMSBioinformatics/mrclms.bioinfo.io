@@ -21,5 +21,5 @@ These exercises cover the sections of Statistics in R [Introduction to R]("intro
 - Read in the file lmExercise.txt.
 - What is the formula for the best fit lines for X vs Y and X vs Z
 - What are the Rsquared for X vs Y and X vs Z.
-- Predict values for Y and Z when X is 100
+- Predict values for X when Y is 100 and Z is 100.
 

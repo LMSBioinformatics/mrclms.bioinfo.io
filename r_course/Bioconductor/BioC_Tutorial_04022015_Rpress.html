@@ -1461,6 +1461,20 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
+<h3>Overview</h3>
+<div class="slideContent" >
+<ul>
+<li>Introduction to Bioconductor</li>
+<li>GenomicRanges</li>
+<li>Reading Sequence alignemnts</li>
+<li>Annotations</li>
+<li>Exercises</li>
+</ul>
+
+</div>
+
+</section>
+<section data-transition="linear" data-transition-speed="default">
 <h3>Bioconductor</h3>
 <div class="slideContent" >
 <p>Bioconductor (BioC) is an open source, open development software project to provide tools for the analysis and comprehension of high-throughput genomic data </p>
@@ -1537,66 +1551,7 @@ library(&quot;GenomicRanges&quot;)
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>Basic classes of BioC packages</h3>
-<div class="slideContent small" >
-<ul>
-<li>General infrastructure
-
-<ul>
-<li>Biobase, IRanges, GenomicRanges, Biostrings, BSgenome, GenomicFeatures</li>
-</ul></li>
-<li>Annotation
-
-<ul>
-<li>annotate, biomaRt, AnnotationDb</li>
-</ul></li>
-<li>Visualisation
-
-<ul>
-<li>geneplotter, ggbio, Gviz</li>
-</ul></li>
-<li>Transcription Factor motif search
-
-<ul>
-<li>PWMEnrich, MotifDb, </li>
-</ul></li>
-<li>Miroarray analysis
-
-<ul>
-<li>affy, affycomp, limma,</li>
-</ul></li>
-<li>NGS Data analysis
-
-<ul>
-<li>ShortRead, Rsamtools, GenomicRanges, GenomicAlignments, rtrackalyer</li>
-</ul></li>
-<li>Graphs and Networks
-
-<ul>
-<li>graph, RBGL, Rgraphviz</li>
-</ul></li>
-<li>Flow Cytometry
-
-<ul>
-<li>prada, flowCore, flowViz, flowUtils</li>
-</ul></li>
-<li>Proteomics
-
-<ul>
-<li>RforProteomics, mzR, TargetSearch, MSnbase</li>
-</ul></li>
-<li>Protein Interactions
-
-<ul>
-<li>ppiData, ppiStats, ScISI, Rintact</li>
-</ul></li>
-</ul>
-
-</div>
-
-</section>
-<section data-transition="linear" data-transition-speed="default">
-<h3>BioC packages for NGS Data Analysis</h3>
+<h3>BioC packages for Sequencing Data Analysis</h3>
 <div class="slideContent small-code" >
 <ul>
 <li><b>Data structures</b>: IRanges, GenomicRanges, Biostrings, BSgenome</li>
@@ -1648,7 +1603,7 @@ library(&quot;GenomicRanges&quot;)
 <li>Transcription factor binding sites (ChIP-Seq peaks)</li>
 <li>Collection of aligned sequencing reads</li>
 </ul></li>
-<li>Builds on top of Interval Ranges (IRanges) package and lays foundation for NGS analysis. </li>
+<li>Builds on top of Interval Ranges (IRanges) package and lays foundation for sequencing analysis. </li>
 <li>IRanges are collection of integer interval and GenomicRanges extends IRanges by including chromosome and strand.</li>
 <li>Provides collection of functions for accessing and manipulating Genomic coordinates</li>
 <li>Use cases: Identifying TF binding overlap, counting sequencing reads overlap with a gene</li>
@@ -1695,18 +1650,18 @@ gr1
 </code></pre>
 
 <pre><code>GRanges object with 10 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                  GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;           &lt;numeric&gt;
-  a     chr1  [11, 50]      - |         1   0.204834515461698
-  b     chr2  [12, 51]      + |         2   0.638008361682296
-  c     chr2  [13, 52]      + |         3   0.396582454442978
-  d     chr2  [14, 53]      - |         4   0.735259459121153
-  e     chr1  [15, 54]      - |         5   0.800609863828868
-  f     chr1  [16, 55]      + |         6   0.598915164591745
-  g     chr3  [17, 56]      + |         7   0.235244176117703
-  h     chr3  [18, 57]      + |         8   0.639569304650649
-  i     chr3  [19, 58]      - |         9   0.359301317250356
-  j     chr3  [20, 59]      - |        10 0.00326644093729556
+    seqnames    ranges strand |     score                GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
+  a     chr1  [11, 50]      - |         1 0.670507572125643
+  b     chr2  [12, 51]      + |         2 0.253528474131599
+  c     chr2  [13, 52]      + |         3 0.478615134954453
+  d     chr2  [14, 53]      - |         4 0.539647856261581
+  e     chr1  [15, 54]      - |         5 0.462691334076226
+  f     chr1  [16, 55]      + |         6 0.681641868781298
+  g     chr3  [17, 56]      + |         7 0.822204501368105
+  h     chr3  [18, 57]      + |         8 0.131079718237743
+  i     chr3  [19, 58]      - |         9 0.974869297817349
+  j     chr3  [20, 59]      - |        10 0.854568046983331
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1727,18 +1682,18 @@ gr1
 </code></pre>
 
 <pre><code>DataFrame with 10 rows and 2 columns
-       score          GC
-   &lt;integer&gt;   &lt;numeric&gt;
-1          1 0.204834515
-2          2 0.638008362
-3          3 0.396582454
-4          4 0.735259459
-5          5 0.800609864
-6          6 0.598915165
-7          7 0.235244176
-8          8 0.639569305
-9          9 0.359301317
-10        10 0.003266441
+       score        GC
+   &lt;integer&gt; &lt;numeric&gt;
+1          1 0.6705076
+2          2 0.2535285
+3          3 0.4786151
+4          4 0.5396479
+5          5 0.4626913
+6          6 0.6816419
+7          7 0.8222045
+8          8 0.1310797
+9          9 0.9748693
+10        10 0.8545680
 </code></pre>
 
 </div>
@@ -1890,14 +1845,14 @@ GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  a     chr1  [11, 50]      - |         1 0.204834515461698
-  e     chr1  [15, 54]      - |         5 0.800609863828868
-  f     chr1  [16, 55]      + |         6 0.598915164591745
+  a     chr1  [11, 50]      - |         1 0.670507572125643
+  e     chr1  [15, 54]      - |         5 0.462691334076226
+  f     chr1  [16, 55]      + |         6 0.681641868781298
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
 
-<p>Merge overlapping intervals</p>
+<p>Merge overlapping genomic ranges within the same GRanges object</p>
 
 <pre><code class="r">reduce(gr1)
 </code></pre>
@@ -1922,7 +1877,7 @@ GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)
 <h3>Finding overlapping regions</h3>
 <div class="slideContent" >
 <ul>
-<li>One of the common tasks in NGS data analysis</li>
+<li>One of the common tasks in sequencing data analysis</li>
 <li>Ex: Identifying transcription factor binding sites overlap with promoters</li>
 <li><b>findOverlaps</b> function finds intervals overlap between two GRanges object.</li>
 <li>Usage: <b>function(query,subject)</b></li>
@@ -1946,13 +1901,13 @@ gr1[gr1_overlaps.m[,1], ]
 </code></pre>
 
 <pre><code>GRanges object with 5 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                  GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;           &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6   0.598915164591745
-  i     chr3  [19, 58]      - |         9   0.359301317250356
-  i     chr3  [19, 58]      - |         9   0.359301317250356
-  j     chr3  [20, 59]      - |        10 0.00326644093729556
-  j     chr3  [20, 59]      - |        10 0.00326644093729556
+    seqnames    ranges strand |     score                GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
+  f     chr1  [16, 55]      + |         6 0.681641868781298
+  i     chr3  [19, 58]      - |         9 0.974869297817349
+  i     chr3  [19, 58]      - |         9 0.974869297817349
+  j     chr3  [20, 59]      - |        10 0.854568046983331
+  j     chr3  [20, 59]      - |        10 0.854568046983331
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1969,11 +1924,11 @@ gr1[gr1_overlaps.m[,1], ]
 </code></pre>
 
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                  GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;           &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6   0.598915164591745
-  i     chr3  [19, 58]      - |         9   0.359301317250356
-  j     chr3  [20, 59]      - |        10 0.00326644093729556
+    seqnames    ranges strand |     score                GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
+  f     chr1  [16, 55]      + |         6 0.681641868781298
+  i     chr3  [19, 58]      - |         9 0.974869297817349
+  j     chr3  [20, 59]      - |        10 0.854568046983331
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2027,7 +1982,7 @@ subjectLength: 10
 <section data-transition="linear" data-transition-speed="default">
 <h3>Computing Coverage</h3>
 <div class="slideContent" >
-<p><b>coverage</b> calculates how many ranges overlap individual positions in the genome. <b>coverage</b> function returns the coverage as Rle instance.</p>
+<p><b>coverage</b> calculates how many ranges overlap with individual positions in the genome. <b>coverage</b> function returns the coverage as Rle instance.</p>
 
 <pre><code class="r">coverage(gr1)
 </code></pre>
@@ -2061,6 +2016,14 @@ integer-Rle of length 59 with 8 runs
 <li>BED</li>
 <li>Wiggle/bedgraph</li>
 </ul>
+
+<p><b>FASTQ</b></p>
+
+<pre><code class="r">@ERR590398.1 HWI-ST1146:148:C2FVTACXX:8:1101:1172:2059
+NAAAATGCATATTCCTAGCATACTTCCCAAACATACTGAATTATAATCTC
++ERR590398.1 HWI-ST1146:148:C2FVTACXX:8:1101:1172:2059
+A1BDFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJIJJ
+</code></pre>
 
 </div>
 
@@ -2165,7 +2128,7 @@ scanBamFlag(isPaired = NA, isProperPair = NA, isUnmappedQuery = NA,
 <h3>Reading Sequence alignments (BAM&#x2F;SAM)</h3>
 <div class="slideContent" >
 <ul>
-<li>GenomicRanges package defines the GAlignments class – a specialised class for storing set of genomic alignments (ex: NGS data) </li>
+<li>GenomicRanges package defines the GAlignments class – a specialised class for storing set of genomic alignments (ex: sequencing data) </li>
 <li>GenomicAlignments package defines efficient ways of reading and storing short genomic alignments as GAlignments objects</li>
 <li>Only BAM support now – future version may include other formats</li>
 <li>The readGAlignmentsFromBam function takes an additional argument, <b>param</b> allowing the user to customise which genomic regions and which fields to read from BAM
@@ -2475,23 +2438,15 @@ txdb &lt;- loadDb(&quot;Mouse_ucsc_mm9_20150204.sqlite&quot;)
 </section>
 <section data-transition="linear" data-transition-speed="default">
 <h3>Annotations from the web – biomaRt</h3>
-<div class="column column1 slideContent" >
+<div class="slideContent" >
 <p>biomaRt package oﬀers access to biomart based online annotation resources (marts). Each mart has several datasets. <b>getBM</b> function can be used to retrieve annotation from the biomarts. Use the following functions to find values for the arguments in <b>getBM</b> </p>
 
-<p>Function                Description</p>
-
-
-</div>
-
-<div class="column column2 slideContent" >
-
-
-<p>listMarts()             List the available biomart resources
-useMart()               select the mart
-listDatasets()          available dataset in the select biomart resource
-useDataset()            select a dataset in the select mart
-listAttributes()        available annotation attributes for the selected dataset
-listFiltersList()       available filters for the selected dataset</p>
+<p><b>listMarts():</b>  list the available biomart resources<br>
+<b>useMart():</b>    select the mart<br>
+<b>listDatasets():</b>  available dataset in the select biomart resource<br>
+<b>useDataset():</b> select a dataset in the select mart<br>
+<b>listAttributes():</b> available annotation attributes for the selected dataset<br>
+<b>listFiltersList():</b> available filters for the selected dataset<br></p>
 
 </div>
 

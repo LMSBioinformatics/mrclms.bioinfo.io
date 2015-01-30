@@ -5,7 +5,7 @@ date: "01/01/2015"
 output: html_document
 ---
 
-These exercises cover the  sections of [Introduction to R]("introToR_Day1.html").
+These exercises cover the  sections of [Introduction to R]("introToR_Day1.html"). All files can be found in the "data" directory.
 
 **Exercise 1**
 

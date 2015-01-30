@@ -21,7 +21,7 @@ These exercises cover the vectors sections of [Introduction to R]("introToR_Day1
 - Create a new vector with all but the first and last value.
 - Create a new vector with all but the second and fifth value.
 - Create a new vector of square root of the sixth and seventh position.
-- Create a new vector of position in the vector.
+- Create a new vector of alternating positions in the vector 1 to 10 using another vector.
 
 **Exercise 3** 
 
@@ -33,9 +33,8 @@ These exercises cover the vectors sections of [Introduction to R]("introToR_Day1
 - Create a vector of the gene names Gene_1, Gene_2, Gene_3
 - Create a vector of the expression values 1000, 3000, 10000, 12000
 - Create a vector of the gene lengths 100, 3000, 200, 1000
-
 - Find the longest gene using logical expression.
-- Calculate the expression over the gene length for all genes (Length normalised expression).
 - Identify genes which have a length greater than 100 and expression greater than 10000
+- Calculate the expression over the gene length for all genes (Length normalised expression - LNE).
 - Identify genes with a length normalised expression greater than the average
  
