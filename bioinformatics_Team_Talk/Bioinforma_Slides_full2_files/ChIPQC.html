@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0062)http://bioconductor.org/packages/release/bioc/html/ChIPQC.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="Content-Language" content="en-us">
+  <meta name="robots" content="all">
+  
+  
+  
+  
+    <script type="text/javascript" async="" src="ga.js"></script><script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+        if (!window.location.href.match(/bioconductor\.org|\/\/localhost/i)) {
+            var mirror = true;
+            document.write('<base href="http://www.bioconductor.org"/>\n');
+        } 
+    </script>
+  
+  
+  <script src="jquery.tools.min.js"></script>
+
+  
+  
+  <title>Bioconductor - ChIPQC</title>
+  <link rel="stylesheet" type="text/css" href="bioconductor.css" media="screen">
+  <link rel="SHORTCUT ICON" type="image/x-icon" href="http://bioconductor.org/favicon.ico">
+  <link rel="ICON" type="image/x-icon" href="http://bioconductor.org/favicon.ico">
+  <script type="text/javascript" src="bioconductor.js"></script>
+ 
+  <script type="text/javascript" src="jquery.corner.js"></script>
+  <script type="text/javascript" src="jquery.timeago.js"></script>
+  <script type="text/javascript" src="bioc-style.js"></script>
+  <script type="text/javascript" src="versions.js"></script>
+
+  <!-- Google Analytics script -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-9338486-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+  <body>
+    <a name="top"></a>
+
+<!-- a few hooks for screen readers -->
+<a href="http://bioconductor.org/packages/release/bioc/html/ChIPQC.html#site-navigation" title="Jump to site nav"></a>
+
+<a href="http://bioconductor.org/packages/release/bioc/html/ChIPQC.html#site-map" title="Jump to site map"></a>
+
+
+    <div id="SiteContainer" class="SiteContainer">
+      
+      <div id="PageContent" class="PageContent WithRightRail">
+      
+
+        
+        
+          <div id="PageBreadcrumbs" class="PageBreadcrumbs">
+  <ul>
+    
+    
+    
+      
+	  	
+        <li><a href="http://bioconductor.org/">Home</a></li>
+      
+    
+    
+      
+	  	
+        <li><a href="http://bioconductor.org/packages/3.0/BiocViews.html">Bioconductor 3.0</a></li>
+      
+    
+    
+      
+	  	
+        <li><a href="http://bioconductor.org/packages/3.0/bioc/">Software Packages</a></li>
+      
+    
+    
+      
+        <li>ChIPQC</li>
+      
+    
+  </ul>
+</div>
+
+        
+
+        
+        
+            <div class="tooltip2" id="tooltip">
+    <p>To install this package, start R and enter:</p>
+<pre>source("http://bioconductor.org/biocLite.R")
+biocLite("ChIPQC")</pre>
+    <p> In most cases, you don't need to download the
+    package archive at all.</p>    
+</div>
+<div class="do_not_rebase">
+        <h1>ChIPQC</h1>
+
+    
+
+    
+
+    <h2>Quality metrics for ChIPseq data</h2> 
+
+    <p>
+        Bioconductor version: Release (3.0)
+    </p>
+
+    <p>Quality metrics for ChIPseq data</p>
+
+    <p>Author: Tom Carroll, Wei Liu, Ines de Santiago, Rory Stark </p>
+
+    <p>Maintainer: Tom Carroll &lt;tc.infomatics at gmail.com&gt;, Rory Stark &lt;rory.stark at cruk.cam.ac.uk&gt; </p>
+
+
+
+    <div id="bioc_citation_outer" style="display: block;">
+    <p>Citation (from within R,
+      enter <code>citation("ChIPQC")</code>):</p>
+      <div id="bioc_citation" class="bioc_citation"><p>Carroll TS, Liang Z, Salama R, Stark R and Santiago Id (in press).
+“Impact of artefact removal on ChIP quality metrics in ChIP-seq and ChIP-exo data.”
+<em>Frontiers in Genetics</em>. 
+</p>
+</div>
+    </div>
+
+    <h3>Installation</h3>
+
+    <p>To install this package, start R and enter:</p>
+
+
+    <pre>source("http://bioconductor.org/biocLite.R")
+biocLite("ChIPQC")</pre>
+
+
+    <h3>Documentation</h3>
+
+
+
+<p>To view documentation for the version of this package installed
+    in your system, start R and enter:
+</p>
+<pre>browseVignettes("ChIPQC")</pre>
+    <p>&nbsp;</p>
+
+
+
+    <table>
+        
+        
+        
+            
+                
+                
+                <tbody><tr class="row_odd">
+                    <td class="docFixedWidth">
+                        
+                        <a onclick="javascript: pageTracker._trackPageview(&#39;../vignettes/ChIPQC/inst/doc/ChIPQC.pdf&#39;); " href="http://bioconductor.org/packages/release/bioc/vignettes/ChIPQC/inst/doc/ChIPQC.pdf">PDF</a>
+                        
+                    </td>
+                    <td class="docFixedWidth">
+                        
+                        <a onclick="javascript: pageTracker._trackPageview(&#39;../vignettes/ChIPQC/inst/doc/ChIPQC.R&#39;); " href="http://bioconductor.org/packages/release/bioc/vignettes/ChIPQC/inst/doc/ChIPQC.R">R Script</a>
+                        
+                    </td>
+                    <td>Assessing ChIP-seq sample quality with ChIPQC</td>
+                </tr>
+
+            
+                
+                
+                <tr class="row_even">
+                    <td class="docFixedWidth">
+                        
+                        <a onclick="javascript: pageTracker._trackPageview(&#39;../vignettes/ChIPQC/inst/doc/ChIPQCSampleReport.pdf&#39;); " href="http://bioconductor.org/packages/release/bioc/vignettes/ChIPQC/inst/doc/ChIPQCSampleReport.pdf">PDF</a>
+                        
+                    </td>
+                    <td class="docFixedWidth">
+                        
+                    </td>
+                    <td>ChIPQCSampleReport.pdf</td>
+                </tr>
+
+            
+        
+        
+
+            
+            <tr class="row_odd">
+                <td class="docFixedWidth">
+                    <a onclick="javascript: pageTracker._trackPageview(&#39;../manuals/ChIPQC/man/ChIPQC.pdf&#39;); " href="http://bioconductor.org/packages/release/bioc/manuals/ChIPQC/man/ChIPQC.pdf">PDF</a>
+                </td>
+                <td class="docFixedWidth">&nbsp;</td>
+                <td>Reference Manual</td>
+                
+            </tr>
+
+
+            
+
+
+            
+                
+                <tr class="row_even">
+                    <td class="docFixedWidth">
+                        <a href="http://bioconductor.org/packages/release/bioc/news/ChIPQC/NEWS">Text</a>
+                    </td>
+                    <td class="docFixedWidth">&nbsp;</td>
+                    <td>NEWS</td>
+                </tr>
+                
+            
+
+
+            
+
+
+            
+
+            
+
+
+
+        
+    </tbody></table>
+
+
+
+    <h3>Details</h3>
+    
+    <table class="details">
+        <tbody><tr class="row_odd">
+            <td>biocViews</td>
+            <td><a href="http://bioconductor.org/packages/release/BiocViews.html#___ChIPSeq">ChIPSeq</a>, <a href="http://bioconductor.org/packages/release/BiocViews.html#___QualityControl">QualityControl</a>, <a href="http://bioconductor.org/packages/release/BiocViews.html#___ReportWriting">ReportWriting</a>, <a href="http://bioconductor.org/packages/release/BiocViews.html#___Sequencing">Sequencing</a>, <a href="http://bioconductor.org/packages/release/BiocViews.html#___Software">Software</a></td>
+        </tr>
+
+        <tr class="row_even">
+            <td>Version</td>
+            <td>1.2.2</td>
+        </tr>
+        
+        
+            <tr class="row_odd">
+                <td>In Bioconductor since</td>
+                <td>BioC 2.14 (R-3.1)</td>
+            </tr>
+        
+
+
+
+        <tr class="row_even">
+            <td>License</td>
+            <td>GPL (&gt;= 3)</td>
+        </tr>
+
+        <tr class="row_odd">
+            <td>Depends</td>
+            <td>R (&gt;= 3.0.0), <a class="cran_package" href="http://cran.fhcrc.org/web/packages/ggplot2/index.html">ggplot2</a>, <a href="http://bioconductor.org/packages/release/bioc/html/DiffBind.html">DiffBind</a>, <a href="http://bioconductor.org/packages/release/bioc/html/GenomicRanges.html">GenomicRanges</a>(&gt;= 1.17.19)</td>
+        </tr>
+
+        <tr class="row_even">
+            <td>Imports</td>
+            <td><a href="http://bioconductor.org/packages/release/bioc/html/BiocGenerics.html">BiocGenerics</a>(&gt;= 0.11.3), <a href="http://bioconductor.org/packages/release/bioc/html/S4Vectors.html">S4Vectors</a>(&gt;= 0.1.0), <a href="http://bioconductor.org/packages/release/bioc/html/IRanges.html">IRanges</a>(&gt;= 1.99.17), <a href="http://bioconductor.org/packages/release/bioc/html/Rsamtools.html">Rsamtools</a>(&gt;= 1.17.28), <a href="http://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html">GenomicAlignments</a>(&gt;= 1.1.16), <a href="http://bioconductor.org/packages/release/bioc/html/chipseq.html">chipseq</a>(&gt;= 1.12.0), <a class="cran_package" href="http://cran.fhcrc.org/web/packages/gtools/index.html">gtools</a>, <a href="http://bioconductor.org/packages/release/bioc/html/BiocParallel.html">BiocParallel</a>, methods, <a class="cran_package" href="http://cran.fhcrc.org/web/packages/reshape2/index.html">reshape2</a>, <a class="cran_package" href="http://cran.fhcrc.org/web/packages/Nozzle.R1/index.html">Nozzle.R1</a>, <a href="http://bioconductor.org/packages/release/bioc/html/Biobase.html">Biobase</a>, grDevices, stats, utils</td>
+        </tr>
+
+        <tr class="row_odd">
+            <td>Suggests</td>
+            <td><a href="http://bioconductor.org/packages/release/bioc/html/BiocStyle.html">BiocStyle</a>, <a href="http://bioconductor.org/packages/release/data/annotation/html/TxDb.Hsapiens.UCSC.hg19.knownGene.html">TxDb.Hsapiens.UCSC.hg19.knownGene</a>, <a href="http://bioconductor.org/packages/release/data/annotation/html/TxDb.Hsapiens.UCSC.hg18.knownGene.html">TxDb.Hsapiens.UCSC.hg18.knownGene</a>, <a href="http://bioconductor.org/packages/release/data/annotation/html/TxDb.Mmusculus.UCSC.mm10.knownGene.html">TxDb.Mmusculus.UCSC.mm10.knownGene</a>, <a href="http://bioconductor.org/packages/release/data/annotation/html/TxDb.Mmusculus.UCSC.mm9.knownGene.html">TxDb.Mmusculus.UCSC.mm9.knownGene</a>, <a href="http://bioconductor.org/packages/release/data/annotation/html/TxDb.Rnorvegicus.UCSC.rn4.ensGene.html">TxDb.Rnorvegicus.UCSC.rn4.ensGene</a>, <a href="http://bioconductor.org/packages/release/data/annotation/html/TxDb.Celegans.UCSC.ce6.ensGene.html">TxDb.Celegans.UCSC.ce6.ensGene</a>, <a href="http://bioconductor.org/packages/release/data/annotation/html/TxDb.Dmelanogaster.UCSC.dm3.ensGene.html">TxDb.Dmelanogaster.UCSC.dm3.ensGene</a></td>
+        </tr>
+
+        <tr class="row_even">
+            <td>System Requirements</td>
+            <td></td>
+        </tr>
+
+        <tr class="row_odd">
+            <td>URL</td>
+            <td><a href=""></a> </td>
+        </tr>
+
+        <tr class="row_even">
+            <td>Depends On Me</td>
+            <td></td>
+        </tr>
+
+        <tr class="row_odd">
+            <td>Imports Me</td>
+            <td></td>
+        </tr>
+
+        <tr class="row_even">
+            <td>Suggests Me</td>
+            <td></td>
+        </tr>
+
+
+
+    </tbody></table>
+
+    <h3>Package Archives</h3>
+
+    <p>Follow <a href="http://bioconductor.org/install/#install-bioconductor-packages">
+    Installation</a> instructions to use this 
+    package in your R session.</p>
+    
+    
+
+    <table>
+        <tbody><tr class="row_odd">
+            <td>Package Source</td>
+            <td class="rpack"><a onclick="javascript: pageTracker._trackPageview(&#39;../src/contrib/ChIPQC_1.2.2.tar.gz&#39;); " href="http://bioconductor.org/packages/release/bioc/src/contrib/ChIPQC_1.2.2.tar.gz">
+                ChIPQC_1.2.2.tar.gz</a></td>
+            </tr>
+
+            <tr class="row_even">
+                <td>Windows Binary</td>
+                <td class="rpack">
+                    
+                    
+                    <a onclick="javascript: pageTracker._trackPageview(&#39;../bin/windows/contrib/3.1/ChIPQC_1.2.2.zip&#39;); " href="http://bioconductor.org/packages/release/bioc/bin/windows/contrib/3.1/ChIPQC_1.2.2.zip">
+                        ChIPQC_1.2.2.zip</a> (32- &amp; 64-bit)
+                        
+                    </td>
+                </tr>
+
+
+                
+
+
+                    <tr class="row_odd">
+                        <td>Mac OS X 10.6 (Snow Leopard)</td>
+                        <td class="rpack"><a onclick="javascript: pageTracker._trackPageview(&#39;../bin/macosx/contrib/3.1/ChIPQC_1.2.2.tgz&#39;); " href="http://bioconductor.org/packages/release/bioc/bin/macosx/contrib/3.1/ChIPQC_1.2.2.tgz">
+                            ChIPQC_1.2.2.tgz</a></td>
+                    </tr>
+
+
+                
+
+
+                    <tr class="row_even">
+                        <td>Mac OS X 10.9 (Mavericks)</td>
+                        <td class="rpack"><a onclick="javascript: pageTracker._trackPageview(&#39;../bin/macosx/mavericks/contrib/3.1/ChIPQC_1.2.2.tgz&#39;); " href="http://bioconductor.org/packages/release/bioc/bin/macosx/mavericks/contrib/3.1/ChIPQC_1.2.2.tgz">
+                            ChIPQC_1.2.2.tgz</a></td>
+                    </tr>
+
+
+                
+
+
+                
+                    <tr class="row_odd">
+                        <td>Browse/checkout source</td>
+                        <td><a href="https://hedgehog.fhcrc.org/bioconductor/branches/RELEASE_3_0/madman/Rpacks/ChIPQC/">(username/password: readonly)</a></td>
+                    </tr>
+                
+
+                    <tr class="row_even">
+                        <td>Package Downloads Report</td>
+                        <td><a href="http://bioconductor.org/packages/stats/bioc/ChIPQC.html">Download Stats</a></td>
+                    </tr>
+
+                </tbody></table>
+</div>
+
+
+
+
+
+        
+        
+        
+        
+
+        
+        
+          </div>
+          <div id="RightRail" class="RightRail">
+          <a name="section-navigation"></a> <!-- accessibility anchor -->
+          
+
+
+  
+    <div class=""><table cellspacing="0" cellpadding="0" class="sb"><tbody><tr><td class="sb1"></td><td class="sb2"></td><td class="sb3"></td></tr><tr><td class="sb4">&nbsp;</td><td class="sb5">
+  <img src="inv.gif" align="right" height="200" width="1" alt="">
+  <p class="box_header"><a href="http://bioconductor.org/help/workflows/">Workflows</a>
+  <span class="olive">»</span></p>
+  <p>
+    Common Bioconductor workflows include:
+  </p><ul>
+    <li><a href="http://bioconductor.org/help/workflows/arrays/">Oligonucleotide Arrays</a></li>
+    <li><a href="http://bioconductor.org/help/workflows/high-throughput-sequencing/">High-throughput Sequencing</a></li>
+    <li><a href="http://bioconductor.org/packages/release/data/experiment/html/parathyroidSE.html">Counting Reads for Differential Expression</a> (parathyroideSE vignette)</li>
+    <li><a href="http://bioconductor.org/help/workflows/annotation/annotation/">Annotation</a></li>
+    <li><a href="http://bioconductor.org/help/workflows/variants/">Annotating Variants</a></li>
+    <li><a href="http://bioconductor.org/help/workflows/annotation/AnnotatingRanges/">Annotating Ranges</a></li>
+    <li><a href="http://bioconductor.org/help/workflows/highthroughputassays/">Flow Cytometry</a> and other assays</li>
+    <li><a href="http://bioconductor.org/help/workflows/generegulation/">Candidate Binding Sites for Known Transcription Factors</a></li>
+    <li><a href="http://bioconductor.org/help/workflows/eQTL/">Cloud-enabled cis-eQTL search and annotation</a></li>
+    <li><a href="http://bioconductor.org/help/workflows/rnaseqGene/">RNA-Seq workflow: gene-level exploratory analysis and differential expression</a></li>
+    <li><a href="http://bioconductor.org/help/workflows/liftOver/">Changing genomic coordinate systems with rtracklayer::liftOver</a></li>
+    <li><a href="http://bioconductor.org/help/workflows/proteomics/">Mass spectrometry and proteomics data analysis</a></li>
+
+  </ul>
+  &nbsp;
+</td><td class="sb6">&nbsp;</td></tr><tr><td class="sb7"></td><td class="sb8"></td><td class="sb9"></td></tr></tbody></table></div>
+
+  
+    <div class=""><table cellspacing="0" cellpadding="0" class="sb"><tbody><tr><td class="sb1"></td><td class="sb2"></td><td class="sb3"></td></tr><tr><td class="sb4">&nbsp;</td><td class="sb5">
+  <img src="inv.gif" align="right" height="200" width="1" alt="">
+  <p class="box_header"><a href="http://bioconductor.org/help/mailing-list/">Mailing Lists</a>
+  <span class="olive">»</span></p>
+  <p>Post questions about Bioconductor packages to our mailing lists.
+    Read the <a href="http://bioconductor.org/help/mailing-list/posting-guide/">posting
+    guide</a> before posting!</p>
+  <ul>
+    <li><a href="http://bioconductor.org/help/mailing-list/#bioconductor">bioconductor</a></li>
+    <li><a href="http://bioconductor.org/help/mailing-list/#bioc-devel">bioc-devel</a></li>
+  </ul>
+</td><td class="sb6">&nbsp;</td></tr><tr><td class="sb7"></td><td class="sb8"></td><td class="sb9"></td></tr></tbody></table></div>
+
+  
+
+
+        
+      </div>
+      <div id="SiteGlobalFooter" class="SiteGlobalFooter">
+
+  <span class="global_footer_logo_bc noprint"><img src="logo_global_footer_bioconductor.gif" height="51" width="154" alt=""></span>
+  <span class="global_footer_logo_fhcrc noprint"><a href="http://www.fredhutch.org/"><img src="logo_global_footer_fhcrc.gif" height="51" width="154" alt="Fred Hutchinson Cancer Research Center"></a></span>
+
+  <div class="attribution_copyright">
+    <p>Contact us: <a href="https://support.bioconductor.org/">support.bioconductor.org</a></p>
+    <p>Hosting provided by <a href="http://www.fredhutch.org/">Fred Hutchinson Cancer Research Center</a></p>
+    <p>Copyright © 2003 - 2015</p>
+  </div>
+
+  <a name="site-map"></a> <!-- accessibility anchor -->
+  <ul class="footer_nav_list noprint">
+    <li class="footer_nav_list_element footer_nav_list_element_0">
+      <b><a href="http://bioconductor.org/index.html">Home</a></b>
+    </li>
+    <li class="footer_nav_list_element footer_nav_list_element_1">
+      <ul>
+        <li><b><a href="http://bioconductor.org/install/index.html">Install</a></b></li>
+        <li><a href="http://bioconductor.org/install/index.html#install-R">Install R</a></li>
+        <li><a href="http://bioconductor.org/install/index.html#find-bioconductor-packages">Find Bioconductor Packages</a></li>
+        <li><a href="http://bioconductor.org/install/index.html#install-bioconductor-packages">Install Bioconductor Packages</a></li>
+        <li><a href="http://bioconductor.org/install/index.html#update-bioconductor-packages">Update Bioconductor Packages</a></li>
+      </ul>
+    </li>
+    <li class="footer_nav_list_element footer_nav_list_element_2">
+      <ul>
+        <li><b><a href="http://bioconductor.org/help/index.html">Help</a></b></li>     
+        <li><a href="http://bioconductor.org/help/workflows/">Workflows</a></li>
+        <li><a href="http://bioconductor.org/help/package-vignettes/">Package Vignettes</a></li>
+        <li><a href="http://bioconductor.org/help/faq/">FAQ</a></li>
+        <li><a href="http://bioconductor.org/help/support/">Support</a></li>
+        <li><a href="http://cran.r-project.org/">Using R</a></li>
+        <li><a href="http://bioconductor.org/help/course-materials/">Courses</a></li>
+        <li><a href="http://bioconductor.org/help/publications/">Publications</a></li>
+        <li><a href="http://bioconductor.org/help/bioconductor-cloud-ami/">Cloud AMI</a></li>
+        <li><a href="http://bioconductor.org/help/community/">Community Resources</a></li>
+        
+      </ul>
+    </li>
+    <li class="footer_nav_list_element footer_nav_list_element_3">
+      <ul>
+        <li><b><a href="http://bioconductor.org/developers/index.html">Developers</a></b></li>
+    <li><a href="http://bioconductor.org/developers/mentored-projects/">Mentored Projects</a></li>
+		<li><a href="http://bioconductor.org/developers/package-guidelines/">Package Guidelines</a></li>
+		<li><a href="http://bioconductor.org/developers/package-submission/">Package Submission</a></li>
+		<li><a href="http://bioconductor.org/developers/release-schedule/">Release Schedule</a></li>
+		<li><a href="http://bioconductor.org/developers/source-control/">Source Control</a></li>
+      </ul>
+    </li>
+    <li class="footer_nav_list_element footer_nav_list_element_4">
+      <ul>
+        <li><b><a href="http://bioconductor.org/about/index.html">About</a></b></li>     
+        <li><a href="http://bioconductor.org/about/advisory-board/">Advisory Board</a></li>
+        <li><a href="http://bioconductor.org/about/annual-reports/">Annual Reports</a></li>
+        <li><a href="http://bioconductor.org/about/core-team/">Core Team</a></li>
+        <li><a href="http://bioconductor.org/about/mirrors/">Mirrors</a></li>
+        <li><a href="http://bioconductor.org/about/related-projects/">Related Projects</a></li>
+      </ul>
+    </li>
+  </ul>
+  <br style="clear:both">    
+  &nbsp;   
+
+</div>
+  
+
+<div id="SiteMasthead" class="SiteMasthead">
+
+  <a name="site-navigation"></a> <!-- accessibility anchor -->
+
+  <span class="logo_vanity_bar noprint"></span>
+
+  <a href="http://bioconductor.org/">
+	<img src="logo_bioconductor.gif" border="0" class="masthead_logo" height="78" width="260" alt="Bioconductor - open source software for bioinformatics">
+  </a>
+
+  <div id="SiteMastheadRight" class="SiteMastheadRight">
+    <div id="SiteMastheadRightBackground" class="SiteMastheadRightBackground">
+
+      <a name="site-search"></a> <!-- accessibility anchor -->
+      <form class="site_search" id="search_form" method="GET" action="http://bioconductor.org/help/search/index.html"> 
+        Search: <input id="q" name="q">
+      </form>
+      
+      <ul class="masthead_nav noprint">
+        <li class="masthead_nav_element" id="masthead_nav_element_1">
+          <a href="http://bioconductor.org/">Home</a>
+        </li>
+        <li class="masthead_nav_element" id="masthead_nav_element_2">
+          <a href="http://bioconductor.org/install/">Install</a>
+        </li>
+        <li class="masthead_nav_element" id="masthead_nav_element_3">
+          <a href="http://bioconductor.org/help/">Help</a>
+        </li>
+        <li class="masthead_nav_element" id="masthead_nav_element_4">
+          <a href="http://bioconductor.org/developers/">Developers</a>
+        </li>
+        <li class="masthead_nav_element" id="masthead_nav_element_5">
+          <a href="http://bioconductor.org/about/">About</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>
+
+    </div>
+  
+
+</body></html>
