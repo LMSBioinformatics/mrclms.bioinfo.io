@@ -7,7 +7,7 @@ output: html_document
 
 These exercises cover the sections of Conditions and Loops in R [Introduction to R]("introToR_Day1.html").
 
--- Calculate the factorial (factorial of 3 = 3+2+1) of 10 using a loop.
+-- Calculate the factorial (factorial of 3 = 3 * 2 * 1) of 10 using a loop.
 
 -- Adjusting your answer from before, what is the first number that has a factorial greater than 1000.
 

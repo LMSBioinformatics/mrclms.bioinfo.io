@@ -120,12 +120,12 @@ The **sqrt(25)** demostrates the use of functions in R. A function performs a co
 
 In R, arguments are provided to a function within the parenthesis -- **( )** -- that follows the function name. So **sqrt(*ARGUMENT*)** will provide the square root of the value of ***ARGUMENT***.
 
-Other examples of functions include **mean()**, **sum()**, **max()**. 
+Other examples of functions include **min()**, **sum()**, **max()**. 
 
 Note multiple arguments are separated by a comma.
 
 ```{r}
-mean(2,4,6)
+min(2,4,6)
 sum(2,4,6)
 max(2,4,6)
 ```
@@ -150,11 +150,11 @@ Lets run **?sqrt** in RStudio and look at the help.
 Using functions (Arguments have names and order)
 ========================================================
 
-With functions such as mean() and sqrt(), the arguments to be provided are obvious and the order of these arguments doesnt matter.
+With functions such as min() and sqrt(), the arguments to be provided are obvious and the order of these arguments doesnt matter.
 
 ```{r}
-mean(5,4,6)
-mean(6,4,5)
+min(5,4,6)
+min(6,4,5)
 ```
 
 Many functions however have an order to their arguments.
@@ -1220,7 +1220,7 @@ Plot the treatment vector with default parameters
 plot(treatment)
 ```
 
-Point Plot
+Line Plot
 ========================================================
 
 ```{r, echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
@@ -1294,49 +1294,6 @@ range returns a vector containing the minimum and maximum of all the given argum
 
 Plot treatment using y axis that ranges from 0 to max value in treatment or control vector.  Turn off axes and annotations (axis labels) so we can specify them ourselves.
 
-========================================================
-
-```{r,eval=FALSE}
-plot(treatment, type="o", col="blue", ylim=g_range,axes=FALSE, ann=FALSE)
-```
-
-Make x axis using labels
-
-```{r,eval=FALSE}
-axis(1, at=1:6, lab=c("Mon","Tue","Wed","Thu","Fri","Sat"))
-```
-
-Make y axis with horizontal labels that display ticks at every 20 marks. 
-
-```{r,eval=FALSE}
-axis(2, las=1, at=20*0:g_range[2])
-```
-
-Create box around plot
-
-```{r,eval=FALSE}
-box()
-```
-
-========================================================
-
-```{r,echo=FALSE,fig.width=8,fig.height=4.5,dpi=300,out.width="1920px",height="1080px"}
-plot(treatment, type="o", col="blue", ylim=g_range,axes=FALSE, ann=FALSE)
-axis(1, at=1:6, lab=c("Mon","Tue","Wed","Thu","Fri","Sat"))
-axis(2, las=1, at=20*0:g_range[2])
-box()
-```
-
-========================================================
-Calculate range from 0 to max value of data
-```{r}
-g_range <- range(0, treatment, control)
-```
-
-range returns a vector containing the minimum and maximum of all the given arguments.
-
-Plot treatment using y axis that ranges from 0 to max value in treatment or control vector.  Turn off axes and annotations (axis labels) so we can specify them ourselves.
-
 ```{r,eval=FALSE}
 plot(treatment, type="o", col="blue", ylim=g_range,axes=FALSE, ann=FALSE)
 ```
@@ -1399,10 +1356,10 @@ title(ylab="Values", col.lab=rgb(0,0.5,0))
 legend(1, g_range[2], c("treatment","control"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2);  
 ```
  	
-	
+Bar Charts	
 ========================================================	
 	
-Bar Charts
+
 Let's start with a simple bar chart graphing the treatment vector: 
 Plot treatment
 
@@ -1466,8 +1423,9 @@ fill=  c("lightblue", "mistyrose", "lightcyan","lavender", "cornsilk","maroon"))
 
 ```
 
-========================================================	
 Histograms
+========================================================	
+
 Let's start with a simple histogram plotting the distribution of the treatment vector: 
 
 Create a histogram for treatment
@@ -1561,9 +1519,9 @@ if FALSE, probability densities, component density, are plotted
 hist(all, col=heat.colors(length(brk)), breaks=brk,xlim=c(0,max_num), right=F, main="Probability Density",las=1, cex.axis=0.8, freq=F)
 ```
 
-
-========================================================
 Pie Charts
+========================================================
+
 Let's start with a simple pie chart graphing the treatment vector: 
  Create a pie chart for treatment
 ```{r,eval=FALSE}
@@ -1591,6 +1549,7 @@ pie(treatment, main="Treatment", col= c("lightblue", "mistyrose", "lightcyan","l
 ========================================================
 
 Now let's change the colours, label using percentages, and create a legend: 
+
 Define some colours ideal for black & white print
 ```{r}
 colors <- c("white","grey70","grey90","grey50","black")
@@ -1626,8 +1585,9 @@ pie(treatment, main="treatment", col=colors, labels= treatment_labels,cex=0.8)
 legend(1.5, 0.5, c("Mon","Tue","Wed","Thu","Fri","Sat"), cex=0.8,fill=colors)  
 ```
 
-========================================================
 Dot charts
+========================================================
+
 Let's start with a simple dot chart graphing the data: 
 
 Create a dot chart for data
@@ -1677,7 +1637,8 @@ head(data1)
 
 ========================================================
 
-Plot histograms for different columns in the data frame separately. This is not very efficient. you would see how to do it more efficiently using for loop later on.
+Plot histograms for different columns in the data frame separately. This is not very efficient. 
+You could also do it more efficiently using for loop.
 
 ```{r,eval=FALSE}
 hist(data1$Untreated1)
@@ -1689,25 +1650,10 @@ boxplot(data1$Treated1)
 ========================================================
 
  
-```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
+```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="490px",height="270px"}
 hist(data1$Untreated1)
-```
-
-========================================================
-
-```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"} 
 hist(data1$Treated2)
-```
-
-========================================================
-
-```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
 hist(data1$Untreated2)
-```
-
-========================================================
-
-```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
 boxplot(data1$Treated1)
 ```
 
@@ -1756,9 +1702,10 @@ postscript(file = "control.ps")
 plot(control)
 dev.off()
 ```
+saving in pdf format
 
 ```{r,eval=FALSE}
-saving in pdf format
+
 pdf(file = "control.pdf", paper = "A4")
 plot(control)
 dev.off()
@@ -1774,17 +1721,18 @@ It has great set of routines for quickly displaying complex data sets with ease.
 
 Advantages of using lattice package are as following.
 
-Plots with lattice package usually look better.
+- Plots with lattice package usually look better.
 
-They can be extended in powerful ways.
+- They can be extended in powerful ways.
 
-The resulting output can be annotated, edited and saved.
+- The resulting output can be annotated, edited and saved.
 
 ========================================================
 
 Basic form for lattice function call is function.name (formula).
 
 The general arrangement of a formula in a lattice function is:
+
            vertical.axis.variable ~ horizontal.axis.variable
            
 Note that the tilde operator (i.e., ~) must be used in a lattice function call, even if the graph only   uses a single variable.
@@ -1794,15 +1742,21 @@ For e.g., histogram(~data$x),  xyplot(data$y ~ data$x)
 ========================================================
 
 Some of the functions available in lattice package are as following:
-Graphs for univariate data
+
+- Graphs for univariate data
+
 
 histogram(), densityplot(),bwplot()
 
-Graphs for showing quantiles of one or more distributions
+
+- Graphs for showing quantiles of one or more distributions
+
 
 qqmath(),qq()
 
-Two-dimensional data
+
+- Two-dimensional data
+
 
 xyplot() for creating scatterplots
 
@@ -1871,6 +1825,13 @@ bwplot(voice.part ~ height, data=singer, xlab="Height (inches)")
 
 ========================================================
 
+```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
+bwplot(voice.part ~ height, data=singer, xlab="Height (inches)")
+```
+
+
+========================================================
+
 A density plot can be drawn with densityplot function.
 ```{r,eval=FALSE}
 densityplot( ~ height | voice.part, data = singer, layout = c(2, 4), xlab = "Height (inches)", bw = 5)
@@ -1883,12 +1844,20 @@ qqmath(~ rnorm(100), distribution = function(p) qt(p, df = 10))
  
 ```
 
+========================================================
+
+```{r,echo=FALSE,fig.width=8,fig.height=5,dpi=300,out.width="1920px",height="1080px"}
+qqmath(~ rnorm(100), distribution = function(p) qt(p, df = 10))
+```
+
+
 ggplot2 R package
 ========================================================
 
 Let's look at how to create a scatterplot in ggplot2. We'll use the iris data frame that's automatically loaded into R.
 What does the data frame contain? We can use the head function to look at the first few rows
 ```{r}
+library(ggplot2)
 head(iris, n = 3)  
 ```
 
@@ -1928,7 +1897,17 @@ Similarly, we can let the size of each point denote petal width, by adding a siz
 qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width)
 ```
 
+========================================================
+```{r,echo=FALSE,fig.width=4,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width)
+```
+
 We see that Iris setosa flowers have the narrowest petals.
+
+
+========================================================
+
+
  
 Finally, let's fix the axis labels and add a title to the plot.
 ```{r,eval=FALSE}
@@ -1993,11 +1972,36 @@ qplot(age, circumference, data = Orange, geom = "line", colour = Tree,
     main = "How does orange tree circumference vary with age?")
 ```
 
+========================================================
+
+```{r,echo=FALSE,fig.width=4,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+qplot(age, circumference, data = Orange, geom = "line", colour = Tree,
+    main = "Does tree circumference vary with age?")
+```
+
+========================================================
+
 We can also plot both points and lines.
 ```{r,eval=FALSE}
 qplot(age, circumference, data = Orange, geom = c("point", "line"), colour = Tree)
 ```
 
+========================================================
+```{r,echo=FALSE,fig.width=4,fig.height=3,dpi=300,out.width="1920px",height="1080px"}
+qplot(age, circumference, data = Orange, geom = c("point", "line"), colour = Tree)
+```
+
+Summary
+========================================================
+- Visualization of data through charts and graphs is an essential 
+part of data analysis process, so R has excellent tools for creating 
+graphics.
+- There are many different ways of making plots in R
+including base graphics and R packages such as lattics and ggplot2.
+- Use vast arrays of R packages available to create 
+publication quality graphs.
+
+========================================================
 Time for an exercise!
 ========================================================
 Exercise on Plotting can be found [here](exercises/Plotting_exercise.html)

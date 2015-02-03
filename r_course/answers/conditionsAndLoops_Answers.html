@@ -59,8 +59,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 
 
-<p>These exercises cover the sections of Statistics in R <a href title="introToR_Day1.html">Introduction to R</a>.</p>
-<p>– Calculate the factorial (factorial of 3 = 3+2+1) of 10 using a loop.</p>
+<p>These exercises cover the sections of Conditions and Loops in R <a href title="introToR_Day1.html">Introduction to R</a>.</p>
+<p>– Calculate the factorial (factorial of 3 = 3 * 2 * 1) of 10 using a loop.</p>
 <pre class="r"><code>for(x in 1:10){
   if(x == 1){
     factorialAnswer &lt;- 1
@@ -167,9 +167,8 @@ annotatedExpression[1:2,]</code></pre>
 ##   ExpressionResults_Sample9.txt
 ## 1                      6.167451
 ## 2                      6.213910</code></pre>
-<pre class="r"><code>table(Annotation$Pathway)</code></pre>
-<pre><code>## 
-##  DNA_Binding   Glycolysis         TGFb WntSignaling 
+<pre class="r"><code>summary(annotatedExpression$Pathway)</code></pre>
+<pre><code>##  DNA_Binding   Glycolysis         TGFb WntSignaling 
 ##         1000          500          300          200</code></pre>
 <pre class="r"><code>summary(Annotation$Pathway)</code></pre>
 <pre><code>##  DNA_Binding   Glycolysis         TGFb WntSignaling         NA's 

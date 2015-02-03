@@ -137,13 +137,13 @@ The **sqrt(25)** demostrates the use of functions in R. A function performs a co
 
 In R, arguments are provided to a function within the parenthesis -- **( )** -- that follows the function name. So **sqrt(*ARGUMENT*)** will provide the square root of the value of ***ARGUMENT***.
 
-Other examples of functions include **mean()**, **sum()**, **max()**. 
+Other examples of functions include **min()**, **sum()**, **max()**. 
 
 Note multiple arguments are separated by a comma.
 
 
 ```r
-mean(2,4,6)
+min(2,4,6)
 ```
 
 ```
@@ -187,23 +187,23 @@ Lets run **?sqrt** in RStudio and look at the help.
 Using functions (Arguments have names and order)
 ========================================================
 
-With functions such as mean() and sqrt(), the arguments to be provided are obvious and the order of these arguments doesnt matter.
+With functions such as min() and sqrt(), the arguments to be provided are obvious and the order of these arguments doesnt matter.
 
 
 ```r
-mean(5,4,6)
+min(5,4,6)
 ```
 
 ```
-[1] 5
+[1] 4
 ```
 
 ```r
-mean(6,4,5)
+min(6,4,5)
 ```
 
 ```
-[1] 6
+[1] 4
 ```
 
 Many functions however have an order to their arguments.
@@ -2005,14 +2005,14 @@ A standard format for this data is a table
 
 |Gene_Name | Sample_1.hi| Sample_2.hi| Sample_3.hi| Sample_4.low| Sample_5.low| Sample_1.low|
 |:---------|-----------:|-----------:|-----------:|------------:|------------:|------------:|
-|Gene_a    |    4.383191|    4.392849|    4.198145|     4.212582|     3.387224|     2.687370|
-|Gene_b    |    5.230219|    2.893382|    3.430533|     5.183072|     5.282737|     4.202201|
-|Gene_c    |    3.333116|    5.209267|    4.018752|     3.352923|     4.017856|     2.473928|
-|Gene_d    |    4.453622|    3.883183|    3.812792|     8.716414|     9.766196|     9.612980|
-|Gene_e    |    9.726339|    9.862076|   10.212037|     4.247812|     3.785378|     1.667316|
-|Gene_f    |    8.538234|    8.519177|   10.667945|     2.876419|     2.314036|     2.324190|
-|Gene_g    |   10.062794|   12.155646|    9.164295|     9.982966|     9.793245|     9.419736|
-|Gene_h    |   10.078274|   10.731626|   10.909600|    10.640691|     7.627028|    10.881032|
+|Gene_a    |    2.181518|    2.963433|    3.618821|     3.703849|     3.621196|     3.466088|
+|Gene_b    |    3.953413|    5.003427|    3.128916|     3.505461|     3.953361|     4.261023|
+|Gene_c    |    3.831760|    1.840931|    3.259247|     2.898734|     3.822889|     4.384299|
+|Gene_d    |    4.272112|    3.795516|    5.858744|     6.944077|     7.550353|     9.242483|
+|Gene_e    |    9.914889|   10.758701|   10.140730|     3.633438|     1.285404|     2.734017|
+|Gene_f    |   10.071533|   10.252845|   10.517175|     5.378654|     3.831697|     1.848423|
+|Gene_g    |   11.316427|    9.815200|    9.354936|     8.879610|     9.591012|    11.768586|
+|Gene_h    |    8.350820|    9.495415|   10.523986|    12.283628|    11.289700|    10.012964|
 
 Data IO (2/7) - Data from text file with read.table()
 =========================================================
@@ -2207,7 +2207,7 @@ Plot the treatment vector with default parameters
 plot(treatment)
 ```
 
-Point Plot
+Line Plot
 ========================================================
 
 <img src="introToR_Session1-figure/unnamed-chunk-103-1.png" title="plot of chunk unnamed-chunk-103" alt="plot of chunk unnamed-chunk-103" width="1920px" />
@@ -2279,49 +2279,6 @@ range returns a vector containing the minimum and maximum of all the given argum
 
 Plot treatment using y axis that ranges from 0 to max value in treatment or control vector.  Turn off axes and annotations (axis labels) so we can specify them ourselves.
 
-========================================================
-
-
-```r
-plot(treatment, type="o", col="blue", ylim=g_range,axes=FALSE, ann=FALSE)
-```
-
-Make x axis using labels
-
-
-```r
-axis(1, at=1:6, lab=c("Mon","Tue","Wed","Thu","Fri","Sat"))
-```
-
-Make y axis with horizontal labels that display ticks at every 20 marks. 
-
-
-```r
-axis(2, las=1, at=20*0:g_range[2])
-```
-
-Create box around plot
-
-
-```r
-box()
-```
-
-========================================================
-
-<img src="introToR_Session1-figure/unnamed-chunk-117-1.png" title="plot of chunk unnamed-chunk-117" alt="plot of chunk unnamed-chunk-117" width="1920px" />
-
-========================================================
-Calculate range from 0 to max value of data
-
-```r
-g_range <- range(0, treatment, control)
-```
-
-range returns a vector containing the minimum and maximum of all the given arguments.
-
-Plot treatment using y axis that ranges from 0 to max value in treatment or control vector.  Turn off axes and annotations (axis labels) so we can specify them ourselves.
-
 
 ```r
 plot(treatment, type="o", col="blue", ylim=g_range,axes=FALSE, ann=FALSE)
@@ -2379,12 +2336,12 @@ Create a legend at (1, g_range[2]) that is slightly smaller (cex) and uses the s
 legend(1, g_range[2], c("treatment","control"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2);  
 ```
 
-<img src="introToR_Session1-figure/unnamed-chunk-127-1.png" title="plot of chunk unnamed-chunk-127" alt="plot of chunk unnamed-chunk-127" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-121-1.png" title="plot of chunk unnamed-chunk-121" alt="plot of chunk unnamed-chunk-121" width="1920px" />
  	
-	
+Bar Charts	
 ========================================================	
 	
-Bar Charts
+
 Let's start with a simple bar chart graphing the treatment vector: 
 Plot treatment
 
@@ -2393,7 +2350,7 @@ Plot treatment
 barplot(treatment)
 ```
 
-<img src="introToR_Session1-figure/unnamed-chunk-129-1.png" title="plot of chunk unnamed-chunk-129" alt="plot of chunk unnamed-chunk-129" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-123-1.png" title="plot of chunk unnamed-chunk-123" alt="plot of chunk unnamed-chunk-123" width="1920px" />
 
 ========================================================
  
@@ -2419,7 +2376,7 @@ barplot(data$treatment, main="Treatment", xlab="Days",ylab="values", names.arg=c
 names.arg  is a vector of names to be plotted below each bar or group of bars. 
 density	a vector giving the density of shading lines, in lines per inch, for the bars or bar components.
 
-<img src="introToR_Session1-figure/unnamed-chunk-132-1.png" title="plot of chunk unnamed-chunk-132" alt="plot of chunk unnamed-chunk-132" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-126-1.png" title="plot of chunk unnamed-chunk-126" alt="plot of chunk unnamed-chunk-126" width="1920px" />
 
 ========================================================	
 Now let's plot the treatment data using some color and show a legend: 
@@ -2442,10 +2399,11 @@ fill=  c("lightblue", "mistyrose", "lightcyan","lavender", "cornsilk","maroon"))
 
 ========================================================
 
-<img src="introToR_Session1-figure/unnamed-chunk-135-1.png" title="plot of chunk unnamed-chunk-135" alt="plot of chunk unnamed-chunk-135" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-129-1.png" title="plot of chunk unnamed-chunk-129" alt="plot of chunk unnamed-chunk-129" width="1920px" />
 
-========================================================	
 Histograms
+========================================================	
+
 Let's start with a simple histogram plotting the distribution of the treatment vector: 
 
 Create a histogram for treatment
@@ -2454,7 +2412,7 @@ Create a histogram for treatment
 hist(treatment)	
 ```
 
-<img src="introToR_Session1-figure/unnamed-chunk-137-1.png" title="plot of chunk unnamed-chunk-137" alt="plot of chunk unnamed-chunk-137" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-131-1.png" title="plot of chunk unnamed-chunk-131" alt="plot of chunk unnamed-chunk-131" width="1920px" />
 
 ========================================================
 
@@ -2471,7 +2429,7 @@ Create a histogram for data in light blue with the y axis ranging from 0-10
 hist(all, col="lightblue", ylim=c(0,10))
 ```
 ***
-<img src="introToR_Session1-figure/unnamed-chunk-140-1.png" title="plot of chunk unnamed-chunk-140" alt="plot of chunk unnamed-chunk-140" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-134-1.png" title="plot of chunk unnamed-chunk-134" alt="plot of chunk unnamed-chunk-134" width="1920px" />
 
 ======================================================== 	
 
@@ -2506,7 +2464,7 @@ For example [0,1] means greater than or equal to 0 and less than or equal to 1.
 
 ========================================================
 
-<img src="introToR_Session1-figure/unnamed-chunk-143-1.png" title="plot of chunk unnamed-chunk-143" alt="plot of chunk unnamed-chunk-143" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-137-1.png" title="plot of chunk unnamed-chunk-137" alt="plot of chunk unnamed-chunk-137" width="1920px" />
 
 ========================================================
 
@@ -2533,11 +2491,11 @@ if TRUE, the histogram graphic is a representation of frequencies
 
 if FALSE, probability densities, component density, are plotted
 
-<img src="introToR_Session1-figure/unnamed-chunk-146-1.png" title="plot of chunk unnamed-chunk-146" alt="plot of chunk unnamed-chunk-146" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-140-1.png" title="plot of chunk unnamed-chunk-140" alt="plot of chunk unnamed-chunk-140" width="1920px" />
 
-
-========================================================
 Pie Charts
+========================================================
+
 Let's start with a simple pie chart graphing the treatment vector: 
  Create a pie chart for treatment
 
@@ -2545,7 +2503,7 @@ Let's start with a simple pie chart graphing the treatment vector:
 pie(treatment)
 ```
 
-<img src="introToR_Session1-figure/unnamed-chunk-148-1.png" title="plot of chunk unnamed-chunk-148" alt="plot of chunk unnamed-chunk-148" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-142-1.png" title="plot of chunk unnamed-chunk-142" alt="plot of chunk unnamed-chunk-142" width="1920px" />
 
 ========================================================
 
@@ -2558,11 +2516,12 @@ pie(treatment, main="Treatment", col= c("lightblue", "mistyrose", "lightcyan","l
     labels=c("Mon","Tue","Wed","Thu","Fri","Sat"))	
 ```
 
-<img src="introToR_Session1-figure/unnamed-chunk-150-1.png" title="plot of chunk unnamed-chunk-150" alt="plot of chunk unnamed-chunk-150" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-144-1.png" title="plot of chunk unnamed-chunk-144" alt="plot of chunk unnamed-chunk-144" width="1920px" />
 
 ========================================================
 
 Now let's change the colours, label using percentages, and create a legend: 
+
 Define some colours ideal for black & white print
 
 ```r
@@ -2598,10 +2557,11 @@ legend(1.5, 0.5, c("Mon","Tue","Wed","Thu","Fri","Sat"), cex=0.8,fill=colors)
 
 ========================================================
 
-<img src="introToR_Session1-figure/unnamed-chunk-156-1.png" title="plot of chunk unnamed-chunk-156" alt="plot of chunk unnamed-chunk-156" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-150-1.png" title="plot of chunk unnamed-chunk-150" alt="plot of chunk unnamed-chunk-150" width="1920px" />
 
-========================================================
 Dot charts
+========================================================
+
 Let's start with a simple dot chart graphing the data: 
 
 Create a dot chart for data
@@ -2610,7 +2570,7 @@ Function t returns the transpose of a matrix.
 ```r
 dotchart(t(data))	
 ```
-<img src="introToR_Session1-figure/unnamed-chunk-158-1.png" title="plot of chunk unnamed-chunk-158" alt="plot of chunk unnamed-chunk-158" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-152-1.png" title="plot of chunk unnamed-chunk-152" alt="plot of chunk unnamed-chunk-152" width="1920px" />
 
 ========================================================
 
@@ -2621,7 +2581,7 @@ Create a colored dotchart for autos with smaller labels
 ```r
 dotchart(t(data), color=c("red","blue","darkgreen"),main="Dotchart", cex=0.8)	
 ```
-<img src="introToR_Session1-figure/unnamed-chunk-160-1.png" title="plot of chunk unnamed-chunk-160" alt="plot of chunk unnamed-chunk-160" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-154-1.png" title="plot of chunk unnamed-chunk-154" alt="plot of chunk unnamed-chunk-154" width="1920px" />
 
 Combining Plots
 ======================================================== 
@@ -2661,7 +2621,8 @@ head(data1)
 
 ========================================================
 
-Plot histograms for different columns in the data frame separately. This is not very efficient. you would see how to do it more efficiently using for loop later on.
+Plot histograms for different columns in the data frame separately. This is not very efficient. 
+You could also do it more efficiently using for loop.
 
 
 ```r
@@ -2674,19 +2635,7 @@ boxplot(data1$Treated1)
 ========================================================
 
  
-<img src="introToR_Session1-figure/unnamed-chunk-164-1.png" title="plot of chunk unnamed-chunk-164" alt="plot of chunk unnamed-chunk-164" width="1920px" />
-
-========================================================
-
-<img src="introToR_Session1-figure/unnamed-chunk-165-1.png" title="plot of chunk unnamed-chunk-165" alt="plot of chunk unnamed-chunk-165" width="1920px" />
-
-========================================================
-
-<img src="introToR_Session1-figure/unnamed-chunk-166-1.png" title="plot of chunk unnamed-chunk-166" alt="plot of chunk unnamed-chunk-166" width="1920px" />
-
-========================================================
-
-<img src="introToR_Session1-figure/unnamed-chunk-167-1.png" title="plot of chunk unnamed-chunk-167" alt="plot of chunk unnamed-chunk-167" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-158-1.png" title="plot of chunk unnamed-chunk-158" alt="plot of chunk unnamed-chunk-158" width="490px" /><img src="introToR_Session1-figure/unnamed-chunk-158-2.png" title="plot of chunk unnamed-chunk-158" alt="plot of chunk unnamed-chunk-158" width="490px" /><img src="introToR_Session1-figure/unnamed-chunk-158-3.png" title="plot of chunk unnamed-chunk-158" alt="plot of chunk unnamed-chunk-158" width="490px" /><img src="introToR_Session1-figure/unnamed-chunk-158-4.png" title="plot of chunk unnamed-chunk-158" alt="plot of chunk unnamed-chunk-158" width="490px" />
 
 Saving your plots
 ========================================================
@@ -2737,10 +2686,10 @@ postscript(file = "control.ps")
 plot(control)
 dev.off()
 ```
+saving in pdf format
 
 
 ```r
-saving in pdf format
 pdf(file = "control.pdf", paper = "A4")
 plot(control)
 dev.off()
@@ -2756,17 +2705,18 @@ It has great set of routines for quickly displaying complex data sets with ease.
 
 Advantages of using lattice package are as following.
 
-Plots with lattice package usually look better.
+- Plots with lattice package usually look better.
 
-They can be extended in powerful ways.
+- They can be extended in powerful ways.
 
-The resulting output can be annotated, edited and saved.
+- The resulting output can be annotated, edited and saved.
 
 ========================================================
 
 Basic form for lattice function call is function.name (formula).
 
 The general arrangement of a formula in a lattice function is:
+
            vertical.axis.variable ~ horizontal.axis.variable
            
 Note that the tilde operator (i.e., ~) must be used in a lattice function call, even if the graph only   uses a single variable.
@@ -2776,15 +2726,21 @@ For e.g., histogram(~data$x),  xyplot(data$y ~ data$x)
 ========================================================
 
 Some of the functions available in lattice package are as following:
-Graphs for univariate data
+
+- Graphs for univariate data
+
 
 histogram(), densityplot(),bwplot()
 
-Graphs for showing quantiles of one or more distributions
+
+- Graphs for showing quantiles of one or more distributions
+
 
 qqmath(),qq()
 
-Two-dimensional data
+
+- Two-dimensional data
+
 
 xyplot() for creating scatterplots
 
@@ -2811,7 +2767,7 @@ xyplot(Untreated2~Treated2, data=data)
 
 ========================================================
 
-<img src="introToR_Session1-figure/unnamed-chunk-176-1.png" title="plot of chunk unnamed-chunk-176" alt="plot of chunk unnamed-chunk-176" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-167-1.png" title="plot of chunk unnamed-chunk-167" alt="plot of chunk unnamed-chunk-167" width="1920px" />
 
 
 
@@ -2829,7 +2785,7 @@ and then printed as,
 print(tplot)
 ```
 
-<img src="introToR_Session1-figure/unnamed-chunk-179-1.png" title="plot of chunk unnamed-chunk-179" alt="plot of chunk unnamed-chunk-179" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-170-1.png" title="plot of chunk unnamed-chunk-170" alt="plot of chunk unnamed-chunk-170" width="1920px" />
 ***
 The object containing the plot can further be modified. for e.g.
 
@@ -2839,7 +2795,7 @@ tplot2<-update(tplot, main="Drug treatment  in Cells" )
 print(tplot2)
 ```
 
-<img src="introToR_Session1-figure/unnamed-chunk-180-1.png" title="plot of chunk unnamed-chunk-180" alt="plot of chunk unnamed-chunk-180" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-171-1.png" title="plot of chunk unnamed-chunk-171" alt="plot of chunk unnamed-chunk-171" width="1920px" />
 
 ========================================================
 
@@ -2868,6 +2824,11 @@ bwplot(voice.part ~ height, data=singer, xlab="Height (inches)")
 
 ========================================================
 
+<img src="introToR_Session1-figure/unnamed-chunk-174-1.png" title="plot of chunk unnamed-chunk-174" alt="plot of chunk unnamed-chunk-174" width="1920px" />
+
+
+========================================================
+
 A density plot can be drawn with densityplot function.
 
 ```r
@@ -2881,6 +2842,11 @@ qqmath function is used to draw quantile-Quantile plots of a sample against a th
 qqmath(~ rnorm(100), distribution = function(p) qt(p, df = 10))
 ```
 
+========================================================
+
+<img src="introToR_Session1-figure/unnamed-chunk-177-1.png" title="plot of chunk unnamed-chunk-177" alt="plot of chunk unnamed-chunk-177" width="1920px" />
+
+
 ggplot2 R package
 ========================================================
 
@@ -2888,6 +2854,7 @@ Let's look at how to create a scatterplot in ggplot2. We'll use the iris data fr
 What does the data frame contain? We can use the head function to look at the first few rows
 
 ```r
+library(ggplot2)
 head(iris, n = 3)  
 ```
 
@@ -2938,7 +2905,15 @@ Similarly, we can let the size of each point denote petal width, by adding a siz
 qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width)
 ```
 
+========================================================
+<img src="introToR_Session1-figure/unnamed-chunk-183-1.png" title="plot of chunk unnamed-chunk-183" alt="plot of chunk unnamed-chunk-183" width="1920px" />
+
 We see that Iris setosa flowers have the narrowest petals.
+
+
+========================================================
+
+
  
 Finally, let's fix the axis labels and add a title to the plot.
 
@@ -3010,12 +2985,32 @@ qplot(age, circumference, data = Orange, geom = "line", colour = Tree,
     main = "How does orange tree circumference vary with age?")
 ```
 
+========================================================
+
+<img src="introToR_Session1-figure/unnamed-chunk-191-1.png" title="plot of chunk unnamed-chunk-191" alt="plot of chunk unnamed-chunk-191" width="1920px" />
+
+========================================================
+
 We can also plot both points and lines.
 
 ```r
 qplot(age, circumference, data = Orange, geom = c("point", "line"), colour = Tree)
 ```
 
+========================================================
+<img src="introToR_Session1-figure/unnamed-chunk-193-1.png" title="plot of chunk unnamed-chunk-193" alt="plot of chunk unnamed-chunk-193" width="1920px" />
+
+Summary
+========================================================
+- Visualization of data through charts and graphs is an essential 
+part of data analysis process, so R has excellent tools for creating 
+graphics.
+- There are many different ways of making plots in R
+including base graphics and R packages such as lattics and ggplot2.
+- Use vast arrays of R packages available to create 
+publication quality graphs.
+
+========================================================
 Time for an exercise!
 ========================================================
 Exercise on Plotting can be found [here](exercises/Plotting_exercise.html)
@@ -3194,10 +3189,10 @@ cor(x,z)
 ```
 
 ```
-[1] -0.05225398
+[1] -0.01135608
 ```
 ***
-![plot of chunk unnamed-chunk-204](introToR_Session1-figure/unnamed-chunk-204-1.png) 
+![plot of chunk unnamed-chunk-200](introToR_Session1-figure/unnamed-chunk-200-1.png) 
 
 
 Statistics (8/26) - Correlation over a matrix
@@ -3208,8 +3203,8 @@ Often we wish to apply correlation analysis to all columns or rows in a matrix i
 
 | Sample_1.hi| Sample_2.hi| Sample_3.hi| Sample_4.low| Sample_5.low| Sample_1.low|
 |-----------:|-----------:|-----------:|------------:|------------:|------------:|
-|    4.383191|    4.392849|    4.198145|     4.212582|     3.387224|     2.687370|
-|    5.230219|    2.893382|    3.430533|     5.183072|     5.282737|     4.202201|
+|    2.181518|    2.963433|    3.618821|     3.703849|     3.621196|     3.466088|
+|    3.953413|    5.003427|    3.128916|     3.505461|     3.953361|     4.261023|
 
 
 ```r
@@ -3218,8 +3213,8 @@ cor(minRep)[1:2,2:5]
 
 ```
             Sample_2.hi Sample_3.hi Sample_4.low Sample_5.low
-Sample_1.hi   0.9240481   0.9413553    0.4086796    0.1790417
-Sample_2.hi   1.0000000   0.9106841    0.4162538    0.2158160
+Sample_1.hi   0.9451116   0.9202844    0.4639150    0.2544438
+Sample_2.hi   1.0000000   0.9398130    0.4692492    0.1980213
 ```
 
 Statistics (9/26) - Visualising correlation
@@ -3232,7 +3227,7 @@ axis(1,at=seq(0,1,length.out=6), colnames(minRep))
 axis(2,at=seq(0,1,length.out=6), colnames(minRep))
 ```
 ***
-<img src="introToR_Session1-figure/unnamed-chunk-209-1.png" title="plot of chunk unnamed-chunk-209" alt="plot of chunk unnamed-chunk-209" width="1920px" />
+<img src="introToR_Session1-figure/unnamed-chunk-205-1.png" title="plot of chunk unnamed-chunk-205" alt="plot of chunk unnamed-chunk-205" width="1920px" />
 
 Statistics (10/26) - Distributions
 =========================================================
@@ -3268,8 +3263,8 @@ rnorm(10,mean=8,sd=3)
 ```
 
 ```
- [1]  8.843808  5.178495  7.995043  5.623560  8.703155  4.883419 12.350054
- [8]  5.747077  9.628141  5.569872
+ [1]  3.523634  9.462042  4.183035  6.450474 13.042276 14.233895  6.862742
+ [8]  6.454255 13.119918  8.869193
 ```
 We can also use these functions to interrogate values assuming a normal distribution for the data.
 
@@ -3593,7 +3588,7 @@ To fit a linear regression we use a similar set of arguments as passed to the t-
 > abline(lmResult,col="red",lty=3,lwd=3)
 ```
 
-![plot of chunk unnamed-chunk-225](introToR_Session1-figure/unnamed-chunk-225-1.png) 
+![plot of chunk unnamed-chunk-221](introToR_Session1-figure/unnamed-chunk-221-1.png) 
 
 Statistics (21/26) The lm() function
 =========================================================
@@ -3636,7 +3631,7 @@ We can add the line of best fit using **abline()**
 > abline(lmResult,col="red",lty=3,lwd=3)
 ```
 
-![plot of chunk unnamed-chunk-227](introToR_Session1-figure/unnamed-chunk-227-1.png) 
+![plot of chunk unnamed-chunk-223](introToR_Session1-figure/unnamed-chunk-223-1.png) 
 
 Statistics (23/26) - Interpreting output of lm()
 =========================================================

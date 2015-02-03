@@ -710,7 +710,7 @@ mean(x)
 ```
 
 ```
-[1] 69.82093
+[1] 70.40512
 ```
 
 ```r
@@ -879,7 +879,7 @@ $Calculation
 [1] 100
 
 $DateRun
-[1] "Fri Jan 30 13:14:45 2015"
+[1] "Tue Feb  3 11:04:13 2015"
 ```
 
 Functions (8/) -Scope
@@ -914,7 +914,7 @@ Error in eval(expr, envir, enclos): object 'arg1' not found
 Time for an exercise!
 ========================================================
 
-Exercise on functions can be found [here](Functions_Exercises.html)
+Exercise on functions can be found [here](exercises/Functions_Exercises.html)
 
 Answers to exercise.
 ========================================================
@@ -965,7 +965,7 @@ dayOfWeek()
 ```
 
 ```
-[1] "Fri"
+[1] "Tue"
 ```
 
 Rscript

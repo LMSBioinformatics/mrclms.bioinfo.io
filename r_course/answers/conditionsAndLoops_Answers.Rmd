@@ -7,7 +7,7 @@ output: html_document
 
 These exercises cover the sections of Conditions and Loops in R [Introduction to R]("introToR_Day1.html").
 
--- Calculate the factorial (factorial of 3 = 3+2+1) of 10 using a loop.
+-- Calculate the factorial (factorial of 3 = 3 * 2 * 1) of 10 using a loop.
 
 ```{r,message=T}
 
@@ -78,7 +78,7 @@ Annotation <- read.table("../ExpressionResults/Annotation.ann",sep="\t",h=T)
 annotatedExpression <- merge(Annotation,mergedTable,by=1,all.x=F,all.y=T)
 annotatedExpression[1:2,]
 
-table(Annotation$Pathway)
+summary(annotatedExpression$Pathway)
 summary(Annotation$Pathway)
 ```
 
