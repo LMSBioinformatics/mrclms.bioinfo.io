@@ -35,7 +35,7 @@
       // Author information
       presenters: [
             {
-        name: 'Gopuraja Dharmalingam'
+        name: 'CSC Computational Biology Week'
       },
             ]
     };
@@ -97,10 +97,6 @@
 <li>Annotations</li>
 <li>Exercises</li>
 </ul>
-
-</article></slide><slide class=''><hgroup><h2>Section</h2></hgroup><article  id="section">
-
-<p>type:section</p>
 
 </article></slide><slide class=''><hgroup><h2>Bioconductor</h2></hgroup><article  id="bioconductor">
 
@@ -241,16 +237,16 @@ gr1</pre>
 <pre >## GRanges object with 10 ranges and 2 metadata columns:
 ##     seqnames    ranges strand |     score                 GC
 ##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
-##   a     chr1  [11, 50]      - |         1  0.337731094798073
-##   b     chr2  [12, 51]      + |         2  0.439795767655596
-##   c     chr2  [13, 52]      + |         3  0.470579899381846
-##   d     chr2  [14, 53]      - |         4  0.906528972787783
-##   e     chr1  [15, 54]      - |         5  0.378703975351527
-##   f     chr1  [16, 55]      + |         6 0.0680389211047441
-##   g     chr3  [17, 56]      + |         7  0.671680502360687
-##   h     chr3  [18, 57]      + |         8  0.894248256925493
-##   i     chr3  [19, 58]      - |         9  0.545714828185737
-##   j     chr3  [20, 59]      - |        10  0.375114988768473
+##   a     chr1  [11, 50]      - |         1  0.888527879258618
+##   b     chr2  [12, 51]      + |         2  0.548481413396075
+##   c     chr2  [13, 52]      + |         3 0.0342718129977584
+##   d     chr2  [14, 53]      - |         4  0.483702096855268
+##   e     chr1  [15, 54]      - |         5   0.35670515941456
+##   f     chr1  [16, 55]      + |         6  0.336115777958184
+##   g     chr3  [17, 56]      + |         7  0.757806429872289
+##   h     chr3  [18, 57]      + |         8   0.39026014204137
+##   i     chr3  [19, 58]      - |         9  0.550159583101049
+##   j     chr3  [20, 59]      - |        10  0.396350368857384
 ##   -------
 ##   seqinfo: 3 sequences from an unspecified genome; no seqlengths</pre>
 
@@ -267,16 +263,16 @@ gr1</pre>
 <pre >## DataFrame with 10 rows and 2 columns
 ##        score         GC
 ##    &lt;integer&gt;  &lt;numeric&gt;
-## 1          1 0.33773109
-## 2          2 0.43979577
-## 3          3 0.47057990
-## 4          4 0.90652897
-## 5          5 0.37870398
-## 6          6 0.06803892
-## 7          7 0.67168050
-## 8          8 0.89424826
-## 9          9 0.54571483
-## 10        10 0.37511499</pre>
+## 1          1 0.88852788
+## 2          2 0.54848141
+## 3          3 0.03427181
+## 4          4 0.48370210
+## 5          5 0.35670516
+## 6          6 0.33611578
+## 7          7 0.75780643
+## 8          8 0.39026014
+## 9          9 0.55015958
+## 10        10 0.39635037</pre>
 
 </article></slide><slide class=''><hgroup><h2>Constructing GRanges object from data frame</h2></hgroup><article  id="constructing-granges-object-from-data-frame">
 
@@ -401,11 +397,11 @@ GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)</pre>
 <pre class = 'prettyprint lang-r'>gr1[seqnames(gr1)==&quot;chr1&quot;]</pre>
 
 <pre >## GRanges object with 3 ranges and 2 metadata columns:
-##     seqnames    ranges strand |     score                 GC
-##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
-##   a     chr1  [11, 50]      - |         1  0.337731094798073
-##   e     chr1  [15, 54]      - |         5  0.378703975351527
-##   f     chr1  [16, 55]      + |         6 0.0680389211047441
+##     seqnames    ranges strand |     score                GC
+##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
+##   a     chr1  [11, 50]      - |         1 0.888527879258618
+##   e     chr1  [15, 54]      - |         5  0.35670515941456
+##   f     chr1  [16, 55]      + |         6 0.336115777958184
 ##   -------
 ##   seqinfo: 3 sequences from an unspecified genome; no seqlengths</pre>
 
@@ -458,13 +454,13 @@ gr1_overlaps</pre>
 gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]</pre>
 
 <pre >## GRanges object with 5 ranges and 2 metadata columns:
-##     seqnames    ranges strand |     score                 GC
-##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
-##   f     chr1  [16, 55]      + |         6 0.0680389211047441
-##   i     chr3  [19, 58]      - |         9  0.545714828185737
-##   i     chr3  [19, 58]      - |         9  0.545714828185737
-##   j     chr3  [20, 59]      - |        10  0.375114988768473
-##   j     chr3  [20, 59]      - |        10  0.375114988768473
+##     seqnames    ranges strand |     score                GC
+##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
+##   f     chr1  [16, 55]      + |         6 0.336115777958184
+##   i     chr3  [19, 58]      - |         9 0.550159583101049
+##   i     chr3  [19, 58]      - |         9 0.550159583101049
+##   j     chr3  [20, 59]      - |        10 0.396350368857384
+##   j     chr3  [20, 59]      - |        10 0.396350368857384
 ##   -------
 ##   seqinfo: 3 sequences from an unspecified genome; no seqlengths</pre>
 
@@ -475,11 +471,11 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]</pre>
 <pre class = 'prettyprint lang-r'>subsetByOverlaps(gr1,gr2,ignore.strand=F)</pre>
 
 <pre >## GRanges object with 3 ranges and 2 metadata columns:
-##     seqnames    ranges strand |     score                 GC
-##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
-##   f     chr1  [16, 55]      + |         6 0.0680389211047441
-##   i     chr3  [19, 58]      - |         9  0.545714828185737
-##   j     chr3  [20, 59]      - |        10  0.375114988768473
+##     seqnames    ranges strand |     score                GC
+##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
+##   f     chr1  [16, 55]      + |         6 0.336115777958184
+##   i     chr3  [19, 58]      - |         9 0.550159583101049
+##   j     chr3  [20, 59]      - |        10 0.396350368857384
 ##   -------
 ##   seqinfo: 3 sequences from an unspecified genome; no seqlengths</pre>
 
@@ -958,9 +954,7 @@ ens_human_filters &lt;- listFilters(ens_human) # list availabel filters</pre>
 
 <p>Extract genomic coordinates, ensembl gene identifier and gene symbol for genes in chromsome X</p>
 
-<pre class = 'prettyprint lang-r'>chrXGenes &lt;- getBM(attributes = c(&quot;chromosome_name&quot;,&quot;start_position&quot;,&quot;end_position&quot;,&quot;ensembl_gene_id&quot;,&quot;strand&quot;,&quot;external_gene_name&quot;), filter=&quot;chromosome_name&quot;,values=&quot;X&quot;, mart=ens_human)</pre>
-
-</article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section-1"></article></slide>
+<pre class = 'prettyprint lang-r'>chrXGenes &lt;- getBM(attributes = c(&quot;chromosome_name&quot;,&quot;start_position&quot;,&quot;end_position&quot;,&quot;ensembl_gene_id&quot;,&quot;strand&quot;,&quot;external_gene_name&quot;), filter=&quot;chromosome_name&quot;,values=&quot;X&quot;, mart=ens_human)</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

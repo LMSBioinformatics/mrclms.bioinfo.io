@@ -1,6 +1,6 @@
 ---
 title: "Biconductor Exercises"
-author: "Gopuraja Dharmalingam"
+author: "Comuptational Biology Week"
 date: "04 February 2015"
 output:
   pdf_document:

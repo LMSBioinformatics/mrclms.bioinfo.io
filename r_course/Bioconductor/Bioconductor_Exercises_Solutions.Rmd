@@ -1,6 +1,6 @@
 ---
 title: "Biconductor Exercises"
-author: "Gopuraja Dharmalingam"
+author: "Comuptational Biology Week"
 date: "04 February 2015"
 output:
   pdf_document:
@@ -189,8 +189,7 @@ Tips:
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE, collapse=TRUE}
 symbols <- c("AQP1", "ASNSP2", "KPNA2", "FRMD4A", "NSUN5", "VAC14")
-seq = getSequence(id=symbols, 
-                  type="hgnc_symbol",
+seq = getSequence(id=symbols, type="hgnc_symbol",
                   seqType="coding_gene_flank",upstream=200, mart = ens_human)
 ```
 
