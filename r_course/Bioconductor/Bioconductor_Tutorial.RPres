@@ -5,7 +5,6 @@ author: "CSC Computational Biology Week"
 date: http://mrccsc.github.io/r_course/Bioconductor/BioC_Tutorial_Rpress.html
 
 
-
 Overview
 ========================================================
 
@@ -396,12 +395,12 @@ Reading Sequence alignments (BAM/SAM)
 
 - GenomicRanges package defines the GAlignments class – a specialised class for storing set of genomic alignments (ex: sequencing data) 
 - Only BAM support now – future version may include other formats
-- The readGAlignmentsFromBam function takes an additional argument, <b>param</b> allowing the user to customise which genomic regions and which fields to read from BAM
+- The readGAlignments function takes an additional argument, <b>param</b> allowing the user to customise which genomic regions and which fields to read from BAM
 -<b>param</b> can be constructed using </b>ScanBamParam</b> function
 
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE}
 library(GenomicAlignments)
-SampleAlign <- readGAlignmentsFromBam(BamFile)
+SampleAlign <- readGAlignments(BamFile)
 ```
 
 
@@ -412,7 +411,7 @@ We can also customise which regions to read
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE}
 region <- RangesList(seq1=IRanges(1000, 2000),seq2=IRanges(1000, 2000))
 param1 <- ScanBamParam(what=c("rname", "pos", "cigar","qwidth"),which=region)
-SampleAlign1 <- readGAlignmentsFromBam(BamFile,param=param1)
+SampleAlign1 <- readGAlignments(BamFile,param=param1)
 ```
 
 

@@ -1661,18 +1661,18 @@ gr1
 </code></pre>
 
 <pre><code>GRanges object with 10 ranges and 2 metadata columns:
-    seqnames    ranges strand |     score                GC
-       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  a     chr1  [11, 50]      - |         1 0.908758750418201
-  b     chr2  [12, 51]      + |         2  0.76966118789278
-  c     chr2  [13, 52]      + |         3 0.276699011679739
-  d     chr2  [14, 53]      - |         4 0.239433376351371
-  e     chr1  [15, 54]      - |         5 0.828637470956892
-  f     chr1  [16, 55]      + |         6 0.666333116823807
-  g     chr3  [17, 56]      + |         7 0.533844608580694
-  h     chr3  [18, 57]      + |         8 0.231444937642664
-  i     chr3  [19, 58]      - |         9 0.648039028747007
-  j     chr3  [20, 59]      - |        10 0.209833324886858
+    seqnames    ranges strand |     score                 GC
+       &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+  a     chr1  [11, 50]      - |         1  0.580721070291474
+  b     chr2  [12, 51]      + |         2  0.261760980123654
+  c     chr2  [13, 52]      + |         3  0.262375191319734
+  d     chr2  [14, 53]      - |         4 0.0223529902286828
+  e     chr1  [15, 54]      - |         5  0.190516075119376
+  f     chr1  [16, 55]      + |         6   0.84672028128989
+  g     chr3  [17, 56]      + |         7  0.536360397469252
+  h     chr3  [18, 57]      + |         8  0.907330405432731
+  i     chr3  [19, 58]      - |         9  0.125121991150081
+  j     chr3  [20, 59]      - |        10  0.528982581803575
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1693,18 +1693,18 @@ gr1
 </code></pre>
 
 <pre><code>DataFrame with 10 rows and 2 columns
-       score        GC
-   &lt;integer&gt; &lt;numeric&gt;
-1          1 0.9087588
-2          2 0.7696612
-3          3 0.2766990
-4          4 0.2394334
-5          5 0.8286375
-6          6 0.6663331
-7          7 0.5338446
-8          8 0.2314449
-9          9 0.6480390
-10        10 0.2098333
+       score         GC
+   &lt;integer&gt;  &lt;numeric&gt;
+1          1 0.58072107
+2          2 0.26176098
+3          3 0.26237519
+4          4 0.02235299
+5          5 0.19051608
+6          6 0.84672028
+7          7 0.53636040
+8          8 0.90733041
+9          9 0.12512199
+10        10 0.52898258
 </code></pre>
 
 </div>
@@ -1856,9 +1856,9 @@ GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  a     chr1  [11, 50]      - |         1 0.908758750418201
-  e     chr1  [15, 54]      - |         5 0.828637470956892
-  f     chr1  [16, 55]      + |         6 0.666333116823807
+  a     chr1  [11, 50]      - |         1 0.580721070291474
+  e     chr1  [15, 54]      - |         5 0.190516075119376
+  f     chr1  [16, 55]      + |         6  0.84672028128989
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1927,11 +1927,11 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 5 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6 0.666333116823807
-  i     chr3  [19, 58]      - |         9 0.648039028747007
-  i     chr3  [19, 58]      - |         9 0.648039028747007
-  j     chr3  [20, 59]      - |        10 0.209833324886858
-  j     chr3  [20, 59]      - |        10 0.209833324886858
+  f     chr1  [16, 55]      + |         6  0.84672028128989
+  i     chr3  [19, 58]      - |         9 0.125121991150081
+  i     chr3  [19, 58]      - |         9 0.125121991150081
+  j     chr3  [20, 59]      - |        10 0.528982581803575
+  j     chr3  [20, 59]      - |        10 0.528982581803575
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -1950,9 +1950,9 @@ gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]
 <pre><code>GRanges object with 3 ranges and 2 metadata columns:
     seqnames    ranges strand |     score                GC
        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-  f     chr1  [16, 55]      + |         6 0.666333116823807
-  i     chr3  [19, 58]      - |         9 0.648039028747007
-  j     chr3  [20, 59]      - |        10 0.209833324886858
+  f     chr1  [16, 55]      + |         6  0.84672028128989
+  i     chr3  [19, 58]      - |         9 0.125121991150081
+  j     chr3  [20, 59]      - |        10 0.528982581803575
   -------
   seqinfo: 3 sequences from an unspecified genome; no seqlengths
 </code></pre>
@@ -2165,12 +2165,12 @@ scanBamFlag(isPaired = NA, isProperPair = NA, isUnmappedQuery = NA,
 <ul>
 <li>GenomicRanges package defines the GAlignments class – a specialised class for storing set of genomic alignments (ex: sequencing data) </li>
 <li>Only BAM support now – future version may include other formats</li>
-<li>The readGAlignmentsFromBam function takes an additional argument, <b>param</b> allowing the user to customise which genomic regions and which fields to read from BAM
+<li>The readGAlignments function takes an additional argument, <b>param</b> allowing the user to customise which genomic regions and which fields to read from BAM
 -<b>param</b> can be constructed using </b>ScanBamParam</b> function</li>
 </ul>
 
 <pre><code class="r">library(GenomicAlignments)
-SampleAlign &lt;- readGAlignmentsFromBam(BamFile)
+SampleAlign &lt;- readGAlignments(BamFile)
 </code></pre>
 
 </div>
@@ -2183,7 +2183,7 @@ SampleAlign &lt;- readGAlignmentsFromBam(BamFile)
 
 <pre><code class="r">region &lt;- RangesList(seq1=IRanges(1000, 2000),seq2=IRanges(1000, 2000))
 param1 &lt;- ScanBamParam(what=c(&quot;rname&quot;, &quot;pos&quot;, &quot;cigar&quot;,&quot;qwidth&quot;),which=region)
-SampleAlign1 &lt;- readGAlignmentsFromBam(BamFile,param=param1)
+SampleAlign1 &lt;- readGAlignments(BamFile,param=param1)
 </code></pre>
 
 </div>
