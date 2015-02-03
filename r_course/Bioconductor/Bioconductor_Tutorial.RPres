@@ -1,8 +1,12 @@
 Bioconductor Tutorial
 ========================================================
-author: Gopuraja Dharmalingam
 css: Rpress.css
-date: 04-02-2015
+date: http://mrccsc.github.io/r_course/Bioconductor/BioC_Tutorial_Rpress.html
+author: 
+- Gopuraja Dharmalingam
+- Sanjay Khadayate
+- Tom Carroll
+
 
 
 Overview
@@ -16,7 +20,7 @@ Overview
 
 Bioconductor
 ========================================================
-Bioconductor (BioC) is an open source, open development software project to provide tools for the analysis and comprehension of high-throughput genomic data 
+Bioconductor (BioC) is an open source, open development software project to provide tools for the analysis and comprehension of high-throughput genomics data 
 
 - Started in 2001
 - Gained popularity through microarray analysis packages
@@ -82,13 +86,18 @@ library("limma")
 ```
 - Browse Vignettes browseVignettes(package="limma")
 - Bioconductor Course Materials: http://www.bioconductor.org/help/course-materials/
-- Bioconductor mailing list -  http://www.bioconductor.org/help/mailing-list/
+- Bioconductor mailing list -  https://support.bioconductor.org/
 
-- Prints version information about R and all loaded packages
+Prints version information about R and all loaded packages
 ```{r eval=FALSE}
 sessionInfo()
 ```
 
+
+GenomicRanges
+=========================================================
+type:section
+id: GRanges
 
 GenomicRanges
 ========================================================
@@ -111,13 +120,17 @@ Run Length Encoding (Rle)
 - Efficiently encoding the redundant information
 
 
-```{r, echo=TRUE, eval=TRUE,  message=FALSE}
+```{r, echo=TRUE, eval=TRUE, message=FALSE}
+
+# Orginial vector
+# chr1, chr2, chr2, chr2, chr1, chr1, chr3, chr3
+
 library(GenomicRanges)
-chr <- Rle(c("chr1", "chr2", "chr1", "chr3"), c(1, 3, 2, 4))
+chr <- Rle(c("chr1", "chr2", "chr1", "chr3"), c(1, 3, 2, 2))
 chr
 ```
 
-The above Rle can be interpreted as a run of length 1 of chr1, followed by run length of 3 of chr2, followed by run length of 2 of chr1 and followed by run length of 4 of chr3
+The above Rle can be interpreted as a run of length 1 of chr1, followed by run length of 3 of chr2, followed by run length of 2 of chr1 and followed by run length of 2 of chr3
 
 
 
@@ -130,7 +143,7 @@ GRanges class represents a collection of genomic features with single start and 
 library("GenomicRanges")
 gr1 <- GRanges(seqnames = Rle(c("chr1", "chr2", "chr1", "chr3"), c(1, 3, 2, 4)),
                ranges = IRanges(start=11:20, end = 50:59, names = head(letters,10)),
-               strand = Rle(strand(c("-", "+", "-", "+", "-")), c(1,2, 2, 3, 2)),
+               strand = Rle(c("-", "+", "-", "+", "-"), c(1,2, 2, 3, 2)),
                score = 1:10, GC = runif(10,0,1))
 gr1
 ```
@@ -155,7 +168,7 @@ head(mm9genes)
 mm9genes.GR <- GRanges(seqnames=mm9genes$chr,
                        ranges=IRanges(start=mm9genes$start,end=mm9genes$end),
                        strand=mm9genes$strand,
-                       EnsemblID=mm9genes$ens,
+                       ENSID=mm9genes$ens,
                        Symbol=mm9genes$Symbol)
 ```
 
@@ -181,7 +194,7 @@ GenomicRangesList
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE}
 gr2 <- GRanges(seqnames = Rle(c("chr1", "chr3","chr2", "chr1", "chr3"), c(1, 2,1, 2, 4)),
                 ranges = IRanges(start=55:64, end = 94:103, names = letters[11:20]),
-                strand = Rle(strand(c("+", "-", "+", "-")), c(1, 4, 3, 2)),
+                strand = Rle(c("+", "-", "+", "-"), c(1, 4, 3, 2)),
                 score = 1:10, GC = runif(10,0,1))
 
 GRL <- GRangesList("Peak1" = gr1, "Peak2" = gr2)
@@ -192,7 +205,7 @@ GRL <- GRangesList("Peak1" = gr1, "Peak2" = gr2)
 Operations on GenomicRanges
 ========================================================
 
-<b>Accessors:</b> start, end, ranges, strand, width, names, mcols, length
+<b>Accessors:</b> seqnames, start, end, ranges, strand, width, names, mcols, length
 
 <b>Extraction:</b> GR[i], GRL[[i]], head, tail
 
@@ -238,17 +251,18 @@ Finding overlapping regions
 - Usage: <b>function(query,subject)</b>
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE}
 gr1_overlaps <- findOverlaps(gr1,gr2,ignore.strand=F)
+gr1_overlaps
 ```
 
-Output of findOverlaps is a 'Hits' object indicating which of the query and subject overlap.
+Output of findOverlaps is a 'Hits' object indicating which of the query and subject intervals overlap.
 
 Finding overlapping regions
 ========================================================
-Convert the 'Hits' object to 2 column matrix using <b>as.matrix()</b>. Values in the first column are index of the query and values in second column are index of the subject.
+Convert the 'Hits' object to 2 column matrix using <b>as.matrix()</b>. Values in the first column are indices of the query and values in second column are indices of the subject.
 
 ```{r, echo=TRUE, eval=TRUE, message=FALSE}
 gr1_overlaps.m <- as.matrix(gr1_overlaps)
-gr1[gr1_overlaps.m[,1], ]
+gr1[gr1_overlaps.m[,"queryHits"], ]
 ```
 
 
@@ -282,6 +296,11 @@ Computing Coverage
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE}
 coverage(gr1)
 ```
+
+Reading Sequence Alignments
+=========================================================
+type:section
+id: BAM
 
 
 File formats in NGS
@@ -336,7 +355,8 @@ Methods for reading BAM/SAM
     - Reads all files in a directory
     - Reads base call qualities, chromosome, position, and strand
 - <b>scanBam</b> from Rsamtools package
-    scanBam returns a list of values. Each element in the list corresponds to a range speciﬁed by the which argument in ScanBamParam
+    - scanBam reads BAM files into list structure
+    - Options to select what fields and which records to import using <b>ScanBamParam</b>
 - <b>readGAlignments</b> from GenomicAlignments package
 
 
@@ -378,7 +398,6 @@ Reading Sequence alignments (BAM/SAM)
 ========================================================
 
 - GenomicRanges package defines the GAlignments class – a specialised class for storing set of genomic alignments (ex: sequencing data) 
-- GenomicAlignments package defines efficient ways of reading and storing short genomic alignments as GAlignments objects
 - Only BAM support now – future version may include other formats
 - The readGAlignmentsFromBam function takes an additional argument, <b>param</b> allowing the user to customise which genomic regions and which fields to read from BAM
 -<b>param</b> can be constructed using </b>ScanBamParam</b> function
@@ -400,6 +419,10 @@ SampleAlign1 <- readGAlignmentsFromBam(BamFile,param=param1)
 ```
 
 
+Annotation Packages
+=========================================================
+type:section
+id: Annotation
 
 BioC Annotation Packages
 ========================================================
@@ -505,7 +528,6 @@ TranscriptDB (TxDb) packages
 ========================================================
 - TxDb packages provide access genomic coordinates to various transcript-related features from UCSC and Biomart data sources.
 - TxDb objects contains relationship between mRNA transcripts, exons, CDS and their associated identifiers
-- Txdb objects can be accessed using GenomicFeatures package
 - TxDb packages follows specific naming scheme, ex: TxDb.Mmusculus.UCSC.mm9.knownGene
 
 We will explore TxDb package for Mouse mm9 genome from UCSC. We will first install the package and load in to our current working space.
@@ -535,7 +557,7 @@ select(txdb,keys=keys,columns=c("GENEID","TXNAME"),keytype="GENEID")
 
 TxDb.Mmusculus.UCSC.mm9.knownGene
 ========================================================
-Most common operations performed on TxDb objects are retrieving exons, transcripts and CDS genomic coordinates.  The functions <b>transcripts, exons</b>, and <b>cds</b> return the coordinates for the group as GRanges objects.
+Most common operations performed on TxDb objects are retrieving exons, transcripts and CDS genomic coordinates.  The functions <b>genes, transcripts, exons</b>, and <b>cds</b> return the coordinates for the group as GRanges objects.
 
 ```{r, echo=TRUE, eval=TRUE, collapse=TRUE}
 TranscriptRanges <- transcripts(txdb)
@@ -560,15 +582,15 @@ TxDb.Mmusculus.UCSC.mm9.knownGene
 
 Other interesting functions: <b>intronsByTranscript, fiveUTRsByTranscript</b> and <b>threeUTRsByTranscript</b>
 
+GenomicFeatures also provides functions to create TxDb objects directly from UCSC and Biomart databases: <b>makeTranscriptDbFromBiomart</b> and <b>makeTranscriptDbFromUCSC</b>
+```{r, echo=TRUE, eval=FALSE, message=FALSE, results='hide'}
+USCmm9KnownGene <- makeTranscriptDbFromUCSC(genome = "mm9", tablename = "knownGene")
+```
+
 Save the annotation object and label them appropriately to facilitate reproducible research:
 ```{r, echo=TRUE, eval=TRUE,  message=FALSE, results='hide'}
 saveDb(txdb,file="Mouse_ucsc_mm9_20150204.sqlite")
 txdb <- loadDb("Mouse_ucsc_mm9_20150204.sqlite")
-```
-
-GenomicFeatures also provides functions to create TxDb objects directly from UCSC and Biomart databases: <b>makeTranscriptDbFromBiomart</b> and <b>makeTranscriptDbFromUCSC</b>
-```{r, echo=TRUE, eval=FALSE, message=FALSE, results='hide'}
-USCmm9KnownGene <- makeTranscriptDbFromUCSC(genome = "mm9", tablename = "knownGene")
 ```
 
 

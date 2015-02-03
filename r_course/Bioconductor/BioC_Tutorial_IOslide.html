@@ -98,9 +98,13 @@
 <li>Exercises</li>
 </ul>
 
+</article></slide><slide class=''><hgroup><h2>Section</h2></hgroup><article  id="section">
+
+<p>type:section</p>
+
 </article></slide><slide class=''><hgroup><h2>Bioconductor</h2></hgroup><article  id="bioconductor">
 
-<p>Bioconductor (BioC) is an open source, open development software project to provide tools for the analysis and comprehension of high-throughput genomic data</p>
+<p>Bioconductor (BioC) is an open source, open development software project to provide tools for the analysis and comprehension of high-throughput genomics data</p>
 
 <ul>
 <li>Started in 2001</li>
@@ -165,9 +169,10 @@ library(&quot;GenomicRanges&quot;)</pre>
 <ul>
 <li>Browse Vignettes browseVignettes(package=&quot;limma&quot;)</li>
 <li>Bioconductor Course Materials: <a href='http://www.bioconductor.org/help/course-materials/' title=''>http://www.bioconductor.org/help/course-materials/</a></li>
-<li><p>Bioconductor mailing list - <a href='http://www.bioconductor.org/help/mailing-list/' title=''>http://www.bioconductor.org/help/mailing-list/</a></p></li>
-<li><p>Prints version information about R and all loaded packages</p></li>
+<li>Bioconductor mailing list - <a href='https://support.bioconductor.org/' title=''>https://support.bioconductor.org/</a></li>
 </ul>
+
+<p>Prints version information about R and all loaded packages</p>
 
 <pre class = 'prettyprint lang-r'>sessionInfo()</pre>
 
@@ -209,15 +214,18 @@ library(&quot;GenomicRanges&quot;)</pre>
 <li>Efficiently encoding the redundant information</li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>library(GenomicRanges)
-chr &lt;- Rle(c(&quot;chr1&quot;, &quot;chr2&quot;, &quot;chr1&quot;, &quot;chr3&quot;), c(1, 3, 2, 4))
+<pre class = 'prettyprint lang-r'># Orginial vector
+# chr1, chr2, chr2, chr2, chr1, chr1, chr3, chr3
+
+library(GenomicRanges)
+chr &lt;- Rle(c(&quot;chr1&quot;, &quot;chr2&quot;, &quot;chr1&quot;, &quot;chr3&quot;), c(1, 3, 2, 2))
 chr</pre>
 
-<pre >## character-Rle of length 10 with 4 runs
-##   Lengths:      1      3      2      4
+<pre >## character-Rle of length 8 with 4 runs
+##   Lengths:      1      3      2      2
 ##   Values : &quot;chr1&quot; &quot;chr2&quot; &quot;chr1&quot; &quot;chr3&quot;</pre>
 
-<p>The above Rle can be interpreted as a run of length 1 of chr1, followed by run length of 3 of chr2, followed by run length of 2 of chr1 and followed by run length of 4 of chr3</p>
+<p>The above Rle can be interpreted as a run of length 1 of chr1, followed by run length of 3 of chr2, followed by run length of 2 of chr1 and followed by run length of 2 of chr3</p>
 
 </article></slide><slide class=''><hgroup><h2>Constructing GRanges object</h2></hgroup><article  id="constructing-granges-object" class="smaller">
 
@@ -226,23 +234,23 @@ chr</pre>
 <pre class = 'prettyprint lang-r'>library(&quot;GenomicRanges&quot;)
 gr1 &lt;- GRanges(seqnames = Rle(c(&quot;chr1&quot;, &quot;chr2&quot;, &quot;chr1&quot;, &quot;chr3&quot;), c(1, 3, 2, 4)),
                ranges = IRanges(start=11:20, end = 50:59, names = head(letters,10)),
-               strand = Rle(strand(c(&quot;-&quot;, &quot;+&quot;, &quot;-&quot;, &quot;+&quot;, &quot;-&quot;)), c(1,2, 2, 3, 2)),
+               strand = Rle(c(&quot;-&quot;, &quot;+&quot;, &quot;-&quot;, &quot;+&quot;, &quot;-&quot;), c(1,2, 2, 3, 2)),
                score = 1:10, GC = runif(10,0,1))
 gr1</pre>
 
 <pre >## GRanges object with 10 ranges and 2 metadata columns:
-##     seqnames    ranges strand |     score                GC
-##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-##   a     chr1  [11, 50]      - |         1 0.309173398884013
-##   b     chr2  [12, 51]      + |         2 0.985295054968446
-##   c     chr2  [13, 52]      + |         3 0.578721130033955
-##   d     chr2  [14, 53]      - |         4 0.766273709014058
-##   e     chr1  [15, 54]      - |         5  0.62092365254648
-##   f     chr1  [16, 55]      + |         6 0.025131473550573
-##   g     chr3  [17, 56]      + |         7 0.267753405030817
-##   h     chr3  [18, 57]      + |         8 0.970298747997731
-##   i     chr3  [19, 58]      - |         9  0.89416171121411
-##   j     chr3  [20, 59]      - |        10 0.125715511385351
+##     seqnames    ranges strand |     score                 GC
+##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+##   a     chr1  [11, 50]      - |         1  0.337731094798073
+##   b     chr2  [12, 51]      + |         2  0.439795767655596
+##   c     chr2  [13, 52]      + |         3  0.470579899381846
+##   d     chr2  [14, 53]      - |         4  0.906528972787783
+##   e     chr1  [15, 54]      - |         5  0.378703975351527
+##   f     chr1  [16, 55]      + |         6 0.0680389211047441
+##   g     chr3  [17, 56]      + |         7  0.671680502360687
+##   h     chr3  [18, 57]      + |         8  0.894248256925493
+##   i     chr3  [19, 58]      - |         9  0.545714828185737
+##   j     chr3  [20, 59]      - |        10  0.375114988768473
 ##   -------
 ##   seqinfo: 3 sequences from an unspecified genome; no seqlengths</pre>
 
@@ -259,16 +267,16 @@ gr1</pre>
 <pre >## DataFrame with 10 rows and 2 columns
 ##        score         GC
 ##    &lt;integer&gt;  &lt;numeric&gt;
-## 1          1 0.30917340
-## 2          2 0.98529505
-## 3          3 0.57872113
-## 4          4 0.76627371
-## 5          5 0.62092365
-## 6          6 0.02513147
-## 7          7 0.26775341
-## 8          8 0.97029875
-## 9          9 0.89416171
-## 10        10 0.12571551</pre>
+## 1          1 0.33773109
+## 2          2 0.43979577
+## 3          3 0.47057990
+## 4          4 0.90652897
+## 5          5 0.37870398
+## 6          6 0.06803892
+## 7          7 0.67168050
+## 8          8 0.89424826
+## 9          9 0.54571483
+## 10        10 0.37511499</pre>
 
 </article></slide><slide class=''><hgroup><h2>Constructing GRanges object from data frame</h2></hgroup><article  id="constructing-granges-object-from-data-frame">
 
@@ -286,7 +294,7 @@ head(mm9genes)</pre>
 <pre class = 'prettyprint lang-r'>mm9genes.GR &lt;- GRanges(seqnames=mm9genes$chr,
                        ranges=IRanges(start=mm9genes$start,end=mm9genes$end),
                        strand=mm9genes$strand,
-                       EnsemblID=mm9genes$ens,
+                       ENSID=mm9genes$ens,
                        Symbol=mm9genes$Symbol)</pre>
 
 <p>Another option: <b>makeGRangesFromDataFrame()</b></p>
@@ -298,7 +306,7 @@ head(mm9genes)</pre>
 <pre class = 'prettyprint lang-r'>head(mm9genes.GR)</pre>
 
 <pre >## GRanges object with 6 ranges and 2 metadata columns:
-##       seqnames                 ranges strand |          EnsemblID
+##       seqnames                 ranges strand |              ENSID
 ##          &lt;Rle&gt;              &lt;IRanges&gt;  &lt;Rle&gt; |           &lt;factor&gt;
 ##   [1]     chr9 [105729415, 105731415]      - | ENSMUSG00000043719
 ##   [2]    chr18 [ 43636450,  43638450]      - | ENSMUSG00000043424
@@ -327,7 +335,7 @@ head(mm9genes)</pre>
 
 <pre class = 'prettyprint lang-r'>gr2 &lt;- GRanges(seqnames = Rle(c(&quot;chr1&quot;, &quot;chr3&quot;,&quot;chr2&quot;, &quot;chr1&quot;, &quot;chr3&quot;), c(1, 2,1, 2, 4)),
                 ranges = IRanges(start=55:64, end = 94:103, names = letters[11:20]),
-                strand = Rle(strand(c(&quot;+&quot;, &quot;-&quot;, &quot;+&quot;, &quot;-&quot;)), c(1, 4, 3, 2)),
+                strand = Rle(c(&quot;+&quot;, &quot;-&quot;, &quot;+&quot;, &quot;-&quot;), c(1, 4, 3, 2)),
                 score = 1:10, GC = runif(10,0,1))
 
 GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)</pre>
@@ -341,7 +349,7 @@ GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)</pre>
 </tr>
 <tr class="odd">
 <td align="left">Accessors</td>
-<td align="center">start, end, ranges, strand, width, names, mcols, length</td>
+<td align="center">seqnames, start, end, ranges, strand, width, names, mcols, length</td>
 </tr>
 <tr class="even">
 <td align="left">Extraction</td>
@@ -393,11 +401,11 @@ GRL &lt;- GRangesList(&quot;Peak1&quot; = gr1, &quot;Peak2&quot; = gr2)</pre>
 <pre class = 'prettyprint lang-r'>gr1[seqnames(gr1)==&quot;chr1&quot;]</pre>
 
 <pre >## GRanges object with 3 ranges and 2 metadata columns:
-##     seqnames    ranges strand |     score                GC
-##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-##   a     chr1  [11, 50]      - |         1 0.309173398884013
-##   e     chr1  [15, 54]      - |         5  0.62092365254648
-##   f     chr1  [16, 55]      + |         6 0.025131473550573
+##     seqnames    ranges strand |     score                 GC
+##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+##   a     chr1  [11, 50]      - |         1  0.337731094798073
+##   e     chr1  [15, 54]      - |         5  0.378703975351527
+##   f     chr1  [16, 55]      + |         6 0.0680389211047441
 ##   -------
 ##   seqinfo: 3 sequences from an unspecified genome; no seqlengths</pre>
 
@@ -440,23 +448,23 @@ gr1_overlaps</pre>
 ##  4        10           2 
 ##  5        10           3</pre>
 
-<p>Output of findOverlaps is a &#39;Hits&#39; object indicating which of the query and subject overlap.</p>
+<p>Output of findOverlaps is a &#39;Hits&#39; object indicating which of the query and subject intervals overlap.</p>
 
 </article></slide><slide class=''><hgroup><h2>Finding overlapping regions</h2></hgroup><article  id="finding-overlapping-regions-1">
 
-<p>Convert the &#39;Hits&#39; object to 2 column matrix using <b>as.matrix()</b>. Values in the first column are index of the query and values in second column are index of the subject.</p>
+<p>Convert the &#39;Hits&#39; object to 2 column matrix using <b>as.matrix()</b>. Values in the first column are indices of the query and values in second column are indices of the subject.</p>
 
 <pre class = 'prettyprint lang-r'>gr1_overlaps.m &lt;- as.matrix(gr1_overlaps)
-gr1[gr1_overlaps.m[,1], ]</pre>
+gr1[gr1_overlaps.m[,&quot;queryHits&quot;], ]</pre>
 
 <pre >## GRanges object with 5 ranges and 2 metadata columns:
-##     seqnames    ranges strand |     score                GC
-##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-##   f     chr1  [16, 55]      + |         6 0.025131473550573
-##   i     chr3  [19, 58]      - |         9  0.89416171121411
-##   i     chr3  [19, 58]      - |         9  0.89416171121411
-##   j     chr3  [20, 59]      - |        10 0.125715511385351
-##   j     chr3  [20, 59]      - |        10 0.125715511385351
+##     seqnames    ranges strand |     score                 GC
+##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+##   f     chr1  [16, 55]      + |         6 0.0680389211047441
+##   i     chr3  [19, 58]      - |         9  0.545714828185737
+##   i     chr3  [19, 58]      - |         9  0.545714828185737
+##   j     chr3  [20, 59]      - |        10  0.375114988768473
+##   j     chr3  [20, 59]      - |        10  0.375114988768473
 ##   -------
 ##   seqinfo: 3 sequences from an unspecified genome; no seqlengths</pre>
 
@@ -467,11 +475,11 @@ gr1[gr1_overlaps.m[,1], ]</pre>
 <pre class = 'prettyprint lang-r'>subsetByOverlaps(gr1,gr2,ignore.strand=F)</pre>
 
 <pre >## GRanges object with 3 ranges and 2 metadata columns:
-##     seqnames    ranges strand |     score                GC
-##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;         &lt;numeric&gt;
-##   f     chr1  [16, 55]      + |         6 0.025131473550573
-##   i     chr3  [19, 58]      - |         9  0.89416171121411
-##   j     chr3  [20, 59]      - |        10 0.125715511385351
+##     seqnames    ranges strand |     score                 GC
+##        &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;          &lt;numeric&gt;
+##   f     chr1  [16, 55]      + |         6 0.0680389211047441
+##   i     chr3  [19, 58]      - |         9  0.545714828185737
+##   j     chr3  [20, 59]      - |        10  0.375114988768473
 ##   -------
 ##   seqinfo: 3 sequences from an unspecified genome; no seqlengths</pre>
 
@@ -618,7 +626,12 @@ A1BDFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJIJJ</pre>
 <li>Reads all files in a directory</li>
 <li>Reads base call qualities, chromosome, position, and strand</li>
 </ul></li>
-<li><b>scanBam</b> from Rsamtools package scanBam returns a list of values. Each element in the list corresponds to a range speciﬁed by the which argument in ScanBamParam</li>
+<li><b>scanBam</b> from Rsamtools package
+
+<ul>
+<li>scanBam reads BAM files into list structure</li>
+<li>Options to select what fields and which records to import using <b>ScanBamParam</b></li>
+</ul></li>
 <li><b>readGAlignments</b> from GenomicAlignments package</li>
 </ul>
 
@@ -656,7 +669,6 @@ scanBamFlag(isPaired = NA, isProperPair = NA, isUnmappedQuery = NA,
 
 <ul>
 <li>GenomicRanges package defines the GAlignments class – a specialised class for storing set of genomic alignments (ex: sequencing data)</li>
-<li>GenomicAlignments package defines efficient ways of reading and storing short genomic alignments as GAlignments objects</li>
 <li>Only BAM support now – future version may include other formats</li>
 <li>The readGAlignments function takes an additional argument, <b>param</b> allowing the user to customise which genomic regions and which fields to read from BAM -<b>param</b> can be constructed using </b>ScanBamParam</b> function</li>
 </ul>
@@ -807,7 +819,6 @@ head(NewResult)</pre>
 <ul>
 <li>TxDb packages provide access genomic coordinates to various transcript-related features from UCSC and Biomart data sources.</li>
 <li>TxDb objects contains relationship between mRNA transcripts, exons, CDS and their associated identifiers</li>
-<li>Txdb objects can be accessed using GenomicFeatures package</li>
 <li>TxDb packages follows specific naming scheme, ex: TxDb.Mmusculus.UCSC.mm9.knownGene</li>
 </ul>
 
@@ -835,7 +846,7 @@ select(txdb,keys=keys,columns=c(&quot;GENEID&quot;,&quot;TXNAME&quot;),keytype=&
 
 </article></slide><slide class=''><hgroup><h2>TxDb.Mmusculus.UCSC.mm9.knownGene</h2></hgroup><article  id="txdb.mmusculus.ucsc.mm9.knowngene-1" class="smaller">
 
-<p>Most common operations performed on TxDb objects are retrieving exons, transcripts and CDS genomic coordinates. The functions <b>transcripts, exons</b>, and <b>cds</b> return the coordinates for the group as GRanges objects.</p>
+<p>Most common operations performed on TxDb objects are retrieving exons, transcripts and CDS genomic coordinates. The functions <b>genes, transcripts, exons</b>, and <b>cds</b> return the coordinates for the group as GRanges objects.</p>
 
 <pre class = 'prettyprint lang-r'>TranscriptRanges &lt;- transcripts(txdb)
 TranscriptRanges[1:3]</pre>
@@ -886,14 +897,14 @@ Transcripts[1:2]</pre>
 
 <p>Other interesting functions: <b>intronsByTranscript, fiveUTRsByTranscript</b> and <b>threeUTRsByTranscript</b></p>
 
+<p>GenomicFeatures also provides functions to create TxDb objects directly from UCSC and Biomart databases: <b>makeTranscriptDbFromBiomart</b> and <b>makeTranscriptDbFromUCSC</b></p>
+
+<pre class = 'prettyprint lang-r'>USCmm9KnownGene &lt;- makeTranscriptDbFromUCSC(genome = &quot;mm9&quot;, tablename = &quot;knownGene&quot;)</pre>
+
 <p>Save the annotation object and label them appropriately to facilitate reproducible research:</p>
 
 <pre class = 'prettyprint lang-r'>saveDb(txdb,file=&quot;Mouse_ucsc_mm9_20150204.sqlite&quot;)
 txdb &lt;- loadDb(&quot;Mouse_ucsc_mm9_20150204.sqlite&quot;)</pre>
-
-<p>GenomicFeatures also provides functions to create TxDb objects directly from UCSC and Biomart databases: <b>makeTranscriptDbFromBiomart</b> and <b>makeTranscriptDbFromUCSC</b></p>
-
-<pre class = 'prettyprint lang-r'>USCmm9KnownGene &lt;- makeTranscriptDbFromUCSC(genome = &quot;mm9&quot;, tablename = &quot;knownGene&quot;)</pre>
 
 </article></slide><slide class=''><hgroup><h2>Annotations from the web – biomaRt</h2></hgroup><article  id="annotations-from-the-web-biomart" class="smaller">
 
@@ -947,7 +958,9 @@ ens_human_filters &lt;- listFilters(ens_human) # list availabel filters</pre>
 
 <p>Extract genomic coordinates, ensembl gene identifier and gene symbol for genes in chromsome X</p>
 
-<pre class = 'prettyprint lang-r'>chrXGenes &lt;- getBM(attributes = c(&quot;chromosome_name&quot;,&quot;start_position&quot;,&quot;end_position&quot;,&quot;ensembl_gene_id&quot;,&quot;strand&quot;,&quot;external_gene_name&quot;), filter=&quot;chromosome_name&quot;,values=&quot;X&quot;, mart=ens_human)</pre></article></slide>
+<pre class = 'prettyprint lang-r'>chrXGenes &lt;- getBM(attributes = c(&quot;chromosome_name&quot;,&quot;start_position&quot;,&quot;end_position&quot;,&quot;ensembl_gene_id&quot;,&quot;strand&quot;,&quot;external_gene_name&quot;), filter=&quot;chromosome_name&quot;,values=&quot;X&quot;, mart=ens_human)</pre>
+
+</article></slide><slide class=''><hgroup><h2></h2></hgroup><article  id="section-1"></article></slide>
 
 
   <slide class="backdrop"></slide>
