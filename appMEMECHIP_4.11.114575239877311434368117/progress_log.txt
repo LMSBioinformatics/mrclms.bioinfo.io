@@ -1,0 +1,54 @@
+Invoking:
+  getsize ./abssummit_top500_melRep1_1And2.fa 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.019844
+Invoking:
+  fasta-most -min 50 < ./abssummit_top500_melRep1_1And2.fa 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.102032
+Invoking:
+  fasta-center -dna -len 100 < ./abssummit_top500_melRep1_1And2.fa 1> ./seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.125485
+Invoking:
+  fasta-shuffle-letters ./seqs-centered ./seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.01879
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 1 ./abssummit_top500_melRep1_1And2.fa ./background
+Finished invoke:
+  name: bg  status: 0  time: 0.014258
+Invoking:
+  meme ./seqs-centered -oc meme_out -mod zoops -nmotifs 3 -minw 6 -maxw 30 -bfile ./background -dna -time 5082 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 911.571404
+Invoking:
+  dreme -v 1 -oc dreme_out -png -dna -p ./seqs-centered -n ./seqs-shuffled -t 6775 -e 0.05
+Finished invoke:
+  name: dreme  status: 0  time: 79.118096
+Invoking:
+  centrimo -seqlen 200 -verbosity 1 -oc centrimo_out -bfile ./background -score 5.0 -ethresh 10.0 ./abssummit_top500_melRep1_1And2.fa meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: centrimo  status: 0  time: 13.746811
+Invoking:
+  tomtom -verbosity 1 -oc meme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc -bfile ./background meme_out/meme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: meme_tomtom  status: 0  time: 47.098828
+Invoking:
+  tomtom -verbosity 1 -oc dreme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc -bfile ./background dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: dreme_tomtom  status: 0  time: 6.841374
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ./combined.meme ./combined.meme 1> ./motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 12.123321
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_1 -bgfile ./background -primary 1 ./abssummit_top500_melRep1_1And2.fa meme_out/meme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo1  status: 0  time: 3.704884
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_1 --bgfile ./background --motif 1 meme_out/meme.xml ./abssummit_top500_melRep1_1And2.fa
+Finished invoke:
+  name: fimo1  status: 0  time: 1.753072
+Writing output
+Done
