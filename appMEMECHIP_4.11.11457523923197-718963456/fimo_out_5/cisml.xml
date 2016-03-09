@@ -1,0 +1,1085 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<!-- Document definition -->
+<!-- http://zlab.bu.edu/~phaverty/SupplementalData/CisML/cisml.dtd -->
+<!DOCTYPE cis-element-search[
+<!ELEMENT cis-element-search (program-name, parameters, (pattern | multi-pattern-scan)*)>
+<!ELEMENT program-name (#PCDATA)>
+<!ELEMENT parameters (
+  pattern-file, 
+  sequence-file, 
+  background-seq-file?,
+  pattern-pvalue-cutoff?,
+  sequence-pvalue-cutoff?,
+  site-pvalue-cutoff?,
+  sequence-filtering,
+  ANY*
+ )>
+<!ELEMENT command-line (#PCDATA)>
+<!ELEMENT pattern-file (#PCDATA)>
+<!ELEMENT sequence-file (#PCDATA)>
+<!ELEMENT background-seq-file (#PCDATA)>
+<!ELEMENT pattern-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-pvalue-cutoff (#PCDATA)>
+<!ELEMENT site-pvalue-cutoff (#PCDATA)>
+<!ELEMENT sequence-filtering EMPTY>
+<!ELEMENT multi-pattern-scan (pattern+, ANY*)>
+<!ELEMENT pattern (scanned-sequence+, ANY*)>
+<!ELEMENT scanned-sequence (matched-element*, ANY*)>
+<!ELEMENT matched-element (sequence)>
+<!ELEMENT sequence (#PCDATA)>
+<!ATTLIST cis-element-search
+xmlns:xsi CDATA #IMPLIED
+xmlns:mem CDATA #IMPLIED
+xsi:schemaLocation CDATA #IMPLIED
+>
+<!ATTLIST sequence-filtering
+on-off CDATA #REQUIRED
+type CDATA #IMPLIED
+>
+<!ATTLIST multi-pattern-scan
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+>
+<!ATTLIST pattern
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+pvalue CDATA #IMPLIED
+score CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST scanned-sequence
+accession CDATA #REQUIRED
+name CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+length CDATA #IMPLIED
+db CDATA #IMPLIED
+lsid CDATA #IMPLIED
+>
+<!ATTLIST matched-element
+start CDATA #REQUIRED
+stop CDATA #REQUIRED
+score CDATA #IMPLIED
+pvalue CDATA #IMPLIED
+clusterid CDATA #IMPLIED
+>
+
+]>
+<cis-element-search
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://zlab.bu.edu/schema/cisml cisml.xsd"
+  xmlns="http://zlab.bu.edu/schema/cisml"
+  xmlns:mem="http://noble.gs.washington.edu/meme"
+>
+<program-name>fimo</program-name>
+<parameters>
+<pattern-file>dreme_out/dreme.xml</pattern-file>
+<sequence-file>./top500_melRep1_1And2.fa</sequence-file>
+<site-pvalue-cutoff>0.0001</site-pvalue-cutoff>
+<sequence-filtering on-off="off"/>
+</parameters>
+<pattern accession="AGRAA" name="AGRAA">
+<scanned-sequence accession="peak_chr4_45966312-45966511" name="peak_chr4_45966312-45966511">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_21156572-21156771" name="peak_chr9_21156572-21156771">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_114345800-114345999" name="peak_chr12_114345800-114345999">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_87847243-87847442" name="peak_chr3_87847243-87847442">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_136578227-136578426" name="peak_chr5_136578227-136578426">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_34024701-34024900" name="peak_chr5_34024701-34024900">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_13879389-13879588" name="peak_chr9_13879389-13879588">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_30127131-30127330" name="peak_chr7_30127131-30127330">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_113210082-113210281" name="peak_chr12_113210082-113210281">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_59424735-59424934" name="peak_chr19_59424735-59424934">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20969178-20969377" name="peak_chr9_20969178-20969377">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_123098058-123098257" name="peak_chr5_123098058-123098257">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr14_115445189-115445388" name="peak_chr14_115445189-115445388">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_58886655-58886854" name="peak_chr15_58886655-58886854">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_55282518-55282717" name="peak_chr19_55282518-55282717">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_46150881-46151080" name="peak_chr19_46150881-46151080">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_95686489-95686688" name="peak_chr3_95686489-95686688">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_60623633-60623832" name="peak_chr3_60623633-60623832">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_144751039-144751238" name="peak_chr5_144751039-144751238">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_5366424-5366623" name="peak_chr19_5366424-5366623">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_72462706-72462905" name="peak_chr6_72462706-72462905">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr18_57043442-57043641" name="peak_chr18_57043442-57043641">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_134910935-134911134" name="peak_chr7_134910935-134911134">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr16_93153221-93153420" name="peak_chr16_93153221-93153420">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_135526520-135526719" name="peak_chr2_135526520-135526719">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_42269784-42269983" name="peak_chr9_42269784-42269983">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_36577748-36577947" name="peak_chr15_36577748-36577947">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_131120911-131121110" name="peak_chrX_131120911-131121110">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_133466548-133466747" name="peak_chr4_133466548-133466747">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_86503522-86503721" name="peak_chr7_86503522-86503721">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_25321158-25321357" name="peak_chr17_25321158-25321357">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_41905660-41905859" name="peak_chr19_41905660-41905859">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_60844737-60844936" name="peak_chr13_60844737-60844936">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_135868519-135868718" name="peak_chrX_135868519-135868718">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_101112771-101112970" name="peak_chr4_101112771-101112970">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_21767229-21767428" name="peak_chr9_21767229-21767428">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_71214473-71214672" name="peak_chr2_71214473-71214672">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_122419248-122419447" name="peak_chr6_122419248-122419447">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_21216466-21216665" name="peak_chr9_21216466-21216665">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_151337109-151337308" name="peak_chr4_151337109-151337308">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_30862082-30862281" name="peak_chr2_30862082-30862281">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_53489294-53489493" name="peak_chr19_53489294-53489493">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_110555909-110556108" name="peak_chr10_110555909-110556108">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_75308350-75308549" name="peak_chr2_75308350-75308549">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_29032319-29032518" name="peak_chr17_29032319-29032518">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_81829619-81829818" name="peak_chr13_81829619-81829818">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_77066618-77066817" name="peak_chr15_77066618-77066817">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_132842001-132842200" name="peak_chr4_132842001-132842200">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_101500915-101501114" name="peak_chr13_101500915-101501114">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_113927142-113927341" name="peak_chr12_113927142-113927341">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_14651051-14651250" name="peak_chr9_14651051-14651250">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_149709008-149709207" name="peak_chr5_149709008-149709207">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_44194196-44194395" name="peak_chr10_44194196-44194395">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20877710-20877909" name="peak_chr9_20877710-20877909">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_77380326-77380525" name="peak_chr5_77380326-77380525">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20682462-20682661" name="peak_chr9_20682462-20682661">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_93207438-93207637" name="peak_chr4_93207438-93207637">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_149605824-149606023" name="peak_chr7_149605824-149606023">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_15094003-15094202" name="peak_chr9_15094003-15094202">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr18_63887717-63887916" name="peak_chr18_63887717-63887916">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_140058091-140058290" name="peak_chr7_140058091-140058290">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_78186399-78186598" name="peak_chr12_78186399-78186598">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_38009035-38009234" name="peak_chr15_38009035-38009234">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_11329188-11329387" name="peak_chr15_11329188-11329387">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20695302-20695501" name="peak_chr9_20695302-20695501">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_126347395-126347594" name="peak_chr8_126347395-126347594">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_116476457-116476656" name="peak_chr5_116476457-116476656">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_117162186-117162385" name="peak_chr7_117162186-117162385">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_87543387-87543586" name="peak_chr11_87543387-87543586">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_128002709-128002908" name="peak_chr10_128002709-128002908">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_75760860-75761059" name="peak_chr3_75760860-75761059">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_53874796-53874995" name="peak_chr19_53874796-53874995">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_20235138-20235337" name="peak_chrX_20235138-20235337">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_106459729-106459928" name="peak_chr11_106459729-106459928">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_21760229-21760428" name="peak_chr9_21760229-21760428">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_129210361-129210560" name="peak_chr7_129210361-129210560">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_85500052-85500251" name="peak_chr15_85500052-85500251">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_114935587-114935786" name="peak_chr5_114935587-114935786">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_120266223-120266422" name="peak_chr11_120266223-120266422">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_47639206-47639405" name="peak_chr17_47639206-47639405">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_151325007-151325206" name="peak_chr5_151325007-151325206">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_42203934-42204133" name="peak_chr19_42203934-42204133">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_52379866-52380065" name="peak_chr7_52379866-52380065">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_149034773-149034972" name="peak_chr4_149034773-149034972">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_58624894-58625093" name="peak_chr13_58624894-58625093">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_137578753-137578952" name="peak_chr5_137578753-137578952">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20673561-20673760" name="peak_chr9_20673561-20673760">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_6999766-6999965" name="peak_chrX_6999766-6999965">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr16_57280716-57280915" name="peak_chr16_57280716-57280915">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_97467838-97468037" name="peak_chr13_97467838-97468037">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_11456937-11457136" name="peak_chr2_11456937-11457136">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_76496152-76496351" name="peak_chr10_76496152-76496351">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_13338309-13338508" name="peak_chr8_13338309-13338508">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_59062381-59062580" name="peak_chr17_59062381-59062580">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_14173662-14173861" name="peak_chr9_14173662-14173861">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_14588947-14589146" name="peak_chr9_14588947-14589146">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_26928248-26928447" name="peak_chr19_26928248-26928447">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_82866491-82866690" name="peak_chr15_82866491-82866690">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_101177368-101177567" name="peak_chr11_101177368-101177567">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_79568947-79569146" name="peak_chr8_79568947-79569146">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_125259975-125260174" name="peak_chr8_125259975-125260174">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_116519354-116519553" name="peak_chr11_116519354-116519553">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_46100474-46100673" name="peak_chr11_46100474-46100673">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_151278319-151278518" name="peak_chr4_151278319-151278518">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_57434918-57435117" name="peak_chr19_57434918-57435117">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_34425166-34425365" name="peak_chr15_34425166-34425365">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_15137057-15137256" name="peak_chr17_15137057-15137256">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_150057412-150057611" name="peak_chr5_150057412-150057611">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_126277658-126277857" name="peak_chrX_126277658-126277857">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_123833368-123833567" name="peak_chr9_123833368-123833567">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_118059633-118059832" name="peak_chr9_118059633-118059832">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_45080796-45080995" name="peak_chr19_45080796-45080995">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_69010268-69010467" name="peak_chr8_69010268-69010467">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_122128752-122128951" name="peak_chr8_122128752-122128951">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_17511251-17511450" name="peak_chr17_17511251-17511450">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_110470491-110470690" name="peak_chr13_110470491-110470690">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_114336788-114336987" name="peak_chr4_114336788-114336987">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_122845692-122845891" name="peak_chr8_122845692-122845891">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_125103431-125103630" name="peak_chr6_125103431-125103630">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_41912971-41913170" name="peak_chr19_41912971-41913170">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_75140140-75140339" name="peak_chr7_75140140-75140339">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_87246998-87247197" name="peak_chr8_87246998-87247197">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_52323040-52323239" name="peak_chr7_52323040-52323239">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_126479149-126479348" name="peak_chr10_126479149-126479348">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_72833832-72834031" name="peak_chr15_72833832-72834031">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_98558093-98558292" name="peak_chr15_98558093-98558292">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20543154-20543353" name="peak_chr9_20543154-20543353">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_82481664-82481863" name="peak_chr10_82481664-82481863">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_96000771-96000970" name="peak_chr3_96000771-96000970">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_33062543-33062742" name="peak_chr11_33062543-33062742">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_41359300-41359499" name="peak_chr3_41359300-41359499">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_98634708-98634907" name="peak_chr11_98634708-98634907">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_122592603-122592802" name="peak_chr5_122592603-122592802">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_89885406-89885605" name="peak_chr3_89885406-89885605">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_94373704-94373903" name="peak_chr15_94373704-94373903">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_103853906-103854105" name="peak_chr7_103853906-103854105">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_80462578-80462777" name="peak_chr10_80462578-80462777">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr16_90144192-90144391" name="peak_chr16_90144192-90144391">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr16_91717527-91717726" name="peak_chr16_91717527-91717726">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_32250431-32250630" name="peak_chr17_32250431-32250630">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_88981418-88981617" name="peak_chr3_88981418-88981617">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_149631545-149631744" name="peak_chr5_149631545-149631744">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_61912751-61912950" name="peak_chr10_61912751-61912950">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20835324-20835523" name="peak_chr9_20835324-20835523">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_122559336-122559535" name="peak_chr6_122559336-122559535">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_69422898-69423097" name="peak_chr11_69422898-69423097">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_84687834-84688033" name="peak_chr3_84687834-84688033">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_120252381-120252580" name="peak_chr10_120252381-120252580">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_21705677-21705876" name="peak_chr9_21705677-21705876">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_114312899-114313098" name="peak_chr12_114312899-114313098">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_76955506-76955705" name="peak_chr11_76955506-76955705">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_42294959-42295158" name="peak_chr15_42294959-42295158">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_5066682-5066881" name="peak_chr15_5066682-5066881">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_122198003-122198202" name="peak_chr8_122198003-122198202">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_115591289-115591488" name="peak_chr3_115591289-115591488">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_56875623-56875822" name="peak_chr19_56875623-56875822">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_38626701-38626900" name="peak_chr6_38626701-38626900">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_46131352-46131551" name="peak_chr19_46131352-46131551">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_88692329-88692528" name="peak_chr15_88692329-88692528">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_57491687-57491886" name="peak_chr9_57491687-57491886">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_129469171-129469370" name="peak_chr8_129469171-129469370">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr16_32487919-32488118" name="peak_chr16_32487919-32488118">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr16_90044377-90044576" name="peak_chr16_90044377-90044576">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_88255825-88256024" name="peak_chr1_88255825-88256024">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_108693274-108693473" name="peak_chr1_108693274-108693473">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_67215206-67215405" name="peak_chr6_67215206-67215405">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_84515778-84515977" name="peak_chr17_84515778-84515977">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_46465480-46465679" name="peak_chr4_46465480-46465679">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_87981448-87981647" name="peak_chr3_87981448-87981647">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_153604915-153605114" name="peak_chr2_153604915-153605114">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr18_68558039-68558238" name="peak_chr18_68558039-68558238">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_149719337-149719536" name="peak_chr7_149719337-149719536">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_128867398-128867597" name="peak_chr4_128867398-128867597">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_57465044-57465243" name="peak_chr11_57465044-57465243">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_27888141-27888340" name="peak_chr2_27888141-27888340">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_133276060-133276259" name="peak_chrX_133276060-133276259">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_53893675-53893874" name="peak_chr19_53893675-53893874">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_36991353-36991552" name="peak_chr1_36991353-36991552">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_130754038-130754237" name="peak_chr5_130754038-130754237">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_13530971-13531170" name="peak_chr8_13530971-13531170">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_29911630-29911829" name="peak_chr7_29911630-29911829">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_21244272-21244471" name="peak_chr9_21244272-21244471">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_101904729-101904928" name="peak_chr15_101904729-101904928">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_95090887-95091086" name="peak_chr3_95090887-95091086">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_96540205-96540404" name="peak_chr15_96540205-96540404">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_32173352-32173551" name="peak_chr17_32173352-32173551">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_132641697-132641896" name="peak_chr2_132641697-132641896">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_91458214-91458413" name="peak_chrX_91458214-91458413">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_32000611-32000810" name="peak_chr5_32000611-32000810">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_131076200-131076399" name="peak_chrX_131076200-131076399">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_104845185-104845384" name="peak_chr7_104845185-104845384">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_158187039-158187238" name="peak_chr2_158187039-158187238">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_85417183-85417382" name="peak_chr11_85417183-85417382">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_92278703-92278902" name="peak_chr5_92278703-92278902">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_21498258-21498457" name="peak_chr19_21498258-21498457">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_95665128-95665327" name="peak_chr3_95665128-95665327">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20757129-20757328" name="peak_chr9_20757129-20757328">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_120443001-120443200" name="peak_chr11_120443001-120443200">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_18890843-18891042" name="peak_chr2_18890843-18891042">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_56630493-56630692" name="peak_chr19_56630493-56630692">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_6428199-6428398" name="peak_chr11_6428199-6428398">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_53299335-53299534" name="peak_chr11_53299335-53299534">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_117751875-117752074" name="peak_chr4_117751875-117752074">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr14_31425840-31426039" name="peak_chr14_31425840-31426039">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_180991664-180991863" name="peak_chr1_180991664-180991863">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_151104320-151104519" name="peak_chr4_151104320-151104519">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_151334607-151334806" name="peak_chr4_151334607-151334806">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_77563532-77563731" name="peak_chr5_77563532-77563731">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_58505561-58505760" name="peak_chr9_58505561-58505760">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_5922408-5922607" name="peak_chr19_5922408-5922607">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_134800526-134800725" name="peak_chr7_134800526-134800725">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_49624557-49624756" name="peak_chr11_49624557-49624756">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_28465835-28466034" name="peak_chr17_28465835-28466034">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_29996825-29997024" name="peak_chr17_29996825-29997024">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_24005938-24006137" name="peak_chr13_24005938-24006137">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_152189482-152189681" name="peak_chr2_152189482-152189681">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_73034241-73034440" name="peak_chr8_73034241-73034440">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_117782311-117782510" name="peak_chr4_117782311-117782510">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_158722283-158722482" name="peak_chrX_158722283-158722482">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_20403233-20403432" name="peak_chr5_20403233-20403432">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_79727873-79728072" name="peak_chr10_79727873-79728072">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_17659740-17659939" name="peak_chr7_17659740-17659939">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_38893487-38893686" name="peak_chr19_38893487-38893686">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_95681098-95681297" name="peak_chr15_95681098-95681297">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_96574094-96574293" name="peak_chr15_96574094-96574293">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_106137952-106138151" name="peak_chr11_106137952-106138151">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_5885463-5885662" name="peak_chr17_5885463-5885662">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_19045332-19045531" name="peak_chr11_19045332-19045531">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_68720721-68720920" name="peak_chr13_68720721-68720920">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_29475029-29475228" name="peak_chr19_29475029-29475228">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_124347428-124347627" name="peak_chr5_124347428-124347627">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_138702253-138702452" name="peak_chr5_138702253-138702452">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_39789247-39789446" name="peak_chr15_39789247-39789446">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_106288152-106288351" name="peak_chr4_106288152-106288351">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_47116219-47116418" name="peak_chr9_47116219-47116418">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_57075084-57075283" name="peak_chr17_57075084-57075283">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_6968568-6968767" name="peak_chr19_6968568-6968767">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_94858996-94859195" name="peak_chr3_94858996-94859195">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_15112104-15112303" name="peak_chr9_15112104-15112303">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_80819231-80819430" name="peak_chr10_80819231-80819430">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_118101239-118101438" name="peak_chr4_118101239-118101438">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_19855549-19855748" name="peak_chr10_19855549-19855748">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_106136236-106136435" name="peak_chr4_106136236-106136435">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_82652812-82653011" name="peak_chr6_82652812-82653011">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_122014578-122014777" name="peak_chr5_122014578-122014777">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_82172379-82172578" name="peak_chr15_82172379-82172578">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_140178198-140178397" name="peak_chr5_140178198-140178397">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_79317002-79317201" name="peak_chr10_79317002-79317201">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_56615974-56616173" name="peak_chr17_56615974-56616173">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_73883854-73884053" name="peak_chr5_73883854-73884053">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_172845153-172845352" name="peak_chr2_172845153-172845352">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_133428422-133428621" name="peak_chr7_133428422-133428621">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_77305616-77305815" name="peak_chr11_77305616-77305815">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_27022966-27023165" name="peak_chr17_27022966-27023165">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_96605839-96606038" name="peak_chr5_96605839-96606038">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_98650370-98650569" name="peak_chr11_98650370-98650569">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_124501983-124502182" name="peak_chr5_124501983-124502182">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_61876299-61876498" name="peak_chr10_61876299-61876498">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_126754315-126754514" name="peak_chr10_126754315-126754514">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_97672911-97673110" name="peak_chr15_97672911-97673110">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_53178533-53178732" name="peak_chr7_53178533-53178732">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_97168263-97168462" name="peak_chr15_97168263-97168462">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_123682947-123683146" name="peak_chr8_123682947-123683146">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_60866044-60866243" name="peak_chr19_60866044-60866243">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_19426568-19426767" name="peak_chr9_19426568-19426767">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_43368368-43368567" name="peak_chr10_43368368-43368567">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_49777514-49777713" name="peak_chr13_49777514-49777713">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_98944343-98944542" name="peak_chr15_98944343-98944542">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_53868030-53868229" name="peak_chr19_53868030-53868229">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_139936312-139936511" name="peak_chr5_139936312-139936511">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_101814519-101814718" name="peak_chr15_101814519-101814718">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_53037293-53037492" name="peak_chr15_53037293-53037492">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_57797825-57798024" name="peak_chr11_57797825-57798024">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_192878968-192879167" name="peak_chr1_192878968-192879167">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_155518028-155518227" name="peak_chr2_155518028-155518227">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_88140461-88140660" name="peak_chr6_88140461-88140660">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_59117355-59117554" name="peak_chr7_59117355-59117554">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_140315964-140316163" name="peak_chr7_140315964-140316163">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_82721598-82721797" name="peak_chr11_82721598-82721797">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr14_33326555-33326754" name="peak_chr14_33326555-33326754">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr18_74889083-74889282" name="peak_chr18_74889083-74889282">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_117588192-117588391" name="peak_chr4_117588192-117588391">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_148633386-148633585" name="peak_chr7_148633386-148633585">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr14_55101470-55101669" name="peak_chr14_55101470-55101669">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_115705773-115705972" name="peak_chr6_115705773-115705972">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_88100449-88100648" name="peak_chr3_88100449-88100648">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_120272178-120272377" name="peak_chr2_120272178-120272377">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_12124271-12124470" name="peak_chr15_12124271-12124470">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_155135000-155135199" name="peak_chr4_155135000-155135199">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_104520028-104520227" name="peak_chr7_104520028-104520227">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_142789107-142789306" name="peak_chr7_142789107-142789306">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_61879279-61879478" name="peak_chr11_61879279-61879478">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_139858548-139858747" name="peak_chr5_139858548-139858747">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_149806875-149807074" name="peak_chr5_149806875-149807074">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_51433390-51433589" name="peak_chr11_51433390-51433589">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_31255833-31256032" name="peak_chr11_31255833-31256032">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_88307742-88307941" name="peak_chr3_88307742-88307941">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_10946090-10946289" name="peak_chr8_10946090-10946289">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_117829504-117829703" name="peak_chr6_117829504-117829703">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_178926800-178926999" name="peak_chr1_178926800-178926999">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr14_31831078-31831277" name="peak_chr14_31831078-31831277">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_92811060-92811259" name="peak_chr5_92811060-92811259">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_67237082-67237281" name="peak_chr15_67237082-67237281">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_47754643-47754842" name="peak_chr17_47754643-47754842">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_107485811-107486010" name="peak_chr8_107485811-107486010">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_21731661-21731860" name="peak_chr9_21731661-21731860">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_44134616-44134815" name="peak_chr9_44134616-44134815">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr16_20611523-20611722" name="peak_chr16_20611523-20611722">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_117600623-117600822" name="peak_chr12_117600623-117600822">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_78243789-78243988" name="peak_chr15_78243789-78243988">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_87254811-87255010" name="peak_chr8_87254811-87255010">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_32588603-32588802" name="peak_chr3_32588603-32588802">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_32442856-32443055" name="peak_chr2_32442856-32443055">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_167515565-167515764" name="peak_chr2_167515565-167515764">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_94490231-94490430" name="peak_chr3_94490231-94490430">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_149995678-149995877" name="peak_chr5_149995678-149995877">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_74762682-74762881" name="peak_chr10_74762682-74762881">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_118151397-118151596" name="peak_chr11_118151397-118151596">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_28836936-28837135" name="peak_chr17_28836936-28837135">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_20508551-20508750" name="peak_chr5_20508551-20508750">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_84012887-84013086" name="peak_chr10_84012887-84013086">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_95659811-95660010" name="peak_chr3_95659811-95660010">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_102050737-102050936" name="peak_chr11_102050737-102050936">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr14_47984733-47984932" name="peak_chr14_47984733-47984932">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_42119830-42120029" name="peak_chr19_42119830-42120029">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_90873282-90873481" name="peak_chr2_90873282-90873481">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_107372062-107372261" name="peak_chr11_107372062-107372261">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_102455669-102455868" name="peak_chr15_102455669-102455868">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_74754713-74754912" name="peak_chrX_74754713-74754912">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr16_17638465-17638664" name="peak_chr16_17638465-17638664">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_31434595-31434794" name="peak_chr17_31434595-31434794">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_135485286-135485485" name="peak_chr5_135485286-135485485">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_51746883-51747082" name="peak_chr13_51746883-51747082">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_4740312-4740511" name="peak_chr7_4740312-4740511">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_5014099-5014298" name="peak_chr7_5014099-5014298">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_187187255-187187454" name="peak_chr1_187187255-187187454">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr18_61008209-61008408" name="peak_chr18_61008209-61008408">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_95549087-95549286" name="peak_chr11_95549087-95549286">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_7353715-7353914" name="peak_chrX_7353715-7353914">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_88865485-88865684" name="peak_chr6_88865485-88865684">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_87942583-87942782" name="peak_chr3_87942583-87942782">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_120687464-120687663" name="peak_chr4_120687464-120687663">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_187296378-187296577" name="peak_chr1_187296378-187296577">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_97856750-97856949" name="peak_chr4_97856750-97856949">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_98720275-98720474" name="peak_chr11_98720275-98720474">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_21314648-21314847" name="peak_chr9_21314648-21314847">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_31360892-31361091" name="peak_chr17_31360892-31361091">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_143715376-143715575" name="peak_chr2_143715376-143715575">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_78739481-78739680" name="peak_chr15_78739481-78739680">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_95529426-95529625" name="peak_chr1_95529426-95529625">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_21257818-21258017" name="peak_chr9_21257818-21258017">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_121422843-121423042" name="peak_chr1_121422843-121423042">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_23428885-23429084" name="peak_chr5_23428885-23429084">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_140240468-140240667" name="peak_chr4_140240468-140240667">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_120811250-120811449" name="peak_chr11_120811250-120811449">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_57821783-57821982" name="peak_chr11_57821783-57821982">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_105808218-105808417" name="peak_chr11_105808218-105808417">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_80040898-80041097" name="peak_chr10_80040898-80041097">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_15162008-15162207" name="peak_chr9_15162008-15162207">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_15046013-15046212" name="peak_chr9_15046013-15046212">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_119082353-119082552" name="peak_chr12_119082353-119082552">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_94736973-94737172" name="peak_chr3_94736973-94737172">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_49748217-49748416" name="peak_chr13_49748217-49748416">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20846030-20846229" name="peak_chr9_20846030-20846229">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_24348502-24348701" name="peak_chr5_24348502-24348701">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_96703499-96703698" name="peak_chr8_96703499-96703698">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_118814868-118815067" name="peak_chr4_118814868-118815067">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_5798572-5798771" name="peak_chr17_5798572-5798771">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_76695177-76695376" name="peak_chr10_76695177-76695376">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_138227688-138227887" name="peak_chr5_138227688-138227887">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_55940224-55940423" name="peak_chr19_55940224-55940423">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_113866655-113866854" name="peak_chr12_113866655-113866854">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_119302544-119302743" name="peak_chr2_119302544-119302743">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_109418787-109418986" name="peak_chr11_109418787-109418986">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_121063408-121063607" name="peak_chr10_121063408-121063607">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_70384295-70384494" name="peak_chr11_70384295-70384494">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_29596435-29596634" name="peak_chr7_29596435-29596634">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_112916655-112916854" name="peak_chr12_112916655-112916854">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_101602948-101603147" name="peak_chr13_101602948-101603147">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_86846526-86846725" name="peak_chr17_86846526-86846725">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_130605597-130605796" name="peak_chr7_130605597-130605796">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_38943987-38944186" name="peak_chr15_38943987-38944186">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20959360-20959559" name="peak_chr9_20959360-20959559">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_54691171-54691370" name="peak_chr13_54691171-54691370">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_57468149-57468348" name="peak_chr19_57468149-57468348">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_189977573-189977772" name="peak_chr1_189977573-189977772">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr14_56388108-56388307" name="peak_chr14_56388108-56388307">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_81879739-81879938" name="peak_chr17_81879739-81879938">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_174240111-174240310" name="peak_chr1_174240111-174240310">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_74651682-74651881" name="peak_chr11_74651682-74651881">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_95116648-95116847" name="peak_chr3_95116648-95116847">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_48746433-48746632" name="peak_chr13_48746433-48746632">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_79335713-79335912" name="peak_chr3_79335713-79335912">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_124915248-124915447" name="peak_chr6_124915248-124915447">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_28954870-28955069" name="peak_chr7_28954870-28955069">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_74967505-74967704" name="peak_chr8_74967505-74967704">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20807089-20807288" name="peak_chr9_20807089-20807288">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_134659701-134659900" name="peak_chr5_134659701-134659900">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr18_34570284-34570483" name="peak_chr18_34570284-34570483">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_10315793-10315992" name="peak_chr1_10315793-10315992">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_154868298-154868497" name="peak_chr1_154868298-154868497">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_142843504-142843703" name="peak_chr5_142843504-142843703">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr16_17268117-17268316" name="peak_chr16_17268117-17268316">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_27694753-27694952" name="peak_chr17_27694753-27694952">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_88295265-88295464" name="peak_chr3_88295265-88295464">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_147530808-147531007" name="peak_chrX_147530808-147531007">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr12_77356475-77356674" name="peak_chr12_77356475-77356674">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_97413773-97413972" name="peak_chr3_97413773-97413972">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_156608960-156609159" name="peak_chr2_156608960-156609159">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_129131569-129131768" name="peak_chrX_129131569-129131768">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_37935823-37936022" name="peak_chr13_37935823-37936022">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_25252653-25252852" name="peak_chr17_25252653-25252852">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_34347484-34347683" name="peak_chr17_34347484-34347683">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_107050642-107050841" name="peak_chr11_107050642-107050841">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_133850895-133851094" name="peak_chr1_133850895-133851094">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_19597617-19597816" name="peak_chr10_19597617-19597816">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_46962692-46962891" name="peak_chr19_46962692-46962891">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_82902859-82903058" name="peak_chr4_82902859-82903058">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_15084317-15084516" name="peak_chr9_15084317-15084516">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_81223541-81223740" name="peak_chr15_81223541-81223740">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_22132307-22132506" name="peak_chr9_22132307-22132506">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_129419558-129419757" name="peak_chr4_129419558-129419757">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_62064845-62065044" name="peak_chr10_62064845-62065044">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_23567098-23567297" name="peak_chr11_23567098-23567297">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_21955398-21955597" name="peak_chr5_21955398-21955597">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_116533097-116533296" name="peak_chr11_116533097-116533296">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_95558569-95558768" name="peak_chr3_95558569-95558768">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_98929843-98930042" name="peak_chr11_98929843-98930042">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_88606269-88606468" name="peak_chr1_88606269-88606468">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_95021937-95022136" name="peak_chr3_95021937-95022136">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_11118896-11119095" name="peak_chr2_11118896-11119095">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_102269378-102269577" name="peak_chr11_102269378-102269577">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_35002566-35002765" name="peak_chr5_35002566-35002765">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_31109391-31109590" name="peak_chr6_31109391-31109590">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_62960826-62961025" name="peak_chr13_62960826-62961025">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_184293606-184293805" name="peak_chr1_184293606-184293805">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_87035133-87035332" name="peak_chr6_87035133-87035332">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_56546759-56546958" name="peak_chr7_56546759-56546958">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_83392369-83392568" name="peak_chr8_83392369-83392568">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_95460717-95460916" name="peak_chr9_95460717-95460916">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_127633338-127633537" name="peak_chr3_127633338-127633537">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_81106558-81106757" name="peak_chr10_81106558-81106757">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_15724690-15724889" name="peak_chr9_15724690-15724889">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_124430505-124430704" name="peak_chr8_124430505-124430704">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_148451071-148451270" name="peak_chrX_148451071-148451270">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_148662179-148662378" name="peak_chr7_148662179-148662378">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_88422010-88422209" name="peak_chr1_88422010-88422209">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_147119434-147119633" name="peak_chr5_147119434-147119633">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_75667916-75668115" name="peak_chr11_75667916-75668115">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_94868423-94868622" name="peak_chr13_94868423-94868622">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_86477032-86477231" name="peak_chr6_86477032-86477231">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_72341702-72341901" name="peak_chrX_72341702-72341901">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_32296636-32296835" name="peak_chr19_32296636-32296835">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr6_87800281-87800480" name="peak_chr6_87800281-87800480">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_117169703-117169902" name="peak_chr11_117169703-117169902">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_94830874-94831073" name="peak_chr1_94830874-94831073">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr18_75630970-75631169" name="peak_chr18_75630970-75631169">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_9065065-9065264" name="peak_chr17_9065065-9065264">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_53282891-53283090" name="peak_chr4_53282891-53283090">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_148224169-148224368" name="peak_chr7_148224169-148224368">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_138668826-138669025" name="peak_chr5_138668826-138669025">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_137079479-137079678" name="peak_chrX_137079479-137079678">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_80396423-80396622" name="peak_chr10_80396423-80396622">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_32550637-32550836" name="peak_chr19_32550637-32550836">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20930520-20930719" name="peak_chr9_20930520-20930719">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_47302122-47302321" name="peak_chr8_47302122-47302321">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_25993858-25994057" name="peak_chr2_25993858-25994057">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_31357193-31357392" name="peak_chr5_31357193-31357392">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr10_118677415-118677614" name="peak_chr10_118677415-118677614">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_7722613-7722812" name="peak_chrX_7722613-7722812">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr17_63661781-63661980" name="peak_chr17_63661781-63661980">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr2_91895983-91896182" name="peak_chr2_91895983-91896182">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_8955317-8955516" name="peak_chr19_8955317-8955516">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_105011350-105011549" name="peak_chrX_105011350-105011549">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_21292294-21292493" name="peak_chr5_21292294-21292493">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_26917178-26917377" name="peak_chr9_26917178-26917377">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_72919517-72919716" name="peak_chrX_72919517-72919716">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_75133437-75133636" name="peak_chr1_75133437-75133636">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr1_133839525-133839724" name="peak_chr1_133839525-133839724">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_38750731-38750930" name="peak_chr13_38750731-38750930">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr14_54420354-54420553" name="peak_chr14_54420354-54420553">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_8894798-8894997" name="peak_chr5_8894798-8894997">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_22257818-22258017" name="peak_chr9_22257818-22258017">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_30092622-30092821" name="peak_chr7_30092622-30092821">
+</scanned-sequence>
+<scanned-sequence accession="peak_chrX_12807848-12808047" name="peak_chrX_12807848-12808047">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_85137627-85137826" name="peak_chr11_85137627-85137826">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr4_109121193-109121392" name="peak_chr4_109121193-109121392">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr19_47165360-47165559" name="peak_chr19_47165360-47165559">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_20971929-20972128" name="peak_chr9_20971929-20972128">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr13_58622261-58622460" name="peak_chr13_58622261-58622460">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr8_13940919-13941118" name="peak_chr8_13940919-13941118">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr14_60870588-60870787" name="peak_chr14_60870588-60870787">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_97923326-97923525" name="peak_chr15_97923326-97923525">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr7_139588673-139588872" name="peak_chr7_139588673-139588872">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr11_72255047-72255246" name="peak_chr11_72255047-72255246">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr3_79395461-79395660" name="peak_chr3_79395461-79395660">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr5_116009876-116010075" name="peak_chr5_116009876-116010075">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_76093878-76094077" name="peak_chr15_76093878-76094077">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr15_42263526-42263725" name="peak_chr15_42263526-42263725">
+</scanned-sequence>
+<scanned-sequence accession="peak_chr9_22234272-22234471" name="peak_chr9_22234272-22234471">
+</scanned-sequence>
+<mem:has-qvalues>yes</mem:has-qvalues>
+</pattern>
+</cis-element-search>

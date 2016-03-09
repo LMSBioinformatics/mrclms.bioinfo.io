@@ -1,0 +1,69 @@
+<dreme version="4.11.1" release="Fri Jan 15 12:51:59 2016 -0800">
+  <model>
+    <command_line>dreme -v 1 -oc dreme_out -png -dna -p ./seqs-centered -n ./seqs-shuffled -t 6748 -e 0.05</command_line>
+    <positives name="seqs-centered" count="500" file="./seqs-centered" last_mod_date="Wed Mar 09 11:45:34 UTC 2016" />
+    <negatives name="seqs-shuffled" count="500" from="file" file="./seqs-shuffled" last_mod_date="Wed Mar 09 11:45:34 UTC 2016" />
+    <alphabet name="DNA" like="dna">
+      <letter id="A" symbol="A" complement="T" name="Adenine" colour="CC0000"/>
+      <letter id="C" symbol="C" complement="G" name="Cytosine" colour="0000CC"/>
+      <letter id="G" symbol="G" complement="C" name="Guanine" colour="FFB300"/>
+      <letter id="T" symbol="T" aliases="U" complement="A" name="Thymine" colour="008000"/>
+      <letter id="N" symbol="N" aliases="X." equals="ACGT" name="Any base"/>
+      <letter id="V" symbol="V" equals="ACG" name="Not T"/>
+      <letter id="H" symbol="H" equals="ACT" name="Not G"/>
+      <letter id="D" symbol="D" equals="AGT" name="Not C"/>
+      <letter id="B" symbol="B" equals="CGT" name="Not A"/>
+      <letter id="M" symbol="M" equals="AC" name="Amino"/>
+      <letter id="R" symbol="R" equals="AG" name="Purine"/>
+      <letter id="W" symbol="W" equals="AT" name="Weak"/>
+      <letter id="S" symbol="S" equals="CG" name="Strong"/>
+      <letter id="Y" symbol="Y" equals="CT" name="Pyrimidine"/>
+      <letter id="K" symbol="K" equals="GT" name="Keto"/>
+    </alphabet>
+    <strands>both</strands>
+    <background A="0.233" C="0.268" G="0.269" T="0.231" from="dataset"/>
+    <stop evalue="0.05" time="6748"/>
+    <ngen>100</ngen>
+    <add_pv_thresh>0.01</add_pv_thresh>
+    <seed>1</seed>
+    <host>node003</host>
+    <when>Wed Mar 09 11:51:05 UTC 2016</when>
+  </model>
+  <motifs>
+    <motif id="m01" seq="CACRTGS" length="7" nsites="145" p="132" n="17" pvalue="6.7e-027" evalue="2.1e-022" unerased_evalue="2.1e-022">
+      <pos A="0.000000" C="1.000000" G="0.000000" T="0.000000"/>
+      <pos A="1.000000" C="0.000000" G="0.000000" T="0.000000"/>
+      <pos A="0.000000" C="1.000000" G="0.000000" T="0.000000"/>
+      <pos A="0.393103" C="0.000000" G="0.606897" T="0.000000"/>
+      <pos A="0.000000" C="0.000000" G="0.000000" T="1.000000"/>
+      <pos A="0.000000" C="0.000000" G="1.000000" T="0.000000"/>
+      <pos A="0.000000" C="0.351724" G="0.648276" T="0.000000"/>
+      <match seq="CACGTGG" p="60" n="3" pvalue="8.2e-016" evalue="2.6e-011"/>
+      <match seq="CACGTGC" p="45" n="3" pvalue="2.6e-011" evalue="8.3e-007"/>
+      <match seq="CACATGG" p="37" n="8" pvalue="5.0e-006" evalue="1.6e-001"/>
+      <match seq="CACATGC" p="16" n="4" pvalue="5.5e-003" evalue="1.7e+002"/>
+    </motif>
+    <motif id="m02" seq="BAGATAA" length="7" nsites="54" p="51" n="8" pvalue="1.7e-009" evalue="5.3e-005" unerased_evalue="5.3e-005">
+      <pos A="0.000000" C="0.333333" G="0.388889" T="0.277778"/>
+      <pos A="1.000000" C="0.000000" G="0.000000" T="0.000000"/>
+      <pos A="0.000000" C="0.000000" G="1.000000" T="0.000000"/>
+      <pos A="1.000000" C="0.000000" G="0.000000" T="0.000000"/>
+      <pos A="0.000000" C="0.000000" G="0.000000" T="1.000000"/>
+      <pos A="1.000000" C="0.000000" G="0.000000" T="0.000000"/>
+      <pos A="1.000000" C="0.000000" G="0.000000" T="0.000000"/>
+      <match seq="GAGATAA" p="19" n="2" pvalue="9.6e-005" evalue="3.0e+000"/>
+      <match seq="CAGATAA" p="18" n="3" pvalue="6.7e-004" evalue="2.1e+001"/>
+      <match seq="TAGATAA" p="15" n="3" pvalue="3.5e-003" evalue="1.1e+002"/>
+    </motif>
+    <motif id="m03" seq="AGRAA" length="5" nsites="387" p="268" n="183" pvalue="4.4e-008" evalue="1.3e-003" unerased_evalue="1.4e-003">
+      <pos A="1.000000" C="0.000000" G="0.000000" T="0.000000"/>
+      <pos A="0.000000" C="0.000000" G="1.000000" T="0.000000"/>
+      <pos A="0.472868" C="0.000000" G="0.527132" T="0.000000"/>
+      <pos A="1.000000" C="0.000000" G="0.000000" T="0.000000"/>
+      <pos A="1.000000" C="0.000000" G="0.000000" T="0.000000"/>
+      <match seq="AGGAA" p="172" n="110" pvalue="8.6e-006" evalue="2.6e-001"/>
+      <match seq="AGAAA" p="152" n="100" pvalue="9.8e-005" evalue="3.0e+000"/>
+    </motif>
+  </motifs>
+  <run_time cpu="46.73" real="48.53" stop="evalue"/>
+</dreme>

@@ -1,0 +1,24 @@
+# 1-order Markov frequencies from file ./top500_melRep1_1And2.fa
+# seqs: 500    min: 200    max: 200    avg: 200.0    sum: 100000    alph: DNA
+# order 0
+A 2.335e-01
+C 2.665e-01
+G 2.665e-01
+T 2.335e-01
+# order 1
+AA 6.111e-02
+AC 5.499e-02
+AG 7.599e-02
+AT 4.145e-02
+CA 7.412e-02
+CC 7.750e-02
+CG 3.887e-02
+CT 7.599e-02
+GA 6.085e-02
+GC 7.326e-02
+GG 7.750e-02
+GT 5.499e-02
+TA 3.730e-02
+TC 6.085e-02
+TG 7.412e-02
+TT 6.111e-02

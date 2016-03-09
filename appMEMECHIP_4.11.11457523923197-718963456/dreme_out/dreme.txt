@@ -1,0 +1,88 @@
+# DREME 4.11.1
+#     command: dreme -v 1 -oc dreme_out -png -dna -p ./seqs-centered -n ./seqs-shuffled -t 6748 -e 0.05
+#   positives: 500 from ./seqs-centered (Wed Mar 09 11:45:34 UTC 2016)
+#   negatives: 500 from ./seqs-shuffled (Wed Mar 09 11:45:34 UTC 2016)
+#        host: node003
+#        when: Wed Mar 09 11:51:05 UTC 2016
+
+MEME version 4.11.1
+
+ALPHABET "DNA" DNA-LIKE
+A "Adenine" CC0000 ~ T "Thymine" 008000
+C "Cytosine" 0000CC ~ G "Guanine" FFB300
+N "Any base" = ACGT
+X = ACGT
+. = ACGT
+V "Not T" = ACG
+H "Not G" = ACT
+D "Not C" = AGT
+B "Not A" = CGT
+M "Amino" = AC
+R "Purine" = AG
+W "Weak" = AT
+S "Strong" = CG
+Y "Pyrimidine" = CT
+K "Keto" = GT
+U = T
+END ALPHABET
+
+strands: + -
+
+Background letter frequencies (from dataset):
+A 0.233 C 0.268 G 0.269 T 0.231
+
+
+MOTIF CACRTGS DREME
+
+#             Word    RC Word        Pos        Neg    P-value    E-value
+# BEST     CACRTGS    SCAYGTG        132         17   6.7e-027   2.1e-022
+#          CACGTGG    CCACGTG         60          3   8.2e-016   2.6e-011
+#          CACGTGC    GCACGTG         45          3   2.6e-011   8.3e-007
+#          CACATGG    CCATGTG         37          8   5.0e-006   1.6e-001
+#          CACATGC    GCATGTG         16          4   5.5e-003   1.7e+002
+
+letter-probability matrix: alength= 4 w= 7 nsites= 145 E= 2.1e-022
+0.000000 1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000 0.000000
+0.000000 1.000000 0.000000 0.000000
+0.393103 0.000000 0.606897 0.000000
+0.000000 0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000 0.000000
+0.000000 0.351724 0.648276 0.000000
+
+
+MOTIF BAGATAA DREME
+
+#             Word    RC Word        Pos        Neg    P-value    E-value
+# BEST     BAGATAA    TTATCTV         51          8   1.7e-009   5.3e-005
+#          GAGATAA    TTATCTC         19          2   9.6e-005   3.0e+000
+#          CAGATAA    TTATCTG         18          3   6.7e-004   2.1e+001
+#          TAGATAA    TTATCTA         15          3   3.5e-003   1.1e+002
+
+letter-probability matrix: alength= 4 w= 7 nsites= 54 E= 5.3e-005
+0.000000 0.333333 0.388889 0.277778
+1.000000 0.000000 0.000000 0.000000
+0.000000 0.000000 1.000000 0.000000
+1.000000 0.000000 0.000000 0.000000
+0.000000 0.000000 0.000000 1.000000
+1.000000 0.000000 0.000000 0.000000
+1.000000 0.000000 0.000000 0.000000
+
+
+MOTIF AGRAA DREME
+
+#             Word    RC Word        Pos        Neg    P-value    E-value
+# BEST       AGRAA      TTYCT        268        183   4.4e-008   1.3e-003
+#            AGGAA      TTCCT        172        110   8.6e-006   2.6e-001
+#            AGAAA      TTTCT        152        100   9.8e-005   3.0e+000
+
+letter-probability matrix: alength= 4 w= 5 nsites= 387 E= 1.3e-003
+1.000000 0.000000 0.000000 0.000000
+0.000000 0.000000 1.000000 0.000000
+0.472868 0.000000 0.527132 0.000000
+1.000000 0.000000 0.000000 0.000000
+1.000000 0.000000 0.000000 0.000000
+
+
+# Stopping reason: E-value threshold exceeded
+#    Running time: 48.53 seconds
