@@ -1,0 +1,458 @@
+Invoking:
+  getsize ./consensusPeaks.fa 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.265657
+Invoking:
+  fasta-most -min 50 < ./consensusPeaks.fa 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.544558
+Invoking:
+  fasta-center -dna -len 100 < ./consensusPeaks.fa 1> ./seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.659625
+Invoking:
+  fasta-shuffle-letters ./seqs-centered ./seqs-shuffled -kmer 2 -tag -dinuc -dna -seed 1
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.281741
+Invoking:
+  fasta-subsample ./seqs-centered 600 -rest ./seqs-discarded -seed 1 1> ./seqs-sampled
+Finished invoke:
+  name: sample_seqs  status: 0  time: 0.607617
+Invoking:
+  fasta-get-markov -nostatus -nosummary -dna -m 1 ./consensusPeaks.fa ./background
+Finished invoke:
+  name: bg  status: 0  time: 0.139517
+Invoking:
+  meme ./seqs-sampled -oc meme_out -mod zoops -nmotifs 3 -minw 6 -maxw 30 -bfile ./background -dna -time 5082 -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 0  time: 1385.91007
+Invoking:
+  dreme -v 1 -oc dreme_out -png -dna -p ./seqs-centered -n ./seqs-shuffled -t 6584 -e 0.05
+Finished invoke:
+  name: dreme  status: 0  time: 6583.93864
+Invoking:
+  centrimo -seqlen 300 -verbosity 1 -oc centrimo_out -bfile ./background -score 5.0 -ethresh 10.0 ./consensusPeaks.fa meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: centrimo  status: 0  time: 566.019858
+Invoking:
+  tomtom -verbosity 1 -oc meme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc -bfile ./background meme_out/meme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: meme_tomtom  status: 0  time: 47.183327
+Invoking:
+  tomtom -verbosity 1 -oc dreme_tomtom_out -min-overlap 5 -dist pearson -evalue -thresh 1 -no-ssc -bfile ./background dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: dreme_tomtom  status: 0  time: 7.878069
+Invoking:
+  tomtom -verbosity 1 -text -thresh 0.1 ./combined.meme ./combined.meme 1> ./motif_alignment.txt
+Finished invoke:
+  name: align  status: 0  time: 315.613251
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_1 -bgfile ./background -primary CRCRTGB ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo1  status: 0  time: 3.259583
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_2 -bgfile ./background -primary 2 ./consensusPeaks.fa meme_out/meme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo2  status: 0  time: 3.273638
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_3 -bgfile ./background -primary VGGAAR ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo3  status: 0  time: 3.202783
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_4 -bgfile ./background -primary TGRCTCAB ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo4  status: 0  time: 3.217946
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_5 -bgfile ./background -primary RGAAA ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo5  status: 0  time: 3.291558
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_6 -bgfile ./background -primary UP00046_2 ./consensusPeaks.fa db/MOUSE/uniprobe_mouse.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo6  status: 0  time: 3.700442
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_7 -bgfile ./background -primary CYCCDCCC ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo7  status: 0  time: 3.298732
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_8 -bgfile ./background -primary GGAWYTGA ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo8  status: 0  time: 3.216842
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_9 -bgfile ./background -primary DWAAATA ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo9  status: 0  time: 3.247604
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_10 -bgfile ./background -primary CATCTRTA ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo10  status: 0  time: 3.272882
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_11 -bgfile ./background -primary UP00102_1 ./consensusPeaks.fa db/MOUSE/uniprobe_mouse.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo11  status: 0  time: 3.737431
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_12 -bgfile ./background -primary RUNX2_DBD_3 ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo12  status: 0  time: 3.735396
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_13 -bgfile ./background -primary ATGYAAAT ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo13  status: 0  time: 3.184067
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_14 -bgfile ./background -primary Hic1_DBD_1 ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo14  status: 0  time: 3.825086
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_15 -bgfile ./background -primary RGTTWCA ./consensusPeaks.fa dreme_out/dreme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo15  status: 0  time: 3.205706
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_16 -bgfile ./background -primary ZBTB7A_DBD ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo16  status: 0  time: 3.764289
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_17 -bgfile ./background -primary GMEB2_DBD_1 ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo17  status: 0  time: 3.777628
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_18 -bgfile ./background -primary ETV5_DBD ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo18  status: 0  time: 3.727843
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_19 -bgfile ./background -primary UP00065_1 ./consensusPeaks.fa db/MOUSE/uniprobe_mouse.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo19  status: 0  time: 3.712781
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_20 -bgfile ./background -primary 3 ./consensusPeaks.fa meme_out/meme.xml meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo20  status: 0  time: 3.312071
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_21 -bgfile ./background -primary CREB3L1_DBD_1 ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo21  status: 0  time: 3.719283
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_22 -bgfile ./background -primary MA0130.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo22  status: 0  time: 3.372937
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_23 -bgfile ./background -primary Zic3_DBD ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo23  status: 0  time: 3.690326
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_24 -bgfile ./background -primary MA0512.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo24  status: 0  time: 3.365406
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_25 -bgfile ./background -primary UP00035_2 ./consensusPeaks.fa db/MOUSE/uniprobe_mouse.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo25  status: 0  time: 3.70315
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_26 -bgfile ./background -primary UP00018_1 ./consensusPeaks.fa db/MOUSE/uniprobe_mouse.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo26  status: 0  time: 3.72658
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_27 -bgfile ./background -primary NFKB2_DBD ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo27  status: 0  time: 3.656006
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_28 -bgfile ./background -primary E2F1_DBD_3 ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo28  status: 0  time: 3.665033
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_29 -bgfile ./background -primary MA0006.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo29  status: 0  time: 3.265744
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_30 -bgfile ./background -primary T_full ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo30  status: 0  time: 3.720476
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_31 -bgfile ./background -primary UP00005_2 ./consensusPeaks.fa db/MOUSE/uniprobe_mouse.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo31  status: 0  time: 3.710678
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_32 -bgfile ./background -primary YY2_DBD ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo32  status: 0  time: 3.666444
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_33 -bgfile ./background -primary GCM1_full_2 ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo33  status: 0  time: 3.664761
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_34 -bgfile ./background -primary MA0019.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo34  status: 0  time: 3.359731
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_35 -bgfile ./background -primary MA0067.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo35  status: 0  time: 3.344979
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_36 -bgfile ./background -primary MA0506.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo36  status: 0  time: 3.334241
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_37 -bgfile ./background -primary MA0154.2 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo37  status: 0  time: 3.419693
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_38 -bgfile ./background -primary MA0106.2 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo38  status: 0  time: 3.415689
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_39 -bgfile ./background -primary MA0018.2 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo39  status: 0  time: 3.31127
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_40 -bgfile ./background -primary MA0513.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo40  status: 0  time: 3.394943
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_41 -bgfile ./background -primary Meis3_DBD_2 ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo41  status: 0  time: 3.680924
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_42 -bgfile ./background -primary UP00076_1 ./consensusPeaks.fa db/MOUSE/uniprobe_mouse.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo42  status: 0  time: 3.744205
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_43 -bgfile ./background -primary MA0117.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo43  status: 0  time: 3.352307
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_44 -bgfile ./background -primary PAX6_DBD ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo44  status: 0  time: 3.779041
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_45 -bgfile ./background -primary MA0119.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo45  status: 0  time: 3.365706
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_46 -bgfile ./background -primary MA0527.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo46  status: 0  time: 3.392424
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_47 -bgfile ./background -primary FOXO4_DBD_3 ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo47  status: 0  time: 3.764999
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_48 -bgfile ./background -primary MA0111.1 ./consensusPeaks.fa db/JASPAR/JASPAR_CORE_2014_vertebrates.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo48  status: 0  time: 3.306793
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_49 -bgfile ./background -primary PRDM1_full ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo49  status: 0  time: 3.754652
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_50 -bgfile ./background -primary Atf4_DBD ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo50  status: 0  time: 3.823501
+Invoking:
+  spamo -verbosity 1 -oc spamo_out_51 -bgfile ./background -primary Ar_DBD ./consensusPeaks.fa db/EUKARYOTE/jolma2013.meme meme_out/meme.xml dreme_out/dreme.xml db/EUKARYOTE/jolma2013.meme db/JASPAR/JASPAR_CORE_2014_vertebrates.meme db/MOUSE/uniprobe_mouse.meme
+Finished invoke:
+  name: spamo51  status: 0  time: 3.735218
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_1 --bgfile ./background --motif CRCRTGB dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo1  status: 0  time: 7.045039
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_2 --bgfile ./background --motif 2 meme_out/meme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo2  status: 0  time: 7.878655
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_3 --bgfile ./background --motif VGGAAR dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo3  status: 0  time: 5.966322
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_4 --bgfile ./background --motif TGRCTCAB dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo4  status: 0  time: 6.826323
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_5 --bgfile ./background --motif RGAAA dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo5  status: 0  time: 5.790624
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_6 --bgfile ./background --motif UP00046_2 db/MOUSE/uniprobe_mouse.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo6  status: 0  time: 7.512931
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_7 --bgfile ./background --motif CYCCDCCC dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo7  status: 0  time: 6.08407
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_8 --bgfile ./background --motif GGAWYTGA dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo8  status: 0  time: 6.34654
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_9 --bgfile ./background --motif DWAAATA dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo9  status: 0  time: 5.778225
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_10 --bgfile ./background --motif CATCTRTA dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo10  status: 0  time: 4.768592
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_11 --bgfile ./background --motif UP00102_1 db/MOUSE/uniprobe_mouse.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo11  status: 0  time: 3.973086
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_12 --bgfile ./background --motif RUNX2_DBD_3 db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo12  status: 0  time: 3.712958
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_13 --bgfile ./background --motif ATGYAAAT dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo13  status: 0  time: 3.400985
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_14 --bgfile ./background --motif Hic1_DBD_1 db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo14  status: 0  time: 8.675007
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_15 --bgfile ./background --motif RGTTWCA dreme_out/dreme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo15  status: 0  time: 5.800299
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_16 --bgfile ./background --motif ZBTB7A_DBD db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo16  status: 0  time: 6.413735
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_17 --bgfile ./background --motif GMEB2_DBD_1 db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo17  status: 0  time: 6.214434
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_18 --bgfile ./background --motif ETV5_DBD db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo18  status: 0  time: 6.864788
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_19 --bgfile ./background --motif UP00065_1 db/MOUSE/uniprobe_mouse.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo19  status: 0  time: 6.879835
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_20 --bgfile ./background --motif 3 meme_out/meme.xml ./consensusPeaks.fa
+Finished invoke:
+  name: fimo20  status: 0  time: 8.816374
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_21 --bgfile ./background --motif CREB3L1_DBD_1 db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo21  status: 0  time: 6.676368
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_22 --bgfile ./background --motif MA0130.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo22  status: 0  time: 7.020969
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_23 --bgfile ./background --motif Zic3_DBD db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo23  status: 0  time: 6.810783
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_24 --bgfile ./background --motif MA0512.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo24  status: 0  time: 7.056919
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_25 --bgfile ./background --motif UP00035_2 db/MOUSE/uniprobe_mouse.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo25  status: 0  time: 6.875314
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_26 --bgfile ./background --motif UP00018_1 db/MOUSE/uniprobe_mouse.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo26  status: 0  time: 6.867778
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_27 --bgfile ./background --motif NFKB2_DBD db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo27  status: 0  time: 7.154109
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_28 --bgfile ./background --motif E2F1_DBD_3 db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo28  status: 0  time: 6.976759
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_29 --bgfile ./background --motif MA0006.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo29  status: 0  time: 6.109176
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_30 --bgfile ./background --motif T_full db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo30  status: 0  time: 7.133286
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_31 --bgfile ./background --motif UP00005_2 db/MOUSE/uniprobe_mouse.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo31  status: 0  time: 6.97011
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_32 --bgfile ./background --motif YY2_DBD db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo32  status: 0  time: 6.721059
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_33 --bgfile ./background --motif GCM1_full_2 db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo33  status: 0  time: 6.532973
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_34 --bgfile ./background --motif MA0019.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo34  status: 0  time: 5.947064
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_35 --bgfile ./background --motif MA0067.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo35  status: 0  time: 5.723091
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_36 --bgfile ./background --motif MA0506.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo36  status: 0  time: 6.121828
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_37 --bgfile ./background --motif MA0154.2 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo37  status: 0  time: 6.284642
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_38 --bgfile ./background --motif MA0106.2 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo38  status: 0  time: 6.203898
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_39 --bgfile ./background --motif MA0018.2 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo39  status: 0  time: 6.087743
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_40 --bgfile ./background --motif MA0513.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo40  status: 0  time: 6.198527
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_41 --bgfile ./background --motif Meis3_DBD_2 db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo41  status: 0  time: 7.814709
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_42 --bgfile ./background --motif UP00076_1 db/MOUSE/uniprobe_mouse.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo42  status: 0  time: 7.625891
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_43 --bgfile ./background --motif MA0117.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo43  status: 0  time: 7.095198
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_44 --bgfile ./background --motif PAX6_DBD db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo44  status: 0  time: 8.180053
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_45 --bgfile ./background --motif MA0119.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo45  status: 0  time: 7.434782
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_46 --bgfile ./background --motif MA0527.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo46  status: 0  time: 6.828359
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_47 --bgfile ./background --motif FOXO4_DBD_3 db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo47  status: 0  time: 7.059469
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_48 --bgfile ./background --motif MA0111.1 db/JASPAR/JASPAR_CORE_2014_vertebrates.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo48  status: 0  time: 6.207318
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_49 --bgfile ./background --motif PRDM1_full db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo49  status: 0  time: 7.963119
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_50 --bgfile ./background --motif Atf4_DBD db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo50  status: 0  time: 8.175133
+Invoking:
+  fimo --parse-genomic-coord --verbosity 1 --oc fimo_out_51 --bgfile ./background --motif Ar_DBD db/EUKARYOTE/jolma2013.meme ./consensusPeaks.fa
+Finished invoke:
+  name: fimo51  status: 0  time: 8.532799
+Writing output
+Done

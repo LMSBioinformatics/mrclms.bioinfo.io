@@ -1,0 +1,24 @@
+# 1-order Markov frequencies from file ./consensusPeaks.fa
+# seqs: 27232    min: 300    max: 300    avg: 300.0    sum: 8169600    alph: DNA
+# order 0
+A 2.486e-01
+C 2.514e-01
+G 2.514e-01
+T 2.486e-01
+# order 1
+AA 6.972e-02
+AC 5.524e-02
+AG 7.710e-02
+AT 4.658e-02
+CA 7.573e-02
+CC 7.014e-02
+CG 2.841e-02
+CT 7.710e-02
+GA 6.213e-02
+GC 6.388e-02
+GG 7.014e-02
+GT 5.524e-02
+TA 4.102e-02
+TC 6.213e-02
+TG 7.573e-02
+TT 6.972e-02
