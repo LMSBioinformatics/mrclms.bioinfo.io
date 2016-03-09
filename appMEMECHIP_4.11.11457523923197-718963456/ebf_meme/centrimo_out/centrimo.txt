@@ -1,0 +1,123 @@
+# WARNING: this file is not sorted!
+# db	id                         alt	 E-value	adj_p-value	log_adj_p-value	bin_location	bin_width	total_width	sites_in_bin	total_sites	p_success	 p-value	mult_tests
+   1	1                         MEME	4.0e-069	   2.8e-072	        -164.77	         0.0	       65	        389	         123	        141	  0.16710	1.4e-074	       194
+   2	CCCYDGRG                 DREME	1.3e-044	   9.2e-048	        -108.31	         0.0	       51	        395	          85	        117	  0.12911	4.7e-050	       197
+   3	Ascl2_DBD            Ascl2_DBD	1.4e0000	   9.3e-004	          -6.98	         0.0	      221	        393	          86	        112	  0.56234	4.8e-006	       196
+   3	CTCF_full            CTCF_full	4.4e0000	   3.0e-003	          -5.80	         0.0	      160	        386	          21	         25	  0.41451	1.6e-005	       192
+   3	EBF1_full            EBF1_full	9.7e-072	   6.7e-075	        -170.80	         0.0	       65	        389	         122	        136	  0.16710	3.4e-077	       194
+   3	ELK1_DBD_1          ELK1_DBD_1	3.2e-001	   2.2e-004	          -8.41	         0.0	      119	        393	          51	         94	  0.30280	1.1e-006	       196
+   3	ELK1_DBD_2          ELK1_DBD_2	7.1e0000	   4.9e-003	          -5.32	         0.0	      101	        393	          26	         48	  0.25700	2.5e-005	       196
+   3	ELK1_full_1        ELK1_full_1	5.0e-001	   3.4e-004	          -7.98	         0.0	      101	        393	          32	         58	  0.25700	1.8e-006	       196
+   3	ELK3_DBD              ELK3_DBD	1.2e0000	   8.4e-004	          -7.09	         0.0	      107	        393	          46	         93	  0.27226	4.3e-006	       196
+   3	ELK4_DBD              ELK4_DBD	1.0e-001	   6.9e-005	          -9.59	         0.0	      119	        393	          50	         89	  0.30280	3.5e-007	       196
+   3	ERF_DBD                ERF_DBD	5.5e-002	   3.8e-005	         -10.18	         0.0	      107	        393	          45	         83	  0.27226	1.9e-007	       196
+   3	ERG_DBD_1            ERG_DBD_1	2.4e0000	   1.6e-003	          -6.42	         0.0	      109	        393	          50	        104	  0.27735	8.3e-006	       196
+   3	ERG_full_1          ERG_full_1	5.3e-002	   3.6e-005	         -10.22	         0.0	      119	        393	          51	         90	  0.30280	1.9e-007	       196
+   3	ETS1_DBD_1          ETS1_DBD_1	5.9e-002	   4.0e-005	         -10.12	         0.0	      119	        393	          56	        102	  0.30280	2.1e-007	       196
+   3	ETS1_full_1        ETS1_full_1	6.9e0000	   4.7e-003	          -5.35	         0.0	      119	        393	          51	        102	  0.30280	2.4e-005	       196
+   3	ETV1_DBD              ETV1_DBD	1.2e0000	   8.2e-004	          -7.11	         0.0	      109	        393	          53	        110	  0.27735	4.2e-006	       196
+   3	ETV4_DBD              ETV4_DBD	4.0e-001	   2.7e-004	          -8.20	         0.0	      119	        393	          59	        114	  0.30280	1.4e-006	       196
+   3	ETV5_DBD              ETV5_DBD	1.9e-001	   1.3e-004	          -8.93	         0.0	      119	        393	          61	        117	  0.30280	6.8e-007	       196
+   3	ETV6_full_2        ETV6_full_2	3.4e0000	   2.4e-003	          -6.05	         0.0	      105	        393	          53	        117	  0.26718	1.2e-005	       196
+   3	Elk3_DBD              Elk3_DBD	1.7e-001	   1.2e-004	          -9.04	         0.0	      101	        393	          32	         56	  0.25700	6.1e-007	       196
+   3	FEV_DBD                FEV_DBD	2.4e0000	   1.6e-003	          -6.42	         0.0	      109	        393	          50	        104	  0.27735	8.3e-006	       196
+   3	FLI1_DBD_1          FLI1_DBD_1	5.7e0000	   3.9e-003	          -5.53	         0.0	      109	        393	          49	        104	  0.27735	2.0e-005	       196
+   3	FLI1_full_1        FLI1_full_1	1.4e-001	   9.3e-005	          -9.28	         0.0	      119	        393	          45	         78	  0.30280	4.8e-007	       196
+   3	GABPA_full          GABPA_full	8.7e-003	   6.0e-006	         -12.03	         0.0	      119	        393	          45	         73	  0.30280	3.1e-008	       196
+   3	ID4_DBD                ID4_DBD	8.8e0000	   6.0e-003	          -5.11	         0.0	      221	        393	          80	        106	  0.56234	3.1e-005	       196
+   3	MSC_full              MSC_full	2.0e0000	   1.4e-003	          -6.58	         0.0	      225	        393	          64	         79	  0.57252	7.1e-006	       196
+   3	NFKB2_DBD            NFKB2_DBD	4.7e0000	   3.3e-003	          -5.73	         0.0	      166	        390	          25	         31	  0.42564	1.7e-005	       194
+   3	RUNX2_DBD_3        RUNX2_DBD_3	8.4e0000	   5.7e-003	          -5.16	         0.0	       72	        394	          33	         90	  0.18274	2.9e-005	       196
+   3	RUNX3_DBD_2        RUNX3_DBD_2	1.2e0000	   8.0e-004	          -7.13	         0.0	      147	        393	          58	         96	  0.37405	4.1e-006	       196
+   3	RUNX3_full          RUNX3_full	5.3e-001	   3.6e-004	          -7.92	         0.0	       83	        393	          43	        103	  0.21120	1.8e-006	       196
+   3	TCF4_DBD              TCF4_DBD	9.0e0000	   6.2e-003	          -5.08	         0.0	      165	        393	          66	        107	  0.41985	3.2e-005	       196
+   3	TFAP2A_DBD_1      TFAP2A_DBD_1	2.1e-003	   1.4e-006	         -13.47	         0.0	       45	        391	          36	        113	  0.11509	7.2e-009	       195
+   3	TFAP2A_DBD_5      TFAP2A_DBD_5	9.0e-005	   6.2e-008	         -16.60	         0.0	       93	        391	          57	        111	  0.23785	3.2e-010	       195
+   3	TFAP2A_DBD_6      TFAP2A_DBD_6	5.7e0000	   3.9e-003	          -5.54	         0.0	       84	        390	          26	         55	  0.21538	2.0e-005	       194
+   3	TFAP2B_DBD_1      TFAP2B_DBD_1	1.1e-009	   7.7e-013	         -27.90	         0.0	       93	        391	          68	        118	  0.23785	3.9e-015	       195
+   3	TFAP2B_DBD_3      TFAP2B_DBD_3	8.5e-001	   5.8e-004	          -7.45	         0.0	       46	        390	          20	         56	  0.11795	3.0e-006	       194
+   3	TFAP2C_DBD_1      TFAP2C_DBD_1	2.5e-010	   1.7e-013	         -29.40	         0.0	       93	        391	          71	        123	  0.23785	8.7e-016	       195
+   3	TFAP2C_DBD_3      TFAP2C_DBD_3	2.3e0000	   1.6e-003	          -6.47	         0.0	       84	        390	          24	         47	  0.21538	8.0e-006	       194
+   3	TFAP2C_full_1    TFAP2C_full_1	1.5e-006	   1.0e-009	         -20.69	         0.0	      155	        391	          94	        137	  0.39642	5.3e-012	       195
+   3	TFAP4_full          TFAP4_full	7.9e0000	   5.4e-003	          -5.22	         0.0	       63	        393	          25	         68	  0.16031	2.8e-005	       196
+   3	Tcfap2a_DBD_1    Tcfap2a_DBD_1	1.6e0000	   1.1e-003	          -6.82	         0.0	       45	        391	          28	        100	  0.11509	5.6e-006	       195
+   3	Tcfap2a_DBD_3    Tcfap2a_DBD_3	6.4e0000	   4.4e-003	          -5.43	         0.0	       46	        390	          20	         63	  0.11795	2.3e-005	       194
+   4	MA0056.1              MZF1_1-4	4.4e-006	   3.0e-009	         -19.63	         0.0	       53	        397	          50	        141	  0.13350	1.5e-011	       198
+   4	MA0163.1                 PLAG1	4.2e0000	   2.9e-003	          -5.84	         0.0	       69	        389	          19	         40	  0.17738	1.5e-005	       194
+   4	MA0146.2                   Zfx	4.4e0000	   3.0e-003	          -5.80	         0.0	       69	        389	          33	         90	  0.17738	1.6e-005	       194
+   4	MA0510.1                  RFX5	6.1e-005	   4.2e-008	         -16.98	         0.0	       30	        388	          27	         87	  0.07732	2.2e-010	       193
+   4	MA0511.1                 RUNX2	5.9e0000	   4.1e-003	          -5.51	         0.0	       68	        388	          34	         96	  0.17526	2.1e-005	       193
+   4	MA0519.1        Stat5a::Stat5b	5.7e-001	   3.9e-004	          -7.84	         0.0	      160	        392	          60	         92	  0.40816	2.0e-006	       195
+   4	MA0524.1                TFAP2C	2.2e-014	   1.5e-017	         -38.71	         0.0	       54	        388	          62	        132	  0.13918	8.0e-020	       193
+   4	MA0154.2                  EBF1	1.3e-061	   9.2e-065	        -147.44	         0.0	       66	        392	         113	        132	  0.16837	4.7e-067	       195
+   4	MA0098.2                  Ets1	1.1e-001	   7.2e-005	          -9.54	         0.0	      106	        388	          55	        110	  0.27320	3.7e-007	       193
+   4	MA0003.2                TFAP2A	2.1e-006	   1.4e-009	         -20.38	         0.0	       84	        388	          59	        117	  0.21649	7.3e-012	       193
+   5	UP00005_1      Tcfap2a_primary	1.9e-008	   1.3e-011	         -25.06	         0.0	       46	        388	          47	        121	  0.11856	6.8e-014	       193
+   5	UP00010_1      Tcfap2b_primary	7.0e-009	   4.8e-012	         -26.07	         0.0	       45	        389	          44	        110	  0.11568	2.5e-014	       194
+   5	UP00087_1      Tcfap2c_primary	9.6e-007	   6.6e-010	         -21.14	         0.0	       46	        388	          43	        117	  0.11856	3.4e-012	       193
+   5	UP00028_1      Tcfap2e_primary	2.4e-005	   1.7e-008	         -17.92	         0.0	       46	        388	          39	        109	  0.11856	8.6e-011	       193
+   5	UP00102_1         Zic1_primary	5.7e-019	   3.9e-022	         -49.28	         0.0	       49	        389	          59	        110	  0.12596	2.0e-024	       194
+   5	UP00057_1         Zic2_primary	7.2e-023	   4.9e-026	         -58.27	         0.0	       50	        388	          66	        117	  0.12887	2.6e-028	       193
+   5	UP00006_1         Zic3_primary	2.5e-021	   1.7e-024	         -54.71	         0.0	       72	        388	          75	        117	  0.18557	9.0e-027	       193
+   5	UP00005_2    Tcfap2a_secondary	9.4e0000	   6.5e-003	          -5.04	         0.0	       23	        389	          22	        142	  0.05913	3.4e-005	       194
+   5	UP00022_2     Zfp740_secondary	3.2e-012	   2.2e-015	         -33.74	         0.0	       22	        386	          36	        114	  0.05699	1.2e-017	       192
+##
+# Detailed descriptions of columns in this file:
+#
+# db:	The name of the database (file name) that contains the motif.
+# id:	A name for the motif that is unique in the motif database file.
+# alt:	An alternate name of the motif that may be provided 
+#	in the motif database file.
+# E-value:	The expected number motifs that would have least one 
+#	region as enriched for best matches to the motif as the reported region.
+#	The E-value is the p-value multiplied by the number of motifs in the
+#	input database(s).
+# adj_p-value:	The probability that any tested region would be as enriched for
+#	best matches to this motif as the reported region is.
+#	By default the p-value is calculated by using the one-tailed binomial
+#	test on the number of sequences with a match to the motif 
+#	that have their best match in the reported region, corrected for
+#	the number of regions and score thresholds tested.
+#	The test assumes that the probability that the best match in a sequence
+#	falls in the region is the region width divided by the
+#	number of places a motif
+#	can align in the sequence (sequence length minus motif width plus 1).
+#	When CentriMo is run in discriminative mode with a negative
+#	set of sequences, the p-value of a region is calculated
+#	using the Fisher exact test on the 
+#	enrichment of best matches in the positive sequences relative
+#	to the negative sequences, corrected
+#	for the number of regions and score thresholds tested.
+#	The test assumes that the probability that the best match (if any)
+#	falls into a given region
+#	is the same for all positive and negative sequences.
+# log_adj_p-value:	Log of adjusted p-value.
+# bin_location:	Location of the center of the most enriched region.
+# bin_width:	The width (in sequence positions) of the most enriched region.
+#	A best match to the motif is counted as being in the region if the
+#	center of the motif falls in the region.
+# total_width:	The window maximal size which can be reached for this motif:
+#		rounded(sequence length - motif length +1)/2
+# sites_in_bin:	The number of (positive) sequences whose best match to the motif
+#	falls in the reported region.
+#	Note: This number may be less than the number of
+#	(positive) sequences that have a best match in the region.
+#	The reason for this is that a sequence may have many matches that score
+#	equally best.
+#	If n matches have the best score in a sequence, 1/n is added to the
+#	appropriate bin for each match.
+# total_sites:	The number of sequences containing a match to the motif
+#	above the score threshold.
+# p_success:	The probability of falling in the enriched window:
+#		bin width / total width
+# p-value:	The uncorrected p-value before it gets adjusted to the
+#	number of multiple tests to give the adjusted p-value.
+# mult_tests:	This is the number of multiple tests (n) done for this motif.
+#	It was used to correct the original p-value of a region for
+#	multiple tests using the formula:
+#		p' = 1 - (1-p)^n where p is the uncorrected p-value.
+#	The number of multiple tests is the number of regions
+#	considered times the number of score thresholds considered.
+#	It depends on the motif length, sequence length, and the type of
+#	optimizations being done (central enrichment, local enrichment,
+#	score optimization).
