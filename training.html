@@ -10,15 +10,26 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
+		<script  type="text/javascript" language="javascript"  src="js/jquery.dataTables.min.js"></script>	
+		<script  type="text/javascript" language="javascript"  src="js/jquery-1.12.3.min.js"></script>
 		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-desktop.css" />
-			<link rel="stylesheet" href="css/skel.css" />
-		</noscript>
+    	<script src="js/skel.min.js"></script>
+    	<script src="js/skel-layers.min.js"></script>
+    	<script src="js/init.js"></script>		
+
+		<style type="text/css" class="init">
+			<link rel="stylesheet" href="stylesheets/jquery.dataTables.min.css" />
+         	<link rel="stylesheet" href="css/style.css" />
+      		<link rel="stylesheet" href="css/style-desktop.css" />
+      		<link rel="stylesheet" href="css/skel.css" />
+		</style>
+			<script type="text/javascript" class="init">
+	
+
+				$(document).ready(function() {
+					$('#example').DataTable();
+				} );
+			</script>
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 	</head>
@@ -77,37 +88,77 @@
 											<h2 id="upcoming">Upcoming training</h2>
 										</header>
 										<p>
-										In 2016 we will be running training on R, reproducible research, visualising data in genome browsers and analysis of RNA-seq/ChIP-seq using R and Bioconductor
-<table style="width:60%">
+										In 2016 we will be running training on R, reproducible research, visualising data in genome browsers and analysis of RNA-seq/ChIP-seq using R and Bioconductor<br> To book a place on one of these courses please contact Thomas Carroll (<a href="mailto:thomas.carroll@csc.mrc.ac.uk">thomas.carroll@csc.mrc.ac.uk</a>)<br><em style="background-color:lightgrey;font-weight:bold;">NOTE</em> <em style="font-weight:bold;">All materials are under strict licensing. Material is free for review but may not be altered and/or redistributed without explicit consent. For more details contact the Head of Bioinformatics (<a href="mailto:thomas.carroll@csc.mrc.ac.uk?Subject=Licensing">Thomas Carroll - thomas.carroll@csc.mrc.ac.uk</a>) </em>
+
+<table id="example" class="display" cellspacing="0" width="100%">
   <tr>
     <td>Course</td>
     <td>Material</td>
+    <td>Dates</td>
+    <td>Availability</td>       
   </tr>
   <tr>
     <td>Reproducible R</td>
     <td><a href="http://mrccsc.github.io/Reproducible-R/">Link</a></td>
+    <td>23rd and 24th June, 2016</td>
+    <td><font color="green">Spaces Available</td>
+  </tr>
+    <tr>
+    <td>Intermediate R - Advanced data analysis</td>
+    <td><a href="http://mrccsc.github.io/Reproducible-R/">Link</a></td>
+    <td>30th June, 2016</td>
+    <td><font color="green">Spaces Available</td>
   </tr>
    <tr>
     <td>Genomic File Formats</td>
     <td><a href="http://mrccsc.github.io/genomic_formats/">Link</a></td>
+    <td>Morning, 5th July, 2016</td>
+    <td><font color="green">Spaces Available</td>   
   </tr> 
    <tr>
     <td>IGV Genome Browser</td>
     <td><a href="http://mrccsc.github.io/IGV_course/">Link</a></td>
-  </tr>   
+    <td>Afternoon, 5th July, 2016</td>
+    <td><font color="green">Spaces Available</td>    
+  </tr>
+  <tr>
+    <td>Statistics in R</td>
+    <td><a href="http://mrccsc.github.io/">Link</a></td>
+    <td>12th July, 2016</td>
+    <td><font color="green">Spaces Available</td>    
+  </tr>      
    <tr>
     <td>Bioconductor</td>
     <td><a href="http://mrccsc.github.io/Bioconductor/">Link</a></td>
-  </tr>        
+    <td>19th July, 2016</td>
+    <td><font color="green">Spaces Available</td>    
+  </tr> 
+  <tr>
+    <td>Alignments</td>
+    <td><a href="http://mrccsc.github.io/">Link</a></td>
+    <td>27th July, 2016</td>
+    <td><font color="green">Spaces Available</td>    
+  </tr>       
    <tr>
     <td>ChIP-seq (short)</td>
     <td><a href="http://mrccsc.github.io/ChIPseq_short/">Link</a></td>
+    <td>2nd August, 2016</td>
+    <td><font color="green">Spaces Available</td>    
   </tr>
    <tr>
     <td>RNA-seq (short)</td>
     <td><a href="http://mrccsc.github.io/RNAseq_short/">Link</a></td>
+    <td>8th August, 2016</td>
+    <td><font color="green">Spaces Available</td>
   </tr>
    </tr>
+   <tr>
+    <td>Visualising Genomics Data</td>
+    <td><a href="http://mrccsc.github.io/">Link</a></td>
+    <td>15th August, 2016</td>
+    <td><font color="green">Spaces Available</td>
+  </tr>
+   </tr>   
 </table>
 
 										</p>
