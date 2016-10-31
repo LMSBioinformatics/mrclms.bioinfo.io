@@ -44,6 +44,7 @@
 
 $(document).ready(function() {
 	$('#example').DataTable({
+		"pageLength": 50
 		"order": [[ 3, "desc" ]],
 		 columnDefs: [ 
     	{ 'orderData':[4], 'targets': [2] },
