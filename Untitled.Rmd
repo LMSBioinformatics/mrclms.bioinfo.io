@@ -1,0 +1,54 @@
+---
+title: "rMarkdown example"
+author: "Tom Carroll"
+date: "`r doc_date()`"
+abstract: >
+  Example for CBW
+vignette: >
+  %\VignetteIndexEntry{Example for CBW}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+output: 
+  BiocStyle::html_document
+---
+
+# Load Libraries
+
+```{r code, eval = T,echo=F}
+suppressPackageStartupMessages(library(DESeq2))
+suppressPackageStartupMessages(library(pasilla))
+```
+
+```{r code2, echo = T}
+library(DESeq2)
+library(pasilla)
+```
+
+# Make a table
+
+```{r table, echo = T}
+datafile = system.file( "extdata/pasilla_gene_counts.tsv", package="pasilla" )
+pasillaCountTable = read.table( datafile, header=TRUE, row.names=1 )
+
+ pasillaDesign = data.frame(
+ row.names = colnames( pasillaCountTable ),
+ condition = c( "untreated", "untreated", "untreated",
+ "untreated", "treated", "treated", "treated" ),
+ libType = c( "single-end", "single-end", "paired-end",
+ "paired-end", "single-end", "paired-end", "paired-end" ) )
+
+pairedSamples = pasillaDesign$libType == "paired-end"
+countTable = pasillaCountTable[ , pairedSamples ]
+condition = pasillaDesign$condition[ pairedSamples ]
+
+DT::datatable(pasillaDesign)
+```
+
+# Session Information and versions.
+```{r sessionInfo, echo=FALSE}
+sessionInfo()
+```
+
+
+[R]: http://r-project.org
+[RStudio]: http://www.rstudio.com/
