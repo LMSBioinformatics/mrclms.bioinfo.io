@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<!--
+	Halcyonic by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html>
+	<head>
+		<title>Training</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+
+
+		<script src="js/jquery.min.js"></script>
+    	<script src="js/skel.min.js"></script>
+    	<script src="js/skel-layers.min.js"></script>
+    	<script src="js/init.js"></script>		
+
+		<style type="text/css" class="init">
+		<link rel="stylesheet" href="css/style.css" />
+      	<link rel="stylesheet" href="css/style-desktop.css" />
+      	<link rel="stylesheet" href="css/skel.css" />
+		</style>
+
+
+	<link rel="stylesheet" type="text/css" href="DataTables-1.10.12/media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="DataTables-1.10.12/examples/resources/resources/syntax/shCore.css">
+
+	<style type="text/css" class="init">
+	
+	</style>
+	<script type="text/javascript" language="javascript" src="DataTables-1.10.12/jquery-1.12.4.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="DataTables-1.10.12/media/js/jquery.dataTables.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="DataTables-1.10.12/examples/resources/syntax/shCore.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="DataTables-1.10.12/examples/resources/demo.js">
+	</script>
+	<script type="text/javascript" language="javascript" class="init">
+	
+
+$(document).ready(function() {
+	$('#example').DataTable({
+		"pageLength": 50,
+		"order": [[ 3, "desc" ]],
+		 columnDefs: [ 
+    	{ 'orderData':[4], 'targets': [2] },
+    	 {'targets': [4],'visible': false,'searchable': false}
+		]
+	}
+	
+	);
+} );
+
+
+	</script>	
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<div id="header-wrapper">
+				<header id="header" class="container">
+					<div class="row">
+						<div class="12u">
+						
+							<!-- Logo -->
+								<h1><a href="#upcoming" id="logo">Bioinformatics</a></h1>
+							
+							<!-- Nav -->
+								<nav id="nav">
+									<a href="index.html">Home</a>
+									<a href="analysis.html">Analysis</a>
+									<a href="training.html">Training</a>
+									<a href="software.html">Software</a>
+								</nav>
+
+						</div>
+					</div>
+				</header>
+			</div>
+
+		<!-- Content -->
+			<div id="content-wrapper">
+				<div id="content">
+					<div class="container">
+						<div class="row">
+							<div class="9u">
+									<section>
+										<header>
+											<h2>Training</h2>
+										</header>
+
+<p>The Bioinformatics team provides ad-hoc training for biologists as well as training courses covering topics such as ChIP-seq and RNA-seq analysis, data visualisation and R/Bioconductor programming.</p>
+
+<p>All course material is made publicly available and throughout (<em>2016</em>), the core will be running training for basic ChIP-seq and RNA-seq analysis, reproducible research in R and visualising data in genome browsers. For details on upcoming courses see our <a href="#upcoming">upcoming training</a> or contact Thomas Carroll (<a href="mailto:thomas.carroll@csc.mrc.ac.uk">thomas.carroll@csc.mrc.ac.uk</a>).</p>
+
+
+<p>As well as training in Bioinformatics methods, the Bioinformatics team can offer advice on the use of local compute resources (i.e. best practice in using R in cluster compute environment). </p>
+
+
+<blockquote>
+<p>Daily updates to our training material can be found at
+<a href="http://mrccsc.github.io/training">http://mrccsc.github.io/training.html</a></p>
+</blockquote>
+
+									</section>
+
+									<section>
+										<header>
+											<h2 id="upcoming">Upcoming training</h2>
+										</header>
+										<p>
+										In 2016 we will be running training on R, reproducible research, visualising data in genome browsers and analysis of RNA-seq/ChIP-seq using R and Bioconductor<br> To book a place on one of these courses please contact Thomas Carroll (<a href="mailto:thomas.carroll@csc.mrc.ac.uk">thomas.carroll@csc.mrc.ac.uk</a>)
+
+
+<br>
+Material linked below is <font color="red">for reference and example only.</font> <br>Material to be used for course will be made available to attendees only and weblinks distributed on the day of the course.
+
+<br><em style="background-color:lightgrey;font-weight:bold;">NOTE</em> <em style="font-weight:bold;">All materials are under strict licensing. Material is free for review but may not be redistributed 'as is' or modified without explicit consent. For more details contact the Head of Bioinformatics (<a href="mailto:thomas.carroll@csc.mrc.ac.uk?Subject=Licensing">Thomas Carroll - thomas.carroll@csc.mrc.ac.uk</a>) </em>
+
+
+<table id="example" class="display" cellspacing="0" width="100%">
+  <thead>
+  <tr>
+    <th>Course</th>
+    <th>Material</th>
+    <th>Dates</th>
+    <th>Availability</th>       
+  </tr>
+  </thead>
+ </tbody> 
+  <tr>
+    <td>Reproducible R</td>
+    <td><a href="http://mrccsc.github.io/Reproducible-R/">Link</a>
+    <!--a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>TBC, 2016</td>
+    <td><font color="red">Full</td>
+    <td>1</td>
+  </tr>
+    <tr>
+    <td>Intro To R (1 Day)</td>
+    <td><a href="http://mrccsc.github.io/Intro_To_R_1Day/">Link</a>
+    <!--a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>31st October, 2016</td>
+    <td><font color="red">Full</td>
+    <td>1</td>
+  </tr>
+    <tr>
+    <td>Intermediate R - Data analysis and Visualisation</td>
+    <td><a href="http://mrccsc.github.io/r-intermediate/">Link</a>
+    <!--a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>3rd November, 2016</td>
+    <td><font color="red">Full</td>
+	<td>2</td>
+  </tr>
+   <tr>
+    <td>Genomic File Formats</td>
+    <td><a href="http://mrccsc.github.io/genomic_formats/">Link</a>
+    <!--a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>8th November, 2016</td>
+    <td><font color="red">Full</td>
+	<td>3</td>      
+  </tr> 
+   <tr>
+    <td>IGV Genome Browser</td>
+    <td><a href="http://mrccsc.github.io/IGV_course/">Link</a>
+    <!--a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>8th November, 2016</td>
+    <td><font color="red">Full</td>
+	<td>4</td>    
+  </tr>
+  <tr>
+    <td>Statistics in R</td>
+    <td><a href="http://mrccsc.github.io/StatisticsInR/">Link</a>
+    <!--a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>14th November, 2016</td>
+    <td><font color="red">Full</td>
+	<td>5</td>            
+  </tr>      
+   <tr>
+    <td>Bioconductor</td>
+    <td><a href="https://mrccsc.github.io/Bioconductor/">Link</a>
+    <!--<a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a></td>-->
+    <td>21st November, 2016</td>
+    <td><font color="red">Full</td>
+	<td>6</td>                    
+  </tr> 
+  <tr>
+    <td>Alignments</td>
+    <td><a href="https://mrccsc.github.io/Alignment/">Link</a>
+    <!--<a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>24th November, 2016</td>
+    <td><font color="red">Full</td>
+	<td>7</td>                            
+  </tr>       
+   <tr>
+    <td>ChIP-seq (short)</td>
+    <td><a href="http://mrccsc.github.io/ChIPseq_short/">Link</a>
+    <!--<a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>28th November, 2016</td>
+    <td><font color="red">Full</td>
+	<td>8</td>                            
+  </tr>
+   <tr>
+    <td>RNA-seq (short)</td>
+    <td><a href="http://mrccsc.github.io/RNAseq_short/">Link</a>
+    <!--<a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>1st December, 2016</td>
+    <td><font color="red">Full</td>
+	<td>9</td>                        
+  </tr>
+   </tr>
+   <tr>
+    <td>Visualising Genomics Data</td>
+    <td><a href="https://mrccsc.github.io/VisualisingGenomicsData">Link</a>
+    <!--<a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>6th December, 2016</td>
+    <td><font color="red">Full</td>
+	<td>10</td>                        
+  </tr>
+   <tr>
+    <td>Introductin to Python</td>
+    <td><a href="http://pycam.github.io/">Link</a>
+    <!--<a href="mailto:bioinf.training@imperial.ac.uk" target="_top">Contact us</a>--></td>
+    <td>12th and 13th December, 2016</td>
+    <td><font color="blue">Trial Run</td>
+	<td>11</td>                        
+  </tr>							
+</tbody>
+</table>
+
+
+										</p>
+
+									</section>									
+
+
+							</div>
+							<div class="3u">
+								
+								<!-- Sidebar -->
+									<section>
+										<header>
+											<h2>Training Links</h2>
+										</header>
+										<ul class="link-list">
+											<li><a href="http://mrccsc.github.io/combioweek.html">Computational Biology Week 2015</a></li>
+										</ul>
+										<ul class="link-list">
+											<li><a href="http://mrccsc.github.io/CompBioWeek_2016/">Computational Biology Week 2016</a></li>
+										</ul>			
+										<ul class="link-list">
+											<li><a href="http://mrccsc.github.io/CompBioWeek_2017/">Computational Biology Week 2017</a></li>
+										</ul>																			
+									</section>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<!-- Footer -->
+		<!-- Footer -->
+			<div id="footer-wrapper">
+				<footer id="footer" class="container">
+					<div class="row">
+						<div class="8u">
+						
+							<!-- Links -->
+								<section>
+									<h2>Quick Contacts</h2>
+									<div>
+										<div class="row">
+											<div class="3u">
+												<ul class="link-list last-child">
+													<li>Head of Bioinformatics -<br><a href="thomas.carroll@csc.mrc.ac.uk">Thomas Carroll</a></li>
+													<li>Epigentics - <br><a href="gopuraja.dharmalingam@csc.mrc.ac.uk">Gopuraja Dharmalingam</a></li>
+													<li>Genes and Metabolism -<br><a href="sanjay.khayadate@csc.mrc.ac.uk">Sanjay Khayadate</a></li>
+												</ul>
+											</div>
+											<div class="3u">
+												<ul class="link-list last-child">
+													<li><a href="http://csc.mrc.ac.uk">MRC 
+													CSC Homepage</a></li>
+													<li><a href="http://csc.mrc.ac.uk/research-facility/computing-services/">Computing and Bioinformatics</a></li>
+													<li><a href="http://mrccsc.github.io">MRC CSC github site</a></li>
+												</ul>
+											</div>
+											<div class="3u">
+												<ul class="link-list last-child">
+													<p>The Bioinformatics team is located in the Imperial Centre for Translation Research, in the second floor MRC section. Behind the printers.<p>
+												</ul>
+											</div>											
+											<div class="3u">
+												<ul class="link-list last-child">
+													<p>If you want to contact us during working hours by telephone please call on <br>
+													020 8383 8024<br>
+													For urgent enquired please contact <a href="thomas.carroll@csc.mrc.ac.uk">Thomas Carroll</a> by email.
+
+													.<p>
+												</ul>
+											</div>
+
+										</div>
+									</div>
+								</section>
+
+						</div>
+						<div class="4u">
+							
+							<!-- Blurb -->
+								<section>
+									<h2>Bioinformatics news</h2>
+									<p>
+									</p>
+								</section>
+						
+						</div>
+					</div>
+				</footer>
+			</div>
+
+		<!-- Copyright -->
+			<div id="copyright">
+				&copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+			</div>
+
+	</body>
+</html>
