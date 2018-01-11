@@ -11,8 +11,8 @@ The core Bioinformatics team consists of 4 section bioinformaticians working wit
 *   Epigenetics - Gopuraja Dharmalingham (gopuraja.dharmalingam@lms.mrc.ac.uk)
 *   Integrative Biology - Sanjay Khadayate (sanjay.khadayate@lms.mrc.ac.uk)
 *   Genes And Metabolism - Yi-Fang Wang (yi-fang.wang@lms.mrc.ac.uk)
-*   Genomics pipeline - Marian Dore (marian.dore@lms.mrc.ac.uk)
-
+*   High-Throughput Sequencing - Marian Dore (marian.dore@lms.mrc.ac.uk)
+*   Proteomics - TBC
 
 Experimental Design
 -------------
